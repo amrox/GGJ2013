@@ -50,6 +50,8 @@
 		9CAB4E9716B470D80061047A /* GameGestureLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB4E9616B470D80061047A /* GameGestureLayer.m */; };
 		9CAB4E9B16B4713D0061047A /* GameMonsterLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB4E9A16B4713D0061047A /* GameMonsterLayer.m */; };
 		9CAB4E9E16B471520061047A /* GameHUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB4E9D16B471510061047A /* GameHUDLayer.m */; };
+		9CAB4F8B16B489C30061047A /* gameBackground_placeholder-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB4F8A16B489C30061047A /* gameBackground_placeholder-hd.png */; };
+		9CAB4F8D16B48AA40061047A /* gameBackground_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB4F8C16B48AA40061047A /* gameBackground_placeholder.png */; };
 		B354826816B3A75A004ECF7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D716B39AC50061047A /* UIKit.framework */; };
 		B354826916B3A75A004ECF7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D916B39AC50061047A /* Foundation.framework */; };
 		B354826A16B3A75A004ECF7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47DB16B39AC50061047A /* CoreGraphics.framework */; };
@@ -522,6 +524,8 @@
 		9CAB4E9A16B4713D0061047A /* GameMonsterLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMonsterLayer.m; sourceTree = "<group>"; };
 		9CAB4E9C16B471510061047A /* GameHUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameHUDLayer.h; sourceTree = "<group>"; };
 		9CAB4E9D16B471510061047A /* GameHUDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameHUDLayer.m; sourceTree = "<group>"; };
+		9CAB4F8A16B489C30061047A /* gameBackground_placeholder-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameBackground_placeholder-hd.png"; path = "Resources/GameAssets/gameBackground_placeholder-hd.png"; sourceTree = "<group>"; };
+		9CAB4F8C16B48AA40061047A /* gameBackground_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameBackground_placeholder.png; path = Resources/GameAssets/gameBackground_placeholder.png; sourceTree = "<group>"; };
 		B354826616B3A75A004ECF7C /* NetworkTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B354826D16B3A75A004ECF7C /* NetworkTester-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NetworkTester-Info.plist"; sourceTree = "<group>"; };
 		B354826F16B3A75A004ECF7C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -654,6 +658,7 @@
 		9CAB47E016B39AC50061047A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9CAB4F8716B489800061047A /* GameAssets */,
 				0AC19F3E16B46D0F00FC5541 /* start-menu-button-hd.png */,
 				0AC19F3F16B46D0F00FC5541 /* start-menu-button-pressed-hd.png */,
 				0AC19F4016B46D0F00FC5541 /* start-menu-button-pressed.png */,
@@ -761,6 +766,15 @@
 				9CAB4E9D16B471510061047A /* GameHUDLayer.m */,
 			);
 			name = GameLayers;
+			sourceTree = "<group>";
+		};
+		9CAB4F8716B489800061047A /* GameAssets */ = {
+			isa = PBXGroup;
+			children = (
+				9CAB4F8C16B48AA40061047A /* gameBackground_placeholder.png */,
+				9CAB4F8A16B489C30061047A /* gameBackground_placeholder-hd.png */,
+			);
+			name = GameAssets;
 			sourceTree = "<group>";
 		};
 		B354826B16B3A75A004ECF7C /* NetworkTester */ = {
@@ -1330,6 +1344,8 @@
 				0AC19F4316B46D0F00FC5541 /* start-menu-button-pressed-hd.png in Resources */,
 				0AC19F4416B46D0F00FC5541 /* start-menu-button-pressed.png in Resources */,
 				0AC19F4516B46D0F00FC5541 /* start-menu-button.png in Resources */,
+				9CAB4F8B16B489C30061047A /* gameBackground_placeholder-hd.png in Resources */,
+				9CAB4F8D16B48AA40061047A /* gameBackground_placeholder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
