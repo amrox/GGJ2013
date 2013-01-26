@@ -61,19 +61,11 @@ typedef enum
 	CCMenuItemImage * gestureButton1;
 	CCMenuItemImage * gestureButton2;
 	CCMenuItemImage * gestureButton3;
+    Gesture * currentGesture;
 }
 
 - (CCMenuItemImage*)makeButtonWithText:(NSString*)text pos:(CGPoint)pos selector:(SEL)selector
 {
-    [super onEnter];
-	self.isTouchEnabled = YES;
-	CCDirector *director = [CCDirector sharedDirector];
-	[[director touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
-
-    gestureButton1 = [CCMenuItemImage itemWithNormalImage:@"start-menu-button.png"
-											 selectedImage:@"start-menu-button-pressed.png"
-													target:self
-												  selector:@selector(gesture1Pressed:)];
     CCMenuItemImage * button = [CCMenuItemImage itemWithNormalImage:@"start-menu-button.png"
 											selectedImage:@"start-menu-button-pressed.png"
 												   target:self
@@ -115,20 +107,33 @@ typedef enum
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CGPoint touchLocation = [touch locationInView:touch.view];
-	NSLog(@"First touch is at %f %f" ,touchLocation.x, touchLocation.y);
+//	NSLog(@"First touch is at %f %f" ,touchLocation.x, touchLocation.y);
+    if (currentGesture == nil)
+    {
+        currentGesture = [[Gesture alloc] initAtStartingPos:touchLocation];
+    }
 	return YES;
 }
 
 - (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CGPoint touchLocation = [touch locationInView:touch.view];
-	NSLog(@"Second touch is at %f %f" ,touchLocation.x, touchLocation.y);
+//	NSLog(@"Second touch is at %f %f" ,touchLocation.x, touchLocation.y);
+    if (currentGesture)
+    {
+        [currentGesture newTouchAt:touchLocation];
+    }
 }
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    CGPoint touchLocation = [touch locationInView:touch.view];
-	NSLog(@"3rd touch is at %f %f" ,touchLocation.x, touchLocation.y);
+//    CGPoint touchLocation = [touch locationInView:touch.view];
+//	NSLog(@"3rd touch is at %f %f" ,touchLocation.x, touchLocation.y);
+    if (currentGesture)
+    {
+        [currentGesture getGesture];
+        currentGesture = nil;
+    }
 }
 
 - (void)gesture1Pressed:(id)sender
