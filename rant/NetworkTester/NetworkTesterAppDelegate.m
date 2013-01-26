@@ -8,22 +8,31 @@
 
 #import "NetworkTesterAppDelegate.h"
 
+#import "NetworkTesterRootViewController.h"
 #import "GameEngine.h"
+
+@interface NetworkTesterAppDelegate ()
+
+@property (strong) NetworkTesterRootViewController *rootViewController;
+
+@end
 
 @implementation NetworkTesterAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    
-    
+    self.rootViewController = [[NetworkTesterRootViewController alloc] initWithNibName:@"NetworkTesterRootViewController" bundle:nil];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = self.rootViewController;
     [self.window makeKeyAndVisible];
+    
+    [[GameEngine sharedGameEngine] authenticate];
+    
     return YES;
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -51,5 +60,7 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
 
 @end
