@@ -10,4 +10,6 @@
     
 }
 
+@property (nonatomic, strong) CCSprite *hero;
+
 @end
