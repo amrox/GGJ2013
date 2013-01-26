@@ -86,6 +86,9 @@
 	
 	// make main window visible
 	[window_ makeKeyAndVisible];
+    
+    //NSString* dummy = [[[NSString alloc] init] autorelease];
+
 	
 	return YES;
 }
@@ -139,14 +142,6 @@
 -(void) applicationSignificantTimeChange:(UIApplication *)application
 {
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
-}
-
-- (void) dealloc
-{
-	[window_ release];
-	[navController_ release];
-
-	[super dealloc];
 }
 @end
 
