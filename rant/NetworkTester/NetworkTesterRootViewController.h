@@ -10,4 +10,8 @@
 
 @interface NetworkTesterRootViewController : UIViewController
 
+- (IBAction)go:(id)sender;
+
+@property (strong) IBOutlet UITextView *textView;
+
 @end

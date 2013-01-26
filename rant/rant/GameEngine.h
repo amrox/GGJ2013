@@ -1,4 +1,4 @@
-//
+    //
 //  GameEngine.h
 //  rant
 //
@@ -10,6 +10,16 @@
 #import <GameKit/GameKit.h>
 
 @interface GameEngine : NSObject <GKMatchDelegate>
+
+
++ (GameEngine *)sharedGameEngine;
+
+@property (strong) GKMatch *match;
+
+
+- (IBAction)findProgrammaticMatch: (id) sender;
+
+- (void)authenticate;
 
 
 @end

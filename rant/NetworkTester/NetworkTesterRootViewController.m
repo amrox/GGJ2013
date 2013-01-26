@@ -7,6 +7,7 @@
 //
 
 #import "NetworkTesterRootViewController.h"
+#import "GameEngine.h"
 
 @interface NetworkTesterRootViewController ()
 
@@ -33,6 +34,17 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (IBAction)go:(id)sender
+{
+    GameEngine *engine = [GameEngine sharedGameEngine];
+    
+    
+    [engine findProgrammaticMatch:sender];
+    
+    
 }
 
 @end

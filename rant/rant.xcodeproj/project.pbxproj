@@ -79,7 +79,9 @@
 		B3985A9516B46BDD008081FB /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameEngine.m */; };
 		B3985A9616B46BDD008081FB /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameEngine.m */; };
 		B3985A9A16B46E07008081FB /* NetworkTesterRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9816B46E07008081FB /* NetworkTesterRootViewController.m */; };
-		B3985A9B16B46E07008081FB /* NetworkTesterRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3985A9916B46E07008081FB /* NetworkTesterRootViewController.xib */; };
+		B3E1FF1516B476B500D940F0 /* NetworkTesterRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3E1FF1416B476B500D940F0 /* NetworkTesterRootViewController.xib */; };
+		B3E1FF9A16B497A200D940F0 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E1FF9916B497A200D940F0 /* Util.m */; };
+		B3E1FF9B16B497A200D940F0 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E1FF9916B497A200D940F0 /* Util.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -566,7 +568,9 @@
 		B3985A9416B46BDD008081FB /* GameEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameEngine.m; sourceTree = "<group>"; };
 		B3985A9716B46E07008081FB /* NetworkTesterRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTesterRootViewController.h; sourceTree = "<group>"; };
 		B3985A9816B46E07008081FB /* NetworkTesterRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTesterRootViewController.m; sourceTree = "<group>"; };
-		B3985A9916B46E07008081FB /* NetworkTesterRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkTesterRootViewController.xib; sourceTree = "<group>"; };
+		B3E1FF1416B476B500D940F0 /* NetworkTesterRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkTesterRootViewController.xib; sourceTree = "<group>"; };
+		B3E1FF9816B497A200D940F0 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		B3E1FF9916B497A200D940F0 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -658,6 +662,8 @@
 			children = (
 				9CAB495716B39AC70061047A /* AppDelegate.h */,
 				9CAB495816B39AC70061047A /* AppDelegate.m */,
+				B3E1FF9816B497A200D940F0 /* Util.h */,
+				B3E1FF9916B497A200D940F0 /* Util.m */,
 				B3985A9216B46BB7008081FB /* GameEngine */,
 				9CAB4E8E16B470640061047A /* GameLayers */,
 				0AC19EB316B4652300FC5541 /* LobbyScene.h */,
@@ -813,7 +819,7 @@
 				B354827516B3A75A004ECF7C /* NetworkTesterAppDelegate.m */,
 				B3985A9716B46E07008081FB /* NetworkTesterRootViewController.h */,
 				B3985A9816B46E07008081FB /* NetworkTesterRootViewController.m */,
-				B3985A9916B46E07008081FB /* NetworkTesterRootViewController.xib */,
+				B3E1FF1416B476B500D940F0 /* NetworkTesterRootViewController.xib */,
 				B354826C16B3A75A004ECF7C /* Supporting Files */,
 			);
 			path = NetworkTester;
@@ -1394,7 +1400,7 @@
 				B354827816B3A75A004ECF7C /* Default.png in Resources */,
 				B354827A16B3A75A004ECF7C /* Default@2x.png in Resources */,
 				B354827C16B3A75A004ECF7C /* Default-568h@2x.png in Resources */,
-				B3985A9B16B46E07008081FB /* NetworkTesterRootViewController.xib in Resources */,
+				B3E1FF1516B476B500D940F0 /* NetworkTesterRootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1441,6 +1447,7 @@
 				9CAB4E9B16B4713D0061047A /* GameMonsterLayer.m in Sources */,
 				9CAB4E9E16B471520061047A /* GameHUDLayer.m in Sources */,
 				9CAB4F9416B492770061047A /* GameHeroLayer.m in Sources */,
+				B3E1FF9A16B497A200D940F0 /* Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1452,6 +1459,7 @@
 				B354827616B3A75A004ECF7C /* NetworkTesterAppDelegate.m in Sources */,
 				B3985A9616B46BDD008081FB /* GameEngine.m in Sources */,
 				B3985A9A16B46E07008081FB /* NetworkTesterRootViewController.m in Sources */,
+				B3E1FF9B16B497A200D940F0 /* Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1544,6 +1552,7 @@
 					"$(PROJECT_DIR)/../cocos2d-iphone-2.0/**",
 				);
 				INFOPLIST_FILE = rant/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
@@ -1567,6 +1576,7 @@
 					"$(PROJECT_DIR)/../cocos2d-iphone-2.0/**",
 				);
 				INFOPLIST_FILE = rant/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
@@ -1597,7 +1607,7 @@
 				);
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "NetworkTester/NetworkTester-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1620,7 +1630,7 @@
 				GCC_PREFIX_HEADER = "NetworkTester/NetworkTester-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "NetworkTester/NetworkTester-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1652,7 +1662,7 @@
 				);
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -1677,7 +1687,7 @@
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = octest;
