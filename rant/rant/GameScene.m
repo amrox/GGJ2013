@@ -20,10 +20,14 @@
 {
     [super onEnter];
 
+	CGSize windowSize = [[CCDirector sharedDirector] winSize];
+
     [self addChild:[GameBackgroundLayer node]];
     [self addChild:[GameMonsterLayer node]];
     [self addChild:[GameHUDLayer node]];
-    [self addChild:[GameGestureLayer node]];
+	CCLayer * gestureLayer = [GameGestureLayer node];
+	[gestureLayer setPosition:ccp(-windowSize.width*0.5f, -windowSize.height*0.5f)];
+    [self addChild:gestureLayer];
 }
 
 @end
