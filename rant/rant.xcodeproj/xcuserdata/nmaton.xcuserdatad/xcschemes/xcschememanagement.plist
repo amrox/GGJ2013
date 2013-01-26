@@ -4,15 +4,35 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>NetworkTester.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>rant.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>rant.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>9CAB47C816B39AC50061047A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B354826516B3A75A004ECF7C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B354828516B3A77C004ECF7C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

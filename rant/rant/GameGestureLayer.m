@@ -16,6 +16,7 @@
 }
 
 
+
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
 	NSLog(@"1");
