@@ -47,6 +47,10 @@
 		9CAB4C2A16B3C6030061047A /* libCocosDenshion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB4BC116B3C5D30061047A /* libCocosDenshion.a */; };
 		9CAB4CA616B3C79E0061047A /* libkazmath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB4BC316B3C5D30061047A /* libkazmath.a */; };
 		9CAB4CA716B3C7A20061047A /* liblibpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB4BC516B3C5D30061047A /* liblibpng.a */; };
+		9CAB4E9416B470A40061047A /* GameBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB4E9316B470A40061047A /* GameBackgroundLayer.m */; };
+		9CAB4E9716B470D80061047A /* GameGestureLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB4E9616B470D80061047A /* GameGestureLayer.m */; };
+		9CAB4E9B16B4713D0061047A /* GameMonsterLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB4E9A16B4713D0061047A /* GameMonsterLayer.m */; };
+		9CAB4E9E16B471520061047A /* GameHUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB4E9D16B471510061047A /* GameHUDLayer.m */; };
 		B354826816B3A75A004ECF7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D716B39AC50061047A /* UIKit.framework */; };
 		B354826916B3A75A004ECF7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D916B39AC50061047A /* Foundation.framework */; };
 		B354826A16B3A75A004ECF7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47DB16B39AC50061047A /* CoreGraphics.framework */; };
@@ -513,6 +517,14 @@
 		9CAB495D16B39AC70061047A /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		9CAB495E16B39AC70061047A /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		9CAB4B4616B3C5D10061047A /* cocos2d-ios.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "cocos2d-ios.xcodeproj"; path = "../cocos2d-iphone-2.0/cocos2d-ios.xcodeproj"; sourceTree = "<group>"; };
+		9CAB4E9216B470A40061047A /* GameBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBackgroundLayer.h; sourceTree = "<group>"; };
+		9CAB4E9316B470A40061047A /* GameBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBackgroundLayer.m; sourceTree = "<group>"; };
+		9CAB4E9516B470D80061047A /* GameGestureLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameGestureLayer.h; sourceTree = "<group>"; };
+		9CAB4E9616B470D80061047A /* GameGestureLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameGestureLayer.m; sourceTree = "<group>"; };
+		9CAB4E9916B4713D0061047A /* GameMonsterLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMonsterLayer.h; sourceTree = "<group>"; };
+		9CAB4E9A16B4713D0061047A /* GameMonsterLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMonsterLayer.m; sourceTree = "<group>"; };
+		9CAB4E9C16B471510061047A /* GameHUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameHUDLayer.h; sourceTree = "<group>"; };
+		9CAB4E9D16B471510061047A /* GameHUDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameHUDLayer.m; sourceTree = "<group>"; };
 		B354826616B3A75A004ECF7C /* NetworkTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B354826D16B3A75A004ECF7C /* NetworkTester-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NetworkTester-Info.plist"; sourceTree = "<group>"; };
 		B354826F16B3A75A004ECF7C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -624,9 +636,10 @@
 		9CAB47DF16B39AC50061047A /* rant */ = {
 			isa = PBXGroup;
 			children = (
-				B3985A9216B46BB7008081FB /* GameEngine */,
 				9CAB495716B39AC70061047A /* AppDelegate.h */,
 				9CAB495816B39AC70061047A /* AppDelegate.m */,
+				B3985A9216B46BB7008081FB /* GameEngine */,
+				9CAB4E8E16B470640061047A /* GameLayers */,
 				9CAB495D16B39AC70061047A /* IntroLayer.h */,
 				9CAB495E16B39AC70061047A /* IntroLayer.m */,
 				0AC19EB316B4652300FC5541 /* LobbyScene.h */,
@@ -738,6 +751,21 @@
 				9CAB4C2716B3C5D30061047A /* Bug1159.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9CAB4E8E16B470640061047A /* GameLayers */ = {
+			isa = PBXGroup;
+			children = (
+				9CAB4E9216B470A40061047A /* GameBackgroundLayer.h */,
+				9CAB4E9316B470A40061047A /* GameBackgroundLayer.m */,
+				9CAB4E9516B470D80061047A /* GameGestureLayer.h */,
+				9CAB4E9616B470D80061047A /* GameGestureLayer.m */,
+				9CAB4E9916B4713D0061047A /* GameMonsterLayer.h */,
+				9CAB4E9A16B4713D0061047A /* GameMonsterLayer.m */,
+				9CAB4E9C16B471510061047A /* GameHUDLayer.h */,
+				9CAB4E9D16B471510061047A /* GameHUDLayer.m */,
+			);
+			name = GameLayers;
 			sourceTree = "<group>";
 		};
 		B354826B16B3A75A004ECF7C /* NetworkTester */ = {
@@ -1361,6 +1389,10 @@
 				9CAB495916B39AC70061047A /* AppDelegate.m in Sources */,
 				9CAB495F16B39AC70061047A /* IntroLayer.m in Sources */,
 				B3985A9516B46BDD008081FB /* GameEngine.m in Sources */,
+				9CAB4E9416B470A40061047A /* GameBackgroundLayer.m in Sources */,
+				9CAB4E9716B470D80061047A /* GameGestureLayer.m in Sources */,
+				9CAB4E9B16B4713D0061047A /* GameMonsterLayer.m in Sources */,
+				9CAB4E9E16B471520061047A /* GameHUDLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
