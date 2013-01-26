@@ -1,0 +1,21 @@
+#import "cocos2d.h"
+
+@class GameBackgroundLayer;
+@class GameGestureLayer;
+@class GameMonsterLayer;
+@class GameHUDLayer;
+@class GameHeroLayer;
+
+@interface GameScene : CCScene
+{
+}
+
+@property (nonatomic, strong) GameBackgroundLayer *backgroundLayer;
+@property (nonatomic, strong) GameMonsterLayer *monsterLayer;
+@property (nonatomic, strong) GameHeroLayer *heroLayer;
+@property (nonatomic, strong) GameHUDLayer *hudLayer;
+@property (nonatomic, strong) GameGestureLayer *gestureLayer;
+
++(CCScene *) scene;
+
+@end
