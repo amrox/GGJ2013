@@ -22,7 +22,6 @@ typedef enum
 
 - (id)initAtStartingPos:(CGPoint)startingPos;
 - (void)newTouchAt:(CGPoint)pos;
-- (void)close;
 
 - (EGesture)getGesture;
 
@@ -121,17 +120,15 @@ typedef enum
 				float angleDiff = [self getDifferenceBetweenAngle:legAngles[numLegs-1] and:currentAngle];
 				if (fabsf(angleDiff) > ANGLE_DIFFERENCE_FOR_NEW_LEG)
 				{
-					legAngles[numLegs] = currentAngle;
-					numLegs++;
+					if (numLegs < MAX_LEGS)
+					{
+						legAngles[numLegs] = currentAngle;
+						numLegs++;
+					}
 				}
 			}
 		}
 	}
-}
-
-- (void)close
-{
-
 }
 
 - (EGesture)getGesture
