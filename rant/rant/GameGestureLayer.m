@@ -17,8 +17,16 @@ typedef enum
 } EGesture;
 
 
-
 @interface Gesture : NSObject
+
+@end
+
+@implementation Gesture
+
+@end
+
+
+@interface GestureRecognizer : NSObject
 
 - (id)initAtStartingPos:(CGPoint)startingPos;
 - (void)newTouchAt:(CGPoint)pos;
@@ -32,7 +40,7 @@ typedef enum
 #define MAX_POINTS 10000
 #define MAX_LEGS 100
 
-@implementation Gesture
+@implementation GestureRecognizer
 {
 	CGPoint points[MAX_POINTS];
 	int numPoints;
@@ -148,7 +156,7 @@ typedef enum
 	CCMenuItemImage * gestureButton1;
 	CCMenuItemImage * gestureButton2;
 	CCMenuItemImage * gestureButton3;
-    Gesture * currentGesture;
+    GestureRecognizer * currentGestureRecognizer;
 }
 
 - (CCMenuItemImage*)makeButtonWithText:(NSString*)text pos:(CGPoint)pos selector:(SEL)selector
@@ -195,9 +203,9 @@ typedef enum
 {
     CGPoint touchLocation = [touch locationInView:touch.view];
 //	NSLog(@"First touch is at %f %f" ,touchLocation.x, touchLocation.y);
-    if (currentGesture == nil)
+    if (currentGestureRecognizer == nil)
     {
-        currentGesture = [[Gesture alloc] initAtStartingPos:touchLocation];
+        currentGestureRecognizer = [[GestureRecognizer alloc] initAtStartingPos:touchLocation];
     }
 	return YES;
 }
@@ -206,20 +214,21 @@ typedef enum
 {
     CGPoint touchLocation = [touch locationInView:touch.view];
 //	NSLog(@"Second touch is at %f %f" ,touchLocation.x, touchLocation.y);
-    if (currentGesture)
+    if (currentGestureRecognizer)
     {
-        [currentGesture newTouchAt:touchLocation];
+        [currentGestureRecognizer newTouchAt:touchLocation];
     }
 }
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-//    CGPoint touchLocation = [touch locationInView:touch.view];
+    CGPoint touchLocation = [touch locationInView:touch.view];
 //	NSLog(@"3rd touch is at %f %f" ,touchLocation.x, touchLocation.y);
-    if (currentGesture)
+    if (currentGestureRecognizer)
     {
-        [currentGesture getGesture];
-        currentGesture = nil;
+        [currentGestureRecognizer newTouchAt:touchLocation];
+        [currentGestureRecognizer getGesture];
+        currentGestureRecognizer = nil;
     }
 }
 
