@@ -54,6 +54,7 @@
 		9CAB4F8D16B48AA40061047A /* gameBackground_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB4F8C16B48AA40061047A /* gameBackground_placeholder.png */; };
 		9CAB4F9016B490D40061047A /* gameMonster_placeholder-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB4F8E16B490D40061047A /* gameMonster_placeholder-hd.png */; };
 		9CAB4F9116B490D40061047A /* gameMonster_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB4F8F16B490D40061047A /* gameMonster_placeholder.png */; };
+		9CAB4F9416B492770061047A /* GameHeroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB4F9316B492760061047A /* GameHeroLayer.m */; };
 		B354826816B3A75A004ECF7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D716B39AC50061047A /* UIKit.framework */; };
 		B354826916B3A75A004ECF7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D916B39AC50061047A /* Foundation.framework */; };
 		B354826A16B3A75A004ECF7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47DB16B39AC50061047A /* CoreGraphics.framework */; };
@@ -530,6 +531,8 @@
 		9CAB4F8C16B48AA40061047A /* gameBackground_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameBackground_placeholder.png; path = Resources/GameAssets/gameBackground_placeholder.png; sourceTree = "<group>"; };
 		9CAB4F8E16B490D40061047A /* gameMonster_placeholder-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameMonster_placeholder-hd.png"; path = "Resources/GameAssets/gameMonster_placeholder-hd.png"; sourceTree = "<group>"; };
 		9CAB4F8F16B490D40061047A /* gameMonster_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameMonster_placeholder.png; path = Resources/GameAssets/gameMonster_placeholder.png; sourceTree = "<group>"; };
+		9CAB4F9216B492760061047A /* GameHeroLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameHeroLayer.h; sourceTree = "<group>"; };
+		9CAB4F9316B492760061047A /* GameHeroLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameHeroLayer.m; sourceTree = "<group>"; };
 		B354826616B3A75A004ECF7C /* NetworkTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B354826D16B3A75A004ECF7C /* NetworkTester-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NetworkTester-Info.plist"; sourceTree = "<group>"; };
 		B354826F16B3A75A004ECF7C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -768,6 +771,8 @@
 				9CAB4E9A16B4713D0061047A /* GameMonsterLayer.m */,
 				9CAB4E9C16B471510061047A /* GameHUDLayer.h */,
 				9CAB4E9D16B471510061047A /* GameHUDLayer.m */,
+				9CAB4F9216B492760061047A /* GameHeroLayer.h */,
+				9CAB4F9316B492760061047A /* GameHeroLayer.m */,
 			);
 			name = GameLayers;
 			sourceTree = "<group>";
@@ -1411,6 +1416,7 @@
 				9CAB4E9716B470D80061047A /* GameGestureLayer.m in Sources */,
 				9CAB4E9B16B4713D0061047A /* GameMonsterLayer.m in Sources */,
 				9CAB4E9E16B471520061047A /* GameHUDLayer.m in Sources */,
+				9CAB4F9416B492770061047A /* GameHeroLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
