@@ -6,12 +6,18 @@
 //
 //
 
-#import "AppDelegate.h"
+#import "NetworkTesterAppDelegate.h"
 
-@implementation AppDelegate
+#import "GameEngine.h"
+
+@implementation NetworkTesterAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

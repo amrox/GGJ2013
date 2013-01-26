@@ -41,7 +41,7 @@
 		B354826A16B3A75A004ECF7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47DB16B39AC50061047A /* CoreGraphics.framework */; };
 		B354827016B3A75A004ECF7C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B354826E16B3A75A004ECF7C /* InfoPlist.strings */; };
 		B354827216B3A75A004ECF7C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B354827116B3A75A004ECF7C /* main.m */; };
-		B354827616B3A75A004ECF7C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B354827516B3A75A004ECF7C /* AppDelegate.m */; };
+		B354827616B3A75A004ECF7C /* NetworkTesterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B354827516B3A75A004ECF7C /* NetworkTesterAppDelegate.m */; };
 		B354827816B3A75A004ECF7C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B354827716B3A75A004ECF7C /* Default.png */; };
 		B354827A16B3A75A004ECF7C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B354827916B3A75A004ECF7C /* Default@2x.png */; };
 		B354827C16B3A75A004ECF7C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B354827B16B3A75A004ECF7C /* Default-568h@2x.png */; };
@@ -50,6 +50,11 @@
 		B354828A16B3A77C004ECF7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D916B39AC50061047A /* Foundation.framework */; };
 		B354829016B3A77C004ECF7C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B354828E16B3A77C004ECF7C /* InfoPlist.strings */; };
 		B354829316B3A77C004ECF7C /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B354829216B3A77C004ECF7C /* UnitTests.m */; };
+		B3985A9116B46B8E008081FB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47DD16B39AC50061047A /* GameKit.framework */; };
+		B3985A9516B46BDD008081FB /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameEngine.m */; };
+		B3985A9616B46BDD008081FB /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameEngine.m */; };
+		B3985A9A16B46E07008081FB /* NetworkTesterRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9816B46E07008081FB /* NetworkTesterRootViewController.m */; };
+		B3985A9B16B46E07008081FB /* NetworkTesterRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3985A9916B46E07008081FB /* NetworkTesterRootViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -492,8 +497,8 @@
 		B354826F16B3A75A004ECF7C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B354827116B3A75A004ECF7C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B354827316B3A75A004ECF7C /* NetworkTester-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NetworkTester-Prefix.pch"; sourceTree = "<group>"; };
-		B354827416B3A75A004ECF7C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B354827516B3A75A004ECF7C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B354827416B3A75A004ECF7C /* NetworkTesterAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkTesterAppDelegate.h; sourceTree = "<group>"; };
+		B354827516B3A75A004ECF7C /* NetworkTesterAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkTesterAppDelegate.m; sourceTree = "<group>"; };
 		B354827716B3A75A004ECF7C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		B354827916B3A75A004ECF7C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		B354827B16B3A75A004ECF7C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -504,6 +509,11 @@
 		B354829116B3A77C004ECF7C /* UnitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitTests.h; sourceTree = "<group>"; };
 		B354829216B3A77C004ECF7C /* UnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTests.m; sourceTree = "<group>"; };
 		B354829416B3A77C004ECF7C /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		B3985A9316B46BDD008081FB /* GameEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameEngine.h; sourceTree = "<group>"; };
+		B3985A9416B46BDD008081FB /* GameEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameEngine.m; sourceTree = "<group>"; };
+		B3985A9716B46E07008081FB /* NetworkTesterRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTesterRootViewController.h; sourceTree = "<group>"; };
+		B3985A9816B46E07008081FB /* NetworkTesterRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTesterRootViewController.m; sourceTree = "<group>"; };
+		B3985A9916B46E07008081FB /* NetworkTesterRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkTesterRootViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -531,6 +541,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3985A9116B46B8E008081FB /* GameKit.framework in Frameworks */,
 				B354826816B3A75A004ECF7C /* UIKit.framework in Frameworks */,
 				B354826916B3A75A004ECF7C /* Foundation.framework in Frameworks */,
 				B354826A16B3A75A004ECF7C /* CoreGraphics.framework in Frameworks */,
@@ -592,6 +603,7 @@
 		9CAB47DF16B39AC50061047A /* rant */ = {
 			isa = PBXGroup;
 			children = (
+				B3985A9216B46BB7008081FB /* GameEngine */,
 				9CAB495716B39AC70061047A /* AppDelegate.h */,
 				9CAB495816B39AC70061047A /* AppDelegate.m */,
 				9CAB495A16B39AC70061047A /* HelloWorldLayer.h */,
@@ -700,8 +712,11 @@
 		B354826B16B3A75A004ECF7C /* NetworkTester */ = {
 			isa = PBXGroup;
 			children = (
-				B354827416B3A75A004ECF7C /* AppDelegate.h */,
-				B354827516B3A75A004ECF7C /* AppDelegate.m */,
+				B354827416B3A75A004ECF7C /* NetworkTesterAppDelegate.h */,
+				B354827516B3A75A004ECF7C /* NetworkTesterAppDelegate.m */,
+				B3985A9716B46E07008081FB /* NetworkTesterRootViewController.h */,
+				B3985A9816B46E07008081FB /* NetworkTesterRootViewController.m */,
+				B3985A9916B46E07008081FB /* NetworkTesterRootViewController.xib */,
 				B354826C16B3A75A004ECF7C /* Supporting Files */,
 			);
 			path = NetworkTester;
@@ -739,6 +754,15 @@
 				B354829416B3A77C004ECF7C /* UnitTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B3985A9216B46BB7008081FB /* GameEngine */ = {
+			isa = PBXGroup;
+			children = (
+				B3985A9316B46BDD008081FB /* GameEngine.h */,
+				B3985A9416B46BDD008081FB /* GameEngine.m */,
+			);
+			name = GameEngine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1259,6 +1283,7 @@
 				B354827816B3A75A004ECF7C /* Default.png in Resources */,
 				B354827A16B3A75A004ECF7C /* Default@2x.png in Resources */,
 				B354827C16B3A75A004ECF7C /* Default-568h@2x.png in Resources */,
+				B3985A9B16B46E07008081FB /* NetworkTesterRootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1297,6 +1322,7 @@
 				9CAB495916B39AC70061047A /* AppDelegate.m in Sources */,
 				9CAB495C16B39AC70061047A /* HelloWorldLayer.m in Sources */,
 				9CAB495F16B39AC70061047A /* IntroLayer.m in Sources */,
+				B3985A9516B46BDD008081FB /* GameEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1305,7 +1331,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B354827216B3A75A004ECF7C /* main.m in Sources */,
-				B354827616B3A75A004ECF7C /* AppDelegate.m in Sources */,
+				B354827616B3A75A004ECF7C /* NetworkTesterAppDelegate.m in Sources */,
+				B3985A9616B46BDD008081FB /* GameEngine.m in Sources */,
+				B3985A9A16B46E07008081FB /* NetworkTesterRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
