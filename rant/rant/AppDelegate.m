@@ -9,7 +9,8 @@
 #import "cocos2d.h"
 
 #import "AppDelegate.h"
-#import "IntroLayer.h"
+#import "MainMenuScene.h"
+#import "GameScene.h"
 
 @implementation AppController
 
@@ -73,7 +74,7 @@
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	[director_ pushScene: [IntroLayer scene]]; 
+	[director_ replaceScene:[GameScene scene]];
 
 	
 	// Create a Navigation Controller with the Director
@@ -86,6 +87,9 @@
 	
 	// make main window visible
 	[window_ makeKeyAndVisible];
+    
+    //NSString* dummy = [[[NSString alloc] init] autorelease];
+
 	
 	return YES;
 }
@@ -139,14 +143,6 @@
 -(void) applicationSignificantTimeChange:(UIApplication *)application
 {
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
-}
-
-- (void) dealloc
-{
-	[window_ release];
-	[navController_ release];
-
-	[super dealloc];
 }
 @end
 
