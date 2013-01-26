@@ -15,9 +15,10 @@
 
 -(void)onEnter
 {
-//	self.isTouchEnabled = YES;
-//	CCDirector *director = [CCDirector sharedDirector];
-//	[[director touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+    [super onEnter];
+	self.isTouchEnabled = YES;
+	CCDirector *director = [CCDirector sharedDirector];
+	[[director touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 
     gestureButton1 = [CCMenuItemImage itemWithNormalImage:@"start-menu-button.png"
 											 selectedImage:@"start-menu-button-pressed.png"
@@ -34,24 +35,29 @@
 
 	CCMenu *menu = [CCMenu menuWithItems:gestureButton1, nil];
     [self addChild:menu];
+    
+
 }
 
 
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	NSLog(@"1");
+    CGPoint touchLocation = [touch locationInView:touch.view];
+	NSLog(@"First touch is at %f %f" ,touchLocation.x, touchLocation.y);
 	return YES;
 }
 
 - (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	NSLog(@"2");
+    CGPoint touchLocation = [touch locationInView:touch.view];
+	NSLog(@"Second touch is at %f %f" ,touchLocation.x, touchLocation.y);
 }
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	NSLog(@"3");
+    CGPoint touchLocation = [touch locationInView:touch.view];
+	NSLog(@"3rd touch is at %f %f" ,touchLocation.x, touchLocation.y);
 }
 
 - (void)gesture1Pressed:(id)sender
