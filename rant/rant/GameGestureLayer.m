@@ -7,6 +7,54 @@
 
 #define RANT_FONT @"Bernard MT Condensed"
 
+typedef enum
+{
+	EGesture_NONE,
+	EGesture_WATER,
+	EGesture_FIRE,
+} EGesture;
+
+
+
+@interface Gesture : NSObject
+
+- (id)initAtStartingPos:(CGPoint)startingPos;
+- (void)newTouchAt:(CGPoint)pos;
+- (void)close;
+
+- (EGesture)getGesture;
+
+@end
+
+
+
+
+@implementation Gesture
+
+- (id)initAtStartingPos:(CGPoint)startingPos
+{
+	if (self = [super init])
+	{
+	}
+	return self;
+}
+
+- (void)newTouchAt:(CGPoint)pos
+{
+
+}
+
+- (void)close
+{
+
+}
+
+- (EGesture)getGesture
+{
+	return EGesture_NONE;
+}
+
+@end
 
 @implementation GameGestureLayer
 {
