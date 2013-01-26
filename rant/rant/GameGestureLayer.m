@@ -7,6 +7,8 @@
 
 #define RANT_FONT @"Bernard MT Condensed"
 
+#define PI 3.141592653589
+
 typedef enum
 {
 	EGesture_NONE,
@@ -28,20 +30,103 @@ typedef enum
 
 
 
+#define MAX_POINTS 10000
+#define MAX_LEGS 100
 
 @implementation Gesture
+{
+	CGPoint points[MAX_POINTS];
+	int numPoints;
+
+	float legAngles[MAX_LEGS];
+	int numLegs;
+}
 
 - (id)initAtStartingPos:(CGPoint)startingPos
 {
 	if (self = [super init])
 	{
+		points[0] = startingPos;
+		numPoints = 1;
 	}
 	return self;
 }
 
+- (float)angleBetweenPoint:(CGPoint)p1 and:(CGPoint)p2
+{
+	return atan2f(p2.y - p1.y, p2.x - p1.x);
+}
+
+- (float)distanceBetweenPoint:(CGPoint)p1 and:(CGPoint)p2
+{
+	return sqrtf((p2.x - p1.x)*(p2.x - p1.x) + (p2.y - p1.y)*(p2.y - p1.y));
+}
+
+- (float)getDifferenceBetweenAngle:(float)a1 and:(float)a2
+{
+	float diff = a2 - a1;
+	while (diff > PI)
+	{
+		diff -= PI*2.0f;
+	}
+	while (diff < -PI)
+	{
+		diff += PI*2.0f;
+	}
+	return diff;
+}
+
+#define DIST_FOR_ACCURATE_ANGLE 60
+#define ANGLE_DIFFERENCE_FOR_NEW_LEG (PI/3.0f)
+
+- (BOOL)getLatestAngle:(float*)angleOut
+{
+	if (numPoints < 2)
+	{
+		return NO;
+	}
+
+	CGPoint lastPoint = points[numPoints-1];
+	for (int i = numPoints - 2; i >= 0; i--)
+	{
+		CGPoint currentPoint = points[i];
+		float dist = [self distanceBetweenPoint:currentPoint and:lastPoint];
+		if (dist > DIST_FOR_ACCURATE_ANGLE)
+		{
+			float angle = [self angleBetweenPoint:currentPoint and:lastPoint];
+			*angleOut = angle;
+			return YES;
+		}
+	}
+	return NO;
+}
+
 - (void)newTouchAt:(CGPoint)pos
 {
+	if (numPoints < MAX_POINTS)
+	{
+		points[numPoints] = pos;
+		numPoints++;
 
+		float currentAngle;
+		if ([self getLatestAngle:&currentAngle])
+		{
+			if (numLegs == 0)
+			{
+				legAngles[numLegs] = currentAngle;
+				numLegs++;
+			}
+			else
+			{
+				float angleDiff = [self getDifferenceBetweenAngle:legAngles[numLegs-1] and:currentAngle];
+				if (fabsf(angleDiff) > ANGLE_DIFFERENCE_FOR_NEW_LEG)
+				{
+					legAngles[numLegs] = currentAngle;
+					numLegs++;
+				}
+			}
+		}
+	}
 }
 
 - (void)close
@@ -51,6 +136,11 @@ typedef enum
 
 - (EGesture)getGesture
 {
+	for (int i = 0; i < numLegs; i++)
+	{
+		NSLog(@"leg: %f", legAngles[i]);
+	}
+
 	return EGesture_NONE;
 }
 
