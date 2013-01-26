@@ -1528,6 +1528,7 @@
 					"$(PROJECT_DIR)/../cocos2d-iphone-2.0/**",
 				);
 				INFOPLIST_FILE = rant/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
@@ -1551,6 +1552,7 @@
 					"$(PROJECT_DIR)/../cocos2d-iphone-2.0/**",
 				);
 				INFOPLIST_FILE = rant/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",

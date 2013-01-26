@@ -17,6 +17,14 @@ typedef enum
 } EGesture;
 
 
+@interface Gesture : NSObject
+
+@end
+
+@implementation Gesture
+
+@end
+
 
 @interface GestureRecognizer : NSObject
 
