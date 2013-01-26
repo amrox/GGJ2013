@@ -42,7 +42,6 @@
 		9CAB47F916B39AC50061047A /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB47F816B39AC50061047A /* iTunesArtwork */; };
 		9CAB495616B39AC70061047A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB495516B39AC70061047A /* main.m */; };
 		9CAB495916B39AC70061047A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB495816B39AC70061047A /* AppDelegate.m */; };
-		9CAB495F16B39AC70061047A /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB495E16B39AC70061047A /* IntroLayer.m */; };
 		9CAB4C2916B3C6030061047A /* libcocos2d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB4BBD16B3C5D30061047A /* libcocos2d.a */; };
 		9CAB4C2A16B3C6030061047A /* libCocosDenshion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB4BC116B3C5D30061047A /* libCocosDenshion.a */; };
 		9CAB4CA616B3C79E0061047A /* libkazmath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB4BC316B3C5D30061047A /* libkazmath.a */; };
@@ -510,8 +509,6 @@
 		9CAB495516B39AC70061047A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9CAB495716B39AC70061047A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9CAB495816B39AC70061047A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9CAB495D16B39AC70061047A /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
-		9CAB495E16B39AC70061047A /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		9CAB4B4616B3C5D10061047A /* cocos2d-ios.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "cocos2d-ios.xcodeproj"; path = "../cocos2d-iphone-2.0/cocos2d-ios.xcodeproj"; sourceTree = "<group>"; };
 		B354826616B3A75A004ECF7C /* NetworkTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B354826D16B3A75A004ECF7C /* NetworkTester-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NetworkTester-Info.plist"; sourceTree = "<group>"; };
@@ -627,8 +624,6 @@
 				B3985A9216B46BB7008081FB /* GameEngine */,
 				9CAB495716B39AC70061047A /* AppDelegate.h */,
 				9CAB495816B39AC70061047A /* AppDelegate.m */,
-				9CAB495D16B39AC70061047A /* IntroLayer.h */,
-				9CAB495E16B39AC70061047A /* IntroLayer.m */,
 				0AC19EB316B4652300FC5541 /* LobbyScene.h */,
 				0AC19EB416B4652300FC5541 /* LobbyScene.m */,
 				0AC19F4616B46E4200FC5541 /* GameScene.h */,
@@ -1359,7 +1354,6 @@
 				0AC19EB616B4670300FC5541 /* LobbyScene.m in Sources */,
 				9CAB495616B39AC70061047A /* main.m in Sources */,
 				9CAB495916B39AC70061047A /* AppDelegate.m in Sources */,
-				9CAB495F16B39AC70061047A /* IntroLayer.m in Sources */,
 				B3985A9516B46BDD008081FB /* GameEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
