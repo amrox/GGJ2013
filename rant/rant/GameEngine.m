@@ -88,16 +88,15 @@
     if (self.networkEngine) {
         return [self.networkEngine myPlayerNum];
     }
-    return 1;
+    return 0;
 }
-
 
 
 // game specific stuff here
 
 - (void)processEvent:(GameEvent *)event
 {
-#define PLAYER_WHO_SENT_EVENT 0
+	int sendingPlayerId = event->source;
 
 
     NSAssert([self isServer], @"should only be called on the server");
@@ -112,7 +111,7 @@
 
 		GameEvent broadcastEvent;
 		broadcastEvent.type = EGameEventType_MONSTER_DAMAGED_FIRE + (event->type - EGameEventType_ATTACK_FIRE);
-		broadcastEvent.target = PLAYER_WHO_SENT_EVENT + 1;
+		broadcastEvent.target = sendingPlayerId + 1;
 		broadcastEvent.value = event->value;
 
 		[self broadcastEventAsServer:&broadcastEvent];
@@ -137,20 +136,17 @@
 		GameState state = self.currentState;
 		if (state.healReady == 1)
 		{
-			//todo: make the player who sent the message the one who receives the healing
-
 			state.healReady = 0;
 
-			int playerId = PLAYER_WHO_SENT_EVENT + 1;
-			if (playerId >= 0 && playerId < 4)
+			if (sendingPlayerId >= 0 && sendingPlayerId < 4)
 			{
-				state.playerHeath[playerId] = MIN(MAX_PLAYER_HEALTH, state.playerHeath[playerId] + event->value);
+				state.playerHeath[sendingPlayerId] = MIN(MAX_PLAYER_HEALTH, state.playerHeath[sendingPlayerId] + event->value);
 			}
 			self.currentState = state;
 
 			GameEvent broadcastEvent;
 			broadcastEvent.type = EGameEventType_PLAYER_RECEIVED_HEAL;
-			broadcastEvent.target = playerId;
+			broadcastEvent.target = sendingPlayerId + 1;
 			broadcastEvent.value = event->value;
 
 			[self broadcastEventAsServer:&broadcastEvent];
