@@ -7,7 +7,7 @@
 #import "GameHeroLayer.h"
 #import "GameEngine.h"
 #import "GameGestureLayer.h"
-
+#import "GameHeroNode.h"
 
 #define SHAKE_TIME 0.7f
 #define SHAKE_1_PERIOD 0.2f
@@ -119,7 +119,11 @@
 
 	if (event->type == EGameEventType_PLAYER_HIT)
 	{
-		NSLog(@"you got hit");
+        [self runAction:[CCSequence actions:
+                         [CCCallFunc actionWithTarget:monsterLayer.monster selector:@selector(playAttackAnim)],
+                         [CCDelayTime actionWithDuration:0.5],
+                         [CCCallFunc actionWithTarget:heroLayer.hero selector:@selector(playHitAnim)],
+                         nil]];
 	}
 }
 
