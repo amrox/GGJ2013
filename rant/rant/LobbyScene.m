@@ -120,8 +120,11 @@
 
 - (void)didTapFindMatchButton:(id)sender
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"click1.caf"];
+
     if ([[GameKitEventEngine sharedNetworkEngine] isMatchReady]) {
         [[GameKitEventEngine sharedNetworkEngine] begin];
+    
         
         
     } else {
@@ -132,6 +135,8 @@
 - (void)didTapEnterGameButton:(id)sender
 {
     // todo..
+    [[SimpleAudioEngine sharedEngine] playEffect:@"click1.caf"];
+
 }
 
 - (void)enableEnterGameButton:(BOOL)enable
