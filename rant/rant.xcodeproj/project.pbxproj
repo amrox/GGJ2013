@@ -81,6 +81,8 @@
 		9CAB50B616B4BE920061047A /* gameHero4-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A616B4BE920061047A /* gameHero4-hd.png */; };
 		9CAB50B716B4BE920061047A /* gameHero4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A716B4BE920061047A /* gameHero4.plist */; };
 		9CAB50B816B4BE920061047A /* gameHero4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A816B4BE920061047A /* gameHero4.png */; };
+		9CBE856F16B524AE00F52D9A /* lobbyBackground-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE856D16B524AE00F52D9A /* lobbyBackground-hd.png */; };
+		9CBE857016B524AE00F52D9A /* lobbyBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE856E16B524AE00F52D9A /* lobbyBackground.png */; };
 		B3432C2816B4C3FE00B2365E /* NetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* NetworkEngine.m */; };
 		B3432C9F16B4DC2400B2365E /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3432C9E16B4DC2400B2365E /* GameEngine.m */; };
 		B3432CA016B4DC2400B2365E /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3432C9E16B4DC2400B2365E /* GameEngine.m */; };
@@ -596,6 +598,8 @@
 		9CAB50A616B4BE920061047A /* gameHero4-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameHero4-hd.png"; path = "Resources/GameAssets/Animations/gameHero4-hd.png"; sourceTree = "<group>"; };
 		9CAB50A716B4BE920061047A /* gameHero4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = gameHero4.plist; path = Resources/GameAssets/Animations/gameHero4.plist; sourceTree = "<group>"; };
 		9CAB50A816B4BE920061047A /* gameHero4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameHero4.png; path = Resources/GameAssets/Animations/gameHero4.png; sourceTree = "<group>"; };
+		9CBE856D16B524AE00F52D9A /* lobbyBackground-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lobbyBackground-hd.png"; path = "Resources/GameAssets/lobbyBackground-hd.png"; sourceTree = "<group>"; };
+		9CBE856E16B524AE00F52D9A /* lobbyBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lobbyBackground.png; path = Resources/GameAssets/lobbyBackground.png; sourceTree = "<group>"; };
 		B3432C9D16B4DC2400B2365E /* GameEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameEngine.h; sourceTree = "<group>"; };
 		B3432C9E16B4DC2400B2365E /* GameEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameEngine.m; sourceTree = "<group>"; };
 		B354826616B3A75A004ECF7C /* NetworkTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -868,6 +872,8 @@
 				9CAB4F9E16B49C580061047A /* gameBackgroundCloud.png */,
 				9CAB4F9516B49AED0061047A /* gameHero_placeholder-hd.png */,
 				9CAB4F9616B49AED0061047A /* gameHero_placeholder.png */,
+				9CBE856D16B524AE00F52D9A /* lobbyBackground-hd.png */,
+				9CBE856E16B524AE00F52D9A /* lobbyBackground.png */,
 			);
 			name = GameAssets;
 			sourceTree = "<group>";
@@ -1513,6 +1519,8 @@
 				9C213AF216B4E5420013B147 /* gameMonster1-hd.png in Resources */,
 				9C213AF316B4E5420013B147 /* gameMonster1.plist in Resources */,
 				9C213AF416B4E5420013B147 /* gameMonster1.png in Resources */,
+				9CBE856F16B524AE00F52D9A /* lobbyBackground-hd.png in Resources */,
+				9CBE857016B524AE00F52D9A /* lobbyBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

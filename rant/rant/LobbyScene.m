@@ -26,7 +26,12 @@
     [super onEnter];
     
     [[NetworkEngine sharedNetworkEngine] findMatch];
-
+    
+    
+    CCSprite *background = [CCSprite spriteWithFile:@"lobbyBackground.png"];
+    [background setPosition:ccp(160, 240)];
+    [self addChild:background];
+    
 
     playersInGameLabel = [CCLabelTTF labelWithString:@"Players: ???" fontName:RANT_FONT fontSize:26];
     [enterGameLabel setPosition:ccp(150, 300)];

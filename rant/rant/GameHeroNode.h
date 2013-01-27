@@ -18,5 +18,6 @@
 - (id)initWithIndex:(int)index;
 
 - (void)playAttackAnim;
+- (void)playHitAnim;
 
 @end
