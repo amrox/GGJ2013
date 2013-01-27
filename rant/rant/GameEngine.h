@@ -33,9 +33,9 @@ typedef struct {
 } GameState;
 
 typedef struct {
-	int			source;
+	long long	source;
 	int			type;	//EGameEventType
-    int         target; // 0=boss, 1-4=player
+    long long   target; // 0=boss, 1-4=player
     int			value;
 } GameEvent;
 
@@ -72,9 +72,14 @@ typedef enum {
 
 - (void)sendEventAsClient:(GameEvent *)event;
 
+// -- Server Only
 - (BOOL)isServer;
-
 - (void)processEvent:(GameEvent *)event;
+
+// -- Client Only
+- (void)receiveStateFromServer:(GameState *)state event:(GameEvent *)event;
+
+
 
 - (void)update:(float)deltaTime;
 

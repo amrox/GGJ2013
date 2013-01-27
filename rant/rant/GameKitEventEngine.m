@@ -15,11 +15,12 @@ static NSString *const GameUniqueIDKey = @"GameUniqueID";
 NSString *const GameEngineGameBeginNotification = @"GameBegin";
 NSString *const GameEngineGameEndNotification = @"GameEnd";
 
-static int PlayerIDNum(NSString *playerID) {
-    return [[playerID substringFromIndex:2] intValue];
+static long long PlayerIDNum(NSString *playerID) {
+    long long n = [[playerID substringFromIndex:2] longLongValue];
+    return n;
 }
 
-static int MyPlayerNum() {
+static long long MyPlayerNum() {
     return PlayerIDNum([GKLocalPlayer localPlayer].playerID);
 }
 
@@ -142,19 +143,7 @@ typedef enum {
             serverPlayerID = playerID;
         }
     }
-    
-//    NSArray *allPlayers = [self.playerInfo allValues];
-//    for (PlayerInfo *info in allPlayers) {
-//        
-//        NSLog(@"Player: %@", info.playerID);
-//        NSLog(@"Coin Toss: %d", [info.cointoss integerValue]);
-//        
-//        NSAssert(info.cointoss != nil, @"coin toss is nil!");
-//        if ([info.cointoss intValue] > serverCointoss) {
-//            serverPlayerID = info.playerID;
-//        }
-//    }
-    
+        
     self.serverPlayerID = serverPlayerID;
     self.isServer = [self.serverPlayerID isEqualToString:localPlayerID];
     
@@ -178,13 +167,6 @@ typedef enum {
         [eventVal getValue:&event];
         [self.engine processEvent:&event];
         
-        GamePacket packet;
-        packet.event = event;
-        packet.state = self.engine.currentState;
-        
-        [self broadcastNetworkPacket:self.match packetID:NETWORK_GAME_STATE withData:&packet ofLength:sizeof(GamePacket) reliable:YES];
-        
-        [self.engine.delegate clientReceivedEvent:&packet.event withState:&packet.state];
     }
 }
 
@@ -248,8 +230,6 @@ typedef enum {
 - (void)findMatch
 {
     NSAssert([GKLocalPlayer localPlayer].isAuthenticated, @"not authenticated");
-    
-//    [self getGameUniqueID];
     
     [[GKMatchmaker sharedMatchmaker] cancel];
     
@@ -330,6 +310,8 @@ typedef enum {
 
 - (void)receiveEventAsServer:(GameEvent *)event
 {
+    NSLog(@"*** [NET] [RECV] client event src=%lld type=%d", event->source, event->type);
+
     @synchronized(self.incomingEvents) {
         NSValue *eventVal = [NSValue valueWithBytes:event objCType:@encode(GameEvent)];
         [self.incomingEvents addObject:eventVal];
@@ -338,7 +320,9 @@ typedef enum {
 
 - (void)receivePacketAsClient:(GamePacket *)packet
 {
-    [self.engine.delegate clientReceivedEvent:&packet->event withState:&packet->state];
+    NSLog(@"*** [NET] [RECV] broad event src=%lld type=%d", packet->event.source, packet->event.type);
+    
+    [self.engine receiveStateFromServer:&packet->state event:&packet->event];
 }
 
 
@@ -386,24 +370,45 @@ typedef enum {
     return self.match != nil && (self.match.expectedPlayerCount == 0);
 }
 
-- (void)sendEvent:(GameEvent *)event
+- (int) matchPlayerCount
 {
-    event->source = MyPlayerNum();
-    
-    if (!self.isServer) {
-        NSAssert(self.serverPlayerID, @"server ID is nil");
-        [self sendNetworkPacket:self.match packetID:NETWORK_EVENT withData:event ofLength:sizeof(GameEvent) reliable:YES players:[NSArray arrayWithObject:self.serverPlayerID]];
-    } else {
-        
-        [self receiveEventAsServer:event];
-    }
+    return [[self.match playerIDs] count] + 1;
 }
+
+
+- (void)sendEventAsClient:(GameEvent *)event
+{
+    NSLog(@"*** [NET] [SEND] client event src=%lld type=%d", event->source, event->type);
+    
+    NSAssert(!self.isServer, @"should not be server");
+    NSAssert(self.serverPlayerID, @"server ID is nil");
+    
+    [self sendNetworkPacket:self.match packetID:NETWORK_EVENT withData:event ofLength:sizeof(GameEvent) reliable:YES players:[NSArray arrayWithObject:self.serverPlayerID]];
+}
+
+- (void)broadcastEventAsServer:(GameEvent *)event state:(GameState *)state
+{
+    NSAssert(self.isServer, @"must be server");
+    
+    GamePacket packet;
+    packet.event = *event;
+    packet.state = *state;
+    
+    NSLog(@"*** [NET] [SEND] broadcast event src=%lld type=%d", event->source, event->type);
+    
+    [self broadcastNetworkPacket:self.match packetID:NETWORK_GAME_STATE withData:&packet ofLength:sizeof(GamePacket) reliable:YES];
+}
+
 
 - (BOOL) isRunning
 {
     return _gameState == kStateMain;
 }
 
+- (long long) myPlayerNum
+{
+    return MyPlayerNum();
+}
 
 #pragma mark -
 #pragma mark UIAlertViewDelegate Methods

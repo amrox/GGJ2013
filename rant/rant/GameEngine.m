@@ -37,14 +37,20 @@
 
 - (void)broadcastEventAsServer:(GameEvent *)event
 {
-    if (!self.networkEngine) {
-        GameState state = self.currentState;
-        [self.delegate clientReceivedEvent:event withState:&state];
+    NSLog(@"*** [GAME] [SEND] broadcast event src=%d type=%d", event->source, event->type);
+    
+    GameState state = self.currentState;
+    [self.delegate clientReceivedEvent:event withState:&state];
+    
+    if (self.networkEngine) {
+        [self.networkEngine broadcastEventAsServer:event state:&state];
     }
 }
 
 - (void)processEvent:(GameEvent *)event
 {
+    NSAssert([self isServer], @"should only be called on the server");
+    
 	if (event->type == EGameEventType_ATTACK_FIRE ||
 		event->type == EGameEventType_ATTACK_WIND ||
 		event->type == EGameEventType_ATTACK_ICE)
@@ -100,19 +106,29 @@
 	}
 }
 
+- (void)receiveStateFromServer:(GameState *)state event:(GameEvent *)event
+{
+    NSAssert(![self isServer], @"should only be called on clients");
+    
+    self.currentState = *state;
+    
+    [self.delegate clientReceivedEvent:event withState:state];
+}
+
+
 - (void)sendEventAsClient:(GameEvent *)event
 {
-	if (!self.networkEngine)
+    event->source = [self myPlayerNum];
+    
+    NSLog(@"*** [GAME] [SEND] client event src=%d type=%d", event->source, event->type);
+    
+	if ([self isServer])
 	{
         [self processEvent:event];
-        
-//		GameState state = self.currentState;
-//		[self.delegate clientReceivedEvent:event withState:&state];
-	} else {
-        
-        // andy does stuff
-        
-        [self.networkEngine sendEvent:event];
+	}
+    else
+    {
+        [self.networkEngine sendEventAsClient:event];
     }
 }
 
@@ -124,9 +140,19 @@
     return YES;
 }
 
+- (int) myPlayerNum
+{
+    if (self.networkEngine) {
+        return [self.networkEngine myPlayerNum];
+    }
+    return 1;
+}
+
 
 - (void)update:(float)deltaTime
 {
+    if (!self.isServer) return; // hack
+    
 #define MIN_ATTACK_TIME 2
 #define MAX_ATTACK_TIME 6
 
