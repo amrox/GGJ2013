@@ -23,15 +23,49 @@
     CCSpriteBatchNode *spriteSheet;
     NSMutableArray *heroAnims;
     NSMutableArray *heroes;
+    
+//    int lastPlayerCount;
 }
 
 - (void)pollMatch
 {
-    if ([[GameKitEventEngine sharedNetworkEngine] isMatchReady]) {
+    int curPlayerCount = [[GameKitEventEngine sharedNetworkEngine] matchPlayerCount];
+    int heroesToAdd = curPlayerCount - [heroes count];
+    for (int i=0; i<heroesToAdd; i++) {
+        [self addPlayerIconWithIndex:[heroes count] isPlayer:YES];
         
-        NSLog(@"match is ready, %d players!",
-              [[GameKitEventEngine sharedNetworkEngine].match.playerIDs count]+1);
     }
+    
+//    if ([heroes count] < lastPlayerCount) {
+//        
+//        
+//        
+//    }
+    
+    
+    
+//    if ([[GameKitEventEngine sharedNetworkEngine] isMatchReady]) {
+//        
+////        int curPlayerCount = [GameKitEventEngine sharedNetworkEngine] matchPlayerCount];
+////        
+////        NSLog(@"match is ready, %d players!", curPlayerCount);
+////        
+////        if (lastPlayerCount != curPlayerCount) {
+////            [self clearPlayerIcons];
+////            for (int i=0; i< [[GameKitEventEngine sharedNetworkEngine] matchPlayerCount]; i++) {
+////                
+////                [self addPlayerIconWithIndex:i isPlayer:YES];
+////            }
+////
+////        }
+////        
+//        lastPlayerCount = curPlayerCount;
+//        [self enableEnterGameButton:YES];
+//        
+//    } else {
+//        
+//        [self enableEnterGameButton:NO];
+//    }
 }
 
 -(void)onEnter
@@ -125,22 +159,13 @@
 - (void)didTapFindMatchButton:(id)sender
 {
     [[SimpleAudioEngine sharedEngine] playEffect:@"click1.caf"];
-
-    if ([[GameKitEventEngine sharedNetworkEngine] isMatchReady]) {
-        [[GameKitEventEngine sharedNetworkEngine] begin];
-    
-        
-        
-    } else {
-        [[GameKitEventEngine sharedNetworkEngine] findMatch];
-    }
+    [[GameKitEventEngine sharedNetworkEngine] findMatch];
 }
 
 - (void)didTapEnterGameButton:(id)sender
 {
-    // todo..
     [[SimpleAudioEngine sharedEngine] playEffect:@"click1.caf"];
-
+    [[GameKitEventEngine sharedNetworkEngine] begin];
 }
 
 - (void)enableEnterGameButton:(BOOL)enable
