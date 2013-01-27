@@ -28,6 +28,7 @@
 	CCMenuItemImage * spell6Button;
     
     GameMonsterHealthBar *monsterHealthBar;
+    GameMonsterHealthBar *heroHealthBar;
 }
 
 -(void)onEnter
@@ -46,6 +47,13 @@
     monsterHealthBar = [GameMonsterHealthBar node];
     [monsterHealthBar setPosition:ccp(160, 400)];
     [self addChild:monsterHealthBar];
+    
+    
+    heroHealthBar = [GameMonsterHealthBar node];
+    [heroHealthBar setPosition:ccp(80, 160)];
+    [heroHealthBar setScaleX:0.5];
+    [self addChild:heroHealthBar];
+    
 }
 
 - (void)spell1Pressed:(id)sender
