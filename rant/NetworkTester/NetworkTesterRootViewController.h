@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NetworkTesterRootViewController : UIViewController
+#import "GameEngine.h"
+
+@interface NetworkTesterRootViewController : UIViewController <GameEngineDelegate>
 
 - (IBAction)match:(id)sender;
 
@@ -21,7 +23,10 @@
 
 @property (strong) IBOutlet UIButton *beginButton;
 
+@property (strong) IBOutlet UIButton *attackButton;
+
 @property (strong) IBOutlet UIActivityIndicatorView *activityThing;
 
+- (IBAction)attack:(id)sender;
 
 @end

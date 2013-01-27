@@ -8,10 +8,13 @@
 
 #import "NetworkTesterRootViewController.h"
 #import "NetworkEngine.h"
+#import "GameEngine.h"
 
 @interface NetworkTesterRootViewController ()
 
 @property (strong) NSTimer *timer;
+
+@property (strong) GameEngine *gameEngine;
 @end
 
 @implementation NetworkTesterRootViewController
@@ -21,6 +24,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        self.gameEngine = [[GameEngine alloc] init];
+        self.gameEngine.delegate = self;
+        self.gameEngine.networkEngine = [NetworkEngine sharedNetworkEngine];
         
         self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                       target:self
@@ -61,6 +68,8 @@
     self.button1.hidden = totalPlayers < 2;
     
     self.beginButton.hidden = totalPlayers < 2;
+    
+    self.attackButton.hidden = ![engine isGameStarted];
 }
 
 - (IBAction)match:(id)sender
@@ -79,6 +88,25 @@
     [self.activityThing stopAnimating];
 
 }
+
+- (IBAction)attack:(id)sender
+{
+    GameEvent event;
+    event.type = GameEventTypeAttack;
+    event.value = 55;
+    [self.gameEngine sendEventAsClient:&event];
+}
+
+
+- (void)clientReceivedEvent:(GameEvent *)event withState:(GameState *)state
+{
+    NSLog(@"received event!");
+    NSLog(@"  source : %d", event->source);
+    NSLog(@"  type   : %d", event->type);
+    NSLog(@"  value  : %d", event->value);
+
+}
+
 
 
 @end

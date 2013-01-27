@@ -21,7 +21,7 @@ typedef struct {
 
 @interface NetworkEngine : NSObject <GKMatchDelegate>
 {
-    int _gameUniqueID;
+//    int _gameUniqueID;
     int _gamePacketNumber;
 }
 
@@ -44,5 +44,7 @@ typedef struct {
 - (void)end;
 
 - (void)sendEvent:(GameEvent *)event;
+
+- (BOOL) isGameStarted;
 
 @end

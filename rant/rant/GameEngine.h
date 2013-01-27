@@ -17,6 +17,7 @@ typedef struct {
 
 typedef struct {
 	int			type;
+    int         source;
     int         target; // 0=boss, 1-4=player
     int			value;
 } GameEvent;
@@ -56,5 +57,8 @@ typedef enum {
 - (void)sendEventAsClient:(GameEvent *)event;
 
 - (BOOL)isServer;
+
+- (void)processEvent:(GameEvent *)event;
+
 
 @end

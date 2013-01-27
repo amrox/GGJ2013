@@ -6,8 +6,8 @@
 //
 //
 
-#import "DummyEventEngine.h"
+#import "SimpleEventEngine.h"
 
-@implementation DummyEventEngine
+@implementation SimpleEventEngine
 
 @end

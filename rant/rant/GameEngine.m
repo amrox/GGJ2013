@@ -54,6 +54,8 @@
 	} else {
         
         // andy does stuff
+        
+        [self.networkEngine sendEvent:event];
     }
 }
 

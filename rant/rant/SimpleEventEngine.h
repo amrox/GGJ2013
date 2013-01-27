@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "EventEngine.h"
 
-@interface DummyEventEngine : NSObject <EventEngine>
+@interface SimpleEventEngine : NSObject <EventEngine>
+
+
 
 @end

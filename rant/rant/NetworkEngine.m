@@ -15,6 +15,14 @@ static NSString *const GameUniqueIDKey = @"GameUniqueID";
 NSString *const GameEngineGameBeginNotification = @"GameBegin";
 NSString *const GameEngineGameEndNotification = @"GameEnd";
 
+static int PlayerIDNum(NSString *playerID) {
+    return [[playerID substringFromIndex:2] intValue];
+}
+
+static int MyPlayerNum() {
+    return PlayerIDNum([GKLocalPlayer localPlayer].playerID);
+}
+
 
 #define kMaxPacketSize 1024
 const float kHeartbeatTimeMaxDelay = 2.0f;
@@ -33,7 +41,7 @@ typedef enum {
 
 typedef enum {
 	NETWORK_ACK,					// no packet
-	NETWORK_COINTOSS,				// decide who is going to be the server
+	NETWORK_GAME_START,				// decide who is going to be the server
     NETWORK_EVENT,
     NETWORK_GAME_STATE,
 } packetCodes;
@@ -75,25 +83,13 @@ typedef enum {
     return engine;
 }
 
-- (void)getGameUniqueID
-{
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:GameUniqueIDKey] == nil) {
-        _gameUniqueID = [GetUUID() hash];
-        [[NSUserDefaults standardUserDefaults] setInteger:_gameUniqueID forKey:GameUniqueIDKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    } else {
-        _gameUniqueID = [[NSUserDefaults standardUserDefaults] integerForKey:GameUniqueIDKey];
-    }
-}
-
 - (id)init
 {
     self = [super init];
     if (self) {
-        [self getGameUniqueID];
         [NSTimer scheduledTimerWithTimeInterval:kGameloopInterval target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
         self.playerInfo = [NSMutableDictionary dictionaryWithCapacity:4];
-//        _eventQueue = dispatch_queue_create("eventqueue", NULL);
+        //        _eventQueue = dispatch_queue_create("eventqueue", NULL);
         self.incomingEvents = [NSMutableArray arrayWithCapacity:20];
     }
     return self;
@@ -106,6 +102,10 @@ typedef enum {
 
 
 - (void)sendNetworkPacket:(GKMatch *)match packetID:(int)packetID withData:(void *)data ofLength:(int)length reliable:(BOOL)howtosend players:(NSArray *)players {
+    
+    NSAssert([players count] > 1, @"no players");
+    NSLog(@"sending to players: %@", players);
+    
 	// the packet we'll send is resued
 	static unsigned char networkPacket[kMaxPacketSize];
 	const unsigned int packetHeaderSize = 2 * sizeof(int); // we have two "ints" for our header
@@ -116,30 +116,49 @@ typedef enum {
 		pIntData[0] = _gamePacketNumber++;
 		pIntData[1] = packetID;
 		// copy data in after the header
-		memcpy( &networkPacket[packetHeaderSize], data, length );
+        
+        if (data != NULL) {
+            memcpy( &networkPacket[packetHeaderSize], data, length );
+        }
 		
 		NSData *packet = [NSData dataWithBytes: networkPacket length: (length+8)];
 		if(howtosend == YES) {
-            [match sendDataToAllPlayers:packet withDataMode:GKSendDataReliable error:nil];
+            [match sendData:packet toPlayers:players withDataMode:GKSendDataReliable error:nil];
 		} else {
-            [match sendDataToAllPlayers:packet withDataMode:GKSendDataUnreliable error:nil];
+            [match sendData:packet toPlayers:players withDataMode:GKSendDataUnreliable error:nil];
 		}
 	}
 }
 
 - (void)electServer
 {
-    int serverCointoss = _gameUniqueID;
     NSString *localPlayerID = [GKLocalPlayer localPlayer].playerID;
-    NSString *serverPlayerID = localPlayerID;
     
-    NSArray *allPlayers = [self.playerInfo allValues];
-    for (PlayerInfo *info in allPlayers) {
-        NSAssert(info.cointoss != nil, @"coin toss is nil!");
-        if ([info.cointoss intValue] > serverCointoss) {
-            serverPlayerID = info.playerID;
+    NSString *serverPlayerID = localPlayerID;
+    int serverPlayerIDNum = MyPlayerNum();
+    
+    NSLog(@"Local Player: %@", localPlayerID);
+    
+    for (NSString *playerID in self.match.playerIDs) {
+        
+        int playerNum = PlayerIDNum(playerID);
+        if (playerNum > serverPlayerIDNum) {
+            serverPlayerID = playerID;
         }
     }
+    
+//    NSArray *allPlayers = [self.playerInfo allValues];
+//    for (PlayerInfo *info in allPlayers) {
+//        
+//        NSLog(@"Player: %@", info.playerID);
+//        NSLog(@"Coin Toss: %d", [info.cointoss integerValue]);
+//        
+//        NSAssert(info.cointoss != nil, @"coin toss is nil!");
+//        if ([info.cointoss intValue] > serverCointoss) {
+//            serverPlayerID = info.playerID;
+//        }
+//    }
+    
     self.serverPlayerID = serverPlayerID;
     self.isServer = [self.serverPlayerID isEqualToString:localPlayerID];
     
@@ -148,72 +167,76 @@ typedef enum {
 
 - (void)processEvents
 {
+    NSValue *eventVal = nil;
+    
     @synchronized(self.incomingEvents) {
-        
-//        GameEvent event;
-//        [eventVal getValue:&event];
-
-        
-//        [self.engine processEvent:]
-        
+        if ([self.incomingEvents count] > 0) {
+            eventVal = [self.incomingEvents objectAtIndex:0];
+            [self.incomingEvents removeObjectAtIndex:0];
+            
+        }
     }
     
-//    @synchronized(self.events) {
-//        for (NSValue *eventVal in self.events) {
-//            GameEvent event;
-//            [eventVal getValue:&event];
-//            [self broadcastNetworkPacket:self.match packetID:NETWORK_GAME_STATE withData:&event ofLength:sizeof(GameEvent) reliable:YES];
-//        }
-//        [self.events removeAllObjects];
-//    }
+    if (eventVal != nil) {
+        GameEvent event;
+        [eventVal getValue:&event];
+        [self.engine processEvent:&event];
+        
+        GamePacket packet;
+        packet.event = event;
+        packet.state = self.engine.currentState;
+        
+        [self broadcastNetworkPacket:self.match packetID:NETWORK_GAME_STATE withData:&packet ofLength:sizeof(GamePacket) reliable:YES];
+        
+        [self.engine.delegate clientReceivedEvent:&packet.event withState:&packet.state];
+    }
 }
 
 - (void)gameLoop
 {
-//    static int counter = 0;
+    static int counter = 0;
 	switch (self.gameState) {
         case kStateLobby:
 		case kStateStartGame:
 			break;
 		case kStateServerElectBegin:
-			[self broadcastNetworkPacket:self.match packetID:NETWORK_COINTOSS withData:&_gameUniqueID ofLength:sizeof(int) reliable:YES];
+			[self broadcastNetworkPacket:self.match packetID:NETWORK_GAME_START withData:NULL ofLength:sizeof(int) reliable:YES];
 			self.gameState = kStateServerElectFinish; // we only want to be in the cointoss state for one loop
 			break;
         case kStateServerElectFinish:
         {
-            BOOL hasAllCointosses = YES;
             NSArray *allPlayers = [self.playerInfo allValues];
-            for (PlayerInfo *info in allPlayers) {
-                hasAllCointosses &= info.cointoss != nil;
-            }
-            
-            if (hasAllCointosses) {
-                [self electServer];
-                _gameState = kStateMultiplayer;
+            if ([allPlayers count] == [[self.match playerIDs] count]) {
+                
+                BOOL hasAllCointosses = YES;
+                for (PlayerInfo *info in allPlayers) {
+                    hasAllCointosses &= info.cointoss != nil;
+                }
+                
+                if (hasAllCointosses) {
+                    NSLog(@"Has All Coin Tosses...");
+                    [self electServer];
+                    _gameState = kStateMultiplayer;
+                }
             }
         }
             break;
             
 		case kStateMultiplayer:
-            NSAssert(self.serverPlayerID, @"serverPlayerID is nil");
+            if (self.serverPlayerID == nil) {
+                [self electServer];
+            }
+            
+            counter++;
+
+//            if (counter & kHeartbeatMod) {
+//                NSLog(@"players: %@", [self.match playerIDs]);
+//            }
             
             if (self.isServer) {
-//                [self broadcastEven
+                [self processEvents];
             }
 			break;
-            
-            
-            /*
-             case kStateMultiplayerReconnect:
-             // we have lost a heartbeat for too long, so pause game and notify user while we wait for next heartbeat or session disconnect.
-             counter++;
-             if(!(counter&kHeartbeatMod)) { // keep sending heartbeats to the other player in case it returns
-             //				tankInfo *ts = &tankStats[self.peerStatus];
-             PacketData packetData;
-             [self sendNetworkPacket:self.match packetID:NETWORK_HEARTBEAT withData:&packetData ofLength:sizeof(PacketData) reliable:NO];
-             }
-             break;
-             */
 		default:
 			break;
 	}
@@ -228,6 +251,11 @@ typedef enum {
     }];
 }
 
+- (BOOL)isAuthenticated
+{
+    return [GKLocalPlayer localPlayer].isAuthenticated;
+}
+
 - (void)authenticateWithCompletionHandler:(void(^)(NSError *error))completionHandler
 {
     if (![GKLocalPlayer localPlayer].isAuthenticated) {
@@ -238,6 +266,8 @@ typedef enum {
 - (void)findMatch
 {
     NSAssert([GKLocalPlayer localPlayer].isAuthenticated, @"not authenticated");
+    
+//    [self getGameUniqueID];
     
     [[GKMatchmaker sharedMatchmaker] cancel];
     
@@ -284,13 +314,13 @@ typedef enum {
 	//
 	int packetTime = pIntData[0];
 	int packetID = pIntData[1];
-	if(packetTime < lastPacketTime && packetID != NETWORK_COINTOSS) {
+	if(packetTime < lastPacketTime && packetID != NETWORK_GAME_START) {
 		return;
 	}
 	
 	lastPacketTime = packetTime;
 	switch( packetID ) {
-		case NETWORK_COINTOSS:
+		case NETWORK_GAME_START:
         {
             // coin toss to determine roles of the two players
             int coinToss = pIntData[2];
@@ -303,30 +333,22 @@ typedef enum {
             if (_gameState == kStateLobby) {
                 _gameState = kStateServerElectBegin;
             }
-            
-            //            // coin toss to determine roles of the two players
-            //            int coinToss = pIntData[2];
-            //            // if other player's coin is higher than ours then that player is the server
-            //            if(coinToss > gameUniqueID) {
-            //                self.peerStatus = kClient;
-            //            }
-            //
-            //            // notify user of tank color
-            //            self.gameLabel.text = (self.peerStatus == kServer) ? kBlueLabel : kRedLabel; // server is the blue tank, client is red
-            //            self.gameLabel.hidden = NO;
-            //            // after 1 second fire method to hide the label
-            //            [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(hideGameLabel:) userInfo:nil repeats:NO];
         }
 			break;
             
         case NETWORK_EVENT:
         {
+            NSAssert(self.isServer, @"only server should receive raw events");
             GameEvent *event = (GameEvent *)&incomingPacket[8];
-            if (self.isServer) {
-                [self receiveEventAsServer:event];
-            } else {
-                [self receivePacketAsClient:event];
-            }
+            [self receiveEventAsServer:event];
+        }
+            break;
+            
+        case NETWORK_GAME_STATE:
+        {
+            NSAssert(!self.isServer, @"server should not receive state packets");
+            GamePacket *packet = (GamePacket *)&incomingPacket[8];
+            [self receivePacketAsClient:packet];
         }
             break;
     }
@@ -340,9 +362,9 @@ typedef enum {
     }
 }
 
-- (void)receivePacketAsClient:(GameEvent *)event
+- (void)receivePacketAsClient:(GamePacket *)packet
 {
-    
+    [self.engine.delegate clientReceivedEvent:&packet->event withState:&packet->state];
 }
 
 
@@ -394,11 +416,22 @@ typedef enum {
 
 - (void)sendEvent:(GameEvent *)event
 {
+    event->source = MyPlayerNum();
+    
     if (!self.isServer) {
         NSAssert(self.serverPlayerID, @"server ID is nil");
         [self sendNetworkPacket:self.match packetID:NETWORK_EVENT withData:event ofLength:sizeof(GameEvent) reliable:YES players:[NSArray arrayWithObject:self.serverPlayerID]];
+    } else {
+        
+        [self receiveEventAsServer:event];
     }
 }
+
+- (BOOL) isGameStarted
+{
+    return _gameState == kStateMultiplayer;
+}
+
 
 #pragma mark -
 #pragma mark UIAlertViewDelegate Methods
