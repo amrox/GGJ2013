@@ -91,7 +91,13 @@ typedef enum {
 
 - (void)sendNetworkPacket:(GKMatch *)match packetID:(int)packetID withData:(void *)data ofLength:(int)length reliable:(BOOL)howtosend players:(NSArray *)players {
     
-    NSAssert([players count] > 0, @"no players");
+//    NSAssert([players count] > 0, @"no players");
+    if ([players count] == 0) {
+        NSLog(@"WARNING: empty send list");
+        return;
+    }
+
+    
     NSLog(@"sending to players: %@", players);
     
 	// the packet we'll send is resued
@@ -143,6 +149,14 @@ typedef enum {
     return [self.allPlayerIDs objectAtIndex:0];
 }
 
+- (void)disconnect
+{
+    NSString *message = [NSString stringWithFormat:@"Lost Player Connection"];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:message delegate:self cancelButtonTitle:@"End Game" otherButtonTitles:nil];
+    [alert show];
+    [self end];
+}
+
 - (void)gameLoop
 {
     static int counter = 0;
@@ -159,11 +173,25 @@ typedef enum {
             
 		case kStateMain:
             
-            counter++;
+            // check connection
+            
+            if (counter % kHeartbeatMod) {
+                for (NSString *playerID in [self allPlayerIDs]) {
+                    if (![playerID isEqualToString:[self myPlayerID]]) {
+                        if (![self.match.playerIDs containsObject:playerID]) {
+                            NSLog(@"lost connection with: %@", playerID);
+                            [self disconnect];
+                        }
+                    }
+                }
+            }
             
             if (self.isServer) {
                 [self processEvents];
             }
+            
+            counter++;
+            
 			break;
 		default:
 			break;
@@ -195,7 +223,7 @@ typedef enum {
 {
     NSAssert([GKLocalPlayer localPlayer].isAuthenticated, @"not authenticated");
     
-    [[GKMatchmaker sharedMatchmaker] cancel];
+//    [[GKMatchmaker sharedMatchmaker] cancel];
     
     [self end];
     
@@ -205,18 +233,30 @@ typedef enum {
     
     self.gameState = kStateLobby;
     
-    [[GKMatchmaker sharedMatchmaker] findMatchForRequest:request withCompletionHandler:^(GKMatch *match, NSError *error) {
-        if (error)
-        {
-            PresentError(error);
-        }
-        else if (match != nil)
-        {
-            NSLog(@"Match found! %@", match);
-            self.match = match;
-            match.delegate = self;
-        }
-    }];
+    if (self.match == nil) {
+        
+        [[GKMatchmaker sharedMatchmaker] findMatchForRequest:request withCompletionHandler:^(GKMatch *match, NSError *error) {
+            if (error)
+            {
+                PresentError(error);
+            }
+            else if (match != nil)
+            {
+                NSLog(@"Match found! %@", match);
+                self.match = match;
+                match.delegate = self;
+            }
+        }];
+    } else {
+        
+        [[GKMatchmaker sharedMatchmaker] addPlayersToMatch:self.match matchRequest:request completionHandler:^(NSError *error) {
+            if (error)
+            {
+                PresentError(error);
+            }
+        }];
+        
+    }
 }
 
 - (PlayerInfo *)getInfoForPlayerID:(NSString *)playerID
@@ -333,10 +373,12 @@ typedef enum {
 
 - (void)end
 {
-    self.match = nil;
+//    self.match = nil;
     self.allPlayerIDs = nil;
     self.myPlayerIndex = NSNotFound;
     self.gameState = kStateLobby;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:GameEngineGameEndNotification object:self];
 }
 
 - (BOOL) isMatchReady

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #define MAX_PLAYER_HEALTH 10
+#define TOTAL_HITS_TO_CANCEL_ATTACK 4
+#define ATTACK_PREPARATION_TIME 5
 
 typedef enum
 {
@@ -24,6 +26,8 @@ typedef enum
 	EGameEventType_PLAYER_HIT,
 	EGameEventType_PLAYER_RECEIVED_HEAL,
 	EGameEventType_MONSTER_PREPARING_TO_ATTACK,
+	EGameEventType_MONSTER_ATTACK_DIMINISHED,
+	EGameEventType_MONSTER_ATTACK_BLOCKED,
 } EGameEventType;
 
 typedef struct {
@@ -34,6 +38,8 @@ typedef struct {
 	int			healerPlayerId;
 	int			monsterPreparingToAttackPlayerId;	//-1 of none
 	int			millisecondsBeforeMonsterAttacks;
+	int			monsterAttackPreparationType;
+	int			monsterHitsLeftForCancel;
 } GameState;
 
 typedef struct {

@@ -6,4 +6,6 @@
 
 +(CCScene *) scene;
 
+
+
 @end

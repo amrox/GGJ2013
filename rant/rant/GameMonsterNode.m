@@ -92,8 +92,8 @@
 {
     [super onEnter];
     
-    currentHP = 100.0;
-    maxHP = 100.0;
+    currentHP = 15.0;
+    maxHP = 15.0;
 }
 
 #pragma mark - Animations
