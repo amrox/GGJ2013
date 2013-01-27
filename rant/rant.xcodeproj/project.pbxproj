@@ -79,7 +79,6 @@
 		B354829316B3A77C004ECF7C /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B354829216B3A77C004ECF7C /* UnitTests.m */; };
 		B3985A9116B46B8E008081FB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47DD16B39AC50061047A /* GameKit.framework */; };
 		B3985A9516B46BDD008081FB /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameEngine.m */; };
-		B3985A9616B46BDD008081FB /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameEngine.m */; };
 		B3985A9A16B46E07008081FB /* NetworkTesterRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9816B46E07008081FB /* NetworkTesterRootViewController.m */; };
 		B3E1FF1516B476B500D940F0 /* NetworkTesterRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3E1FF1416B476B500D940F0 /* NetworkTesterRootViewController.xib */; };
 		B3E1FF9A16B497A200D940F0 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E1FF9916B497A200D940F0 /* Util.m */; };
@@ -1483,7 +1482,6 @@
 			files = (
 				B354827216B3A75A004ECF7C /* main.m in Sources */,
 				B354827616B3A75A004ECF7C /* NetworkTesterAppDelegate.m in Sources */,
-				B3985A9616B46BDD008081FB /* GameEngine.m in Sources */,
 				B3985A9A16B46E07008081FB /* NetworkTesterRootViewController.m in Sources */,
 				B3E1FF9B16B497A200D940F0 /* Util.m in Sources */,
 			);
@@ -1578,7 +1576,7 @@
 					"$(PROJECT_DIR)/../cocos2d-iphone-2.0/**",
 				);
 				INFOPLIST_FILE = rant/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
@@ -1602,7 +1600,7 @@
 					"$(PROJECT_DIR)/../cocos2d-iphone-2.0/**",
 				);
 				INFOPLIST_FILE = rant/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
