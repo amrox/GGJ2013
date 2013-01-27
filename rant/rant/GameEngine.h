@@ -30,6 +30,7 @@ typedef struct {
     int         playerCount;
     int			playerHeath[4];
 	int			healReady;			// 1 if ready, 0 otherwise
+	int			healerPlayerId;
 } GameState;
 
 typedef struct {
