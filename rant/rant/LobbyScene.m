@@ -35,37 +35,6 @@
         [self addPlayerIconWithIndex:[heroes count] isPlayer:YES];
         
     }
-    
-//    if ([heroes count] < lastPlayerCount) {
-//        
-//        
-//        
-//    }
-    
-    
-    
-//    if ([[GameKitEventEngine sharedNetworkEngine] isMatchReady]) {
-//        
-////        int curPlayerCount = [GameKitEventEngine sharedNetworkEngine] matchPlayerCount];
-////        
-////        NSLog(@"match is ready, %d players!", curPlayerCount);
-////        
-////        if (lastPlayerCount != curPlayerCount) {
-////            [self clearPlayerIcons];
-////            for (int i=0; i< [[GameKitEventEngine sharedNetworkEngine] matchPlayerCount]; i++) {
-////                
-////                [self addPlayerIconWithIndex:i isPlayer:YES];
-////            }
-////
-////        }
-////        
-//        lastPlayerCount = curPlayerCount;
-//        [self enableEnterGameButton:YES];
-//        
-//    } else {
-//        
-//        [self enableEnterGameButton:NO];
-//    }
 }
 
 -(void)onEnter
