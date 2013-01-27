@@ -10,8 +10,18 @@
 
 @interface NetworkTesterRootViewController : UIViewController
 
-- (IBAction)go:(id)sender;
+- (IBAction)match:(id)sender;
 
-@property (strong) IBOutlet UITextView *textView;
+- (IBAction)begin:(id)sender;
+
+@property (strong) IBOutlet UIButton *button1;
+@property (strong) IBOutlet UIButton *button2;
+@property (strong) IBOutlet UIButton *button3;
+@property (strong) IBOutlet UIButton *button4;
+
+@property (strong) IBOutlet UIButton *beginButton;
+
+@property (strong) IBOutlet UIActivityIndicatorView *activityThing;
+
 
 @end

@@ -9,17 +9,29 @@
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
 
-@interface GameEngine : NSObject <GKMatchDelegate>
+typedef struct {
+	int			foo;
+} PacketData;
 
+@interface GameEngine : NSObject <GKMatchDelegate>
+{
+    int _gameUniqueID;
+    int _gamePacketNumber;
+}
 
 + (GameEngine *)sharedGameEngine;
 
 @property (strong) GKMatch *match;
 
-
-- (IBAction)findProgrammaticMatch: (id) sender;
+- (BOOL) isReady;
 
 - (void)authenticate;
+
+- (void)findMatch;
+
+- (void)begin;
+
+- (void)end;
 
 
 @end
