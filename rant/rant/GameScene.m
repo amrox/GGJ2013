@@ -99,6 +99,22 @@
 			event.value = 1;
 			[gameEngine sendEventAsClient:&event];
 		}
+		else if (singleGesture.gesture == EGesture_HEAL)
+		{
+			GameEvent event;
+			event.target = 0;
+			event.type = EGameEventType_HEAL;
+			event.value = 1;
+			[gameEngine sendEventAsClient:&event];
+		}
+		else if (singleGesture.gesture == EGesture_RECEIVE_HEAL)
+		{
+			GameEvent event;
+			event.target = 0;
+			event.type = EGameEventType_RECEIVE_HEAL;
+			event.value = 1;
+			[gameEngine sendEventAsClient:&event];
+		}
 	}
 	else if ([gestureChain count] == 2)
 	{

@@ -15,6 +15,7 @@ typedef enum
 	EGesture_WIND,		//figure 8
 	EGesture_ATTACK,	//stab
 	EGesture_HEAL,		//backwards c
+	EGesture_RECEIVE_HEAL,
 } EGesture;
 
 

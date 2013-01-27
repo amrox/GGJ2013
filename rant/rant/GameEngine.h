@@ -8,20 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
+#define MAX_PLAYER_HEALTH 100
+
 typedef enum
 {
 	EGameEventType_ATTACK_FIRE,
 	EGameEventType_ATTACK_ICE,
 	EGameEventType_ATTACK_WIND,
+	EGameEventType_HEAL,
+	EGameEventType_RECEIVE_HEAL,
 	EGameEventType_MONSTER_DAMAGED_FIRE,
 	EGameEventType_MONSTER_DAMAGED_ICE,
 	EGameEventType_MONSTER_DAMAGED_WIND,
+	EGameEventType_PLAYER_RECEIVED_HEAL,
 } EGameEventType;
 
 typedef struct {
 	int			bossHealth;
     int         playerCount;
     int			playerHeath[4];
+	int			healReady;			// 1 if ready, 0 otherwise
 } GameState;
 
 typedef struct {

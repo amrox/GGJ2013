@@ -16,6 +16,7 @@
     GameState state;
     state.bossHealth = self.bossMaxHealth;
     state.playerCount = self.playerCount;
+	state.healReady = 0;
     for (int i = 0; i < 4; i++) {
         state.playerHeath[i] = self.playerMaxHealth;
     }
@@ -51,6 +52,35 @@
 		broadcastEvent.value = event->value;
 
 		[self broadcastEventAsServer:&broadcastEvent];
+	}
+	else if (event->type == EGameEventType_HEAL)
+	{
+		GameState state = self.currentState;
+		state.healReady = 1;
+		self.currentState = state;
+	}
+	else if (event->type == EGameEventType_RECEIVE_HEAL)
+	{
+		GameState state = self.currentState;
+		if (state.healReady == 1)
+		{
+			//todo: make the player who sent the message the one who receives the healing
+
+			state.healReady = 0;
+			int playerId = event->target - 1;
+			if (playerId >= 0 && playerId < 4)
+			{
+				state.playerHeath[playerId] = MIN(MAX_PLAYER_HEALTH, state.playerHeath[playerId] + event->value);
+			}
+			self.currentState = state;
+
+			GameEvent broadcastEvent;
+			broadcastEvent.type = EGameEventType_PLAYER_RECEIVED_HEAL;
+			broadcastEvent.target = event->target;
+			broadcastEvent.value = event->value;
+
+			[self broadcastEventAsServer:&broadcastEvent];
+		}
 	}
 }
 
