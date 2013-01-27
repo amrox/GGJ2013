@@ -37,7 +37,7 @@
                              [enterGameButton boundingBox].size.height * 0.5f);
 
     [enterGameButton setPosition:ccp(0,-100)];
-    enterGameLabel = [CCLabelTTF labelWithString:@"" fontName:RANT_FONT fontSize:26];
+    enterGameLabel = [CCLabelTTF labelWithString:@"Menu text" fontName:RANT_FONT fontSize:26];
     [enterGameButton addChild:enterGameLabel];
     [enterGameLabel setPosition:savedPoint];
 
