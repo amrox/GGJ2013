@@ -158,6 +158,11 @@
     [heroes removeAllObjects];
 }
 
+- (void)loopPlayerIcon:(id)sender data:(int)index {
+    CCSprite *sprite = [heroes objectAtIndex:index];
+    [sprite runAction:[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:[heroAnims objectAtIndex:index]]]];
+}
+
 - (void)addPlayerIconWithIndex:(int)index isPlayer:(BOOL)isPlayer // index 0-3
 {
     NSAssert((index >= 0 && index <= 3), @"Invalid index");
@@ -167,7 +172,14 @@
     
     [heroes addObject:sprite];
     
-    [sprite runAction:[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:[heroAnims objectAtIndex:index]]]];
+    float random = (float)(arc4random() % 100) / 100.0;
+    
+    [sprite runAction:[CCSequence actions:
+                       [CCDelayTime actionWithDuration:random],
+                       [CCCallFuncND actionWithTarget:self selector:@selector(loopPlayerIcon:data:) data:(void *)index],
+                       nil
+                       ]
+     ];
     
     [sprite setPosition:ccp(160, 90)];
     [sprite setScale:0.2];
