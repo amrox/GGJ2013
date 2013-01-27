@@ -129,13 +129,13 @@
 				if (state.monsterHitsLeftForCancel <= 0)
 				{
 					GameEvent broadcastEvent;
-					broadcastEvent.type = EGameEventType_MONSTER_ATTACK_DIMINISHED;
+					broadcastEvent.type = EGameEventType_MONSTER_ATTACK_BLOCKED;
 					[self broadcastEventAsServer:&broadcastEvent];
 				}
 				else
 				{
 					GameEvent broadcastEvent;
-					broadcastEvent.type = EGameEventType_MONSTER_ATTACK_BLOCKED;
+					broadcastEvent.type = EGameEventType_MONSTER_ATTACK_DIMINISHED;
 					[self broadcastEventAsServer:&broadcastEvent];
 				}
 			}
