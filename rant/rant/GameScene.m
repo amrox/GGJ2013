@@ -6,6 +6,7 @@
 #import "GameMonsterLayer.h"
 #import "GameHUDLayer.h"
 #import "GameHeroLayer.h"
+#import "GameEngine.h"
 
 @protocol GameClientDelegate <NSObject>
 

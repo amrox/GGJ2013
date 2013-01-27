@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class NetworkEngine;
-
-@interface GameEngine : NSObject
 
 typedef struct {
 	int			bossHealth;
@@ -31,11 +28,26 @@ typedef enum {
 } GameEventTypes;
 
 
+@protocol GameEngineDelegate <NSObject>
+
+- (void)clientReceivedEvent:(GameEvent *)event withState:(GameState *)state;
+
+@end
+
+
+
+@class NetworkEngine;
+
+@interface GameEngine : NSObject
+
+
 @property (assign) int playerMaxHealth;
 @property (assign) int playerCount;
 @property (assign) int bossMaxHealth;
 
 @property (nonatomic, strong) NetworkEngine *networkEngine;
+
+@property (nonatomic, weak) NSObject<GameEngineDelegate> *delegate;
 
 @property (assign) GameState currentState;
 
