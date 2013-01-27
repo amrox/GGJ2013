@@ -14,6 +14,9 @@
 #define ATTACK_PREPARATION_TIME 5
 #define MONSTER_ATTACK_DAMAGE 1
 
+#define MIN_ATTACK_TIME 8
+#define MAX_ATTACK_TIME 15
+
 typedef enum
 {
 	EGameEventType_ATTACK_FIRE,

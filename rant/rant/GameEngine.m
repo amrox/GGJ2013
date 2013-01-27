@@ -194,9 +194,6 @@
 {
     if (!self.isServer) return; // hack
     
-#define MIN_ATTACK_TIME 2
-#define MAX_ATTACK_TIME 6
-
 	if (self.currentState.monsterPreparingToAttackPlayerId != -1)
 	{
 		GameState state = self.currentState;
