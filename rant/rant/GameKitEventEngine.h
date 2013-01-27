@@ -41,7 +41,7 @@ typedef struct {
  */
 - (int) matchPlayerCount;
 
-@property (assign, readonly) BOOL isServer;
+@property (readonly, nonatomic) BOOL isServer;
 - (BOOL) isRunning;
 
 /*

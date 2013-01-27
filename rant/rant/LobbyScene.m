@@ -23,15 +23,24 @@
     CCSpriteBatchNode *spriteSheet;
     NSMutableArray *heroAnims;
     NSMutableArray *heroes;
+    
+    int lastPlayerCount;
 }
 
 - (void)pollMatch
 {
-    if ([[GameKitEventEngine sharedNetworkEngine] isMatchReady]) {
-        
-        NSLog(@"match is ready, %d players!",
-              [[GameKitEventEngine sharedNetworkEngine].match.playerIDs count]+1);
+    int curPlayerCount = [[GameKitEventEngine sharedNetworkEngine] matchPlayerCount];
+    
+    if (lastPlayerCount > curPlayerCount) {
+        [self clearPlayerIcons];
     }
+
+    int heroesToAdd = curPlayerCount - [heroes count];
+    for (int i=0; i<heroesToAdd; i++) {
+        [self addPlayerIconWithIndex:[heroes count] isPlayer:YES];
+        
+    }
+    lastPlayerCount = curPlayerCount;
 }
 
 -(void)onEnter
@@ -125,22 +134,13 @@
 - (void)didTapFindMatchButton:(id)sender
 {
     [[SimpleAudioEngine sharedEngine] playEffect:@"click1.caf"];
-
-    if ([[GameKitEventEngine sharedNetworkEngine] isMatchReady]) {
-        [[GameKitEventEngine sharedNetworkEngine] begin];
-    
-        
-        
-    } else {
-        [[GameKitEventEngine sharedNetworkEngine] findMatch];
-    }
+    [[GameKitEventEngine sharedNetworkEngine] findMatch];
 }
 
 - (void)didTapEnterGameButton:(id)sender
 {
-    // todo..
     [[SimpleAudioEngine sharedEngine] playEffect:@"click1.caf"];
-
+    [[GameKitEventEngine sharedNetworkEngine] begin];
 }
 
 - (void)enableEnterGameButton:(BOOL)enable
