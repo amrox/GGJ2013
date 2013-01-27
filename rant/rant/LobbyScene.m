@@ -17,7 +17,6 @@
 @implementation LobbyLayer
 {
 	CCMenuItemImage * enterGameButton;
-	CCLabelTTF * enterGameLabel;
 	CCLabelTTF * playersInGameLabel;
     
     CCSpriteBatchNode *spriteSheet;
@@ -51,27 +50,39 @@
     
 
     playersInGameLabel = [CCLabelTTF labelWithString:@"Players: ???" fontName:RANT_FONT fontSize:26];
-    [enterGameLabel setPosition:ccp(150, 300)];
 	[self addChild:playersInGameLabel];
 
 
 	// ask director for the window size
 //	CGSize size = [[CCDirector sharedDirector] winSize];
 
-    enterGameButton = [CCMenuItemImage itemWithNormalImage:@"start-menu-button.png"
-										  selectedImage:@"start-menu-button-pressed.png"
-												 target:self
-											   selector:@selector(findMatchPressed:)];
+    CCMenuItemImage *findMatchButton = [CCMenuItemImage itemWithNormalImage:@"buttonBlue.png"
+                                                              selectedImage:@"buttonBluePressed.png"
+                                                                     target:self
+                                                                   selector:@selector(didTapFindMatchButton:)];
 
-    CGPoint savedPoint = ccp([enterGameButton boundingBox].size.width * 0.5f,
-                             [enterGameButton boundingBox].size.height * 0.5f);
+    CGPoint savedPoint = ccp([findMatchButton boundingBox].size.width * 0.5f,
+                             [findMatchButton boundingBox].size.height * 0.5f);
 
-    [enterGameButton setPosition:ccp(0,-100)];
-    enterGameLabel = [CCLabelTTF labelWithString:@"Find Match" fontName:RANT_FONT fontSize:26];
+    [findMatchButton setPosition:ccp(0, 160)];
+    CCLabelTTF *findMatchLabel = [CCLabelTTF labelWithString:@"Find Match" fontName:RANT_FONT fontSize:32];
+    [findMatchButton addChild:findMatchLabel];
+    [findMatchLabel setPosition:savedPoint];
+    
+    enterGameButton = [CCMenuItemImage itemWithNormalImage:@"buttonRed.png"
+                                             selectedImage:@"buttonRedPressed.png"
+                                                    target:self
+                                                  selector:@selector(didTapEnterGameButton:)];
+    
+    savedPoint = ccp([enterGameButton boundingBox].size.width * 0.5f,
+                     [enterGameButton boundingBox].size.height * 0.5f);
+    
+    [enterGameButton setPosition:ccp(0, 60)];
+    CCLabelTTF *enterGameLabel = [CCLabelTTF labelWithString:@"Enter Game" fontName:RANT_FONT fontSize:32];
     [enterGameButton addChild:enterGameLabel];
     [enterGameLabel setPosition:savedPoint];
 
-	CCMenu *menu = [CCMenu menuWithItems:enterGameButton, nil];
+	CCMenu *menu = [CCMenu menuWithItems:findMatchButton, enterGameButton, nil];
     [self addChild:menu];
     
     // Animations -
@@ -99,7 +110,13 @@
     }
 }
 
-- (void)findMatchPressed:(id)sender
+- (void)gameBegin:(NSNotification *)note
+{
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[GameScene scene] withColor:ccWHITE]];
+
+}
+
+- (void)didTapFindMatchButton:(id)sender
 {
     if ([[GameKitEventEngine sharedNetworkEngine] isMatchReady]) {
         [[GameKitEventEngine sharedNetworkEngine] begin];
@@ -110,10 +127,24 @@
     }
 }
 
-- (void)gameBegin:(NSNotification *)note
+- (void)didTapEnterGameButton:(id)sender
 {
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[GameScene scene] withColor:ccWHITE]];
+    // todo..
+}
 
+- (void)enableEnterGameButton:(BOOL)enable
+{
+    [enterGameButton setVisible:enable];
+}
+
+- (void)clearPlayerIcons
+{
+    
+}
+
+- (void)addPlayerIconWithIndex:(int)index isPlayer:(BOOL)isPlayer // index 0-3
+{
+    
 }
 
 @end

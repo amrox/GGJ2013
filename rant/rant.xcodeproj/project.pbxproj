@@ -91,6 +91,14 @@
 		9CBE85F316B58A9100F52D9A /* Action Man.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE85F116B58A9100F52D9A /* Action Man.ttf */; };
 		9CBE85F516B58A9E00F52D9A /* ARNORG__.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE85F416B58A9E00F52D9A /* ARNORG__.TTF */; };
 		9CBE85F616B58A9E00F52D9A /* ARNORG__.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE85F416B58A9E00F52D9A /* ARNORG__.TTF */; };
+		9CBE86E316B596A300F52D9A /* buttonBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE86DF16B596A300F52D9A /* buttonBlue.png */; };
+		9CBE86E416B596A300F52D9A /* buttonBluePressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE86E016B596A300F52D9A /* buttonBluePressed.png */; };
+		9CBE86E516B596A300F52D9A /* buttonRed.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE86E116B596A300F52D9A /* buttonRed.png */; };
+		9CBE86E616B596A300F52D9A /* buttonRedPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE86E216B596A300F52D9A /* buttonRedPressed.png */; };
+		9CBE86EB16B5970A00F52D9A /* buttonBlue-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE86E716B5970900F52D9A /* buttonBlue-hd.png */; };
+		9CBE86EC16B5970A00F52D9A /* buttonBluePressed-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE86E816B5970A00F52D9A /* buttonBluePressed-hd.png */; };
+		9CBE86ED16B5970A00F52D9A /* buttonRed-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE86E916B5970A00F52D9A /* buttonRed-hd.png */; };
+		9CBE86EE16B5970A00F52D9A /* buttonRedPressed-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE86EA16B5970A00F52D9A /* buttonRedPressed-hd.png */; };
 		B3432C2816B4C3FE00B2365E /* GameKitEventEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameKitEventEngine.m */; };
 		B3432C9F16B4DC2400B2365E /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3432C9E16B4DC2400B2365E /* GameEngine.m */; };
 		B3432CA016B4DC2400B2365E /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3432C9E16B4DC2400B2365E /* GameEngine.m */; };
@@ -615,6 +623,14 @@
 		9CBE85E816B5839100F52D9A /* lobbyHeroes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lobbyHeroes.png; path = Resources/GameAssets/Animations/lobbyHeroes.png; sourceTree = "<group>"; };
 		9CBE85F116B58A9100F52D9A /* Action Man.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Action Man.ttf"; path = "Resources/Action Man.ttf"; sourceTree = "<group>"; };
 		9CBE85F416B58A9E00F52D9A /* ARNORG__.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ARNORG__.TTF; path = Resources/ARNORG__.TTF; sourceTree = "<group>"; };
+		9CBE86DF16B596A300F52D9A /* buttonBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonBlue.png; path = Resources/buttonBlue.png; sourceTree = "<group>"; };
+		9CBE86E016B596A300F52D9A /* buttonBluePressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonBluePressed.png; path = Resources/buttonBluePressed.png; sourceTree = "<group>"; };
+		9CBE86E116B596A300F52D9A /* buttonRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonRed.png; path = Resources/buttonRed.png; sourceTree = "<group>"; };
+		9CBE86E216B596A300F52D9A /* buttonRedPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonRedPressed.png; path = Resources/buttonRedPressed.png; sourceTree = "<group>"; };
+		9CBE86E716B5970900F52D9A /* buttonBlue-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buttonBlue-hd.png"; path = "Resources/buttonBlue-hd.png"; sourceTree = "<group>"; };
+		9CBE86E816B5970A00F52D9A /* buttonBluePressed-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buttonBluePressed-hd.png"; path = "Resources/buttonBluePressed-hd.png"; sourceTree = "<group>"; };
+		9CBE86E916B5970A00F52D9A /* buttonRed-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buttonRed-hd.png"; path = "Resources/buttonRed-hd.png"; sourceTree = "<group>"; };
+		9CBE86EA16B5970A00F52D9A /* buttonRedPressed-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buttonRedPressed-hd.png"; path = "Resources/buttonRedPressed-hd.png"; sourceTree = "<group>"; };
 		B3432C9D16B4DC2400B2365E /* GameEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameEngine.h; sourceTree = "<group>"; };
 		B3432C9E16B4DC2400B2365E /* GameEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameEngine.m; sourceTree = "<group>"; };
 		B354826616B3A75A004ECF7C /* NetworkTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -763,6 +779,14 @@
 				9CAB4F8716B489800061047A /* GameAssets */,
 				9CBE85F116B58A9100F52D9A /* Action Man.ttf */,
 				9CBE85F416B58A9E00F52D9A /* ARNORG__.TTF */,
+				9CBE86E716B5970900F52D9A /* buttonBlue-hd.png */,
+				9CBE86E816B5970A00F52D9A /* buttonBluePressed-hd.png */,
+				9CBE86E916B5970A00F52D9A /* buttonRed-hd.png */,
+				9CBE86EA16B5970A00F52D9A /* buttonRedPressed-hd.png */,
+				9CBE86DF16B596A300F52D9A /* buttonBlue.png */,
+				9CBE86E016B596A300F52D9A /* buttonBluePressed.png */,
+				9CBE86E116B596A300F52D9A /* buttonRed.png */,
+				9CBE86E216B596A300F52D9A /* buttonRedPressed.png */,
 				0AC19F3E16B46D0F00FC5541 /* start-menu-button-hd.png */,
 				0AC19F3F16B46D0F00FC5541 /* start-menu-button-pressed-hd.png */,
 				0AC19F4016B46D0F00FC5541 /* start-menu-button-pressed.png */,
@@ -1557,6 +1581,14 @@
 				9CBE85F216B58A9100F52D9A /* Action Man.ttf in Resources */,
 				9CBE85F516B58A9E00F52D9A /* ARNORG__.TTF in Resources */,
 				B36BE37816B57F1C006F0A72 /* Default-568h@2x.png in Resources */,
+				9CBE86E316B596A300F52D9A /* buttonBlue.png in Resources */,
+				9CBE86E416B596A300F52D9A /* buttonBluePressed.png in Resources */,
+				9CBE86E516B596A300F52D9A /* buttonRed.png in Resources */,
+				9CBE86E616B596A300F52D9A /* buttonRedPressed.png in Resources */,
+				9CBE86EB16B5970A00F52D9A /* buttonBlue-hd.png in Resources */,
+				9CBE86EC16B5970A00F52D9A /* buttonBluePressed-hd.png in Resources */,
+				9CBE86ED16B5970A00F52D9A /* buttonRed-hd.png in Resources */,
+				9CBE86EE16B5970A00F52D9A /* buttonRedPressed-hd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
