@@ -34,10 +34,8 @@ typedef enum {
 typedef enum {
 	NETWORK_ACK,					// no packet
 	NETWORK_COINTOSS,				// decide who is going to be the server
-    //	NETWORK_MOVE_EVENT,				// send position
-    //	NETWORK_FIRE_EVENT,				// send fire
     NETWORK_EVENT,
-	NETWORK_HEARTBEAT				// send of entire state at regular intervals
+    NETWORK_GAME_STATE,
 } packetCodes;
 
 @interface NetworkEngine ()
@@ -49,6 +47,7 @@ typedef enum {
 @property (assign, readwrite) GameState currentState;
 @property (strong) NSString *serverPlayerID;
 @property (assign, readwrite) BOOL isServer;
+@property (strong) NSMutableArray *incomingEvents;
 
 @end
 
@@ -94,6 +93,8 @@ typedef enum {
         [self getGameUniqueID];
         [NSTimer scheduledTimerWithTimeInterval:kGameloopInterval target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
         self.playerInfo = [NSMutableDictionary dictionaryWithCapacity:4];
+//        _eventQueue = dispatch_queue_create("eventqueue", NULL);
+        self.incomingEvents = [NSMutableArray arrayWithCapacity:20];
     }
     return self;
 }
@@ -126,11 +127,6 @@ typedef enum {
 	}
 }
 
-- (void)updateState
-{
-    
-}
-
 - (void)electServer
 {
     int serverCointoss = _gameUniqueID;
@@ -150,9 +146,31 @@ typedef enum {
     NSLog(@"%@ is the server!", self.serverPlayerID);
 }
 
+- (void)processEvents
+{
+    @synchronized(self.incomingEvents) {
+        
+//        GameEvent event;
+//        [eventVal getValue:&event];
+
+        
+//        [self.engine processEvent:]
+        
+    }
+    
+//    @synchronized(self.events) {
+//        for (NSValue *eventVal in self.events) {
+//            GameEvent event;
+//            [eventVal getValue:&event];
+//            [self broadcastNetworkPacket:self.match packetID:NETWORK_GAME_STATE withData:&event ofLength:sizeof(GameEvent) reliable:YES];
+//        }
+//        [self.events removeAllObjects];
+//    }
+}
+
 - (void)gameLoop
 {
-    static int counter = 0;
+//    static int counter = 0;
 	switch (self.gameState) {
         case kStateLobby:
 		case kStateStartGame:
@@ -179,39 +197,12 @@ typedef enum {
 		case kStateMultiplayer:
             NSAssert(self.serverPlayerID, @"serverPlayerID is nil");
             
-            [self updateState];
-            
             if (self.isServer) {
-                
-                counter++;
-                if(!(counter&kHeartbeatMod)) { // once every 8 updates check if we have a recent heartbeat from the other player, and send a heartbeat packet with current state
-                    
-                    /*
-                     NSArray *allPlayers = [self.playerInfo allValues];
-                     
-                     for (PlayerInfo *info in allPlayers) {
-                     
-                     if (info.lastHeartbeat == nil) {
-                     info.lastHeartbeat = [NSDate date];
-                     
-                     } else if(fabs([info.lastHeartbeat timeIntervalSinceNow]) >= kHeartbeatTimeMaxDelay) { // see if the last heartbeat is too old
-                     // seems we've lost connection, notify user that we are trying to reconnect (until GKSession actually disconnects)
-                     NSString *message = [NSString stringWithFormat:@"Trying to reconnect..."];
-                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lost Connection" message:message delegate:self cancelButtonTitle:@"End Game" otherButtonTitles:nil];
-                     self.connectionAlert = alert;
-                     [alert show];
-                     self.gameState = kStateMultiplayerReconnect;
-                     }
-                     }
-                     */
-                    
-                    // send a new heartbeat to other player
-                    //tankInfo *ts = &tankStats[self.peerStatus];
-                    GameState curState = self.currentState;
-                    [self broadcastNetworkPacket:self.match packetID:NETWORK_HEARTBEAT withData:&curState ofLength:sizeof(GameState) reliable:NO];
-                }
+//                [self broadcastEven
             }
 			break;
+            
+            
             /*
              case kStateMultiplayerReconnect:
              // we have lost a heartbeat for too long, so pause game and notify user while we wait for next heartbeat or session disconnect.
@@ -328,50 +319,31 @@ typedef enum {
         }
 			break;
             
-        case NETWORK_HEARTBEAT:
-        {
-            NSLog(@"%@: heartbeat %d", playerID, packetTime);
-            
-            // only the server sends the heartbeat
-            self.serverPlayerID = playerID;
-            
-            
-//            PlayerInfo *playerInfo = [self getInfoForPlayerID:playerID];
-//            playerInfo.lastHeartbeat = [NSDate date];
-            
-            // Received heartbeat data with other player's position, destination, and firing status.
-            
-            // update the other player's info from the heartbeat
-            GameState *gameState = (GameState *)&incomingPacket[8];		// tank data as seen on other client
-            //            int peer = (self.peerStatus == kServer) ? kClient : kServer;
-            //            tankInfo *ds = &tankStats[peer];					// same tank, as we see it on this client
-            //            memcpy( ds, ts, sizeof(tankInfo) );
-            
-            // update heartbeat timestamp
-            //            self.lastHeartbeatDate = [NSDate date];
-            
-            // if we were trying to reconnect, set the state back to multiplayer as the peer is back
-            
-            /*
-             if(self.gameState == kStateMultiplayerReconnect) {
-             if(self.connectionAlert && self.connectionAlert.visible) {
-             [self.connectionAlert dismissWithClickedButtonIndex:-1 animated:YES];
-             }
-             self.gameState = kStateMultiplayer;
-             }
-             */
-        }
-			break;
-            
         case NETWORK_EVENT:
         {
-            [self.engine processEvent:NULL];
+            GameEvent *event = (GameEvent *)&incomingPacket[8];
+            if (self.isServer) {
+                [self receiveEventAsServer:event];
+            } else {
+                [self receivePacketAsClient:event];
+            }
         }
             break;
-
     }
 }
 
+- (void)receiveEventAsServer:(GameEvent *)event
+{
+    @synchronized(self.incomingEvents) {
+        NSValue *eventVal = [NSValue valueWithBytes:event objCType:@encode(GameEvent)];
+        [self.incomingEvents addObject:eventVal];
+    }
+}
+
+- (void)receivePacketAsClient:(GameEvent *)event
+{
+    
+}
 
 
 // The player state changed (eg. connected or disconnected)
@@ -390,20 +362,6 @@ typedef enum {
 	}
 	
 	if(state == GKPeerStateDisconnected) {
-        
-        /*
-         // Update user alert or throw alert if it isn't already up
-         NSString *message = [NSString stringWithFormat:@"Could not reconnect."];
-         if((self.gameState == kStateMultiplayerReconnect) && self.connectionAlert && self.connectionAlert.visible) {
-         self.connectionAlert.message = message;
-         }
-         else {
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lost Connection" message:message delegate:self cancelButtonTitle:@"End Game" otherButtonTitles:nil];
-         // !!!: self.connectionAlert = alert;
-         [alert show];
-         }
-         */
-        
         NSString *message = [NSString stringWithFormat:@"Could not reconnect."];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lost Connection" message:message delegate:self cancelButtonTitle:@"End Game" otherButtonTitles:nil];
         // !!!: self.connectionAlert = alert;
@@ -436,8 +394,10 @@ typedef enum {
 
 - (void)sendEvent:(GameEvent *)event
 {
-    NSAssert(self.serverPlayerID, @"server ID is nil");
-    [self sendNetworkPacket:self.match packetID:NETWORK_EVENT withData:event ofLength:sizeof(GameEvent) reliable:YES players:[NSArray arrayWithObject:self.serverPlayerID]];
+    if (!self.isServer) {
+        NSAssert(self.serverPlayerID, @"server ID is nil");
+        [self sendNetworkPacket:self.match packetID:NETWORK_EVENT withData:event ofLength:sizeof(GameEvent) reliable:YES players:[NSArray arrayWithObject:self.serverPlayerID]];
+    }
 }
 
 #pragma mark -

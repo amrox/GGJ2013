@@ -72,12 +72,12 @@ float getDifferenceBetweenAngles(float a1, float a2)
 		Gesture * g = nil;
 
 		g = [[Gesture alloc] init];
-		g.gesture = EGesture_WATER;
+		g.gesture = EGesture_ICE;
 		g.legAngles = [NSArray arrayWithObjects:
-					   [NSNumber numberWithFloat:1.362165],
-					   [NSNumber numberWithFloat:-1.065506],
-					   [NSNumber numberWithFloat:1.565391],
-					   [NSNumber numberWithFloat:-2.306805], nil];
+					   [NSNumber numberWithFloat:1.527345],
+					   [NSNumber numberWithFloat:0],
+					   [NSNumber numberWithFloat:-1.6],
+					   [NSNumber numberWithFloat:3.14], nil];
 		[sharedLibrary addObject:g];
 
 		g = [[Gesture alloc] init];
@@ -90,12 +90,12 @@ float getDifferenceBetweenAngles(float a1, float a2)
 		[sharedLibrary addObject:g];
 
 		g = [[Gesture alloc] init];
-		g.gesture = EGesture_AIR;
+		g.gesture = EGesture_WIND;
 		g.legAngles = [NSArray arrayWithObjects:
-					   [NSNumber numberWithFloat:1.527345],
-					   [NSNumber numberWithFloat:0],
-					   [NSNumber numberWithFloat:-1.6],
-					   [NSNumber numberWithFloat:3.14], nil];
+					   [NSNumber numberWithFloat:1.362165],
+					   [NSNumber numberWithFloat:-1.065506],
+					   [NSNumber numberWithFloat:1.565391],
+					   [NSNumber numberWithFloat:-2.306805], nil];
 		[sharedLibrary addObject:g];
 
 		g = [[Gesture alloc] init];
@@ -115,6 +115,14 @@ float getDifferenceBetweenAngles(float a1, float a2)
 					   [NSNumber numberWithFloat:0],
 					   [NSNumber numberWithFloat:1.57],
 					   [NSNumber numberWithFloat:3.14], nil];
+		[sharedLibrary addObject:g];
+
+		g = [[Gesture alloc] init];
+		g.gesture = EGesture_RECEIVE_HEAL;
+		g.legAngles = [NSArray arrayWithObjects:
+					   [NSNumber numberWithFloat:0.876776],
+					   [NSNumber numberWithFloat:2.621769],
+					   [NSNumber numberWithFloat:0.597969], nil];
 		[sharedLibrary addObject:g];
 	}
 	return sharedLibrary;

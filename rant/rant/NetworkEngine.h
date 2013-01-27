@@ -9,10 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
 #import "GameEngine.h"
+#import "EventEngine.h"
 
 extern NSString *const GameEngineGameBeginNotification;
 extern NSString *const GameEngineGameEndNotification;
 
+typedef struct {
+    GameEvent event;
+    GameState state;
+} GamePacket;
 
 @interface NetworkEngine : NSObject <GKMatchDelegate>
 {
