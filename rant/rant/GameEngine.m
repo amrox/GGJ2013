@@ -12,6 +12,9 @@
 #define BOSS_MAX_HEALTH 100
 
 @implementation GameEngine
+{
+	float timeToNextAttack;
+}
 
 - (void)reset
 {
@@ -23,6 +26,7 @@
         state.playerHeath[i] = self.playerMaxHealth;
     }
 	self.currentState = state;
+	timeToNextAttack = -1;
 }
 
 - (void)setNetworkEngine:(NetworkEngine *)networkEngine
@@ -121,5 +125,30 @@
 }
 
 
+- (void)update:(float)deltaTime
+{
+#define MIN_ATTACK_TIME 2
+#define MAX_ATTACK_TIME 6
+
+	if (timeToNextAttack == -1)
+	{
+		timeToNextAttack = (float)(arc4random() % 1000) / 1000.0f * (MAX_ATTACK_TIME - MIN_ATTACK_TIME) + MIN_ATTACK_TIME;
+	}
+	else
+	{
+		timeToNextAttack -= deltaTime;
+		if (timeToNextAttack <= 0)
+		{
+			timeToNextAttack = -1;
+
+			GameEvent broadcastEvent;
+			broadcastEvent.type = EGameEventType_PLAYER_HIT;
+			broadcastEvent.target = 1;
+			broadcastEvent.value = 10;
+
+			[self broadcastEventAsServer:&broadcastEvent];
+		}
+	}
+}
 
 @end

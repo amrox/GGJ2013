@@ -21,6 +21,7 @@ typedef enum
 	EGameEventType_MONSTER_DAMAGED_ICE,
 	EGameEventType_MONSTER_DAMAGED_WIND,
 	EGameEventType_MONSTER_DEAD,
+	EGameEventType_PLAYER_HIT,
 	EGameEventType_PLAYER_RECEIVED_HEAL,
 } EGameEventType;
 
@@ -75,5 +76,6 @@ typedef enum {
 
 - (void)processEvent:(GameEvent *)event;
 
+- (void)update:(float)deltaTime;
 
 @end

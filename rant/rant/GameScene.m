@@ -78,6 +78,8 @@
 
 - (void)update:(ccTime)deltaTime
 {
+	[gameEngine update:deltaTime];
+
 	cameraShakeTimeLeft = MAX(0, cameraShakeTimeLeft - deltaTime);
 	if (cameraShakeTimeLeft <= 0)
 	{
@@ -110,7 +112,15 @@
 {
 	NSLog(@"got event.  monster hp is %d", state->bossHealth);
 
-	//todo: update stuff here
+	if (event->type == EGameEventType_MONSTER_DEAD)
+	{
+		NSLog(@"monster dead.  you win!");
+	}
+
+	if (event->type == EGameEventType_PLAYER_HIT)
+	{
+		NSLog(@"you got hit");
+	}
 }
 
 - (void)playAnimationWithEventType:(EGameEventType)eventType
