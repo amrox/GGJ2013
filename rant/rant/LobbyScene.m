@@ -22,6 +22,7 @@
     
     CCSpriteBatchNode *spriteSheet;
     NSMutableArray *heroAnims;
+    NSMutableArray *heroes;
 }
 
 - (void)pollMatch
@@ -94,6 +95,7 @@
     [self addChild:spriteSheet];
     
     // Anims
+    heroAnims = [NSMutableArray array];
     NSMutableArray *animFrames = [NSMutableArray array];
     for(int i = 1; i <= 4; ++i)
     {
@@ -110,6 +112,8 @@
         [playerAnim setDelayPerUnit:ANIMATION_DELAY];
         [heroAnims addObject:playerAnim];
     }
+    
+    heroes = [NSMutableArray array];
 }
 
 - (void)gameBegin:(NSNotification *)note
@@ -120,8 +124,11 @@
 
 - (void)didTapFindMatchButton:(id)sender
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"click1.caf"];
+
     if ([[GameKitEventEngine sharedNetworkEngine] isMatchReady]) {
         [[GameKitEventEngine sharedNetworkEngine] begin];
+    
         
         
     } else {
@@ -132,6 +139,8 @@
 - (void)didTapEnterGameButton:(id)sender
 {
     // todo..
+    [[SimpleAudioEngine sharedEngine] playEffect:@"click1.caf"];
+
 }
 
 - (void)enableEnterGameButton:(BOOL)enable
@@ -141,14 +150,45 @@
 
 - (void)clearPlayerIcons
 {
+    for (CCSprite *hero in heroes)
+    {
+        [hero removeFromParentAndCleanup:YES];
+    }
     
+    [heroes removeAllObjects];
 }
 
 - (void)addPlayerIconWithIndex:(int)index isPlayer:(BOOL)isPlayer // index 0-3
 {
     NSAssert((index >= 0 && index <= 3), @"Invalid index");
     
+    CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:[NSString stringWithFormat:@"User Icon %dA.png", index+1]];
+    [spriteSheet addChild:sprite];
     
+    [heroes addObject:sprite];
+    
+    [sprite runAction:[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:[heroAnims objectAtIndex:index]]]];
+    
+    [sprite setPosition:ccp(160, 90)];
+    [sprite setScale:0.2];
+    
+    [self assembleHeroes];
+}
+
+- (void)assembleHeroes
+{
+    CGPoint center = ccp(160, 90);
+    
+    static int offset = 60;
+    
+    int index = 0;
+    int total = [heroes count]-1;
+    for (CCSprite *hero in heroes)
+    {
+        [hero runAction:[CCMoveTo actionWithDuration:1.0 position:ccp(center.x - (offset/2 * total) + (offset * index), center.y)]];
+        [hero runAction:[CCScaleTo actionWithDuration:1.0 scale:0.8]];
+        index++;
+    }
 }
 
 @end

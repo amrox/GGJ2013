@@ -124,7 +124,7 @@
 		NSLog(@"monster dead.  you win!");
 	}
 
-	if (event->type == EGameEventType_PLAYER_HIT)
+	if (event->type == EGameEventType_PLAYER_HIT && event->targetPlayerId == [gameEngine myPlayerNum])
 	{
         [self runAction:[CCSequence actions:
                          [CCCallFunc actionWithTarget:monsterLayer.monster selector:@selector(playAttack1Anim)],
@@ -183,7 +183,6 @@
 		if (singleGesture.gesture == EGesture_FIRE)
 		{
 			GameEvent event;
-			event.target = 0;
 			event.type = EGameEventType_ATTACK_FIRE;
 			event.value = 1;
 			[gameEngine sendEventAsClient:&event];
@@ -192,7 +191,6 @@
 		else if (singleGesture.gesture == EGesture_WIND)
 		{
 			GameEvent event;
-			event.target = 0;
 			event.type = EGameEventType_ATTACK_WIND;
 			event.value = 1;
 			[gameEngine sendEventAsClient:&event];
@@ -201,7 +199,6 @@
 		else if (singleGesture.gesture == EGesture_ICE)
 		{
 			GameEvent event;
-			event.target = 0;
 			event.type = EGameEventType_ATTACK_ICE;
 			event.value = 1;
 			[gameEngine sendEventAsClient:&event];
@@ -210,7 +207,6 @@
 		else if (singleGesture.gesture == EGesture_HEAL)
 		{
 			GameEvent event;
-			event.target = 0;
 			event.type = EGameEventType_HEAL;
 			event.value = 1;
 			[gameEngine sendEventAsClient:&event];
@@ -219,7 +215,6 @@
 		else if (singleGesture.gesture == EGesture_RECEIVE_HEAL)
 		{
 			GameEvent event;
-			event.target = 0;
 			event.type = EGameEventType_RECEIVE_HEAL;
 			event.value = 1;
 			[gameEngine sendEventAsClient:&event];
@@ -235,7 +230,6 @@
 			if (firstGesture.gesture == EGesture_FIRE)
 			{
 				GameEvent event;
-				event.target = 0;
 				event.type = EGameEventType_ATTACK_FIRE;
 				event.value = 3;
 				[gameEngine sendEventAsClient:&event];
@@ -244,7 +238,6 @@
 			else if (firstGesture.gesture == EGesture_WIND)
 			{
 				GameEvent event;
-				event.target = 0;
 				event.type = EGameEventType_ATTACK_WIND;
 				event.value = 3;
 				[gameEngine sendEventAsClient:&event];
@@ -253,7 +246,6 @@
 			else if (firstGesture.gesture == EGesture_ICE)
 			{
 				GameEvent event;
-				event.target = 0;
 				event.type = EGameEventType_ATTACK_ICE;
 				event.value = 3;
 				[gameEngine sendEventAsClient:&event];

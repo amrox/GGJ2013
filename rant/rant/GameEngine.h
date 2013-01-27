@@ -30,12 +30,13 @@ typedef struct {
     int         playerCount;
     int			playerHeath[4];
 	int			healReady;			// 1 if ready, 0 otherwise
+	int			healerPlayerId;
 } GameState;
 
 typedef struct {
 	long long	source;
 	int			type;	//EGameEventType
-    long long   target; // 0=boss, 1-4=player
+    long long   targetPlayerId; // 0-3=player
     int			value;
 } GameEvent;
 
@@ -82,5 +83,7 @@ typedef enum {
 
 
 - (void)update:(float)deltaTime;
+
+- (int) myPlayerNum;
 
 @end

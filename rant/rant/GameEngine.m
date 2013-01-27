@@ -88,16 +88,15 @@
     if (self.networkEngine) {
         return [self.networkEngine myPlayerIndex];
     }
-    return 1;
+    return 0;
 }
-
 
 
 // game specific stuff here
 
 - (void)processEvent:(GameEvent *)event
 {
-#define PLAYER_WHO_SENT_EVENT 0
+	int sendingPlayerId = event->source;
 
 
     NSAssert([self isServer], @"should only be called on the server");
@@ -112,7 +111,7 @@
 
 		GameEvent broadcastEvent;
 		broadcastEvent.type = EGameEventType_MONSTER_DAMAGED_FIRE + (event->type - EGameEventType_ATTACK_FIRE);
-		broadcastEvent.target = PLAYER_WHO_SENT_EVENT + 1;
+		broadcastEvent.targetPlayerId = sendingPlayerId;
 		broadcastEvent.value = event->value;
 
 		[self broadcastEventAsServer:&broadcastEvent];
@@ -120,8 +119,6 @@
 		if (state.bossHealth == 0)
 		{
 			broadcastEvent.type = EGameEventType_MONSTER_DEAD;
-			broadcastEvent.target = 0;
-			broadcastEvent.value = 0;
 
 			[self broadcastEventAsServer:&broadcastEvent];
 		}
@@ -130,27 +127,25 @@
 	{
 		GameState state = self.currentState;
 		state.healReady = 1;
+		state.healerPlayerId = sendingPlayerId;
 		self.currentState = state;
 	}
 	else if (event->type == EGameEventType_RECEIVE_HEAL)
 	{
 		GameState state = self.currentState;
-		if (state.healReady == 1)
+		if (state.healReady == 1 && state.healerPlayerId != sendingPlayerId)
 		{
-			//todo: make the player who sent the message the one who receives the healing
-
 			state.healReady = 0;
 
-			int playerId = PLAYER_WHO_SENT_EVENT + 1;
-			if (playerId >= 0 && playerId < 4)
+			if (sendingPlayerId >= 0 && sendingPlayerId < 4)
 			{
-				state.playerHeath[playerId] = MIN(MAX_PLAYER_HEALTH, state.playerHeath[playerId] + event->value);
+				state.playerHeath[sendingPlayerId] = MIN(MAX_PLAYER_HEALTH, state.playerHeath[sendingPlayerId] + event->value);
 			}
 			self.currentState = state;
 
 			GameEvent broadcastEvent;
 			broadcastEvent.type = EGameEventType_PLAYER_RECEIVED_HEAL;
-			broadcastEvent.target = playerId;
+			broadcastEvent.targetPlayerId = sendingPlayerId;
 			broadcastEvent.value = event->value;
 
 			[self broadcastEventAsServer:&broadcastEvent];
@@ -186,7 +181,7 @@
 
 			GameEvent broadcastEvent;
 			broadcastEvent.type = EGameEventType_PLAYER_HIT;
-			broadcastEvent.target = playerToAttack + 1;
+			broadcastEvent.targetPlayerId = playerToAttack;
 			broadcastEvent.value = damage;
 
 			[self broadcastEventAsServer:&broadcastEvent];
