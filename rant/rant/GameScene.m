@@ -47,6 +47,11 @@
 	return scene;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)onEnter
 {
     [super onEnter];
@@ -86,6 +91,8 @@
 
 - (void)gameEnd
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GameEngineGameEndNotification object:[GameKitEventEngine sharedNetworkEngine]];
+    
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MainMenuScene scene] withColor:ccWHITE]];
 }
 
@@ -155,6 +162,8 @@
 	{
 		[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MainMenuScene scene] withColor:ccWHITE]];
 	}
+
+	// set monster health and player health
 }
 
 - (void)playAnimationWithEventType:(EGameEventType)eventType
