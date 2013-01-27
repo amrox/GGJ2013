@@ -21,10 +21,12 @@ typedef enum
 } EGesture;
 
 
-#define DIST_FOR_ACCURATE_ANGLE 60
+#define DIST_FOR_ACCURATE_ANGLE1 20
+#define DIST_FOR_ACCURATE_ANGLE2 80
 #define ANGLE_DIFFERENCE_FOR_NEW_LEG 0.5f
 #define MAX_POINTS 10000
 #define MAX_LEGS 8
+#define NEAR_AND_FAR_ANGLE_MATCHING_THRESHOLD 0.1f
 
 #define RECORD_GESTURE_ANGLES
 
@@ -193,16 +195,39 @@ float getDifferenceBetweenAngles(float a1, float a2)
 		return NO;
 	}
 
+	BOOL foundFirst = NO;
+	float firstAngle;
+	
 	CGPoint lastPoint = points[numPoints-1];
 	for (int i = numPoints - 2; i >= 0; i--)
 	{
 		CGPoint currentPoint = points[i];
 		float dist = distanceBetweenPoints(currentPoint, lastPoint);
-		if (dist > DIST_FOR_ACCURATE_ANGLE)
+		if (!foundFirst)
 		{
-			float angle = angleBetweenPoints(currentPoint, lastPoint);
-			*angleOut = angle;
-			return YES;
+			if (dist > DIST_FOR_ACCURATE_ANGLE1)
+			{
+				foundFirst = YES;
+				firstAngle = angleBetweenPoints(currentPoint, lastPoint);
+			}
+		}
+		else
+		{
+			if (dist > DIST_FOR_ACCURATE_ANGLE2)
+			{
+				float angle = angleBetweenPoints(currentPoint, lastPoint);
+				float angleDiff = getDifferenceBetweenAngles(angle, firstAngle);
+
+				if (fabsf(angleDiff) < NEAR_AND_FAR_ANGLE_MATCHING_THRESHOLD)
+				{
+					*angleOut = angle;
+					return YES;
+				}
+				else
+				{
+					return NO;
+				}
+			}
 		}
 	}
 	return NO;
