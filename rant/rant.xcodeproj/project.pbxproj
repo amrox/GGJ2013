@@ -101,6 +101,7 @@
 		B3E1FF9B16B497A200D940F0 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E1FF9916B497A200D940F0 /* Util.m */; };
 		FF91403D16B4B2BB00A6E22E /* sine440.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF91403C16B4B2BB00A6E22E /* sine440.caf */; };
 		FF91403E16B4B2BB00A6E22E /* sine440.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF91403C16B4B2BB00A6E22E /* sine440.caf */; };
+		FF9140B816B4C18B00A6E22E /* red_health_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF9140B716B4C18B00A6E22E /* red_health_bar.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -611,6 +612,7 @@
 		B3E1FF9816B497A200D940F0 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		B3E1FF9916B497A200D940F0 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		FF91403C16B4B2BB00A6E22E /* sine440.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sine440.caf; sourceTree = "<group>"; };
+		FF9140B716B4C18B00A6E22E /* red_health_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_health_bar.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -839,6 +841,7 @@
 		9CAB4F8716B489800061047A /* GameAssets */ = {
 			isa = PBXGroup;
 			children = (
+				FF9140B716B4C18B00A6E22E /* red_health_bar.png */,
 				9CAB509816B4BE5D0061047A /* Animations */,
 				FF91403C16B4B2BB00A6E22E /* sine440.caf */,
 				9CAB4F9916B49C580061047A /* gameBackground1-hd.png */,
@@ -1467,6 +1470,7 @@
 				FF91403D16B4B2BB00A6E22E /* sine440.caf in Resources */,
 				9CAB501B16B4A3CD0061047A /* gameMonster1-hd.png in Resources */,
 				9CAB501C16B4A3CD0061047A /* gameMonster1.png in Resources */,
+				FF9140B816B4C18B00A6E22E /* red_health_bar.png in Resources */,
 				9CAB50A916B4BE920061047A /* gameHero1-hd.plist in Resources */,
 				9CAB50AA16B4BE920061047A /* gameHero1-hd.png in Resources */,
 				9CAB50AB16B4BE920061047A /* gameHero1.plist in Resources */,
