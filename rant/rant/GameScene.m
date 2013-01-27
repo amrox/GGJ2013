@@ -10,6 +10,7 @@
 #import "GameHeroNode.h"
 #import "GameKitEventEngine.h"
 #import "SimpleAudioEngine.h"
+#import "GameMonsterNode.h"
 
 #define SHAKE_TIME 0.7f
 #define SHAKE_1_PERIOD 0.2f
@@ -137,6 +138,10 @@
                          [CCCallFunc actionWithTarget:heroLayer.hero selector:@selector(playHitAnim)],
                          [CCCallFunc actionWithTarget:self selector:@selector(shakeCamera)],
                          nil]];
+	}
+	else if (event->type == EGameEventType_MONSTER_PREPARING_TO_ATTACK)
+	{
+		[monsterLayer.monster playAttack2Anim];
 	}
 }
 
