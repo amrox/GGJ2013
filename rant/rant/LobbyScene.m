@@ -49,6 +49,9 @@
 {
     // Create the layer hierarchy
     [super onEnter];
+    
+    [self enableEnterGameButton:NO];
+    
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bgmusic1.caf"];
 	
     [[GameKitEventEngine sharedNetworkEngine] authenticate];
