@@ -5,8 +5,7 @@
 
 #import "GameGestureLayer.h"
 #import "SimpleAudioEngine.h"
-
-#define RANT_FONT @"Bernard MT Condensed"
+#import "GameScene.h"
 
 #define PI 3.141592653589
 

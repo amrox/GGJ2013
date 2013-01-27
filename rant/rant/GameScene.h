@@ -6,6 +6,8 @@
 @class GameHUDLayer;
 @class GameHeroLayer;
 
+#define RANT_FONT @"Helvetica"
+
 @interface GameScene : CCScene
 {
 }
