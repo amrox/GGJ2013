@@ -1,6 +1,6 @@
 #import "LobbyScene.h"
 #import "GameScene.h"
-#import "NetworkEngine.h"
+#import "GameKitEventEngine.h"
 
 
 
@@ -25,7 +25,7 @@
     // Create the layer hierarchy
     [super onEnter];
     
-    [[NetworkEngine sharedNetworkEngine] findMatch];
+    [[GameKitEventEngine sharedNetworkEngine] findMatch];
     
     
     CCSprite *background = [CCSprite spriteWithFile:@"lobbyBackground.png"];

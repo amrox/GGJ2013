@@ -6,7 +6,7 @@
 //
 //
 
-#import "NetworkEngine.h"
+#import "GameKitEventEngine.h"
 
 #import "Util.h"
 
@@ -44,7 +44,7 @@ typedef enum {
     NETWORK_GAME_STATE,
 } packetCodes;
 
-@interface NetworkEngine ()
+@interface GameKitEventEngine ()
 
 @property (strong, readwrite) GKMatch *match;
 @property (assign) NSInteger gameState;
@@ -67,14 +67,14 @@ typedef enum {
 @implementation PlayerInfo
 @end
 
-@implementation NetworkEngine
+@implementation GameKitEventEngine
 
-+ (NetworkEngine *)sharedNetworkEngine
++ (GameKitEventEngine *)sharedNetworkEngine
 {
     static dispatch_once_t onceToken;
-    static NetworkEngine *engine;
+    static GameKitEventEngine *engine;
     dispatch_once(&onceToken, ^{
-        engine = [[NetworkEngine alloc] init];
+        engine = [[GameKitEventEngine alloc] init];
     });
     return engine;
 }

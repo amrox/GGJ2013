@@ -7,7 +7,7 @@
 //
 
 #import "NetworkTesterRootViewController.h"
-#import "NetworkEngine.h"
+#import "GameKitEventEngine.h"
 #import "GameEngine.h"
 
 @interface NetworkTesterRootViewController ()
@@ -27,7 +27,7 @@
         
         self.gameEngine = [[GameEngine alloc] init];
         self.gameEngine.delegate = self;
-        self.gameEngine.networkEngine = [NetworkEngine sharedNetworkEngine];
+        self.gameEngine.networkEngine = [GameKitEventEngine sharedNetworkEngine];
         
         self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                       target:self
@@ -57,7 +57,7 @@
 
 - (void) refresh
 {
-    NetworkEngine *engine = [NetworkEngine sharedNetworkEngine];
+    GameKitEventEngine *engine = [GameKitEventEngine sharedNetworkEngine];
     
     int const totalPlayers = [engine isMatchReady] ? [engine.match.playerIDs count] + 1 : 0;
     
@@ -74,7 +74,7 @@
 
 - (IBAction)match:(id)sender
 {
-    NetworkEngine *engine = [NetworkEngine sharedNetworkEngine];
+    GameKitEventEngine *engine = [GameKitEventEngine sharedNetworkEngine];
     [engine findMatch];
     
     [self.activityThing startAnimating];
@@ -82,7 +82,7 @@
 
 - (IBAction)begin:(id)sender
 {
-    NetworkEngine *engine = [NetworkEngine sharedNetworkEngine];
+    GameKitEventEngine *engine = [GameKitEventEngine sharedNetworkEngine];
     [engine begin];
     
     [self.activityThing stopAnimating];

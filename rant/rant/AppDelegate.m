@@ -12,7 +12,7 @@
 #import "MainMenuScene.h"
 #import "GameScene.h"
 #import "LobbyScene.h"
-#import "NetworkEngine.h"
+#import "GameKitEventEngine.h"
 
 @implementation AppController
 
@@ -94,7 +94,7 @@
     
     //NSString* dummy = [[[NSString alloc] init] autorelease];
 
-    [[NetworkEngine sharedNetworkEngine] authenticate];
+    [[GameKitEventEngine sharedNetworkEngine] authenticate];
 
 	return YES;
 }

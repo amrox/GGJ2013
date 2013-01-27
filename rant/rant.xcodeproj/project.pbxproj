@@ -83,7 +83,7 @@
 		9CAB50B816B4BE920061047A /* gameHero4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A816B4BE920061047A /* gameHero4.png */; };
 		9CBE856F16B524AE00F52D9A /* lobbyBackground-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE856D16B524AE00F52D9A /* lobbyBackground-hd.png */; };
 		9CBE857016B524AE00F52D9A /* lobbyBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE856E16B524AE00F52D9A /* lobbyBackground.png */; };
-		B3432C2816B4C3FE00B2365E /* NetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* NetworkEngine.m */; };
+		B3432C2816B4C3FE00B2365E /* GameKitEventEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameKitEventEngine.m */; };
 		B3432C9F16B4DC2400B2365E /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3432C9E16B4DC2400B2365E /* GameEngine.m */; };
 		B3432CA016B4DC2400B2365E /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3432C9E16B4DC2400B2365E /* GameEngine.m */; };
 		B354826816B3A75A004ECF7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D716B39AC50061047A /* UIKit.framework */; };
@@ -102,7 +102,7 @@
 		B354829316B3A77C004ECF7C /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B354829216B3A77C004ECF7C /* UnitTests.m */; };
 		B390DC7E16B4F40E00B11CA5 /* SimpleEventEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B390DC7D16B4F40E00B11CA5 /* SimpleEventEngine.m */; };
 		B3985A9116B46B8E008081FB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47DD16B39AC50061047A /* GameKit.framework */; };
-		B3985A9516B46BDD008081FB /* NetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* NetworkEngine.m */; };
+		B3985A9516B46BDD008081FB /* GameKitEventEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameKitEventEngine.m */; };
 		B3985A9A16B46E07008081FB /* NetworkTesterRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9816B46E07008081FB /* NetworkTesterRootViewController.m */; };
 		B3E1FF1516B476B500D940F0 /* NetworkTesterRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3E1FF1416B476B500D940F0 /* NetworkTesterRootViewController.xib */; };
 		B3E1FF9A16B497A200D940F0 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E1FF9916B497A200D940F0 /* Util.m */; };
@@ -622,8 +622,8 @@
 		B390DC7C16B4F40E00B11CA5 /* SimpleEventEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleEventEngine.h; sourceTree = "<group>"; };
 		B390DC7D16B4F40E00B11CA5 /* SimpleEventEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleEventEngine.m; sourceTree = "<group>"; };
 		B390DC7F16B4F46700B11CA5 /* EventEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventEngine.h; sourceTree = "<group>"; };
-		B3985A9316B46BDD008081FB /* NetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkEngine.h; sourceTree = "<group>"; };
-		B3985A9416B46BDD008081FB /* NetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkEngine.m; sourceTree = "<group>"; };
+		B3985A9316B46BDD008081FB /* GameKitEventEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitEventEngine.h; sourceTree = "<group>"; };
+		B3985A9416B46BDD008081FB /* GameKitEventEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitEventEngine.m; sourceTree = "<group>"; };
 		B3985A9716B46E07008081FB /* NetworkTesterRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTesterRootViewController.h; sourceTree = "<group>"; };
 		B3985A9816B46E07008081FB /* NetworkTesterRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTesterRootViewController.m; sourceTree = "<group>"; };
 		B3E1FF1416B476B500D940F0 /* NetworkTesterRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkTesterRootViewController.xib; sourceTree = "<group>"; };
@@ -971,8 +971,8 @@
 				B3432C9E16B4DC2400B2365E /* GameEngine.m */,
 				B390DC7C16B4F40E00B11CA5 /* SimpleEventEngine.h */,
 				B390DC7D16B4F40E00B11CA5 /* SimpleEventEngine.m */,
-				B3985A9316B46BDD008081FB /* NetworkEngine.h */,
-				B3985A9416B46BDD008081FB /* NetworkEngine.m */,
+				B3985A9316B46BDD008081FB /* GameKitEventEngine.h */,
+				B3985A9416B46BDD008081FB /* GameKitEventEngine.m */,
 			);
 			name = GameEngine;
 			sourceTree = "<group>";
@@ -1574,7 +1574,7 @@
 				0AC19EB616B4670300FC5541 /* LobbyScene.m in Sources */,
 				9CAB495616B39AC70061047A /* main.m in Sources */,
 				9CAB495916B39AC70061047A /* AppDelegate.m in Sources */,
-				B3985A9516B46BDD008081FB /* NetworkEngine.m in Sources */,
+				B3985A9516B46BDD008081FB /* GameKitEventEngine.m in Sources */,
 				9CAB4E9416B470A40061047A /* GameBackgroundLayer.m in Sources */,
 				9CAB4E9716B470D80061047A /* GameGestureLayer.m in Sources */,
 				9CAB4E9B16B4713D0061047A /* GameMonsterLayer.m in Sources */,
@@ -1596,7 +1596,7 @@
 				B354827616B3A75A004ECF7C /* NetworkTesterAppDelegate.m in Sources */,
 				B3985A9A16B46E07008081FB /* NetworkTesterRootViewController.m in Sources */,
 				B3E1FF9B16B497A200D940F0 /* Util.m in Sources */,
-				B3432C2816B4C3FE00B2365E /* NetworkEngine.m in Sources */,
+				B3432C2816B4C3FE00B2365E /* GameKitEventEngine.m in Sources */,
 				B3432CA016B4DC2400B2365E /* GameEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

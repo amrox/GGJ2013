@@ -7,7 +7,7 @@
 //
 
 #import "GameEngine.h"
-#import "NetworkEngine.h"
+#import "GameKitEventEngine.h"
 
 #define BOSS_MAX_HEALTH 100
 
@@ -29,7 +29,7 @@
 	timeToNextAttack = -1;
 }
 
-- (void)setNetworkEngine:(NetworkEngine *)networkEngine
+- (void)setNetworkEngine:(GameKitEventEngine *)networkEngine
 {
     _networkEngine = networkEngine;
     _networkEngine.engine = self;

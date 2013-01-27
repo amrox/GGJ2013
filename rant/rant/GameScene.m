@@ -8,7 +8,7 @@
 #import "GameEngine.h"
 #import "GameGestureLayer.h"
 #import "GameHeroNode.h"
-#import "NetworkEngine.h"
+#import "GameKitEventEngine.h"
 
 #define SHAKE_TIME 0.7f
 #define SHAKE_1_PERIOD 0.2f
@@ -46,7 +46,7 @@
 
 - (void) refresh
 {
-    GKMatch *match = [NetworkEngine sharedNetworkEngine].match;
+    GKMatch *match = [GameKitEventEngine sharedNetworkEngine].match;
 
     NSLog(@"match: %@", match.playerIDs);
     
@@ -56,7 +56,7 @@
 {
     [super onEnter];
     
-    [[NetworkEngine sharedNetworkEngine] begin];
+    [[GameKitEventEngine sharedNetworkEngine] begin];
     
     [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
 
@@ -81,7 +81,7 @@
 	[gameEngine reset];
 	gameEngine.delegate = self;
     
-    gameEngine.networkEngine = [NetworkEngine sharedNetworkEngine];
+    gameEngine.networkEngine = [GameKitEventEngine sharedNetworkEngine];
 
 	[self scheduleUpdate];
 }

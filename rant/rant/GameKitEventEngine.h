@@ -19,12 +19,12 @@ typedef struct {
     GameState state;
 } GamePacket;
 
-@interface NetworkEngine : NSObject <GKMatchDelegate>
+@interface GameKitEventEngine : NSObject <GKMatchDelegate>
 {
     int _gamePacketNumber;
 }
 
-+ (NetworkEngine *)sharedNetworkEngine;
++ (GameKitEventEngine *)sharedNetworkEngine;
 
 @property (strong) GameEngine *engine;
 

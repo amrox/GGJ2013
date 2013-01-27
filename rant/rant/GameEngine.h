@@ -54,7 +54,7 @@ typedef enum {
 
 
 
-@class NetworkEngine;
+@class GameKitEventEngine;
 
 @interface GameEngine : NSObject
 
@@ -62,7 +62,7 @@ typedef enum {
 @property (assign) int playerMaxHealth;
 @property (assign) int playerCount;
 
-@property (nonatomic, strong) NetworkEngine *networkEngine;
+@property (nonatomic, strong) GameKitEventEngine *networkEngine;
 
 @property (nonatomic, weak) NSObject<GameEngineDelegate> *delegate;
 
