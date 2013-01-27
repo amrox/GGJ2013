@@ -7,47 +7,42 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <GameKit/GameKit.h>
 
-extern NSString *const GameEngineGameBeginNotification;
-extern NSString *const GameEngineGameEndNotification;
+@class NetworkEngine;
+
+@interface GameEngine : NSObject
 
 typedef struct {
 	int			bossHealth;
+    int         playerCount;
     int			playerHeath[4];
 } GameState;
 
 typedef struct {
 	int			type;
+    int         target; // 0=boss, 1-4=player
     int			value;
 } GameEvent;
 
-
-@interface GameEngine : NSObject <GKMatchDelegate>
-{
-    int _gameUniqueID;
-    int _gamePacketNumber;
-}
-
-+ (GameEngine *)sharedGameEngine;
+typedef enum {
+    GameEventTypeAttack,
+    GameEventTypeSendHeal,
+    GameEventTypeReceiveHeal,
+} GameEventTypes;
 
 
-- (void)authenticate;
-- (void)authenticateWithCompletionHandler:(void(^)(NSError *error))completionHandler;
-- (BOOL)isAuthenticated;
+@property (assign) int playerMaxHealth;
+@property (assign) int playerCount;
+@property (assign) int bossMaxHealth;
 
-@property (strong, readonly) GKMatch *match;
-- (void)findMatch;
-- (BOOL)isMatchReady;
+@property (nonatomic, strong) NetworkEngine *networkEngine;
 
+@property (assign) GameState currentState;
 
-- (void)begin;
+- (void)reset;
 
-- (void)end;
+- (void)processEvent:(GameEvent *)event;
 
-@property (assign, readonly) GameState currentState;
-
-
-- (void)sendEvent:(GameEvent *)event;
+- (BOOL)isServer;
 
 @end

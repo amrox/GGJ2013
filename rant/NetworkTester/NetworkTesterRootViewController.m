@@ -7,7 +7,7 @@
 //
 
 #import "NetworkTesterRootViewController.h"
-#import "GameEngine.h"
+#import "NetworkEngine.h"
 
 @interface NetworkTesterRootViewController ()
 
@@ -50,7 +50,7 @@
 
 - (void) refresh
 {
-    GameEngine *engine = [GameEngine sharedGameEngine];
+    NetworkEngine *engine = [NetworkEngine sharedNetworkEngine];
     
     int const totalPlayers = [engine isMatchReady] ? [engine.match.playerIDs count] + 1 : 0;
     
@@ -65,7 +65,7 @@
 
 - (IBAction)match:(id)sender
 {
-    GameEngine *engine = [GameEngine sharedGameEngine];
+    NetworkEngine *engine = [NetworkEngine sharedNetworkEngine];
     [engine findMatch];
     
     [self.activityThing startAnimating];
@@ -73,7 +73,7 @@
 
 - (IBAction)begin:(id)sender
 {
-    GameEngine *engine = [GameEngine sharedGameEngine];
+    NetworkEngine *engine = [NetworkEngine sharedNetworkEngine];
     [engine begin];
     
     [self.activityThing stopAnimating];
