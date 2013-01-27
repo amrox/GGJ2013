@@ -6,6 +6,8 @@
 #import "GameHUDLayer.h"
 #import "cocos2d.h"
 
+#import "GameGestureLayer.h"
+
 
 @implementation GameHUDLayer
 
@@ -15,6 +17,9 @@
     
 }
 
-
+- (void)gestureRegistered:(Gesture *)gesture
+{
+    NSLog(@"Gesture registered: %d", gesture.gesture);
+}
 
 @end

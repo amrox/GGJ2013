@@ -1,14 +1,14 @@
 #import "cocos2d.h"
+#import "GameGestureLayer.h"
 
 @class GameBackgroundLayer;
-@class GameGestureLayer;
 @class GameMonsterLayer;
 @class GameHUDLayer;
 @class GameHeroLayer;
 
 #define RANT_FONT @"Helvetica"
 
-@interface GameScene : CCScene
+@interface GameScene : CCScene <GestureReceiver>
 {
 }
 

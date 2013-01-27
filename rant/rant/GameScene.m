@@ -2,7 +2,6 @@
 #import "ResultsScene.h"
 
 #import "GameBackgroundLayer.h"
-#import "GameGestureLayer.h"
 #import "GameMonsterLayer.h"
 #import "GameHUDLayer.h"
 #import "GameHeroLayer.h"
@@ -66,7 +65,8 @@
     gestureLayer = [GameGestureLayer node];
     
 	[gestureLayer setPosition:ccp(-windowSize.width*0.5f, -windowSize.height*0.5f)];
-
+    [gestureLayer setDelegate:self];
+    
     [self addChild:backgroundLayer];
     [self addChild:monsterLayer];
     [self addChild:heroLayer];
@@ -77,6 +77,18 @@
 - (void)monsterHPChangedTo:(int)hp
 {
 	NSLog(@"monster HP changed to %d", hp);
+}
+
+#pragma mark - Gesture Receiver methods
+
+- (void)gestureRegistered:(Gesture *)gesture
+{
+    [hudLayer gestureRegistered:gesture];
+}
+
+- (void)gestureChainCompleted:(NSArray *)gestureChain
+{
+    
 }
 
 @end
