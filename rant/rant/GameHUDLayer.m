@@ -19,7 +19,6 @@
 
 - (void)gestureRegistered:(Gesture *)gesture
 {
-    NSLog(@"Gesture registered: %d", gesture.gesture);
 }
 
 @end

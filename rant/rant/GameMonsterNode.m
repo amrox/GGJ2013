@@ -96,4 +96,40 @@
     maxHP = 100.0;
 }
 
+#pragma mark - Animations
+
+- (void)loopIdle
+{
+    [sprite runAction:[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:idleAnim]]];
+}
+
+- (void)playAttack1Anim
+{
+    [sprite stopAllActions];
+    [sprite runAction:[CCSequence actions:
+                       [CCAnimate actionWithAnimation:attack1Anim],
+                       [CCCallFunc actionWithTarget:self selector:@selector(loopIdle)],
+                       nil
+                       ]];
+}
+
+- (void)resetPosition
+{
+    [sprite setPosition:ccp(sprite.position.x - 10, sprite.position.y)];
+}
+
+- (void)playHitAnim
+{
+    [sprite stopAllActions];
+    CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"HeartBear_Hit.png"];
+    [sprite setDisplayFrame:frame];
+    
+    [sprite runAction:[CCSequence actions:
+                       [CCMoveTo actionWithDuration:1.0 position:ccp(sprite.position.x + 10, sprite.position.y)],
+                       [CCCallFunc actionWithTarget:self selector:@selector(resetPosition)],
+                       [CCCallFunc actionWithTarget:self selector:@selector(loopIdle)],
+                       nil
+                       ]];
+}
+
 @end

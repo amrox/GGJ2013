@@ -18,4 +18,6 @@
 
 - (id)initWithIndex:(int)index;
 
+- (void)playHitAnim;
+
 @end

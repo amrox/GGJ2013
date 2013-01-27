@@ -17,4 +17,6 @@
 
 - (id)initWithIndex:(int)index;
 
+- (void)playAttackAnim;
+
 @end

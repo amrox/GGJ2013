@@ -63,6 +63,36 @@
 	//todo: update stuff here
 }
 
+- (void)playAnimationWithEventType:(EGameEventType)eventType
+{
+    if (eventType == EGameEventType_ATTACK_FIRE)
+    {
+        [self runAction:[CCSequence actions:
+                         [CCCallFunc actionWithTarget:heroLayer.hero selector:@selector(playAttackAnim)],
+                         [CCDelayTime actionWithDuration:0.5],
+                         [CCCallFunc actionWithTarget:monsterLayer.monster selector:@selector(playHitAnim)],
+                         nil]];
+    }
+    else if (eventType == EGameEventType_ATTACK_ICE)
+    {
+        [self runAction:[CCSequence actions:
+                         [CCCallFunc actionWithTarget:heroLayer.hero selector:@selector(playAttackAnim)],
+                         [CCDelayTime actionWithDuration:0.5],
+                         [CCCallFunc actionWithTarget:monsterLayer.monster selector:@selector(playHitAnim)],
+                         nil]];
+    }
+    else if (eventType == EGameEventType_ATTACK_WIND)
+    {
+        [self runAction:[CCSequence actions:
+                         [CCCallFunc actionWithTarget:heroLayer.hero selector:@selector(playAttackAnim)],
+                         [CCDelayTime actionWithDuration:0.5],
+                         [CCCallFunc actionWithTarget:monsterLayer.monster selector:@selector(playHitAnim)],
+                         nil]];
+    }
+}
+
+
+
 #pragma mark - Gesture Receiver methods
 
 - (void)gestureRegistered:(Gesture *)gesture
@@ -82,6 +112,7 @@
 			event.type = EGameEventType_ATTACK_FIRE;
 			event.value = 1;
 			[gameEngine sendEventAsClient:&event];
+            [self playAnimationWithEventType:event.type];
 		}
 		else if (singleGesture.gesture == EGesture_WIND)
 		{
@@ -90,6 +121,7 @@
 			event.type = EGameEventType_ATTACK_WIND;
 			event.value = 1;
 			[gameEngine sendEventAsClient:&event];
+            [self playAnimationWithEventType:event.type];
 		}
 		else if (singleGesture.gesture == EGesture_ICE)
 		{
@@ -98,6 +130,7 @@
 			event.type = EGameEventType_ATTACK_ICE;
 			event.value = 1;
 			[gameEngine sendEventAsClient:&event];
+            [self playAnimationWithEventType:event.type];
 		}
 		else if (singleGesture.gesture == EGesture_HEAL)
 		{
@@ -106,6 +139,7 @@
 			event.type = EGameEventType_HEAL;
 			event.value = 1;
 			[gameEngine sendEventAsClient:&event];
+            [self playAnimationWithEventType:event.type];
 		}
 		else if (singleGesture.gesture == EGesture_RECEIVE_HEAL)
 		{
@@ -114,6 +148,7 @@
 			event.type = EGameEventType_RECEIVE_HEAL;
 			event.value = 1;
 			[gameEngine sendEventAsClient:&event];
+            [self playAnimationWithEventType:event.type];
 		}
 	}
 	else if ([gestureChain count] == 2)
@@ -129,6 +164,7 @@
 				event.type = EGameEventType_ATTACK_FIRE;
 				event.value = 3;
 				[gameEngine sendEventAsClient:&event];
+                [self playAnimationWithEventType:event.type];
 			}
 			else if (firstGesture.gesture == EGesture_WIND)
 			{
@@ -137,6 +173,7 @@
 				event.type = EGameEventType_ATTACK_WIND;
 				event.value = 3;
 				[gameEngine sendEventAsClient:&event];
+                [self playAnimationWithEventType:event.type];
 			}
 			else if (firstGesture.gesture == EGesture_ICE)
 			{
@@ -145,6 +182,7 @@
 				event.type = EGameEventType_ATTACK_ICE;
 				event.value = 3;
 				[gameEngine sendEventAsClient:&event];
+                [self playAnimationWithEventType:event.type];
 			}
 		}
 	}
