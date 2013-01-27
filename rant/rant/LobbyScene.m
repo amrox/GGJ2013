@@ -41,12 +41,17 @@
         
     }
     lastPlayerCount = curPlayerCount;
+    
+    [self enableEnterGameButton:(curPlayerCount > 1)];
 }
 
 -(void)onEnter
 {
     // Create the layer hierarchy
     [super onEnter];
+    
+    [self enableEnterGameButton:NO];
+    
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bgmusic1.caf"];
 	
     [[GameKitEventEngine sharedNetworkEngine] authenticate];
