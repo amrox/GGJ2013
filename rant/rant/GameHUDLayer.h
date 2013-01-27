@@ -14,6 +14,7 @@
 }
 
 @property (nonatomic, strong) GameMonsterHealthBar *monsterHealthBar;
+@property (nonatomic, strong) GameMonsterHealthBar *monsterAttackBar;
 @property (nonatomic, strong) GameMonsterHealthBar *heroHealthBar;
 
 - (void)gestureRegistered:(Gesture *)gesture;

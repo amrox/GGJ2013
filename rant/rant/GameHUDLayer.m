@@ -58,9 +58,12 @@
 {
 	CCMenuItemImage * spellBookButton;
 	SpellBookLayer * spellBookLayer;
+    
+    CCSprite *attackBar;
 }
 
 @synthesize monsterHealthBar;
+@synthesize monsterAttackBar;
 @synthesize heroHealthBar;
 
 -(void)onEnter
@@ -81,15 +84,21 @@
 //    [self addChild:spellBookLayer];
     
     
-    monsterHealthBar = [GameMonsterHealthBar node];
-    [monsterHealthBar setPosition:ccp(160, 400)];
+    monsterHealthBar = [[GameMonsterHealthBar alloc] initWithGreenBar:YES];
+    [monsterHealthBar setPosition:ccp(160, 440)];
     [self addChild:monsterHealthBar];
     
+    monsterAttackBar = [[GameMonsterHealthBar alloc] initWithGreenBar:NO];
+    [monsterAttackBar setPosition:ccp(180, 380)];
+    [monsterAttackBar setScale:0.8];
+    [self addChild:monsterAttackBar];
     
-    heroHealthBar = [GameMonsterHealthBar node];
+    heroHealthBar = [[GameMonsterHealthBar alloc] initWithGreenBar:YES];
     [heroHealthBar setPosition:ccp(80, 160)];
-    [heroHealthBar setScaleX:0.5];
+    [heroHealthBar setScale:0.5];
     [self addChild:heroHealthBar];
+    
+    
 }
 
 - (void)gestureRegistered:(Gesture *)gesture

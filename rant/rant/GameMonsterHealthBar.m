@@ -11,13 +11,17 @@
     CCSprite *barFill;
 }
 
-- (id)init
+- (id)initWithGreenBar:(BOOL)green;
 {
     if (self = [super init])
     {
         CCSprite *barBack = [CCSprite spriteWithFile:@"gameHPBarBack.png"];
         
-        barFill = [CCSprite spriteWithFile:@"gameHPBarFill.png"];
+        if (green)
+            barFill = [CCSprite spriteWithFile:@"gameHPBarFill.png"];
+        else
+            barFill = [CCSprite spriteWithFile:@"gameRedBar.png"];
+        
         [barFill setPosition:ccp(0, 0)];
         
         [self addChild:barBack];

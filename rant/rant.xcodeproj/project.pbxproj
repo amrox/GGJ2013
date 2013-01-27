@@ -48,6 +48,20 @@
 		9C5C5D3516B5CCB200B87103 /* gameHPBarBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5D3116B5CCB200B87103 /* gameHPBarBack.png */; };
 		9C5C5D3616B5CCB200B87103 /* gameHPBarFill-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5D3216B5CCB200B87103 /* gameHPBarFill-hd.png */; };
 		9C5C5D3716B5CCB200B87103 /* gameHPBarFill.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5D3316B5CCB200B87103 /* gameHPBarFill.png */; };
+		9C5C5E3616B5D6C100B87103 /* gameIconAttack-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E2A16B5D6C100B87103 /* gameIconAttack-hd.png */; };
+		9C5C5E3716B5D6C100B87103 /* gameIconAttack.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E2B16B5D6C100B87103 /* gameIconAttack.png */; };
+		9C5C5E3816B5D6C100B87103 /* gameIconFire-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E2C16B5D6C100B87103 /* gameIconFire-hd.png */; };
+		9C5C5E3916B5D6C100B87103 /* gameIconFire.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E2D16B5D6C100B87103 /* gameIconFire.png */; };
+		9C5C5E3A16B5D6C100B87103 /* gameIconHeal-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E2E16B5D6C100B87103 /* gameIconHeal-hd.png */; };
+		9C5C5E3B16B5D6C100B87103 /* gameIconHeal.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E2F16B5D6C100B87103 /* gameIconHeal.png */; };
+		9C5C5E3C16B5D6C100B87103 /* gameIconIce-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E3016B5D6C100B87103 /* gameIconIce-hd.png */; };
+		9C5C5E3D16B5D6C100B87103 /* gameIconIce.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E3116B5D6C100B87103 /* gameIconIce.png */; };
+		9C5C5E3E16B5D6C100B87103 /* gameIconReceive-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E3216B5D6C100B87103 /* gameIconReceive-hd.png */; };
+		9C5C5E3F16B5D6C100B87103 /* gameIconReceive.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E3316B5D6C100B87103 /* gameIconReceive.png */; };
+		9C5C5E4016B5D6C100B87103 /* gameIconWind-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E3416B5D6C100B87103 /* gameIconWind-hd.png */; };
+		9C5C5E4116B5D6C100B87103 /* gameIconWind.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E3516B5D6C100B87103 /* gameIconWind.png */; };
+		9C5C5E4416B5D76100B87103 /* gameRedBar-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E4216B5D76000B87103 /* gameRedBar-hd.png */; };
+		9C5C5E4516B5D76100B87103 /* gameRedBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E4316B5D76000B87103 /* gameRedBar.png */; };
 		9CAB47CE16B39AC50061047A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47CD16B39AC50061047A /* QuartzCore.framework */; };
 		9CAB47D016B39AC50061047A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47CF16B39AC50061047A /* OpenGLES.framework */; };
 		9CAB47D216B39AC50061047A /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D116B39AC50061047A /* OpenAL.framework */; };
@@ -618,6 +632,20 @@
 		9C5C5D3116B5CCB200B87103 /* gameHPBarBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameHPBarBack.png; path = Resources/GameAssets/gameHPBarBack.png; sourceTree = "<group>"; };
 		9C5C5D3216B5CCB200B87103 /* gameHPBarFill-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameHPBarFill-hd.png"; path = "Resources/GameAssets/gameHPBarFill-hd.png"; sourceTree = "<group>"; };
 		9C5C5D3316B5CCB200B87103 /* gameHPBarFill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameHPBarFill.png; path = Resources/GameAssets/gameHPBarFill.png; sourceTree = "<group>"; };
+		9C5C5E2A16B5D6C100B87103 /* gameIconAttack-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameIconAttack-hd.png"; path = "Resources/GameAssets/gameIconAttack-hd.png"; sourceTree = "<group>"; };
+		9C5C5E2B16B5D6C100B87103 /* gameIconAttack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameIconAttack.png; path = Resources/GameAssets/gameIconAttack.png; sourceTree = "<group>"; };
+		9C5C5E2C16B5D6C100B87103 /* gameIconFire-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameIconFire-hd.png"; path = "Resources/GameAssets/gameIconFire-hd.png"; sourceTree = "<group>"; };
+		9C5C5E2D16B5D6C100B87103 /* gameIconFire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameIconFire.png; path = Resources/GameAssets/gameIconFire.png; sourceTree = "<group>"; };
+		9C5C5E2E16B5D6C100B87103 /* gameIconHeal-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameIconHeal-hd.png"; path = "Resources/GameAssets/gameIconHeal-hd.png"; sourceTree = "<group>"; };
+		9C5C5E2F16B5D6C100B87103 /* gameIconHeal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameIconHeal.png; path = Resources/GameAssets/gameIconHeal.png; sourceTree = "<group>"; };
+		9C5C5E3016B5D6C100B87103 /* gameIconIce-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameIconIce-hd.png"; path = "Resources/GameAssets/gameIconIce-hd.png"; sourceTree = "<group>"; };
+		9C5C5E3116B5D6C100B87103 /* gameIconIce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameIconIce.png; path = Resources/GameAssets/gameIconIce.png; sourceTree = "<group>"; };
+		9C5C5E3216B5D6C100B87103 /* gameIconReceive-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameIconReceive-hd.png"; path = "Resources/GameAssets/gameIconReceive-hd.png"; sourceTree = "<group>"; };
+		9C5C5E3316B5D6C100B87103 /* gameIconReceive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameIconReceive.png; path = Resources/GameAssets/gameIconReceive.png; sourceTree = "<group>"; };
+		9C5C5E3416B5D6C100B87103 /* gameIconWind-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameIconWind-hd.png"; path = "Resources/GameAssets/gameIconWind-hd.png"; sourceTree = "<group>"; };
+		9C5C5E3516B5D6C100B87103 /* gameIconWind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameIconWind.png; path = Resources/GameAssets/gameIconWind.png; sourceTree = "<group>"; };
+		9C5C5E4216B5D76000B87103 /* gameRedBar-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameRedBar-hd.png"; path = "Resources/GameAssets/gameRedBar-hd.png"; sourceTree = "<group>"; };
+		9C5C5E4316B5D76000B87103 /* gameRedBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameRedBar.png; path = Resources/GameAssets/gameRedBar.png; sourceTree = "<group>"; };
 		9CAB47C916B39AC50061047A /* rant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CAB47CD16B39AC50061047A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9CAB47CF16B39AC50061047A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1015,6 +1043,20 @@
 				9C5C5D3116B5CCB200B87103 /* gameHPBarBack.png */,
 				9C5C5D3216B5CCB200B87103 /* gameHPBarFill-hd.png */,
 				9C5C5D3316B5CCB200B87103 /* gameHPBarFill.png */,
+				9C5C5E2A16B5D6C100B87103 /* gameIconAttack-hd.png */,
+				9C5C5E2B16B5D6C100B87103 /* gameIconAttack.png */,
+				9C5C5E2C16B5D6C100B87103 /* gameIconFire-hd.png */,
+				9C5C5E2D16B5D6C100B87103 /* gameIconFire.png */,
+				9C5C5E2E16B5D6C100B87103 /* gameIconHeal-hd.png */,
+				9C5C5E2F16B5D6C100B87103 /* gameIconHeal.png */,
+				9C5C5E3016B5D6C100B87103 /* gameIconIce-hd.png */,
+				9C5C5E3116B5D6C100B87103 /* gameIconIce.png */,
+				9C5C5E3216B5D6C100B87103 /* gameIconReceive-hd.png */,
+				9C5C5E3316B5D6C100B87103 /* gameIconReceive.png */,
+				9C5C5E3416B5D6C100B87103 /* gameIconWind-hd.png */,
+				9C5C5E3516B5D6C100B87103 /* gameIconWind.png */,
+				9C5C5E4216B5D76000B87103 /* gameRedBar-hd.png */,
+				9C5C5E4316B5D76000B87103 /* gameRedBar.png */,
 			);
 			name = GameAssets;
 			sourceTree = "<group>";
@@ -1747,6 +1789,20 @@
 				FF716C2B16B5CD96002AF24B /* titleText2-hd.png in Resources */,
 				FF716C2D16B5CE62002AF24B /* titleText2.png in Resources */,
 				FF716C3516B5D19D002AF24B /* mainMenuPlayButtonPressed-hd.png in Resources */,
+				9C5C5E3616B5D6C100B87103 /* gameIconAttack-hd.png in Resources */,
+				9C5C5E3716B5D6C100B87103 /* gameIconAttack.png in Resources */,
+				9C5C5E3816B5D6C100B87103 /* gameIconFire-hd.png in Resources */,
+				9C5C5E3916B5D6C100B87103 /* gameIconFire.png in Resources */,
+				9C5C5E3A16B5D6C100B87103 /* gameIconHeal-hd.png in Resources */,
+				9C5C5E3B16B5D6C100B87103 /* gameIconHeal.png in Resources */,
+				9C5C5E3C16B5D6C100B87103 /* gameIconIce-hd.png in Resources */,
+				9C5C5E3D16B5D6C100B87103 /* gameIconIce.png in Resources */,
+				9C5C5E3E16B5D6C100B87103 /* gameIconReceive-hd.png in Resources */,
+				9C5C5E3F16B5D6C100B87103 /* gameIconReceive.png in Resources */,
+				9C5C5E4016B5D6C100B87103 /* gameIconWind-hd.png in Resources */,
+				9C5C5E4116B5D6C100B87103 /* gameIconWind.png in Resources */,
+				9C5C5E4416B5D76100B87103 /* gameRedBar-hd.png in Resources */,
+				9C5C5E4516B5D76100B87103 /* gameRedBar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

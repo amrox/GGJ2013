@@ -11,6 +11,7 @@
     
 }
 
+- (id)initWithGreenBar:(BOOL)green;
 - (void)setHealthBarPercentage:(float)percentage animated:(BOOL)animated;
 
 @end
