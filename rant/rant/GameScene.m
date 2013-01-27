@@ -33,6 +33,7 @@
 {
 	GameEngine * gameEngine;
 	float cameraShakeTimeLeft;
+	float monsterPrepareTime;
 }
 
 @synthesize backgroundLayer;
@@ -105,6 +106,8 @@
 - (void)update:(ccTime)deltaTime
 {
 	[gameEngine update:deltaTime];
+	monsterPrepareTime -= deltaTime;
+	[self updateMonsterPrepareTime];
 
 	cameraShakeTimeLeft = MAX(0, cameraShakeTimeLeft - deltaTime);
 	if (cameraShakeTimeLeft <= 0)
@@ -158,10 +161,15 @@
 	else if (event->type == EGameEventType_MONSTER_PREPARING_TO_ATTACK && event->targetPlayerId == [gameEngine myPlayerNum])
 	{
 		[monsterLayer.monster playAttack3Anim];
+		monsterPrepareTime = ATTACK_PREPARATION_TIME;
 	}
 	else if (event->type == EGameEventType_PLAYER_DIED)
 	{
 		[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MainMenuScene scene] withColor:ccWHITE]];
+	}
+	else if (event->type == EGameEventType_MONSTER_ATTACK_BLOCKED)
+	{
+		monsterPrepareTime = 0;
 	}
 
 	int playerId = [gameEngine myPlayerNum];
@@ -170,6 +178,22 @@
 
 	[hudLayer.heroHealthBar setHealthBarPercentage:(float)playerHealth / MAX_PLAYER_HEALTH animated:YES];
 	[hudLayer.monsterHealthBar setHealthBarPercentage:(float)bossHealth / BOSS_MAX_HEALTH animated:YES];
+
+	[self updateMonsterPrepareTime];
+}
+
+- (void)updateMonsterPrepareTime
+{
+	if (monsterPrepareTime <= 0)
+	{
+		hudLayer.monsterAttackBar.visible = NO;
+	}
+	else
+	{
+		float perc = monsterPrepareTime / ATTACK_PREPARATION_TIME;
+		hudLayer.monsterAttackBar.visible = YES;
+		[hudLayer.monsterAttackBar setHealthBarPercentage:perc animated:YES];
+	}
 }
 
 - (void)playAnimationWithEventType:(EGameEventType)eventType
