@@ -31,6 +31,7 @@ typedef struct {
     int			playerHeath[4];
 	int			healReady;			// 1 if ready, 0 otherwise
 	int			healerPlayerId;
+	int			monsterPreparingToAttackPlayerId;	//-1 of none
 } GameState;
 
 typedef struct {
@@ -61,7 +62,6 @@ typedef enum {
 
 
 @property (assign) int playerMaxHealth;
-@property (assign) int playerCount;
 
 @property (nonatomic, strong) GameKitEventEngine *networkEngine;
 
@@ -85,5 +85,6 @@ typedef enum {
 - (void)update:(float)deltaTime;
 
 - (int) myPlayerNum;
+- (int)playerCount;
 
 @end

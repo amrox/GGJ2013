@@ -25,6 +25,7 @@
     for (int i = 0; i < 4; i++) {
         state.playerHeath[i] = self.playerMaxHealth;
     }
+	state.monsterPreparingToAttackPlayerId = -1;
 	self.currentState = state;
 	timeToNextAttack = -1;
 }
@@ -81,6 +82,14 @@
         return [self.networkEngine isServer];
     }
     return YES;
+}
+
+- (int)playerCount
+{
+    if (self.networkEngine) {
+        return [self.networkEngine matchPlayerCount];
+    }
+    return 1;
 }
 
 - (int) myPlayerNum
@@ -157,10 +166,10 @@
 {
     if (!self.isServer) return; // hack
     
-#define MIN_ATTACK_TIME 2
-#define MAX_ATTACK_TIME 6
+#define MIN_ATTACK_TIME 6
+#define MAX_ATTACK_TIME 10
 
-	if (timeToNextAttack == -1)
+	if (timeToNextAttack == -1)// && self.currentState.monsterPreparingToAttackPlayerId == -1)
 	{
 		timeToNextAttack = (float)(arc4random() % 1000) / 1000.0f * (MAX_ATTACK_TIME - MIN_ATTACK_TIME) + MIN_ATTACK_TIME;
 	}
