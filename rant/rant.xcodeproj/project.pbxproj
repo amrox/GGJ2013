@@ -124,6 +124,8 @@
 		B3E1FF9B16B497A200D940F0 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E1FF9916B497A200D940F0 /* Util.m */; };
 		FF716BA516B5AD37002AF24B /* click1.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF716BA416B5AD37002AF24B /* click1.caf */; };
 		FF716BA616B5AD37002AF24B /* click1.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF716BA416B5AD37002AF24B /* click1.caf */; };
+		FF716BA816B5B428002AF24B /* fastbeat1.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF716BA716B5B428002AF24B /* fastbeat1.caf */; };
+		FF716BA916B5B428002AF24B /* fastbeat1.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF716BA716B5B428002AF24B /* fastbeat1.caf */; };
 		FF91403D16B4B2BB00A6E22E /* sine440.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF91403C16B4B2BB00A6E22E /* sine440.caf */; };
 		FF91403E16B4B2BB00A6E22E /* sine440.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF91403C16B4B2BB00A6E22E /* sine440.caf */; };
 		FF9140B816B4C18B00A6E22E /* red_health_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF9140B716B4C18B00A6E22E /* red_health_bar.png */; };
@@ -668,6 +670,7 @@
 		B3E1FF9816B497A200D940F0 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		B3E1FF9916B497A200D940F0 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		FF716BA416B5AD37002AF24B /* click1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = click1.caf; sourceTree = "<group>"; };
+		FF716BA716B5B428002AF24B /* fastbeat1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fastbeat1.caf; sourceTree = "<group>"; };
 		FF91403C16B4B2BB00A6E22E /* sine440.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sine440.caf; sourceTree = "<group>"; };
 		FF9140B716B4C18B00A6E22E /* red_health_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_health_bar.png; sourceTree = "<group>"; };
 		FF91413316B4E70B00A6E22E /* redhealthbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redhealthbar.png; sourceTree = "<group>"; };
@@ -913,6 +916,7 @@
 		9CAB4F8716B489800061047A /* GameAssets */ = {
 			isa = PBXGroup;
 			children = (
+				FF716BA716B5B428002AF24B /* fastbeat1.caf */,
 				FF716BA416B5AD37002AF24B /* click1.caf */,
 				FF9FABAC16B5964F00E1322A /* bgmusic1.caf */,
 				FF9FABA916B595CB00E1322A /* castspelllaser.caf */,
@@ -1609,6 +1613,7 @@
 				FF9FABAA16B595CB00E1322A /* castspelllaser.caf in Resources */,
 				FF9FABAD16B5964F00E1322A /* bgmusic1.caf in Resources */,
 				FF716BA516B5AD37002AF24B /* click1.caf in Resources */,
+				FF716BA816B5B428002AF24B /* fastbeat1.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1636,6 +1641,7 @@
 				FF9FABAB16B595CB00E1322A /* castspelllaser.caf in Resources */,
 				FF9FABAE16B5964F00E1322A /* bgmusic1.caf in Resources */,
 				FF716BA616B5AD37002AF24B /* click1.caf in Resources */,
+				FF716BA916B5B428002AF24B /* fastbeat1.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

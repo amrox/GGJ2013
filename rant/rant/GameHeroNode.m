@@ -116,15 +116,21 @@
                        ]];
 }
 
+- (void)playhitSound
+{
+//    [[SimpleAudioEngine sharedEngine] playEffect:@"playerhit.caf"];
+
+}
 - (void)playHitAnim
 {
     [sprite stopAllActions];
     [[SimpleAudioEngine sharedEngine] playEffect:@"playerhit.caf"];
     [sprite runAction:[CCSequence actions:
                        [CCAnimate actionWithAnimation:hitAnim],
-                       [CCCallFunc actionWithTarget:self selector:@selector(loopIdle)],
+                       [CCCallFunc actionWithTarget:self selector:@selector(loopIdle)],                       
                        nil
-                       ]];
+                       ]
+     ];
 }
 
 @end
