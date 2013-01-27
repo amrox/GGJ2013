@@ -4,6 +4,7 @@
 //
 
 #import "GameHeroLayer.h"
+#import "GameHeroNode.h"
 
 
 @implementation GameHeroLayer
