@@ -187,9 +187,12 @@
 	if (monsterPrepareTime <= 0)
 	{
 		hudLayer.monsterAttackBar.visible = NO;
+		[hudLayer clearIcon];
 	}
 	else
 	{
+		[hudLayer displayIconWithType:gameEngine.currentState.monsterAttackPreparationType + EGameEventType_ATTACK_FIRE];
+
 		float perc = monsterPrepareTime / ATTACK_PREPARATION_TIME;
 		hudLayer.monsterAttackBar.visible = YES;
 		[hudLayer.monsterAttackBar setHealthBarPercentage:perc animated:YES];
