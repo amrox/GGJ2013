@@ -18,6 +18,8 @@
 
 - (id)initWithIndex:(int)index;
 
+- (void)loopIdle;
+- (void)loopAttack3Anim;
 - (void)playHitAnim;
 - (void)playAttack1Anim;
 - (void)playAttack2Anim;
