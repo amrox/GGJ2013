@@ -114,4 +114,14 @@
                        ]];
 }
 
+- (void)playHitAnim
+{
+    [sprite stopAllActions];
+    [sprite runAction:[CCSequence actions:
+                       [CCAnimate actionWithAnimation:hitAnim],
+                       [CCCallFunc actionWithTarget:self selector:@selector(loopIdle)],
+                       nil
+                       ]];
+}
+
 @end

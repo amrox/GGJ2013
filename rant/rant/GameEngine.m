@@ -7,11 +7,14 @@
 //
 
 #import "GameEngine.h"
-#import "NetworkEngine.h"
+#import "GameKitEventEngine.h"
 
 #define BOSS_MAX_HEALTH 100
 
 @implementation GameEngine
+{
+	float timeToNextAttack;
+}
 
 - (void)reset
 {
@@ -23,9 +26,10 @@
         state.playerHeath[i] = self.playerMaxHealth;
     }
 	self.currentState = state;
+	timeToNextAttack = -1;
 }
 
-- (void)setNetworkEngine:(NetworkEngine *)networkEngine
+- (void)setNetworkEngine:(GameKitEventEngine *)networkEngine
 {
     _networkEngine = networkEngine;
     _networkEngine.engine = self;
@@ -33,14 +37,22 @@
 
 - (void)broadcastEventAsServer:(GameEvent *)event
 {
-    if (!self.networkEngine) {
-        GameState state = self.currentState;
-        [self.delegate clientReceivedEvent:event withState:&state];
+    event->source = 0; // server is always 0
+    
+    NSLog(@"*** [GAME] [SEND] broadcast event src=%lld type=%d", event->source, event->type);
+    
+    GameState state = self.currentState;
+    [self.delegate clientReceivedEvent:event withState:&state];
+    
+    if (self.networkEngine) {
+        [self.networkEngine broadcastEventAsServer:event state:&state];
     }
 }
 
 - (void)processEvent:(GameEvent *)event
 {
+    NSAssert([self isServer], @"should only be called on the server");
+    
 	if (event->type == EGameEventType_ATTACK_FIRE ||
 		event->type == EGameEventType_ATTACK_WIND ||
 		event->type == EGameEventType_ATTACK_ICE)
@@ -96,17 +108,29 @@
 	}
 }
 
+- (void)receiveStateFromServer:(GameState *)state event:(GameEvent *)event
+{
+    NSAssert(![self isServer], @"should only be called on clients");
+    
+    self.currentState = *state;
+    
+    [self.delegate clientReceivedEvent:event withState:state];
+}
+
+
 - (void)sendEventAsClient:(GameEvent *)event
 {
-	if (!self.networkEngine)
+    event->source = [self myPlayerNum];
+    
+    NSLog(@"*** [GAME] [SEND] client event src=%lld type=%d", event->source, event->type);
+    
+	if ([self isServer])
 	{
         [self processEvent:event];
-        
-//		GameState state = self.currentState;
-//		[self.delegate clientReceivedEvent:event withState:&state];
-	} else {
-        
-        // andy does stuff
+	}
+    else
+    {
+        [self.networkEngine sendEventAsClient:event];
     }
 }
 
@@ -118,6 +142,48 @@
     return YES;
 }
 
+- (int) myPlayerNum
+{
+    if (self.networkEngine) {
+        return [self.networkEngine myPlayerNum];
+    }
+    return 1;
+}
 
+
+- (void)update:(float)deltaTime
+{
+    if (!self.isServer) return; // hack
+    
+#define MIN_ATTACK_TIME 2
+#define MAX_ATTACK_TIME 6
+
+	if (timeToNextAttack == -1)
+	{
+		timeToNextAttack = (float)(arc4random() % 1000) / 1000.0f * (MAX_ATTACK_TIME - MIN_ATTACK_TIME) + MIN_ATTACK_TIME;
+	}
+	else
+	{
+		timeToNextAttack -= deltaTime;
+		if (timeToNextAttack <= 0)
+		{
+#define PLAYER_TO_ATTACK 0
+#define DAMAGE 10
+
+			timeToNextAttack = -1;
+
+			GameState state = self.currentState;
+			state.playerHeath[PLAYER_TO_ATTACK] = MAX(0, state.playerHeath[PLAYER_TO_ATTACK] - DAMAGE);
+			self.currentState = state;
+
+			GameEvent broadcastEvent;
+			broadcastEvent.type = EGameEventType_PLAYER_HIT;
+			broadcastEvent.target = PLAYER_TO_ATTACK + 1;
+			broadcastEvent.value = DAMAGE;
+
+			[self broadcastEventAsServer:&broadcastEvent];
+		}
+	}
+}
 
 @end

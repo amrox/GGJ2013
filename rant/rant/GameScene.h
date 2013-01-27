@@ -6,7 +6,7 @@
 @class GameHeroLayer;
 @class GameGestureLayer;
 
-#define RANT_FONT @"Helvetica"
+#define RANT_FONT @"Action Man"
 
 @interface GameScene : CCScene
 {

@@ -7,7 +7,8 @@
 #import "GameHeroLayer.h"
 #import "GameEngine.h"
 #import "GameGestureLayer.h"
-
+#import "GameHeroNode.h"
+#import "GameKitEventEngine.h"
 
 #define SHAKE_TIME 0.7f
 #define SHAKE_1_PERIOD 0.2f
@@ -46,7 +47,7 @@
 -(void)onEnter
 {
     [super onEnter];
-
+    
 	CGSize windowSize = [[CCDirector sharedDirector] winSize];
     
     backgroundLayer = [GameBackgroundLayer node];
@@ -67,6 +68,12 @@
 	gameEngine = [[GameEngine alloc] init];
 	[gameEngine reset];
 	gameEngine.delegate = self;
+    
+    // this is SUPER hacky
+    if ([[GameKitEventEngine sharedNetworkEngine] isRunning]) {
+        gameEngine.networkEngine = [GameKitEventEngine sharedNetworkEngine];
+    }
+    
 
 	[self scheduleUpdate];
 }
@@ -78,6 +85,8 @@
 
 - (void)update:(ccTime)deltaTime
 {
+	[gameEngine update:deltaTime];
+
 	cameraShakeTimeLeft = MAX(0, cameraShakeTimeLeft - deltaTime);
 	if (cameraShakeTimeLeft <= 0)
 	{
@@ -110,7 +119,23 @@
 {
 	NSLog(@"got event.  monster hp is %d", state->bossHealth);
 
-	//todo: update stuff here
+	if (event->type == EGameEventType_MONSTER_DEAD)
+	{
+		NSLog(@"monster dead.  you win!");
+	}
+
+	if (event->type == EGameEventType_PLAYER_HIT)
+	{
+        [self runAction:[CCSequence actions:
+                         [CCCallFunc actionWithTarget:monsterLayer.monster selector:@selector(playAttack1Anim)],
+                         [CCDelayTime actionWithDuration:0.7],
+                         [CCCallFunc actionWithTarget:heroLayer.hero selector:@selector(playHitAnim)],
+                         [CCCallFunc actionWithTarget:self selector:@selector(shakeCamera)],
+                         [CCDelayTime actionWithDuration:0.7],
+                         [CCCallFunc actionWithTarget:heroLayer.hero selector:@selector(playHitAnim)],
+                         [CCCallFunc actionWithTarget:self selector:@selector(shakeCamera)],
+                         nil]];
+	}
 }
 
 - (void)playAnimationWithEventType:(EGameEventType)eventType

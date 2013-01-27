@@ -7,11 +7,14 @@
 //
 
 #import "NetworkTesterRootViewController.h"
-#import "NetworkEngine.h"
+#import "GameKitEventEngine.h"
+#import "GameEngine.h"
 
 @interface NetworkTesterRootViewController ()
 
 @property (strong) NSTimer *timer;
+
+@property (strong) GameEngine *gameEngine;
 @end
 
 @implementation NetworkTesterRootViewController
@@ -21,6 +24,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        self.gameEngine = [[GameEngine alloc] init];
+        self.gameEngine.delegate = self;
+        self.gameEngine.networkEngine = [GameKitEventEngine sharedNetworkEngine];
         
         self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                       target:self
@@ -50,7 +57,7 @@
 
 - (void) refresh
 {
-    NetworkEngine *engine = [NetworkEngine sharedNetworkEngine];
+    GameKitEventEngine *engine = [GameKitEventEngine sharedNetworkEngine];
     
     int const totalPlayers = [engine isMatchReady] ? [engine.match.playerIDs count] + 1 : 0;
     
@@ -61,11 +68,13 @@
     self.button1.hidden = totalPlayers < 2;
     
     self.beginButton.hidden = totalPlayers < 2;
+    
+    self.attackButton.hidden = ![engine isGameStarted];
 }
 
 - (IBAction)match:(id)sender
 {
-    NetworkEngine *engine = [NetworkEngine sharedNetworkEngine];
+    GameKitEventEngine *engine = [GameKitEventEngine sharedNetworkEngine];
     [engine findMatch];
     
     [self.activityThing startAnimating];
@@ -73,12 +82,31 @@
 
 - (IBAction)begin:(id)sender
 {
-    NetworkEngine *engine = [NetworkEngine sharedNetworkEngine];
+    GameKitEventEngine *engine = [GameKitEventEngine sharedNetworkEngine];
     [engine begin];
     
     [self.activityThing stopAnimating];
 
 }
+
+- (IBAction)attack:(id)sender
+{
+    GameEvent event;
+    event.type = GameEventTypeAttack;
+    event.value = 55;
+    [self.gameEngine sendEventAsClient:&event];
+}
+
+
+- (void)clientReceivedEvent:(GameEvent *)event withState:(GameState *)state
+{
+    NSLog(@"received event!");
+    NSLog(@"  source : %d", event->source);
+    NSLog(@"  type   : %d", event->type);
+    NSLog(@"  value  : %d", event->value);
+
+}
+
 
 
 @end

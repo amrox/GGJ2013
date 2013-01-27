@@ -6,9 +6,18 @@
 //
 //
 
+#import "GameEngine.h"
+
+@protocol EventEngineDelegate <NSObject>
+
+- (GameState)processEvent:(GameEvent *)event;
+
+@end
+
+
 @protocol EventEngine <NSObject>
 
-//- (void)processEvent:(GameEvent *)event;
+- (void)sendEventAsClient:(GameEvent *)event;
 
 
 @end

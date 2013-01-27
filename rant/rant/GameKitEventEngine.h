@@ -19,13 +19,12 @@ typedef struct {
     GameState state;
 } GamePacket;
 
-@interface NetworkEngine : NSObject <GKMatchDelegate>
+@interface GameKitEventEngine : NSObject <GKMatchDelegate>
 {
-    int _gameUniqueID;
     int _gamePacketNumber;
 }
 
-+ (NetworkEngine *)sharedNetworkEngine;
++ (GameKitEventEngine *)sharedNetworkEngine;
 
 @property (strong) GameEngine *engine;
 
@@ -37,12 +36,22 @@ typedef struct {
 - (void)findMatch;
 - (BOOL)isMatchReady;
 
+/**
+ @discussion Number of players in the match, including yourself. Will always return at least 1.
+ */
+- (int) matchPlayerCount;
+
 @property (assign, readonly) BOOL isServer;
+- (BOOL) isRunning;
+
+- (long long) myPlayerNum;
 
 - (void)begin;
 
 - (void)end;
 
-- (void)sendEvent:(GameEvent *)event;
+- (void)sendEventAsClient:(GameEvent *)event;
+
+- (void)broadcastEventAsServer:(GameEvent *)event state:(GameState *)state;
 
 @end

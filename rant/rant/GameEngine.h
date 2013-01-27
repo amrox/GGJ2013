@@ -21,6 +21,7 @@ typedef enum
 	EGameEventType_MONSTER_DAMAGED_ICE,
 	EGameEventType_MONSTER_DAMAGED_WIND,
 	EGameEventType_MONSTER_DEAD,
+	EGameEventType_PLAYER_HIT,
 	EGameEventType_PLAYER_RECEIVED_HEAL,
 } EGameEventType;
 
@@ -32,8 +33,9 @@ typedef struct {
 } GameState;
 
 typedef struct {
+	long long	source;
 	int			type;	//EGameEventType
-    int         target; // 0=boss, 1-4=player
+    long long   target; // 0=boss, 1-4=player
     int			value;
 } GameEvent;
 
@@ -52,7 +54,7 @@ typedef enum {
 
 
 
-@class NetworkEngine;
+@class GameKitEventEngine;
 
 @interface GameEngine : NSObject
 
@@ -60,7 +62,7 @@ typedef enum {
 @property (assign) int playerMaxHealth;
 @property (assign) int playerCount;
 
-@property (nonatomic, strong) NetworkEngine *networkEngine;
+@property (nonatomic, strong) GameKitEventEngine *networkEngine;
 
 @property (nonatomic, weak) NSObject<GameEngineDelegate> *delegate;
 
@@ -70,6 +72,15 @@ typedef enum {
 
 - (void)sendEventAsClient:(GameEvent *)event;
 
+// -- Server Only
 - (BOOL)isServer;
+- (void)processEvent:(GameEvent *)event;
+
+// -- Client Only
+- (void)receiveStateFromServer:(GameState *)state event:(GameEvent *)event;
+
+
+
+- (void)update:(float)deltaTime;
 
 @end

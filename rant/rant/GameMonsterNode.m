@@ -82,7 +82,7 @@
         sprite = [CCSprite spriteWithSpriteFrameName:[NSString stringWithFormat:@"HeartBear_Idle01.png"]];
         [spriteSheet addChild:sprite];
         
-        [sprite runAction:[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:idleAnim]]];
+        [self loopIdle];
     }
     
     return self;
@@ -100,14 +100,43 @@
 
 - (void)loopIdle
 {
+    [sprite stopAllActions];
     [sprite runAction:[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:idleAnim]]];
 }
+
+- (void)loopAttack3Anim
+{
+    
+    [sprite stopAllActions];
+    [sprite runAction:[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:attack3Anim]]];
+}
+
 
 - (void)playAttack1Anim
 {
     [sprite stopAllActions];
     [sprite runAction:[CCSequence actions:
                        [CCAnimate actionWithAnimation:attack1Anim],
+                       [CCCallFunc actionWithTarget:self selector:@selector(loopIdle)],
+                       nil
+                       ]];
+}
+
+- (void)playAttack2Anim
+{
+    [sprite stopAllActions];
+    [sprite runAction:[CCSequence actions:
+                       [CCAnimate actionWithAnimation:attack2Anim],
+                       [CCCallFunc actionWithTarget:self selector:@selector(loopIdle)],
+                       nil
+                       ]];
+}
+
+- (void)playAttack3Anim
+{
+    [sprite stopAllActions];
+    [sprite runAction:[CCSequence actions:
+                       [CCAnimate actionWithAnimation:attack3Anim],
                        [CCCallFunc actionWithTarget:self selector:@selector(loopIdle)],
                        nil
                        ]];
