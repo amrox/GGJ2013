@@ -99,19 +99,19 @@ float getDifferenceBetweenAngles(float a1, float a2)
 		g = [[Gesture alloc] init];
 		g.gesture = EGesture_WATER;
 		g.legAngles = [NSArray arrayWithObjects:
-					   [NSNumber numberWithFloat:0.946014],
-					   [NSNumber numberWithFloat:-1.555294],
-					   [NSNumber numberWithFloat:2.432072],
-					   [NSNumber numberWithFloat:-1.527345], nil];
+					   [NSNumber numberWithFloat:1.362165],
+					   [NSNumber numberWithFloat:-1.065506],
+					   [NSNumber numberWithFloat:1.565391],
+					   [NSNumber numberWithFloat:-2.306805], nil];
 		[sharedLibrary addObject:g];
 
 		g = [[Gesture alloc] init];
 		g.gesture = EGesture_FIRE;
 		g.legAngles = [NSArray arrayWithObjects:
-					   [NSNumber numberWithFloat:-0.129982],
-					   [NSNumber numberWithFloat:2.420434],
-					   [NSNumber numberWithFloat:-0.060993],
-					   [NSNumber numberWithFloat:-1.527345], nil];
+					   [NSNumber numberWithFloat:0],
+					   [NSNumber numberWithFloat:2.519180],
+					   [NSNumber numberWithFloat:0],
+					   [NSNumber numberWithFloat:-2.442189], nil];
 		[sharedLibrary addObject:g];
 
 		g = [[Gesture alloc] init];
@@ -119,27 +119,27 @@ float getDifferenceBetweenAngles(float a1, float a2)
 		g.legAngles = [NSArray arrayWithObjects:
 					   [NSNumber numberWithFloat:1.527345],
 					   [NSNumber numberWithFloat:0],
-					   [NSNumber numberWithFloat:-1.065215],
-					   [NSNumber numberWithFloat:-2.339980], nil];
+					   [NSNumber numberWithFloat:-1.6],
+					   [NSNumber numberWithFloat:3.14], nil];
 		[sharedLibrary addObject:g];
 
 		g = [[Gesture alloc] init];
 		g.gesture = EGesture_ATTACK;
 		g.legAngles = [NSArray arrayWithObjects:
 					   [NSNumber numberWithFloat:1.527345],
-					   [NSNumber numberWithFloat:0.7],
-					   [NSNumber numberWithFloat:-2.37],
-					   [NSNumber numberWithFloat:0.7],
-					   [NSNumber numberWithFloat:-2.37],
-					   [NSNumber numberWithFloat:0.7], nil];
+					   [NSNumber numberWithFloat:-0.85],
+					   [NSNumber numberWithFloat:2.24],
+					   [NSNumber numberWithFloat:-0.85],
+					   [NSNumber numberWithFloat:2.24],
+					   [NSNumber numberWithFloat:-0.85], nil];
 		[sharedLibrary addObject:g];
 		
 		g = [[Gesture alloc] init];
 		g.gesture = EGesture_HEAL;
 		g.legAngles = [NSArray arrayWithObjects:
-					   [NSNumber numberWithFloat:-0.176235],
-					   [NSNumber numberWithFloat:1.637365],
-					   [NSNumber numberWithFloat:-3.047384], nil];
+					   [NSNumber numberWithFloat:0],
+					   [NSNumber numberWithFloat:1.57],
+					   [NSNumber numberWithFloat:3.14], nil];
 		[sharedLibrary addObject:g];
 	}
 	return sharedLibrary;
