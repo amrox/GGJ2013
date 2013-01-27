@@ -120,9 +120,13 @@
 	if (event->type == EGameEventType_PLAYER_HIT)
 	{
         [self runAction:[CCSequence actions:
-                         [CCCallFunc actionWithTarget:monsterLayer.monster selector:@selector(playAttackAnim)],
-                         [CCDelayTime actionWithDuration:0.5],
+                         [CCCallFunc actionWithTarget:monsterLayer.monster selector:@selector(playAttack1Anim)],
+                         [CCDelayTime actionWithDuration:0.7],
                          [CCCallFunc actionWithTarget:heroLayer.hero selector:@selector(playHitAnim)],
+                         [CCCallFunc actionWithTarget:self selector:@selector(shakeCamera)],
+                         [CCDelayTime actionWithDuration:0.7],
+                         [CCCallFunc actionWithTarget:heroLayer.hero selector:@selector(playHitAnim)],
+                         [CCCallFunc actionWithTarget:self selector:@selector(shakeCamera)],
                          nil]];
 	}
 }
