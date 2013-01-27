@@ -19,8 +19,10 @@
 @property (nonatomic, strong) GameMonsterHealthBar *heroHealthBar;
 
 - (void)gestureRegistered:(Gesture *)gesture;
+
 - (void)displayIconWithType:(EGameEventType)type;
 - (void)clearIcon;
+
 - (void)displayEffect:(EGameEventType)type;
 
 @end

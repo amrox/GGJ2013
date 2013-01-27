@@ -62,7 +62,7 @@
     CCSprite *attackBar;
     CCSprite *spellIcon;
     
-    
+    CCSpriteBatchNode *spriteSheet;
 }
 
 @synthesize monsterHealthBar;
@@ -148,7 +148,56 @@
 
 - (void)displayEffect:(EGameEventType)type
 {
+    if (spriteSheet)
+        [self clearEffect];
     
+    CCSprite *sprite;
+    NSMutableArray *animFrames = [NSMutableArray array];
+    
+    if (type == EGameEventType_ATTACK_FIRE)
+    {
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
+         @"gameFire.plist"];
+        
+        spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"gameFire.png"];
+        
+        [animFrames removeAllObjects];
+        for(int i = 1; i <= 2; ++i) {
+            [animFrames addObject:
+             [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+              [NSString stringWithFormat:@"user0%d_idle%dA.png", index, i]]];
+        }
+        
+        sprite = [CCSprite spriteWithSpriteFrameName:@"Fire01.png"];
+    }
+    else if (type == EGameEventType_ATTACK_ICE)
+    {
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
+         @"gameIce.plist"];
+        
+        spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"gameIce.png"];
+        
+        sprite = [CCSprite spriteWithSpriteFrameName:@"Ice01.png"];
+    }
+    else if (type == EGameEventType_ATTACK_WIND)
+    {
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:
+         @"gameWind.plist"];
+        
+        spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"gameWind.png"];
+        
+        sprite = [CCSprite spriteWithSpriteFrameName:@"Wind01.png"];
+    }
+    
+    [self addChild:spriteSheet];
+    
+    
+}
+
+- (void)clearEffect
+{
+    [spriteSheet removeFromParentAndCleanup:YES];
+    spriteSheet = nil;
 }
 
 @end
