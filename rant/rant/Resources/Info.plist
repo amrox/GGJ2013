@@ -44,6 +44,13 @@
 	</dict>
 	<key>UIStatusBarHidden</key>
 	<true/>
+	<key>UIStatusBarHidden - 2</key>
+	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ARNORG__.TTF</string>
+		<string>Action Man.ttf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
