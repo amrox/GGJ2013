@@ -81,7 +81,7 @@
         sprite = [CCSprite spriteWithSpriteFrameName:[NSString stringWithFormat:@"user0%d_idle1A.png", index]];
         [spriteSheet addChild:sprite];
         
-        [sprite runAction:[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:idleAAnim]]];
+        [self loopIdle];
     }
     
     return self;
@@ -95,6 +95,23 @@
     currentMP = 100.0;
     maxHP = 100.0;
     maxMP = 100.0;
+}
+
+#pragma mark - Animations
+
+- (void)loopIdle
+{
+    [sprite runAction:[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:idleAAnim]]];
+}
+
+- (void)playAttackAnim
+{
+    [sprite stopAllActions];
+    [sprite runAction:[CCSequence actions:
+                       [CCAnimate actionWithAnimation:attackAnim],
+                       [CCCallFunc actionWithTarget:self selector:@selector(loopIdle)],
+                       nil
+                       ]];
 }
 
 @end
