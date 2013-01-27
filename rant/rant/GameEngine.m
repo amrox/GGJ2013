@@ -139,12 +139,19 @@
 		timeToNextAttack -= deltaTime;
 		if (timeToNextAttack <= 0)
 		{
+#define PLAYER_TO_ATTACK 0
+#define DAMAGE 10
+
 			timeToNextAttack = -1;
+
+			GameState state = self.currentState;
+			state.playerHeath[PLAYER_TO_ATTACK] = MAX(0, state.playerHeath[PLAYER_TO_ATTACK] - DAMAGE);
+			self.currentState = state;
 
 			GameEvent broadcastEvent;
 			broadcastEvent.type = EGameEventType_PLAYER_HIT;
-			broadcastEvent.target = 1;
-			broadcastEvent.value = 10;
+			broadcastEvent.target = PLAYER_TO_ATTACK + 1;
+			broadcastEvent.value = DAMAGE;
 
 			[self broadcastEventAsServer:&broadcastEvent];
 		}
