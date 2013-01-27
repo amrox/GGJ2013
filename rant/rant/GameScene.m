@@ -177,8 +177,6 @@
 
 - (void)gestureChainCompleted:(NSArray *)gestureChain
 {
-	[self shakeCamera];
-
 	if ([gestureChain count] == 1)
 	{
 		Gesture * singleGesture = [gestureChain objectAtIndex:0];
