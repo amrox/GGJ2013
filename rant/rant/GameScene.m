@@ -6,9 +6,10 @@
 #import "GameHUDLayer.h"
 #import "GameHeroLayer.h"
 #import "GameEngine.h"
+#import "GameGestureLayer.h"
 
 
-@interface GameScene() <GameEngineDelegate>
+@interface GameScene() <GameEngineDelegate, GestureReceiver>
 @end
 
 
