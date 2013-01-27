@@ -86,7 +86,7 @@
 - (int) myPlayerNum
 {
     if (self.networkEngine) {
-        return [self.networkEngine myPlayerNum];
+        return [self.networkEngine myPlayerIndex];
     }
     return 1;
 }

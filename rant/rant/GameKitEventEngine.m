@@ -51,13 +51,12 @@ typedef enum {
 @property (strong) UIAlertView *connectionAlert;
 @property (strong) NSMutableDictionary *playerInfo;
 @property (assign, readwrite) GameState currentState;
-@property (strong) NSString *serverPlayerID;
 @property (assign, readwrite) BOOL isServer;
 @property (strong) NSMutableArray *incomingEvents;
 @property (readwrite, strong) NSArray *allPlayerIDs;
-@property (readwrite, strong) NSArray *allPlayerNums;
-
+@property (readwrite, assign) int myPlayerIndex;
 - (void)reset;
+- (NSString *)serverPlayerID;
 @end
 
 
@@ -129,28 +128,30 @@ typedef enum {
 	}
 }
 
-- (void)electServer
-{
-    NSString *localPlayerID = [GKLocalPlayer localPlayer].playerID;
-    
-    NSString *serverPlayerID = localPlayerID;
-    int serverPlayerIDNum = MyPlayerNum();
-    
-    NSLog(@"Local Player: %@", localPlayerID);
-    
-    for (NSString *playerID in self.match.playerIDs) {
-        
-        int playerNum = PlayerIDNum(playerID);
-        if (playerNum > serverPlayerIDNum) {
-            serverPlayerID = playerID;
-        }
-    }
-        
-    self.serverPlayerID = serverPlayerID;
-    self.isServer = [self.serverPlayerID isEqualToString:localPlayerID];
-    
-    NSLog(@"%@ is the server!", self.serverPlayerID);
-}
+//- (void)electServer
+//{
+//    NSString *localPlayerID = [GKLocalPlayer localPlayer].playerID;
+//    
+//    NSString *serverPlayerID = localPlayerID;
+//    int serverPlayerIDNum = MyPlayerNum();
+//    
+//    NSLog(@"Local Player: %@", localPlayerID);
+//    
+//    for (NSString *playerID in self.match.playerIDs) {
+//        
+//        int playerNum = PlayerIDNum(playerID);
+//        if (playerNum > serverPlayerIDNum) {
+//            serverPlayerID = playerID;
+//        }
+//    }
+//        
+//    self.serverPlayerID = serverPlayerID;
+//    self.isServer = [self.serverPlayerID isEqualToString:localPlayerID];
+//    
+//    NSLog(@"%@ is the server!", self.serverPlayerID);
+//
+//
+//}
 
 - (void)processEvents
 {
@@ -172,6 +173,11 @@ typedef enum {
     }
 }
 
+- (NSString*) serverPlayerID
+{
+    return [self.allPlayerIDs objectAtIndex:0];
+}
+
 - (void)gameLoop
 {
     static int counter = 0;
@@ -183,14 +189,10 @@ typedef enum {
 		case kStateStartGame:
 			[self broadcastNetworkPacket:self.match packetID:NETWORK_GAME_START withData:NULL ofLength:sizeof(int) reliable:YES];
 			self.gameState = kStateMain;
+            [[NSNotificationCenter defaultCenter] postNotificationName:GameEngineGameBeginNotification object:self];
 			break;
             
 		case kStateMain:
-            if (self.serverPlayerID == nil) {
-                [self electServer];
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:GameEngineGameBeginNotification object:self];
-            }
             
             counter++;
             
@@ -350,27 +352,25 @@ typedef enum {
     if (self.gameState == kStateLobby) {
         NSAssert(self.match, @"match is nil");
         NSAssert(self.match.expectedPlayerCount == 0, @"not enough players");
-        self.allPlayerIDs = [[self.match playerIDs] arrayByAddingObject:
-                             [GKLocalPlayer localPlayer].playerID];
+
+        self.allPlayerIDs = [[[self.match playerIDs] arrayByAddingObject:
+                              [GKLocalPlayer localPlayer].playerID] sortedArrayUsingSelector:@selector(compare:)];
         
-        NSMutableArray *playerNums = [NSMutableArray arrayWithCapacity:[self.allPlayerIDs count]];
-        for (NSString *playerID in self.allPlayerIDs) {
-            [playerNums addObject:[NSNumber numberWithLongLong:PlayerIDNum(playerID)]];
-        }
-        self.allPlayerNums = playerNums;
+        self.myPlayerIndex = [self.allPlayerIDs indexOfObject:[self myPlayerID]];
+        NSAssert(self.myPlayerIndex >= 0 && self.myPlayerIndex < 4, @"index should be between 0 and 3");
         
         self.gameState = kStateStartGame;
         
         NSLog(@"game began with players: %@", self.allPlayerIDs);
+        NSLog(@"I am player %d!", self.myPlayerIndex);
     }
 }
 
 - (void)end
 {
-    self.serverPlayerID = nil;
     self.match = nil;
     self.allPlayerIDs = nil;
-    self.allPlayerNums = nil;
+    self.myPlayerIndex = NSNotFound;
     self.gameState = kStateLobby;
 }
 
@@ -382,6 +382,11 @@ typedef enum {
 - (int) matchPlayerCount
 {
     return [[self.match playerIDs] count] + 1;
+}
+
+- (NSString *)myPlayerID
+{
+    return [GKLocalPlayer localPlayer].playerID;
 }
 
 
@@ -414,15 +419,6 @@ typedef enum {
     return _gameState == kStateMain;
 }
 
-- (long long) myPlayerNum
-{
-    return MyPlayerNum();
-}
-
-- (NSString *)myPlayerID
-{
-    return [GKLocalPlayer localPlayer].playerID;
-}
 
 
 #pragma mark -
@@ -439,7 +435,7 @@ typedef enum {
 - (void)reset
 {
     self.allPlayerIDs = nil;
-    self.allPlayerNums = nil;
+    self.myPlayerIndex = NSNotFound;
 }
 
 
