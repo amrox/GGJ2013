@@ -110,13 +110,11 @@
 		B354827616B3A75A004ECF7C /* NetworkTesterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B354827516B3A75A004ECF7C /* NetworkTesterAppDelegate.m */; };
 		B354827816B3A75A004ECF7C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B354827716B3A75A004ECF7C /* Default.png */; };
 		B354827A16B3A75A004ECF7C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B354827916B3A75A004ECF7C /* Default@2x.png */; };
-		B354827C16B3A75A004ECF7C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B354827B16B3A75A004ECF7C /* Default-568h@2x.png */; };
 		B354828816B3A77C004ECF7C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B354828716B3A77C004ECF7C /* SenTestingKit.framework */; };
 		B354828916B3A77C004ECF7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D716B39AC50061047A /* UIKit.framework */; };
 		B354828A16B3A77C004ECF7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D916B39AC50061047A /* Foundation.framework */; };
 		B354829016B3A77C004ECF7C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B354828E16B3A77C004ECF7C /* InfoPlist.strings */; };
 		B354829316B3A77C004ECF7C /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B354829216B3A77C004ECF7C /* UnitTests.m */; };
-		B36BE37816B57F1C006F0A72 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B354827B16B3A75A004ECF7C /* Default-568h@2x.png */; };
 		B390DC7E16B4F40E00B11CA5 /* SimpleEventEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B390DC7D16B4F40E00B11CA5 /* SimpleEventEngine.m */; };
 		B3985A9116B46B8E008081FB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47DD16B39AC50061047A /* GameKit.framework */; };
 		B3985A9516B46BDD008081FB /* GameKitEventEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameKitEventEngine.m */; };
@@ -650,7 +648,6 @@
 		B354827516B3A75A004ECF7C /* NetworkTesterAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkTesterAppDelegate.m; sourceTree = "<group>"; };
 		B354827716B3A75A004ECF7C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		B354827916B3A75A004ECF7C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		B354827B16B3A75A004ECF7C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B354828616B3A77C004ECF7C /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B354828716B3A77C004ECF7C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		B354828D16B3A77C004ECF7C /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
@@ -999,7 +996,6 @@
 				B354827316B3A75A004ECF7C /* NetworkTester-Prefix.pch */,
 				B354827716B3A75A004ECF7C /* Default.png */,
 				B354827916B3A75A004ECF7C /* Default@2x.png */,
-				B354827B16B3A75A004ECF7C /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1596,7 +1592,6 @@
 				9CBE85EC16B5839100F52D9A /* lobbyHeroes.png in Resources */,
 				9CBE85F216B58A9100F52D9A /* Action Man.ttf in Resources */,
 				9CBE85F516B58A9E00F52D9A /* ARNORG__.TTF in Resources */,
-				B36BE37816B57F1C006F0A72 /* Default-568h@2x.png in Resources */,
 				9CBE86E316B596A300F52D9A /* buttonBlue.png in Resources */,
 				9CBE86E416B596A300F52D9A /* buttonBluePressed.png in Resources */,
 				9CBE86E516B596A300F52D9A /* buttonRed.png in Resources */,
@@ -1619,7 +1614,6 @@
 				B354827016B3A75A004ECF7C /* InfoPlist.strings in Resources */,
 				B354827816B3A75A004ECF7C /* Default.png in Resources */,
 				B354827A16B3A75A004ECF7C /* Default@2x.png in Resources */,
-				B354827C16B3A75A004ECF7C /* Default-568h@2x.png in Resources */,
 				B3E1FF1516B476B500D940F0 /* NetworkTesterRootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

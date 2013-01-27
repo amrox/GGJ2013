@@ -146,6 +146,8 @@
 
 - (void)addPlayerIconWithIndex:(int)index isPlayer:(BOOL)isPlayer // index 0-3
 {
+    NSAssert((index >= 0 && index <= 3), @"Invalid index");
+    
     
 }
 
