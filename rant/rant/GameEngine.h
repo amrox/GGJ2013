@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define BOSS_MAX_HEALTH 100
+#define BOSS_MAX_HEALTH 20
 #define MAX_PLAYER_HEALTH 10
 #define TOTAL_HITS_TO_CANCEL_ATTACK 4
 #define ATTACK_PREPARATION_TIME 5
