@@ -78,7 +78,7 @@
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
 //	[director_ pushScene:[GameScene scene]];
 
-    [director_ pushScene:[LobbyScene scene]];
+    [director_ pushScene:[MainMenuScene scene]];
 
 	
 	// Create a Navigation Controller with the Director
