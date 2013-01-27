@@ -72,9 +72,14 @@ typedef enum {
 
 - (void)sendEventAsClient:(GameEvent *)event;
 
+// -- Server Only
 - (BOOL)isServer;
-
 - (void)processEvent:(GameEvent *)event;
+
+// -- Client Only
+- (void)receiveStateFromServer:(GameState *)state event:(GameEvent *)event;
+
+
 
 - (void)update:(float)deltaTime;
 

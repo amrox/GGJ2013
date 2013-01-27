@@ -142,19 +142,7 @@ typedef enum {
             serverPlayerID = playerID;
         }
     }
-    
-//    NSArray *allPlayers = [self.playerInfo allValues];
-//    for (PlayerInfo *info in allPlayers) {
-//        
-//        NSLog(@"Player: %@", info.playerID);
-//        NSLog(@"Coin Toss: %d", [info.cointoss integerValue]);
-//        
-//        NSAssert(info.cointoss != nil, @"coin toss is nil!");
-//        if ([info.cointoss intValue] > serverCointoss) {
-//            serverPlayerID = info.playerID;
-//        }
-//    }
-    
+        
     self.serverPlayerID = serverPlayerID;
     self.isServer = [self.serverPlayerID isEqualToString:localPlayerID];
     
@@ -178,13 +166,6 @@ typedef enum {
         [eventVal getValue:&event];
         [self.engine processEvent:&event];
         
-        GamePacket packet;
-        packet.event = event;
-        packet.state = self.engine.currentState;
-        
-        [self broadcastNetworkPacket:self.match packetID:NETWORK_GAME_STATE withData:&packet ofLength:sizeof(GamePacket) reliable:YES];
-        
-        [self.engine.delegate clientReceivedEvent:&packet.event withState:&packet.state];
     }
 }
 
@@ -338,7 +319,7 @@ typedef enum {
 
 - (void)receivePacketAsClient:(GamePacket *)packet
 {
-    [self.engine.delegate clientReceivedEvent:&packet->event withState:&packet->state];
+    [self.engine receiveStateFromServer:&packet->state event:&packet->event];
 }
 
 
@@ -386,7 +367,13 @@ typedef enum {
     return self.match != nil && (self.match.expectedPlayerCount == 0);
 }
 
-- (void)sendEvent:(GameEvent *)event
+- (int) matchPlayerCount
+{
+    return [[self.match playerIDs] count] + 1;
+}
+
+
+- (void)sendEventAsClient:(GameEvent *)event
 {
     event->source = MyPlayerNum();
     
@@ -399,11 +386,25 @@ typedef enum {
     }
 }
 
+- (void)broadcastEventAsServer:(GameEvent *)event state:(GameState *)state
+{
+    GamePacket packet;
+    packet.event = *event;
+    packet.state = *state;
+    
+    [self broadcastNetworkPacket:self.match packetID:NETWORK_GAME_STATE withData:&packet ofLength:sizeof(GamePacket) reliable:YES];
+}
+
+
 - (BOOL) isRunning
 {
     return _gameState == kStateMain;
 }
 
+- (int) myPlayerNum
+{
+    return MyPlayerNum();
+}
 
 #pragma mark -
 #pragma mark UIAlertViewDelegate Methods

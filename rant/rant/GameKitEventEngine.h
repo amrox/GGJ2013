@@ -36,14 +36,22 @@ typedef struct {
 - (void)findMatch;
 - (BOOL)isMatchReady;
 
+/**
+ @discussion Number of players in the match, including yourself. Will always return at least 1.
+ */
+- (int) matchPlayerCount;
+
 @property (assign, readonly) BOOL isServer;
+- (BOOL) isRunning;
+
+- (int) myPlayerNum;
 
 - (void)begin;
 
 - (void)end;
 
-- (void)sendEvent:(GameEvent *)event;
+- (void)sendEventAsClient:(GameEvent *)event;
 
-- (BOOL) isRunning;
+- (void)broadcastEventAsServer:(GameEvent *)event state:(GameState *)state;
 
 @end

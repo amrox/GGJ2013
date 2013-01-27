@@ -37,14 +37,18 @@
 
 - (void)broadcastEventAsServer:(GameEvent *)event
 {
-    if (!self.networkEngine) {
-        GameState state = self.currentState;
-        [self.delegate clientReceivedEvent:event withState:&state];
+    GameState state = self.currentState;
+    [self.delegate clientReceivedEvent:event withState:&state];
+    
+    if (self.networkEngine) {
+        [self.networkEngine broadcastEventAsServer:event state:&state];
     }
 }
 
 - (void)processEvent:(GameEvent *)event
 {
+    NSAssert([self isServer], @"should only be called on the server");
+    
 	if (event->type == EGameEventType_ATTACK_FIRE ||
 		event->type == EGameEventType_ATTACK_WIND ||
 		event->type == EGameEventType_ATTACK_ICE)
@@ -100,19 +104,25 @@
 	}
 }
 
+- (void)receiveStateFromServer:(GameState *)state event:(GameEvent *)event
+{
+    NSAssert(![self isServer], @"should only be called on clients");
+    
+    self.currentState = *state;
+    
+    [self.delegate clientReceivedEvent:event withState:state];
+}
+
+
 - (void)sendEventAsClient:(GameEvent *)event
 {
-	if (!self.networkEngine)
+	if ([self isServer])
 	{
         [self processEvent:event];
-        
-//		GameState state = self.currentState;
-//		[self.delegate clientReceivedEvent:event withState:&state];
-	} else {
-        
-        // andy does stuff
-        
-        [self.networkEngine sendEvent:event];
+	}
+    else
+    {
+        [self.networkEngine sendEventAsClient:event];
     }
 }
 

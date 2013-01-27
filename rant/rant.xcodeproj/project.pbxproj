@@ -100,6 +100,7 @@
 		B354828A16B3A77C004ECF7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D916B39AC50061047A /* Foundation.framework */; };
 		B354829016B3A77C004ECF7C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B354828E16B3A77C004ECF7C /* InfoPlist.strings */; };
 		B354829316B3A77C004ECF7C /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B354829216B3A77C004ECF7C /* UnitTests.m */; };
+		B36BE37816B57F1C006F0A72 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B354827B16B3A75A004ECF7C /* Default-568h@2x.png */; };
 		B390DC7E16B4F40E00B11CA5 /* SimpleEventEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B390DC7D16B4F40E00B11CA5 /* SimpleEventEngine.m */; };
 		B3985A9116B46B8E008081FB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47DD16B39AC50061047A /* GameKit.framework */; };
 		B3985A9516B46BDD008081FB /* GameKitEventEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameKitEventEngine.m */; };
@@ -963,14 +964,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B36BE37716B57EF3006F0A72 /* WIP */ = {
+			isa = PBXGroup;
+			children = (
+				B390DC7C16B4F40E00B11CA5 /* SimpleEventEngine.h */,
+				B390DC7D16B4F40E00B11CA5 /* SimpleEventEngine.m */,
+			);
+			name = WIP;
+			sourceTree = "<group>";
+		};
 		B3985A9216B46BB7008081FB /* GameEngine */ = {
 			isa = PBXGroup;
 			children = (
+				B36BE37716B57EF3006F0A72 /* WIP */,
 				B390DC7F16B4F46700B11CA5 /* EventEngine.h */,
 				B3432C9D16B4DC2400B2365E /* GameEngine.h */,
 				B3432C9E16B4DC2400B2365E /* GameEngine.m */,
-				B390DC7C16B4F40E00B11CA5 /* SimpleEventEngine.h */,
-				B390DC7D16B4F40E00B11CA5 /* SimpleEventEngine.m */,
 				B3985A9316B46BDD008081FB /* GameKitEventEngine.h */,
 				B3985A9416B46BDD008081FB /* GameKitEventEngine.m */,
 			);
@@ -1521,6 +1530,7 @@
 				9C213AF416B4E5420013B147 /* gameMonster1.png in Resources */,
 				9CBE856F16B524AE00F52D9A /* lobbyBackground-hd.png in Resources */,
 				9CBE857016B524AE00F52D9A /* lobbyBackground.png in Resources */,
+				B36BE37816B57F1C006F0A72 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
