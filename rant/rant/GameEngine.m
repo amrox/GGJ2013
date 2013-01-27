@@ -37,6 +37,8 @@
 
 - (void)broadcastEventAsServer:(GameEvent *)event
 {
+    event->source = 0; // server is always 0
+    
     NSLog(@"*** [GAME] [SEND] broadcast event src=%lld type=%d", event->source, event->type);
     
     GameState state = self.currentState;
