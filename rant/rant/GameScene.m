@@ -170,6 +170,7 @@
 	else if (event->type == EGameEventType_MONSTER_ATTACK_BLOCKED)
 	{
 		monsterPrepareTime = 0;
+		[monsterLayer.monster playHitAnim];
 	}
 
 	int playerId = [gameEngine myPlayerNum];
