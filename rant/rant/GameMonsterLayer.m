@@ -4,7 +4,7 @@
 //
 
 #import "GameMonsterLayer.h"
-
+#import "GameMonsterNode.h"
 
 @implementation GameMonsterLayer
 
@@ -21,8 +21,8 @@
 {
     [super onEnter];
     
-    monster = [CCSprite spriteWithFile:@"gameMonster1.png"];
-    [monster setPosition:ccp(190, 260)];
+    monster = [[GameMonsterNode alloc] initWithIndex:0];
+    [monster setPosition:ccp(190, 280)];
     
     [self addChild:monster];
 }

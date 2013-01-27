@@ -16,4 +16,6 @@
 @property (nonatomic) float currentHP;
 @property (nonatomic) float maxHP;
 
+- (id)initWithIndex:(int)index;
+
 @end

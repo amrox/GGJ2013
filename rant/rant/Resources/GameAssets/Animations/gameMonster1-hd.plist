@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		
+		<key>HeartBear_Attack1_01.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{42, 174}, {525, 460}}</string>
+			<key>spriteOffset</key>
+			<string>{-3, -64}</string>
+			<key>spriteSize</key>
+			<string>{525, 460}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2144, 0}, {525, 460}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Attack1_02.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{110, 0}, {443, 630}}</string>
+			<key>spriteOffset</key>
+			<string>{24, 25}</string>
+			<key>spriteSize</key>
+			<string>{443, 630}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 0}, {443, 630}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Attack1_03.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{0, 92}, {575, 588}}</string>
+			<key>spriteOffset</key>
+			<string>{-20, -46}</string>
+			<key>spriteSize</key>
+			<string>{575, 588}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{445, 0}, {575, 588}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Attack1_04.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{23, 33}, {565, 598}}</string>
+			<key>spriteOffset</key>
+			<string>{-2, 8}</string>
+			<key>spriteSize</key>
+			<string>{565, 598}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 632}, {565, 598}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Attack1_05.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{36, 50}, {491, 586}}</string>
+			<key>spriteOffset</key>
+			<string>{-26, -3}</string>
+			<key>spriteSize</key>
+			<string>{491, 586}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 1232}, {491, 586}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Attack1_06.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{56, 117}, {471, 514}}</string>
+			<key>spriteOffset</key>
+			<string>{-16, -34}</string>
+			<key>spriteSize</key>
+			<string>{471, 514}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1086, 516}, {471, 514}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Attack2_01.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{42, 174}, {525, 460}}</string>
+			<key>spriteOffset</key>
+			<string>{-3, -64}</string>
+			<key>spriteSize</key>
+			<string>{525, 460}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2555, 1386}, {525, 460}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Attack2_02.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{18, 117}, {573, 514}}</string>
+			<key>spriteOffset</key>
+			<string>{-3, -34}</string>
+			<key>spriteSize</key>
+			<string>{573, 514}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1022, 0}, {573, 514}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Attack2_03.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{14, 193}, {573, 440}}</string>
+			<key>spriteOffset</key>
+			<string>{-7, -73}</string>
+			<key>spriteSize</key>
+			<string>{573, 440}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2577, 924}, {573, 440}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Attack2_04.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{30, 174}, {545, 460}}</string>
+			<key>spriteOffset</key>
+			<string>{-5, -64}</string>
+			<key>spriteSize</key>
+			<string>{545, 460}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2044, 462}, {545, 460}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Attack2_05.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{56, 117}, {471, 514}}</string>
+			<key>spriteOffset</key>
+			<string>{-16, -34}</string>
+			<key>spriteSize</key>
+			<string>{471, 514}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1052, 1112}, {471, 514}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Attack3_01.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{30, 174}, {545, 460}}</string>
+			<key>spriteOffset</key>
+			<string>{-5, -64}</string>
+			<key>spriteSize</key>
+			<string>{545, 460}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1597, 0}, {545, 460}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Attack3_02.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{44, 110}, {517, 520}}</string>
+			<key>spriteOffset</key>
+			<string>{-5, -30}</string>
+			<key>spriteSize</key>
+			<string>{517, 520}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{567, 590}, {517, 520}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Attack3_03.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{40, 126}, {523, 504}}</string>
+			<key>spriteOffset</key>
+			<string>{-6, -38}</string>
+			<key>spriteSize</key>
+			<string>{523, 504}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1525, 1032}, {523, 504}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Attack3_04.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{42, 174}, {525, 460}}</string>
+			<key>spriteOffset</key>
+			<string>{-3, -64}</string>
+			<key>spriteSize</key>
+			<string>{525, 460}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2050, 924}, {525, 460}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Critical_Hit.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{54, 117}, {557, 536}}</string>
+			<key>spriteOffset</key>
+			<string>{25, -45}</string>
+			<key>spriteSize</key>
+			<string>{557, 536}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{493, 1232}, {557, 536}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Hit.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{52, 151}, {563, 492}}</string>
+			<key>spriteOffset</key>
+			<string>{26, -57}</string>
+			<key>spriteSize</key>
+			<string>{563, 492}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1990, 1538}, {563, 492}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Idle01.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{63, 154}, {483, 478}}</string>
+			<key>spriteOffset</key>
+			<string>{-3, -53}</string>
+			<key>spriteSize</key>
+			<string>{483, 478}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1559, 516}, {483, 478}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>HeartBear_Idle02.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{73, 137}, {463, 494}}</string>
+			<key>spriteOffset</key>
+			<string>{-3, -44}</string>
+			<key>spriteSize</key>
+			<string>{463, 494}</string>
+			<key>spriteSourceSize</key>
+			<string>{615, 680}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1525, 1538}, {463, 494}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>version</key>
+		<string>1.5.8</string>
+		<key>format</key>
+		<integer>3</integer>
+		<key>size</key>
+		<string>{4096, 2048}</string>
+		<key>name</key>
+		<string>Untitled</string>
+		<key>premultipliedAlpha</key>
+		<false/>
+		<key>target</key>
+		<dict>
+			<key>name</key>
+			<string>default</string>
+			<key>textureFileName</key>
+			<string>gameMonster1-hd</string>
+			<key>textureFileExtension</key>
+			<string>.png</string>
+			<key>coordinatesFileName</key>
+			<string>gameMonster1-hd</string>
+			<key>coordinatesFileExtension</key>
+			<string>.plist</string>
+			<key>premultipliedAlpha</key>
+			<false/>
+		</dict>
+	</dict>
+</dict>
+</plist>

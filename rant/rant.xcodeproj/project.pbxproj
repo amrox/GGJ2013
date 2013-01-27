@@ -59,11 +59,8 @@
 		9CAB4FA216B49C580061047A /* gameBackground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB4F9C16B49C580061047A /* gameBackground2.png */; };
 		9CAB4FA316B49C580061047A /* gameBackgroundCloud-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB4F9D16B49C580061047A /* gameBackgroundCloud-hd.png */; };
 		9CAB4FA416B49C580061047A /* gameBackgroundCloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB4F9E16B49C580061047A /* gameBackgroundCloud.png */; };
-		9CAB501B16B4A3CD0061047A /* gameMonster1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB501916B4A3CD0061047A /* gameMonster1-hd.png */; };
-		9CAB501C16B4A3CD0061047A /* gameMonster1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB501A16B4A3CD0061047A /* gameMonster1.png */; };
 		9CAB502016B4AAAF0061047A /* GameHeroNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB501F16B4AAAF0061047A /* GameHeroNode.m */; };
 		9CAB502316B4AAD10061047A /* GameMonsterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB502216B4AAD10061047A /* GameMonsterNode.m */; };
-		B3432C2816B4C3FE00B2365E /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameEngine.m */; };
 		9CAB50A916B4BE920061047A /* gameHero1-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB509916B4BE920061047A /* gameHero1-hd.plist */; };
 		9CAB50AA16B4BE920061047A /* gameHero1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB509A16B4BE920061047A /* gameHero1-hd.png */; };
 		9CAB50AB16B4BE920061047A /* gameHero1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB509B16B4BE920061047A /* gameHero1.plist */; };
@@ -80,6 +77,11 @@
 		9CAB50B616B4BE920061047A /* gameHero4-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A616B4BE920061047A /* gameHero4-hd.png */; };
 		9CAB50B716B4BE920061047A /* gameHero4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A716B4BE920061047A /* gameHero4.plist */; };
 		9CAB50B816B4BE920061047A /* gameHero4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A816B4BE920061047A /* gameHero4.png */; };
+		9CAB528D16B4DF8A0061047A /* gameMonster1-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB528916B4DF8A0061047A /* gameMonster1-hd.plist */; };
+		9CAB528E16B4DF8A0061047A /* gameMonster1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB528A16B4DF8A0061047A /* gameMonster1-hd.png */; };
+		9CAB528F16B4DF8A0061047A /* gameMonster1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB528B16B4DF8A0061047A /* gameMonster1.plist */; };
+		9CAB529016B4DF8A0061047A /* gameMonster1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB528C16B4DF8A0061047A /* gameMonster1.png */; };
+		B3432C2816B4C3FE00B2365E /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameEngine.m */; };
 		B354826816B3A75A004ECF7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D716B39AC50061047A /* UIKit.framework */; };
 		B354826916B3A75A004ECF7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D916B39AC50061047A /* Foundation.framework */; };
 		B354826A16B3A75A004ECF7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47DB16B39AC50061047A /* CoreGraphics.framework */; };
@@ -566,8 +568,6 @@
 		9CAB4F9C16B49C580061047A /* gameBackground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameBackground2.png; path = Resources/GameAssets/gameBackground2.png; sourceTree = "<group>"; };
 		9CAB4F9D16B49C580061047A /* gameBackgroundCloud-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameBackgroundCloud-hd.png"; path = "Resources/GameAssets/gameBackgroundCloud-hd.png"; sourceTree = "<group>"; };
 		9CAB4F9E16B49C580061047A /* gameBackgroundCloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameBackgroundCloud.png; path = Resources/GameAssets/gameBackgroundCloud.png; sourceTree = "<group>"; };
-		9CAB501916B4A3CD0061047A /* gameMonster1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameMonster1-hd.png"; path = "Resources/GameAssets/gameMonster1-hd.png"; sourceTree = "<group>"; };
-		9CAB501A16B4A3CD0061047A /* gameMonster1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameMonster1.png; path = Resources/GameAssets/gameMonster1.png; sourceTree = "<group>"; };
 		9CAB501E16B4AAAF0061047A /* GameHeroNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameHeroNode.h; sourceTree = "<group>"; };
 		9CAB501F16B4AAAF0061047A /* GameHeroNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameHeroNode.m; sourceTree = "<group>"; };
 		9CAB502116B4AAD10061047A /* GameMonsterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMonsterNode.h; sourceTree = "<group>"; };
@@ -588,6 +588,10 @@
 		9CAB50A616B4BE920061047A /* gameHero4-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameHero4-hd.png"; path = "Resources/GameAssets/Animations/gameHero4-hd.png"; sourceTree = "<group>"; };
 		9CAB50A716B4BE920061047A /* gameHero4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = gameHero4.plist; path = Resources/GameAssets/Animations/gameHero4.plist; sourceTree = "<group>"; };
 		9CAB50A816B4BE920061047A /* gameHero4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameHero4.png; path = Resources/GameAssets/Animations/gameHero4.png; sourceTree = "<group>"; };
+		9CAB528916B4DF8A0061047A /* gameMonster1-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "gameMonster1-hd.plist"; path = "../../../../../Dropbox/GGJ2013/Spritesheets/gameMonster1-hd.plist"; sourceTree = "<group>"; };
+		9CAB528A16B4DF8A0061047A /* gameMonster1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameMonster1-hd.png"; path = "../../../../../Dropbox/GGJ2013/Spritesheets/gameMonster1-hd.png"; sourceTree = "<group>"; };
+		9CAB528B16B4DF8A0061047A /* gameMonster1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = gameMonster1.plist; path = ../../../../../Dropbox/GGJ2013/Spritesheets/gameMonster1.plist; sourceTree = "<group>"; };
+		9CAB528C16B4DF8A0061047A /* gameMonster1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameMonster1.png; path = ../../../../../Dropbox/GGJ2013/Spritesheets/gameMonster1.png; sourceTree = "<group>"; };
 		B354826616B3A75A004ECF7C /* NetworkTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B354826D16B3A75A004ECF7C /* NetworkTester-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NetworkTester-Info.plist"; sourceTree = "<group>"; };
 		B354826F16B3A75A004ECF7C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -851,8 +855,6 @@
 				9CAB4F9C16B49C580061047A /* gameBackground2.png */,
 				9CAB4F9D16B49C580061047A /* gameBackgroundCloud-hd.png */,
 				9CAB4F9E16B49C580061047A /* gameBackgroundCloud.png */,
-				9CAB501916B4A3CD0061047A /* gameMonster1-hd.png */,
-				9CAB501A16B4A3CD0061047A /* gameMonster1.png */,
 				9CAB4F9516B49AED0061047A /* gameHero_placeholder-hd.png */,
 				9CAB4F9616B49AED0061047A /* gameHero_placeholder.png */,
 			);
@@ -889,6 +891,10 @@
 				9CAB50A616B4BE920061047A /* gameHero4-hd.png */,
 				9CAB50A716B4BE920061047A /* gameHero4.plist */,
 				9CAB50A816B4BE920061047A /* gameHero4.png */,
+				9CAB528916B4DF8A0061047A /* gameMonster1-hd.plist */,
+				9CAB528A16B4DF8A0061047A /* gameMonster1-hd.png */,
+				9CAB528B16B4DF8A0061047A /* gameMonster1.plist */,
+				9CAB528C16B4DF8A0061047A /* gameMonster1.png */,
 			);
 			name = Animations;
 			sourceTree = "<group>";
@@ -1469,8 +1475,6 @@
 				9CAB4FA316B49C580061047A /* gameBackgroundCloud-hd.png in Resources */,
 				9CAB4FA416B49C580061047A /* gameBackgroundCloud.png in Resources */,
 				FF91403D16B4B2BB00A6E22E /* sine440.caf in Resources */,
-				9CAB501B16B4A3CD0061047A /* gameMonster1-hd.png in Resources */,
-				9CAB501C16B4A3CD0061047A /* gameMonster1.png in Resources */,
 				FF9140B816B4C18B00A6E22E /* red_health_bar.png in Resources */,
 				9CAB50A916B4BE920061047A /* gameHero1-hd.plist in Resources */,
 				9CAB50AA16B4BE920061047A /* gameHero1-hd.png in Resources */,
@@ -1488,6 +1492,10 @@
 				9CAB50B616B4BE920061047A /* gameHero4-hd.png in Resources */,
 				9CAB50B716B4BE920061047A /* gameHero4.plist in Resources */,
 				9CAB50B816B4BE920061047A /* gameHero4.png in Resources */,
+				9CAB528D16B4DF8A0061047A /* gameMonster1-hd.plist in Resources */,
+				9CAB528E16B4DF8A0061047A /* gameMonster1-hd.png in Resources */,
+				9CAB528F16B4DF8A0061047A /* gameMonster1.plist in Resources */,
+				9CAB529016B4DF8A0061047A /* gameMonster1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
