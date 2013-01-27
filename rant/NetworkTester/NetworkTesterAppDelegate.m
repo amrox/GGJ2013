@@ -9,7 +9,7 @@
 #import "NetworkTesterAppDelegate.h"
 
 #import "NetworkTesterRootViewController.h"
-#import "GameEngine.h"
+#import "NetworkEngine.h"
 
 @interface NetworkTesterAppDelegate ()
 
@@ -27,7 +27,7 @@
     self.window.rootViewController = self.rootViewController;
     [self.window makeKeyAndVisible];
     
-    [[GameEngine sharedGameEngine] authenticate];
+    [[NetworkEngine sharedNetworkEngine] authenticate];
     
     return YES;
 }
