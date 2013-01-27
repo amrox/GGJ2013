@@ -32,6 +32,7 @@
 - (void)dealloc
 {
     [self.timer invalidate];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)pollMatch

@@ -47,6 +47,11 @@
 	return scene;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)onEnter
 {
     [super onEnter];
