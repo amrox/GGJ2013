@@ -139,9 +139,9 @@
                          [CCCallFunc actionWithTarget:self selector:@selector(shakeCamera)],
                          nil]];
 	}
-	else if (event->type == EGameEventType_MONSTER_PREPARING_TO_ATTACK)
+	else if (event->type == EGameEventType_MONSTER_PREPARING_TO_ATTACK && event->targetPlayerId == [gameEngine myPlayerNum])
 	{
-		[monsterLayer.monster playAttack2Anim];
+		[monsterLayer.monster playAttack3Anim];
 	}
 }
 
@@ -149,28 +149,24 @@
 {
     if (eventType == EGameEventType_ATTACK_FIRE)
     {
-        [self runAction:[CCSequence actions:
-                         [CCCallFunc actionWithTarget:heroLayer.hero selector:@selector(playAttackAnim)],
-                         [CCDelayTime actionWithDuration:0.5],
-                         [CCCallFunc actionWithTarget:monsterLayer.monster selector:@selector(playHitAnim)],
-                         nil]];
+		[heroLayer.hero playAttackAnim];
     }
     else if (eventType == EGameEventType_ATTACK_ICE)
     {
-        [self runAction:[CCSequence actions:
-                         [CCCallFunc actionWithTarget:heroLayer.hero selector:@selector(playAttackAnim)],
-                         [CCDelayTime actionWithDuration:0.5],
-                         [CCCallFunc actionWithTarget:monsterLayer.monster selector:@selector(playHitAnim)],
-                         nil]];
+		[heroLayer.hero playAttackAnim];
     }
     else if (eventType == EGameEventType_ATTACK_WIND)
     {
+		[heroLayer.hero playAttackAnim];
+    }
+
+	if (gameEngine.currentState.monsterPreparingToAttackPlayerId == -1)
+	{
         [self runAction:[CCSequence actions:
-                         [CCCallFunc actionWithTarget:heroLayer.hero selector:@selector(playAttackAnim)],
                          [CCDelayTime actionWithDuration:0.5],
                          [CCCallFunc actionWithTarget:monsterLayer.monster selector:@selector(playHitAnim)],
                          nil]];
-    }
+	}
 }
 
 
