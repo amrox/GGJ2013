@@ -7,7 +7,7 @@
 #import "cocos2d.h"
 
 #import "GameGestureLayer.h"
-
+#import "GameMonsterHealthBar.h"
 
 
 @interface SpellBookLayer : CCLayer {
@@ -26,6 +26,8 @@
 	CCMenuItemImage * spell4Button;
 	CCMenuItemImage * spell5Button;
 	CCMenuItemImage * spell6Button;
+    
+    GameMonsterHealthBar *monsterHealthBar;
 }
 
 -(void)onEnter
@@ -40,6 +42,10 @@
 	
 	CCMenu *menu = [CCMenu menuWithItems:spell1Button, nil];
     [self addChild:menu];
+    
+    monsterHealthBar = [GameMonsterHealthBar node];
+    [monsterHealthBar setPosition:ccp(160, 400)];
+    [self addChild:monsterHealthBar];
 }
 
 - (void)spell1Pressed:(id)sender

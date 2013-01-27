@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#define BOSS_MAX_HEALTH 100
 #define MAX_PLAYER_HEALTH 10
 #define TOTAL_HITS_TO_CANCEL_ATTACK 4
 #define ATTACK_PREPARATION_TIME 5
+#define MONSTER_ATTACK_DAMAGE 1
 
 typedef enum
 {
@@ -24,6 +26,7 @@ typedef enum
 	EGameEventType_MONSTER_DAMAGED_WIND,
 	EGameEventType_MONSTER_DEAD,
 	EGameEventType_PLAYER_HIT,
+	EGameEventType_PLAYER_DIED,
 	EGameEventType_PLAYER_RECEIVED_HEAL,
 	EGameEventType_MONSTER_PREPARING_TO_ATTACK,
 	EGameEventType_MONSTER_ATTACK_DIMINISHED,
@@ -68,8 +71,6 @@ typedef enum {
 
 @interface GameEngine : NSObject
 
-
-@property (assign) int playerMaxHealth;
 
 @property (nonatomic, strong) GameKitEventEngine *networkEngine;
 

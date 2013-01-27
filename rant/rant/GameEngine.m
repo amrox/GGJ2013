@@ -9,7 +9,6 @@
 #import "GameEngine.h"
 #import "GameKitEventEngine.h"
 
-#define BOSS_MAX_HEALTH 100
 
 @implementation GameEngine
 {
@@ -23,7 +22,7 @@
     state.playerCount = self.playerCount;
 	state.healReady = 0;
     for (int i = 0; i < 4; i++) {
-        state.playerHeath[i] = self.playerMaxHealth;
+        state.playerHeath[i] = MAX_PLAYER_HEALTH;
     }
 	state.monsterPreparingToAttackPlayerId = -1;
 	self.currentState = state;
@@ -206,7 +205,7 @@
 
 		if (state.millisecondsBeforeMonsterAttacks <= 0)
 		{
-			int damage = (arc4random() % 10) + 3;
+			int damage = MONSTER_ATTACK_DAMAGE;
 
 			timeToNextAttack = -1;
 
@@ -215,12 +214,24 @@
 			state.playerHeath[playerToAttack] = MAX(0, state.playerHeath[playerToAttack] - damage);
 			state.monsterPreparingToAttackPlayerId = -1;
 
-			GameEvent broadcastEvent;
-			broadcastEvent.type = EGameEventType_PLAYER_HIT;
-			broadcastEvent.targetPlayerId = playerToAttack;
-			broadcastEvent.value = damage;
+			if (state.playerHeath[playerToAttack] <= 0)
+			{
+				GameEvent broadcastEvent;
+				broadcastEvent.type = EGameEventType_PLAYER_DIED;
+				broadcastEvent.targetPlayerId = playerToAttack;
+				broadcastEvent.value = damage;
 
-			[self broadcastEventAsServer:&broadcastEvent];
+				[self broadcastEventAsServer:&broadcastEvent];
+			}
+			else
+			{
+				GameEvent broadcastEvent;
+				broadcastEvent.type = EGameEventType_PLAYER_HIT;
+				broadcastEvent.targetPlayerId = playerToAttack;
+				broadcastEvent.value = damage;
+
+				[self broadcastEventAsServer:&broadcastEvent];
+			}
 		}
 
 		self.currentState = state;

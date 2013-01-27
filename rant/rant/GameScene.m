@@ -130,14 +130,14 @@
 
 - (void)clientReceivedEvent:(GameEvent *)event withState:(GameState *)state;
 {
-	NSLog(@"got event.  monster hp is %d", state->bossHealth);
+	NSLog(@"got event.  monster hp is %d.  player 0 health is %d", state->bossHealth, state->playerHeath[0]);
 
 	if (event->type == EGameEventType_MONSTER_DEAD)
 	{
 		NSLog(@"monster dead.  you win!");
+		[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MainMenuScene scene] withColor:ccWHITE]];
 	}
-
-	if (event->type == EGameEventType_PLAYER_HIT && event->targetPlayerId == [gameEngine myPlayerNum])
+	else if (event->type == EGameEventType_PLAYER_HIT && event->targetPlayerId == [gameEngine myPlayerNum])
 	{
         [self runAction:[CCSequence actions:
                          [CCCallFunc actionWithTarget:monsterLayer.monster selector:@selector(playAttack1Anim)],
@@ -152,6 +152,10 @@
 	else if (event->type == EGameEventType_MONSTER_PREPARING_TO_ATTACK && event->targetPlayerId == [gameEngine myPlayerNum])
 	{
 		[monsterLayer.monster playAttack3Anim];
+	}
+	else if (event->type == EGameEventType_PLAYER_DIED)
+	{
+		[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MainMenuScene scene] withColor:ccWHITE]];
 	}
 }
 
