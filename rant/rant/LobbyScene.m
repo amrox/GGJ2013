@@ -24,17 +24,23 @@
     NSMutableArray *heroAnims;
     NSMutableArray *heroes;
     
-//    int lastPlayerCount;
+    int lastPlayerCount;
 }
 
 - (void)pollMatch
 {
     int curPlayerCount = [[GameKitEventEngine sharedNetworkEngine] matchPlayerCount];
+    
+    if (lastPlayerCount > curPlayerCount) {
+        [self clearPlayerIcons];
+    }
+
     int heroesToAdd = curPlayerCount - [heroes count];
     for (int i=0; i<heroesToAdd; i++) {
         [self addPlayerIconWithIndex:[heroes count] isPlayer:YES];
         
     }
+    lastPlayerCount = curPlayerCount;
 }
 
 -(void)onEnter
