@@ -11,6 +11,7 @@
 #import "GameKitEventEngine.h"
 #import "SimpleAudioEngine.h"
 #import "GameMonsterNode.h"
+#import "MainMenuScene.h"
 
 #define SHAKE_TIME 0.7f
 #define SHAKE_1_PERIOD 0.2f
@@ -79,6 +80,13 @@
     
 
 	[self scheduleUpdate];
+
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameEnd) name:GameEngineGameEndNotification object:[GameKitEventEngine sharedNetworkEngine]];
+}
+
+- (void)gameEnd
+{
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MainMenuScene scene] withColor:ccWHITE]];
 }
 
 - (void)shakeCamera
