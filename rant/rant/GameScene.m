@@ -7,6 +7,7 @@
 #import "GameHeroLayer.h"
 #import "GameEngine.h"
 #import "GameGestureLayer.h"
+#import "NetworkEngine.h"
 
 
 #define SHAKE_TIME 0.7f
@@ -43,9 +44,21 @@
 	return scene;
 }
 
+- (void) refresh
+{
+    GKMatch *match = [NetworkEngine sharedNetworkEngine].match;
+
+    NSLog(@"match: %@", match.playerIDs);
+    
+}
+
 -(void)onEnter
 {
     [super onEnter];
+    
+    [[NetworkEngine sharedNetworkEngine] begin];
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
 
 	CGSize windowSize = [[CCDirector sharedDirector] winSize];
     
@@ -67,6 +80,8 @@
 	gameEngine = [[GameEngine alloc] init];
 	[gameEngine reset];
 	gameEngine.delegate = self;
+    
+    gameEngine.networkEngine = [NetworkEngine sharedNetworkEngine];
 
 	[self scheduleUpdate];
 }

@@ -21,7 +21,6 @@ typedef struct {
 
 @interface NetworkEngine : NSObject <GKMatchDelegate>
 {
-//    int _gameUniqueID;
     int _gamePacketNumber;
 }
 

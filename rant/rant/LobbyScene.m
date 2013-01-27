@@ -1,5 +1,6 @@
 #import "LobbyScene.h"
 #import "GameScene.h"
+#import "NetworkEngine.h"
 
 
 
@@ -23,6 +24,8 @@
 {
     // Create the layer hierarchy
     [super onEnter];
+    
+    [[NetworkEngine sharedNetworkEngine] findMatch];
 
 
     playersInGameLabel = [CCLabelTTF labelWithString:@"Players: ???" fontName:RANT_FONT fontSize:26];

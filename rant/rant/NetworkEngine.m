@@ -32,10 +32,8 @@ const float kHeartbeatTimeMaxDelay = 2.0f;
 typedef enum {
 	kStateStartGame,
     kStateLobby,
-	kStateServerElectBegin,
-    kStateServerElectFinish,
-    kStateMultiplayer,
-    //	kStateMultiplayerReconnect
+	kStateServerElect,
+    kStateMain,
 } gameStates;
 
 
@@ -62,9 +60,7 @@ typedef enum {
 
 @interface PlayerInfo : NSObject
 
-@property (strong) NSNumber* cointoss;
 @property (strong) NSString *playerID;
-@property (strong) NSDate *lastHeartbeat;
 
 @end
 
@@ -103,7 +99,7 @@ typedef enum {
 
 - (void)sendNetworkPacket:(GKMatch *)match packetID:(int)packetID withData:(void *)data ofLength:(int)length reliable:(BOOL)howtosend players:(NSArray *)players {
     
-    NSAssert([players count] > 1, @"no players");
+    NSAssert([players count] > 0, @"no players");
     NSLog(@"sending to players: %@", players);
     
 	// the packet we'll send is resued
@@ -196,33 +192,17 @@ typedef enum {
 {
     static int counter = 0;
 	switch (self.gameState) {
+            
         case kStateLobby:
 		case kStateStartGame:
 			break;
-		case kStateServerElectBegin:
-			[self broadcastNetworkPacket:self.match packetID:NETWORK_GAME_START withData:NULL ofLength:sizeof(int) reliable:YES];
-			self.gameState = kStateServerElectFinish; // we only want to be in the cointoss state for one loop
-			break;
-        case kStateServerElectFinish:
-        {
-            NSArray *allPlayers = [self.playerInfo allValues];
-            if ([allPlayers count] == [[self.match playerIDs] count]) {
-                
-                BOOL hasAllCointosses = YES;
-                for (PlayerInfo *info in allPlayers) {
-                    hasAllCointosses &= info.cointoss != nil;
-                }
-                
-                if (hasAllCointosses) {
-                    NSLog(@"Has All Coin Tosses...");
-                    [self electServer];
-                    _gameState = kStateMultiplayer;
-                }
-            }
-        }
-            break;
             
-		case kStateMultiplayer:
+		case kStateServerElect:
+			[self broadcastNetworkPacket:self.match packetID:NETWORK_GAME_START withData:NULL ofLength:sizeof(int) reliable:YES];
+			self.gameState = kStateMain;
+			break;
+            
+		case kStateMain:
             if (self.serverPlayerID == nil) {
                 [self electServer];
             }
@@ -322,16 +302,8 @@ typedef enum {
 	switch( packetID ) {
 		case NETWORK_GAME_START:
         {
-            // coin toss to determine roles of the two players
-            int coinToss = pIntData[2];
-            
-            PlayerInfo *playerInfo = [self getInfoForPlayerID:playerID];
-            playerInfo.cointoss = [NSNumber numberWithInt:coinToss];
-            
-            NSLog(@"player:%@ cointoss:%d", playerID, coinToss);
-            
             if (_gameState == kStateLobby) {
-                _gameState = kStateServerElectBegin;
+                _gameState = kStateMain;
             }
         }
 			break;
@@ -386,9 +358,8 @@ typedef enum {
 	if(state == GKPeerStateDisconnected) {
         NSString *message = [NSString stringWithFormat:@"Could not reconnect."];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Lost Connection" message:message delegate:self cancelButtonTitle:@"End Game" otherButtonTitles:nil];
-        // !!!: self.connectionAlert = alert;
         [alert show];
-        
+
         [self end];
 	}
 }
@@ -398,7 +369,7 @@ typedef enum {
 {
     NSAssert(self.match, @"match is nil");
     NSAssert(self.match.expectedPlayerCount == 0, @"not enough players");
-    self.gameState = kStateServerElectBegin;
+    self.gameState = kStateServerElect;
     [[NSNotificationCenter defaultCenter] postNotificationName:GameEngineGameBeginNotification object:self];
 }
 
@@ -429,7 +400,7 @@ typedef enum {
 
 - (BOOL) isGameStarted
 {
-    return _gameState == kStateMultiplayer;
+    return _gameState == kStateMain;
 }
 
 
