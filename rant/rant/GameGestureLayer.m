@@ -22,6 +22,7 @@ typedef enum
 #define MAX_POINTS 10000
 #define MAX_LEGS 8
 
+//#define RECORD_GESTURE_ANGLES
 
 float angleBetweenPoints(CGPoint p1, CGPoint p2)
 {
@@ -64,7 +65,7 @@ float getDifferenceBetweenAngles(float a1, float a2)
 
 - (BOOL)matchesLegAngles:(float[])legAnglesArray numLegs:(int)numLegs
 {
-	if (numLegs == 0 || numLegs != [self.legAngles count])
+	if (numLegs != [self.legAngles count])
 	{
 		return NO;
 	}
@@ -125,6 +126,9 @@ float getDifferenceBetweenAngles(float a1, float a2)
 
 	NSMutableArray * chainedGestures;
 	BOOL failed;
+
+	float angleToIgnore;
+	BOOL ignoringAngle;
 }
 
 - (id)initAtStartingPos:(CGPoint)startingPos
@@ -181,8 +185,24 @@ float getDifferenceBetweenAngles(float a1, float a2)
 		{
 			if (numLegs == 0)
 			{
-				legAngles[numLegs] = currentAngle;
-				numLegs++;
+				BOOL addAngle = YES;
+				if (ignoringAngle)
+				{
+					float angleDiff = getDifferenceBetweenAngles(angleToIgnore, currentAngle);
+					if (fabsf(angleDiff) < ANGLE_DIFFERENCE_FOR_NEW_LEG)
+					{
+						addAngle = NO;
+					}
+				}
+				if (addAngle)
+				{
+					ignoringAngle = NO;
+					legAngles[numLegs] = currentAngle;
+					numLegs++;
+#ifdef RECORD_GESTURE_ANGLES
+					NSLog(@"gesture leg angle: %f", currentAngle);
+#endif
+				}
 			}
 			else
 			{
@@ -199,6 +219,9 @@ float getDifferenceBetweenAngles(float a1, float a2)
 					{
 						legAngles[numLegs] = currentAngle;
 						numLegs++;
+#ifdef RECORD_GESTURE_ANGLES
+						NSLog(@"gesture leg angle: %f", currentAngle);
+#endif
 						if ([self checkChainedGesture])
 						{
 							return [chainedGestures objectAtIndex:[chainedGestures count] - 1];
@@ -216,8 +239,11 @@ float getDifferenceBetweenAngles(float a1, float a2)
 	NSArray * gestureLibrary = [Gesture gestureLibrary];
 	for (Gesture * gesture in gestureLibrary)
 	{
-		if ([gesture matchesLegAngles:legAngles numLegs:numLegs])
+		if (numLegs > 0 && [gesture matchesLegAngles:legAngles numLegs:numLegs])
 		{
+			angleToIgnore = legAngles[numLegs-1];
+			ignoringAngle = YES;
+
 			[chainedGestures addObject:gesture];
 			numLegs = 0;
 			return YES;
