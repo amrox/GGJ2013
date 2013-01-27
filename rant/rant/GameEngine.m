@@ -37,10 +37,21 @@
 
 - (void)processEvent:(GameEvent *)event
 {
-    // do stuff
-    
-    
-    [self broadcastEventAsServer:event];
+	if (event->type == EGameEventType_ATTACK_FIRE ||
+		event->type == EGameEventType_ATTACK_WIND ||
+		event->type == EGameEventType_ATTACK_ICE)
+	{
+		GameState state = self.currentState;
+		state.bossHealth -= event->value;
+		self.currentState = state;
+
+		GameEvent broadcastEvent;
+		broadcastEvent.type = EGameEventType_MONSTER_DAMAGED_FIRE + (event->type - EGameEventType_ATTACK_FIRE);
+		broadcastEvent.target = 0;
+		broadcastEvent.value = event->value;
+
+		[self broadcastEventAsServer:&broadcastEvent];
+	}
 }
 
 - (void)sendEventAsClient:(GameEvent *)event

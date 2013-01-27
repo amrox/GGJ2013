@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum
+{
+	EGameEventType_ATTACK_FIRE,
+	EGameEventType_ATTACK_ICE,
+	EGameEventType_ATTACK_WIND,
+	EGameEventType_MONSTER_DAMAGED_FIRE,
+	EGameEventType_MONSTER_DAMAGED_ICE,
+	EGameEventType_MONSTER_DAMAGED_WIND,
+} EGameEventType;
 
 typedef struct {
 	int			bossHealth;
@@ -16,7 +25,7 @@ typedef struct {
 } GameState;
 
 typedef struct {
-	int			type;
+	int			type;	//EGameEventType
     int         target; // 0=boss, 1-4=player
     int			value;
 } GameEvent;

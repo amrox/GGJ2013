@@ -58,7 +58,9 @@
 
 - (void)clientReceivedEvent:(GameEvent *)event withState:(GameState *)state;
 {
-	NSLog(@"got event");
+	NSLog(@"got event.  monster hp is %d", state->bossHealth);
+
+	//todo: update stuff here
 }
 
 #pragma mark - Gesture Receiver methods
@@ -70,14 +72,66 @@
 
 - (void)gestureChainCompleted:(NSArray *)gestureChain
 {
-	GameEvent event;
-	event.target = 0;
-	event.type = 1;
-	event.value = 0;
-    [gameEngine sendEventAsClient:&event];
+	if ([gestureChain count] == 1)
+	{
+		Gesture * singleGesture = [gestureChain objectAtIndex:0];
+		if (singleGesture.gesture == EGesture_FIRE)
+		{
+			GameEvent event;
+			event.target = 0;
+			event.type = EGameEventType_ATTACK_FIRE;
+			event.value = 1;
+			[gameEngine sendEventAsClient:&event];
+		}
+		else if (singleGesture.gesture == EGesture_WIND)
+		{
+			GameEvent event;
+			event.target = 0;
+			event.type = EGameEventType_ATTACK_WIND;
+			event.value = 1;
+			[gameEngine sendEventAsClient:&event];
+		}
+		else if (singleGesture.gesture == EGesture_ICE)
+		{
+			GameEvent event;
+			event.target = 0;
+			event.type = EGameEventType_ATTACK_ICE;
+			event.value = 1;
+			[gameEngine sendEventAsClient:&event];
+		}
+	}
+	else if ([gestureChain count] == 2)
+	{
+		Gesture * firstGesture = [gestureChain objectAtIndex:0];
+		Gesture * secondGesture = [gestureChain objectAtIndex:1];
+		if (secondGesture.gesture == EGesture_ATTACK)
+		{
+			if (firstGesture.gesture == EGesture_FIRE)
+			{
+				GameEvent event;
+				event.target = 0;
+				event.type = EGameEventType_ATTACK_FIRE;
+				event.value = 3;
+				[gameEngine sendEventAsClient:&event];
+			}
+			else if (firstGesture.gesture == EGesture_WIND)
+			{
+				GameEvent event;
+				event.target = 0;
+				event.type = EGameEventType_ATTACK_WIND;
+				event.value = 3;
+				[gameEngine sendEventAsClient:&event];
+			}
+			else if (firstGesture.gesture == EGesture_ICE)
+			{
+				GameEvent event;
+				event.target = 0;
+				event.type = EGameEventType_ATTACK_ICE;
+				event.value = 3;
+				[gameEngine sendEventAsClient:&event];
+			}
+		}
+	}
 }
 
 @end
-
-
-

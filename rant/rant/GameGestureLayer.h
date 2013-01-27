@@ -10,9 +10,9 @@
 typedef enum
 {
 	EGesture_NONE,
-	EGesture_WATER,		//figure 8
+	EGesture_ICE,		//square
 	EGesture_FIRE,		//z with return
-	EGesture_AIR,		//square
+	EGesture_WIND,		//figure 8
 	EGesture_ATTACK,	//stab
 	EGesture_HEAL,		//backwards c
 } EGesture;

@@ -8,7 +8,7 @@
 
 @protocol EventEngine <NSObject>
 
-- (void)processEvent:(GameEvent *)event;
+//- (void)processEvent:(GameEvent *)event;
 
 
 @end
