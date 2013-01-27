@@ -5,21 +5,9 @@
 
 #import "GameGestureLayer.h"
 #import "SimpleAudioEngine.h"
-
-#define RANT_FONT @"Bernard MT Condensed"
+#import "GameScene.h"
 
 #define PI 3.141592653589
-
-typedef enum
-{
-	EGesture_NONE,
-	EGesture_WATER,		//figure 8
-	EGesture_FIRE,		//z with return
-	EGesture_AIR,		//square
-	EGesture_ATTACK,	//stab
-	EGesture_HEAL,		//backwards c
-} EGesture;
-
 
 #define DIST_FOR_ACCURATE_ANGLE1 20
 #define DIST_FOR_ACCURATE_ANGLE2 80
@@ -53,19 +41,6 @@ float getDifferenceBetweenAngles(float a1, float a2)
 	}
 	return diff;
 }
-
-
-
-@interface Gesture : NSObject
-
-@property (nonatomic, strong) NSArray * legAngles;
-@property (nonatomic, assign) EGesture gesture;
-
-- (BOOL)matchesLegAngles:(float[])legAngles numLegs:(int)numLegs;
-
-+ (NSArray*)gestureLibrary;
-
-@end
 
 @implementation Gesture
 

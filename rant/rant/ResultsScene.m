@@ -1,8 +1,6 @@
 #import "ResultsScene.h"
 #import "MainMenuScene.h"
-
-
-#define RANT_FONT @"Bernard MT Condensed"
+#import "GameScene.h"
 
 
 
