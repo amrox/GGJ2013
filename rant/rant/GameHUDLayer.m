@@ -26,9 +26,6 @@
 	CCMenuItemImage * spell4Button;
 	CCMenuItemImage * spell5Button;
 	CCMenuItemImage * spell6Button;
-    
-    GameMonsterHealthBar *monsterHealthBar;
-    GameMonsterHealthBar *heroHealthBar;
 }
 
 -(void)onEnter
@@ -44,15 +41,6 @@
 	CCMenu *menu = [CCMenu menuWithItems:spell1Button, nil];
     [self addChild:menu];
     
-    monsterHealthBar = [GameMonsterHealthBar node];
-    [monsterHealthBar setPosition:ccp(160, 400)];
-    [self addChild:monsterHealthBar];
-    
-    
-    heroHealthBar = [GameMonsterHealthBar node];
-    [heroHealthBar setPosition:ccp(80, 160)];
-    [heroHealthBar setScaleX:0.5];
-    [self addChild:heroHealthBar];
     
 }
 
@@ -72,6 +60,9 @@
 	SpellBookLayer * spellBookLayer;
 }
 
+@synthesize monsterHealthBar;
+@synthesize heroHealthBar;
+
 -(void)onEnter
 {
     [super onEnter];
@@ -88,6 +79,17 @@
 //
 //	spellBookLayer = [SpellBookLayer node];
 //    [self addChild:spellBookLayer];
+    
+    
+    monsterHealthBar = [GameMonsterHealthBar node];
+    [monsterHealthBar setPosition:ccp(160, 400)];
+    [self addChild:monsterHealthBar];
+    
+    
+    heroHealthBar = [GameMonsterHealthBar node];
+    [heroHealthBar setPosition:ccp(80, 160)];
+    [heroHealthBar setScaleX:0.5];
+    [self addChild:heroHealthBar];
 }
 
 - (void)gestureRegistered:(Gesture *)gesture
