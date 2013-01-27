@@ -1,8 +1,7 @@
 #import "MainMenuScene.h"
 #import "LobbyScene.h"
 #import "GameScene.h"
-
-
+#import "SimpleAudioEngine.h"
 
 
 @interface MainMenuLayer : CCLayer
@@ -26,7 +25,7 @@
 {
     // Create the layer hierarchy
     [super onEnter];
-        
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bgmusic1.caf"];    
     singlePlayerGameButton = [CCMenuItemImage itemWithNormalImage:@"start-menu-button.png"
                                                     selectedImage:@"start-menu-button-pressed.png"
                                                            target:self

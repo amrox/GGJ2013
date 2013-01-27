@@ -120,6 +120,14 @@
 		FF91403E16B4B2BB00A6E22E /* sine440.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF91403C16B4B2BB00A6E22E /* sine440.caf */; };
 		FF9140B816B4C18B00A6E22E /* red_health_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF9140B716B4C18B00A6E22E /* red_health_bar.png */; };
 		FF91413416B4E70B00A6E22E /* redhealthbar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF91413316B4E70B00A6E22E /* redhealthbar.png */; };
+		FF9FABA116B5947400E1322A /* playerhit.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF9FABA016B5947400E1322A /* playerhit.caf */; };
+		FF9FABA216B5947400E1322A /* playerhit.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF9FABA016B5947400E1322A /* playerhit.caf */; };
+		FF9FABA716B5956700E1322A /* castspell.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF9FABA616B5956700E1322A /* castspell.caf */; };
+		FF9FABA816B5956700E1322A /* castspell.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF9FABA616B5956700E1322A /* castspell.caf */; };
+		FF9FABAA16B595CB00E1322A /* castspelllaser.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF9FABA916B595CB00E1322A /* castspelllaser.caf */; };
+		FF9FABAB16B595CB00E1322A /* castspelllaser.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF9FABA916B595CB00E1322A /* castspelllaser.caf */; };
+		FF9FABAD16B5964F00E1322A /* bgmusic1.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF9FABAC16B5964F00E1322A /* bgmusic1.caf */; };
+		FF9FABAE16B5964F00E1322A /* bgmusic1.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF9FABAC16B5964F00E1322A /* bgmusic1.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -647,6 +655,10 @@
 		FF91403C16B4B2BB00A6E22E /* sine440.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sine440.caf; sourceTree = "<group>"; };
 		FF9140B716B4C18B00A6E22E /* red_health_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_health_bar.png; sourceTree = "<group>"; };
 		FF91413316B4E70B00A6E22E /* redhealthbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redhealthbar.png; sourceTree = "<group>"; };
+		FF9FABA016B5947400E1322A /* playerhit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = playerhit.caf; sourceTree = "<group>"; };
+		FF9FABA616B5956700E1322A /* castspell.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = castspell.caf; sourceTree = "<group>"; };
+		FF9FABA916B595CB00E1322A /* castspelllaser.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = castspelllaser.caf; sourceTree = "<group>"; };
+		FF9FABAC16B5964F00E1322A /* bgmusic1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bgmusic1.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -877,6 +889,10 @@
 		9CAB4F8716B489800061047A /* GameAssets */ = {
 			isa = PBXGroup;
 			children = (
+				FF9FABAC16B5964F00E1322A /* bgmusic1.caf */,
+				FF9FABA916B595CB00E1322A /* castspelllaser.caf */,
+				FF9FABA616B5956700E1322A /* castspell.caf */,
+				FF9FABA016B5947400E1322A /* playerhit.caf */,
 				FF91413316B4E70B00A6E22E /* redhealthbar.png */,
 				FF9140B716B4C18B00A6E22E /* red_health_bar.png */,
 				9CAB509816B4BE5D0061047A /* Animations */,
@@ -1557,6 +1573,10 @@
 				9CBE85F216B58A9100F52D9A /* Action Man.ttf in Resources */,
 				9CBE85F516B58A9E00F52D9A /* ARNORG__.TTF in Resources */,
 				B36BE37816B57F1C006F0A72 /* Default-568h@2x.png in Resources */,
+				FF9FABA116B5947400E1322A /* playerhit.caf in Resources */,
+				FF9FABA716B5956700E1322A /* castspell.caf in Resources */,
+				FF9FABAA16B595CB00E1322A /* castspelllaser.caf in Resources */,
+				FF9FABAD16B5964F00E1322A /* bgmusic1.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1580,6 +1600,10 @@
 				FF91403E16B4B2BB00A6E22E /* sine440.caf in Resources */,
 				9CBE85F316B58A9100F52D9A /* Action Man.ttf in Resources */,
 				9CBE85F616B58A9E00F52D9A /* ARNORG__.TTF in Resources */,
+				FF9FABA216B5947400E1322A /* playerhit.caf in Resources */,
+				FF9FABA816B5956700E1322A /* castspell.caf in Resources */,
+				FF9FABAB16B595CB00E1322A /* castspelllaser.caf in Resources */,
+				FF9FABAE16B5964F00E1322A /* bgmusic1.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

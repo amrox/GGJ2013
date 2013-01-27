@@ -1,6 +1,7 @@
 #import "LobbyScene.h"
 #import "GameScene.h"
 #import "GameKitEventEngine.h"
+#import "SimpleAudioEngine.h"
 
 
 #define ANIMATION_DELAY 0.3
@@ -37,7 +38,8 @@
 {
     // Create the layer hierarchy
     [super onEnter];
-    
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bgmusic1.caf"];
+
     [[GameKitEventEngine sharedNetworkEngine] authenticate];
 
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(pollMatch) userInfo:nil repeats:YES];

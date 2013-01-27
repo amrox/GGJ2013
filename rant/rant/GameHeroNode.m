@@ -4,6 +4,7 @@
 //
 
 #import "GameHeroNode.h"
+#import "SimpleAudioEngine.h"
 
 #define ANIMATION_DELAY 0.25
 
@@ -107,6 +108,7 @@
 - (void)playAttackAnim
 {
     [sprite stopAllActions];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"castspelllaser.caf"];
     [sprite runAction:[CCSequence actions:
                        [CCAnimate actionWithAnimation:attackAnim],
                        [CCCallFunc actionWithTarget:self selector:@selector(loopIdle)],
@@ -117,6 +119,7 @@
 - (void)playHitAnim
 {
     [sprite stopAllActions];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"playerhit.caf"];
     [sprite runAction:[CCSequence actions:
                        [CCAnimate actionWithAnimation:hitAnim],
                        [CCCallFunc actionWithTarget:self selector:@selector(loopIdle)],
