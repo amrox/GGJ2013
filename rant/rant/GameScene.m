@@ -2,44 +2,21 @@
 #import "ResultsScene.h"
 
 #import "GameBackgroundLayer.h"
-#import "GameGestureLayer.h"
 #import "GameMonsterLayer.h"
 #import "GameHUDLayer.h"
 #import "GameHeroLayer.h"
 #import "GameEngine.h"
-
-@protocol GameClientDelegate <NSObject>
-
-- (void)monsterHPChangedTo:(int)hp;
-
-@end
+#import "GameGestureLayer.h"
 
 
-@interface GameClient
-
-- (void)attack;
-
-@property (nonatomic, weak) NSObject<GameClientDelegate> * delegate;
-
-@end
-
-
-
-@implementation GameClient
-
-- (void)attack
-{
-	[self.delegate monsterHPChangedTo:10];
-}
-
-@end
-
-
-@interface GameScene() <GameClientDelegate>
+@interface GameScene() <GameEngineDelegate, GestureReceiver>
 @end
 
 
 @implementation GameScene
+{
+	GameEngine * gameEngine;
+}
 
 @synthesize backgroundLayer;
 @synthesize monsterLayer;
@@ -67,17 +44,37 @@
     gestureLayer = [GameGestureLayer node];
     
 	[gestureLayer setPosition:ccp(-windowSize.width*0.5f, -windowSize.height*0.5f)];
-
+    [gestureLayer setDelegate:self];
+    
     [self addChild:backgroundLayer];
     [self addChild:monsterLayer];
     [self addChild:heroLayer];
     [self addChild:hudLayer];
     [self addChild:gestureLayer];
+
+	gameEngine = [[GameEngine alloc] init];
+	gameEngine.delegate = self;
 }
 
-- (void)monsterHPChangedTo:(int)hp
+- (void)clientReceivedEvent:(GameEvent *)event withState:(GameState *)state;
 {
-	NSLog(@"monster HP changed to %d", hp);
+	NSLog(@"got event");
+}
+
+#pragma mark - Gesture Receiver methods
+
+- (void)gestureRegistered:(Gesture *)gesture
+{
+    [hudLayer gestureRegistered:gesture];
+}
+
+- (void)gestureChainCompleted:(NSArray *)gestureChain
+{
+	GameEvent event;
+	event.target = 0;
+	event.type = 1;
+	event.value = 0;
+    [gameEngine processEvent:&event];
 }
 
 @end

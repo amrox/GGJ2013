@@ -29,6 +29,15 @@
 
 - (void)processEvent:(GameEvent *)event
 {
+	if (!self.networkEngine)
+	{
+		// todo: also need to actually process the event.  And only send applicable events back to the client.
+		// just putting this here so I can test stuff
+
+		GameState state = self.currentState;
+		[self.delegate clientReceivedEvent:event withState:&state];
+	}
+
     // alter game state here
     
     if (![self isServer]) {

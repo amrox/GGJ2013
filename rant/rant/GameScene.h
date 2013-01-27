@@ -1,10 +1,10 @@
 #import "cocos2d.h"
 
 @class GameBackgroundLayer;
-@class GameGestureLayer;
 @class GameMonsterLayer;
 @class GameHUDLayer;
 @class GameHeroLayer;
+@class GameGestureLayer;
 
 #define RANT_FONT @"Helvetica"
 

@@ -313,6 +313,14 @@ float getDifferenceBetweenAngles(float a1, float a2)
 	CCMenuItemImage * gestureButton2;
 	CCMenuItemImage * gestureButton3;
     GestureRecognizer * currentGestureRecognizer;
+    
+    
+    __weak id<GestureReceiver> delegate;
+}
+
+- (void)setDelegate:(id<GestureReceiver>)_delegate
+{
+    delegate = _delegate;
 }
 
 - (CCMenuItemImage*)makeButtonWithText:(NSString*)text pos:(CGPoint)pos selector:(SEL)selector
@@ -360,7 +368,6 @@ float getDifferenceBetweenAngles(float a1, float a2)
 //	NSLog(@"First touch is at %f %f" ,touchLocation.x, touchLocation.y);
     if (currentGestureRecognizer == nil)
     {
-        [[SimpleAudioEngine sharedEngine] playEffect:@"sine440.caf"];
         currentGestureRecognizer = [[GestureRecognizer alloc] initAtStartingPos:touchLocation];
     }
 	return YES;
@@ -381,6 +388,7 @@ float getDifferenceBetweenAngles(float a1, float a2)
 		else if (newGesture)
 		{
 			NSLog(@"new gesture: %d", newGesture.gesture);
+            [delegate gestureRegistered:newGesture];
 		}
     }
 }
@@ -399,6 +407,8 @@ float getDifferenceBetweenAngles(float a1, float a2)
 			{
 				NSLog(@"    gesture: %d", gesture.gesture);
 			}
+            
+            [delegate gestureChainCompleted:chainedGestures];
 		}
 		else
 		{

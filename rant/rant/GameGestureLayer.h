@@ -42,4 +42,6 @@ typedef enum
     
 }
 
+- (void)setDelegate:(id<GestureReceiver>)delegate;
+
 @end
