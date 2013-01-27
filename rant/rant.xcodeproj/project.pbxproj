@@ -82,6 +82,8 @@
 		B3E1FF1516B476B500D940F0 /* NetworkTesterRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3E1FF1416B476B500D940F0 /* NetworkTesterRootViewController.xib */; };
 		B3E1FF9A16B497A200D940F0 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E1FF9916B497A200D940F0 /* Util.m */; };
 		B3E1FF9B16B497A200D940F0 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E1FF9916B497A200D940F0 /* Util.m */; };
+		FF91403D16B4B2BB00A6E22E /* sine440.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF91403C16B4B2BB00A6E22E /* sine440.caf */; };
+		FF91403E16B4B2BB00A6E22E /* sine440.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF91403C16B4B2BB00A6E22E /* sine440.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -571,6 +573,7 @@
 		B3E1FF1416B476B500D940F0 /* NetworkTesterRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkTesterRootViewController.xib; sourceTree = "<group>"; };
 		B3E1FF9816B497A200D940F0 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		B3E1FF9916B497A200D940F0 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		FF91403C16B4B2BB00A6E22E /* sine440.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sine440.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -798,6 +801,7 @@
 		9CAB4F8716B489800061047A /* GameAssets */ = {
 			isa = PBXGroup;
 			children = (
+				FF91403C16B4B2BB00A6E22E /* sine440.caf */,
 				9CAB4F9916B49C580061047A /* gameBackground1-hd.png */,
 				9CAB4F9A16B49C580061047A /* gameBackground1.png */,
 				9CAB4F9B16B49C580061047A /* gameBackground2-hd.png */,
@@ -1389,6 +1393,7 @@
 				9CAB4FA216B49C580061047A /* gameBackground2.png in Resources */,
 				9CAB4FA316B49C580061047A /* gameBackgroundCloud-hd.png in Resources */,
 				9CAB4FA416B49C580061047A /* gameBackgroundCloud.png in Resources */,
+				FF91403D16B4B2BB00A6E22E /* sine440.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1409,6 +1414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B354829016B3A77C004ECF7C /* InfoPlist.strings in Resources */,
+				FF91403E16B4B2BB00A6E22E /* sine440.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

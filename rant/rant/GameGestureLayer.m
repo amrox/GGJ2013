@@ -4,6 +4,7 @@
 //
 
 #import "GameGestureLayer.h"
+#import "SimpleAudioEngine.h"
 
 #define RANT_FONT @"Bernard MT Condensed"
 
@@ -55,6 +56,8 @@ typedef enum
 	{
 		points[0] = startingPos;
 		numPoints = 1;
+
+
 	}
 	return self;
 }
@@ -180,6 +183,7 @@ typedef enum
 -(void)onEnter
 {
 	[super onEnter];
+    //[SimpleAudioEngine sharedEngine];
 
 	CGSize windowSize = [[CCDirector sharedDirector] winSize];
 
@@ -192,7 +196,6 @@ typedef enum
     gestureButton3 = [self makeButtonWithText:@"3" pos:ccp(80,windowSize.height - 110) selector:@selector(gesture3Pressed:)];
 
 	CCMenu *menu = [CCMenu menuWithItems:gestureButton1, gestureButton2, gestureButton3, nil];
-    [self addChild:menu];
     
 
 }

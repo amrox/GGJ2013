@@ -7,7 +7,6 @@
 #import "GameHUDLayer.h"
 #import "GameHeroLayer.h"
 
-
 @implementation GameScene
 
 @synthesize backgroundLayer;
