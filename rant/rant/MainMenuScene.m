@@ -17,8 +17,8 @@
 	CCMenuItemImage * singlePlayerGameButton;
     CCLabelTTF * singlePlayerGameLabel;
 
-    CCMenuItemImage * multiPlayerGameButton;
-    CCLabelTTF * multiPlayerGameLabel;
+    CCMenuItemImage * mmPlayButton;
+
 }
 
 
@@ -26,12 +26,31 @@
 {
     // Create the layer hierarchy
     [super onEnter];
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bgmusic1.caf"];    
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bgmusic1.caf"];
+    
+    CCSprite *homeBackground = [CCSprite spriteWithFile:@"mainMenuBackground.png"];
+    [homeBackground setPosition:ccp(160, 240)];
+    [self addChild:homeBackground];
+
+    CCSprite *titleText = [CCSprite spriteWithFile:@"titleText2.png"];
+    [titleText setPosition:ccp(160, 240)];
+    [self addChild:titleText];
+
+
+    
+    
+    mmPlayButton = [CCMenuItemImage itemWithNormalImage:@"mainMenuPlayButton.png"
+                                                              selectedImage:@"mainMenuPlayButtonPressed.png"
+                                                                     target:self
+                                                                   selector:@selector(multiPlayerPressed:)];
+
+    
+    [mmPlayButton setPosition:ccp(0, -190)];
+    
     singlePlayerGameButton = [CCMenuItemImage itemWithNormalImage:@"start-menu-button.png"
                                                     selectedImage:@"start-menu-button-pressed.png"
                                                            target:self
                                                          selector:@selector(singlePlayerPressed:)];
-    
     
     CGPoint singlePlayerGameButtonPoint = ccp([singlePlayerGameButton boundingBox].size.width * 0.5f,
                                               [singlePlayerGameButton boundingBox].size.height * 0.5f);
@@ -40,25 +59,8 @@
     [singlePlayerGameLabel setColor:ccWHITE];
     [singlePlayerGameButton addChild:singlePlayerGameLabel];
     [singlePlayerGameButton setPosition:singlePlayerGameButtonPoint];
-
     
-    multiPlayerGameButton = [CCMenuItemImage itemWithNormalImage:@"start-menu-button.png"
-                                                   selectedImage:@"start-menu-button-pressed.png"
-                                                          target:self
-                                                        selector:@selector(multiPlayerPressed:)];
-    
-    CGPoint multiPlayerGameButtonPoint = ccp([multiPlayerGameButton boundingBox].size.width * 0.5f,
-                                              [multiPlayerGameButton boundingBox].size.height * 0.5f);
-
-    
-    [multiPlayerGameButton setPosition:ccp(0,-100)];
-    multiPlayerGameLabel = [CCLabelTTF labelWithString:@"Multi Player" fontName:RANT_FONT fontSize:26];
-    [multiPlayerGameLabel setColor:ccWHITE];
-    [multiPlayerGameButton addChild:multiPlayerGameLabel];
-    [singlePlayerGameButton setPosition:multiPlayerGameButtonPoint];
-
-
-    CCMenu *menu = [CCMenu menuWithItems:singlePlayerGameButton, multiPlayerGameButton, nil];
+    CCMenu *menu = [CCMenu menuWithItems:mmPlayButton, singlePlayerGameButton, nil];
     [self addChild:menu];
 }
 
