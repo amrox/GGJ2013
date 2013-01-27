@@ -124,7 +124,7 @@
 		NSLog(@"monster dead.  you win!");
 	}
 
-	if (event->type == EGameEventType_PLAYER_HIT)
+	if (event->type == EGameEventType_PLAYER_HIT && event->target == [gameEngine myPlayerNum] + 1)
 	{
         [self runAction:[CCSequence actions:
                          [CCCallFunc actionWithTarget:monsterLayer.monster selector:@selector(playAttack1Anim)],
@@ -177,8 +177,6 @@
 
 - (void)gestureChainCompleted:(NSArray *)gestureChain
 {
-	[self shakeCamera];
-
 	if ([gestureChain count] == 1)
 	{
 		Gesture * singleGesture = [gestureChain objectAtIndex:0];

@@ -64,11 +64,17 @@
 - (void)multiPlayerPressed:(id)sender
 {
 	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[LobbyScene scene] withColor:ccWHITE]];
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];   
+    [[SimpleAudioEngine sharedEngine] playEffect:@"click1.caf"];
+
 }
 
 - (void)singlePlayerPressed:(id)sender
 {
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[GameScene scene] withColor:ccWHITE]];
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"click1.caf"];
+
     
 //	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[LobbyScene scene] withColor:ccWHITE]];
 }

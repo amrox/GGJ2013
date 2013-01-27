@@ -83,4 +83,6 @@ typedef enum {
 
 - (void)update:(float)deltaTime;
 
+- (int) myPlayerNum;
+
 @end

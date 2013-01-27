@@ -39,7 +39,7 @@
     // Create the layer hierarchy
     [super onEnter];
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bgmusic1.caf"];
-
+	
     [[GameKitEventEngine sharedNetworkEngine] authenticate];
 
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(pollMatch) userInfo:nil repeats:YES];
@@ -124,8 +124,11 @@
 
 - (void)didTapFindMatchButton:(id)sender
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"click1.caf"];
+
     if ([[GameKitEventEngine sharedNetworkEngine] isMatchReady]) {
         [[GameKitEventEngine sharedNetworkEngine] begin];
+    
         
         
     } else {
@@ -136,6 +139,8 @@
 - (void)didTapEnterGameButton:(id)sender
 {
     // todo..
+    [[SimpleAudioEngine sharedEngine] playEffect:@"click1.caf"];
+
 }
 
 - (void)enableEnterGameButton:(BOOL)enable
