@@ -7,6 +7,37 @@
 #import "GameHUDLayer.h"
 #import "GameHeroLayer.h"
 
+@protocol GameClientDelegate <NSObject>
+
+- (void)monsterHPChangedTo:(int)hp;
+
+@end
+
+
+@interface GameClient
+
+- (void)attack;
+
+@property (nonatomic, weak) NSObject<GameClientDelegate> * delegate;
+
+@end
+
+
+
+@implementation GameClient
+
+- (void)attack
+{
+	[self.delegate monsterHPChangedTo:10];
+}
+
+@end
+
+
+@interface GameScene() <GameClientDelegate>
+@end
+
+
 @implementation GameScene
 
 @synthesize backgroundLayer;
@@ -41,6 +72,11 @@
     [self addChild:heroLayer];
     [self addChild:hudLayer];
     [self addChild:gestureLayer];
+}
+
+- (void)monsterHPChangedTo:(int)hp
+{
+	NSLog(@"monster HP changed to %d", hp);
 }
 
 @end
