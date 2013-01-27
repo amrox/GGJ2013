@@ -10,3 +10,4 @@
 
 extern void PresentError(NSError *error);
 
+extern NSString* GetUUID(void);

@@ -7,92 +7,43 @@
 //
 
 #import "GameEngine.h"
-
-#import "Util.h"
-
-@interface GameEngine ()
-
-@property (assign) BOOL matchStarted;
-
-@end
+#import "NetworkEngine.h"
 
 @implementation GameEngine
 
-+ (GameEngine *)sharedGameEngine
+- (void)reset
 {
-    static dispatch_once_t onceToken;
-    static GameEngine *engine;
-    dispatch_once(&onceToken, ^{
-        engine = [[GameEngine alloc] init];
-    });
-    return engine;
-}
-
-- (void)authenticate
-{
-    if (![GKLocalPlayer localPlayer].isAuthenticated) {
-        [[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError *error) {
-            
-            if (error != nil) {
-                NSLog(@"error: %@", error);
-                abort();
-            }
-        }];
+    GameState state;
+    state.bossHealth = self.bossMaxHealth;
+    state.playerCount = self.playerCount;
+    for (int i = 0; i < 4; i++) {
+        state.playerHeath[i] = self.playerMaxHealth;
     }
 }
 
-- (IBAction)findProgrammaticMatch: (id) sender
+- (void)setNetworkEngine:(NetworkEngine *)networkEngine
 {
-    GKMatchRequest *request = [[GKMatchRequest alloc] init];
-    request.minPlayers = 2;
-    request.maxPlayers = 4;
-    
-    [[GKMatchmaker sharedMatchmaker] findMatchForRequest:request withCompletionHandler:^(GKMatch *match, NSError *error) {
-        if (error)
-        {
-            PresentError(error);
-        }
-        else if (match != nil)
-        {
-            self.match = match; // Use a retaining property to retain the match.
-            match.delegate = self;
-            if (!self.matchStarted && match.expectedPlayerCount == 0)
-            {
-//                self.matchStarted = YES;
-//                // Insert game-specific code to begin the match.
-//                
-//                NSLog(@"begin match!");
-            }
-        }
-    }];
+    _networkEngine = networkEngine;
+    _networkEngine.engine = self;
 }
 
-- (void)match:(GKMatch *)match didReceiveData:(NSData *)data fromPlayer:(NSString *)playerID
+- (void)processEvent:(GameEvent *)event
 {
-    NSLog(@"got data!");
-}
-
-// The player state changed (eg. connected or disconnected)
-- (void)match:(GKMatch *)theMatch player:(NSString *)playerID didChangeState:(GKPlayerConnectionState)state {
-    if (self.match != theMatch) return;
+    // alter game state here
     
-    switch (state) {
-        case GKPlayerStateConnected:
-            // handle a new player connection.
-            NSLog(@"Player connected!");
-            
-            if (!self.matchStarted && theMatch.expectedPlayerCount == 0) {
-                NSLog(@"Ready to start match!");
-            }
-            
-            break;
-        case GKPlayerStateDisconnected:
-            // a player just disconnected.
-            NSLog(@"Player disconnected!");
-            self.matchStarted = NO;
-//            [delegate matchEnded];
-            break;
+    if (![self isServer]) {
+        [self.networkEngine sendEvent:event];
     }
 }
+
+- (BOOL)isServer
+{
+    if (self.networkEngine != nil) {
+        return [self.networkEngine isServer];
+    }
+    return YES;
+}
+
+
 
 @end

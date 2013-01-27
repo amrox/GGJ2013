@@ -5,21 +5,9 @@
 
 #import "GameGestureLayer.h"
 #import "SimpleAudioEngine.h"
-
-#define RANT_FONT @"Bernard MT Condensed"
+#import "GameScene.h"
 
 #define PI 3.141592653589
-
-typedef enum
-{
-	EGesture_NONE,
-	EGesture_WATER,		//figure 8
-	EGesture_FIRE,		//z with return
-	EGesture_AIR,		//square
-	EGesture_ATTACK,	//stab
-	EGesture_HEAL,		//backwards c
-} EGesture;
-
 
 #define DIST_FOR_ACCURATE_ANGLE1 20
 #define DIST_FOR_ACCURATE_ANGLE2 80
@@ -54,19 +42,6 @@ float getDifferenceBetweenAngles(float a1, float a2)
 	return diff;
 }
 
-
-
-@interface Gesture : NSObject
-
-@property (nonatomic, strong) NSArray * legAngles;
-@property (nonatomic, assign) EGesture gesture;
-
-- (BOOL)matchesLegAngles:(float[])legAngles numLegs:(int)numLegs;
-
-+ (NSArray*)gestureLibrary;
-
-@end
-
 @implementation Gesture
 
 - (BOOL)matchesLegAngles:(float[])legAnglesArray numLegs:(int)numLegs
@@ -99,19 +74,19 @@ float getDifferenceBetweenAngles(float a1, float a2)
 		g = [[Gesture alloc] init];
 		g.gesture = EGesture_WATER;
 		g.legAngles = [NSArray arrayWithObjects:
-					   [NSNumber numberWithFloat:0.946014],
-					   [NSNumber numberWithFloat:-1.555294],
-					   [NSNumber numberWithFloat:2.432072],
-					   [NSNumber numberWithFloat:-1.527345], nil];
+					   [NSNumber numberWithFloat:1.362165],
+					   [NSNumber numberWithFloat:-1.065506],
+					   [NSNumber numberWithFloat:1.565391],
+					   [NSNumber numberWithFloat:-2.306805], nil];
 		[sharedLibrary addObject:g];
 
 		g = [[Gesture alloc] init];
 		g.gesture = EGesture_FIRE;
 		g.legAngles = [NSArray arrayWithObjects:
-					   [NSNumber numberWithFloat:-0.129982],
-					   [NSNumber numberWithFloat:2.420434],
-					   [NSNumber numberWithFloat:-0.060993],
-					   [NSNumber numberWithFloat:-1.527345], nil];
+					   [NSNumber numberWithFloat:0],
+					   [NSNumber numberWithFloat:2.519180],
+					   [NSNumber numberWithFloat:0],
+					   [NSNumber numberWithFloat:-2.442189], nil];
 		[sharedLibrary addObject:g];
 
 		g = [[Gesture alloc] init];
@@ -119,27 +94,27 @@ float getDifferenceBetweenAngles(float a1, float a2)
 		g.legAngles = [NSArray arrayWithObjects:
 					   [NSNumber numberWithFloat:1.527345],
 					   [NSNumber numberWithFloat:0],
-					   [NSNumber numberWithFloat:-1.065215],
-					   [NSNumber numberWithFloat:-2.339980], nil];
+					   [NSNumber numberWithFloat:-1.6],
+					   [NSNumber numberWithFloat:3.14], nil];
 		[sharedLibrary addObject:g];
 
 		g = [[Gesture alloc] init];
 		g.gesture = EGesture_ATTACK;
 		g.legAngles = [NSArray arrayWithObjects:
 					   [NSNumber numberWithFloat:1.527345],
-					   [NSNumber numberWithFloat:0.7],
-					   [NSNumber numberWithFloat:-2.37],
-					   [NSNumber numberWithFloat:0.7],
-					   [NSNumber numberWithFloat:-2.37],
-					   [NSNumber numberWithFloat:0.7], nil];
+					   [NSNumber numberWithFloat:-0.85],
+					   [NSNumber numberWithFloat:2.24],
+					   [NSNumber numberWithFloat:-0.85],
+					   [NSNumber numberWithFloat:2.24],
+					   [NSNumber numberWithFloat:-0.85], nil];
 		[sharedLibrary addObject:g];
 		
 		g = [[Gesture alloc] init];
 		g.gesture = EGesture_HEAL;
 		g.legAngles = [NSArray arrayWithObjects:
-					   [NSNumber numberWithFloat:-0.176235],
-					   [NSNumber numberWithFloat:1.637365],
-					   [NSNumber numberWithFloat:-3.047384], nil];
+					   [NSNumber numberWithFloat:0],
+					   [NSNumber numberWithFloat:1.57],
+					   [NSNumber numberWithFloat:3.14], nil];
 		[sharedLibrary addObject:g];
 	}
 	return sharedLibrary;
@@ -338,6 +313,14 @@ float getDifferenceBetweenAngles(float a1, float a2)
 	CCMenuItemImage * gestureButton2;
 	CCMenuItemImage * gestureButton3;
     GestureRecognizer * currentGestureRecognizer;
+    
+    
+    __weak id<GestureReceiver> delegate;
+}
+
+- (void)setDelegate:(id<GestureReceiver>)_delegate
+{
+    delegate = _delegate;
 }
 
 - (CCMenuItemImage*)makeButtonWithText:(NSString*)text pos:(CGPoint)pos selector:(SEL)selector
@@ -385,7 +368,6 @@ float getDifferenceBetweenAngles(float a1, float a2)
 //	NSLog(@"First touch is at %f %f" ,touchLocation.x, touchLocation.y);
     if (currentGestureRecognizer == nil)
     {
-        [[SimpleAudioEngine sharedEngine] playEffect:@"sine440.caf"];
         currentGestureRecognizer = [[GestureRecognizer alloc] initAtStartingPos:touchLocation];
     }
 	return YES;
@@ -406,6 +388,7 @@ float getDifferenceBetweenAngles(float a1, float a2)
 		else if (newGesture)
 		{
 			NSLog(@"new gesture: %d", newGesture.gesture);
+            [delegate gestureRegistered:newGesture];
 		}
     }
 }
@@ -424,6 +407,8 @@ float getDifferenceBetweenAngles(float a1, float a2)
 			{
 				NSLog(@"    gesture: %d", gesture.gesture);
 			}
+            
+            [delegate gestureChainCompleted:chainedGestures];
 		}
 		else
 		{

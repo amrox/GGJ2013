@@ -6,12 +6,12 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-
+@class GameMonsterNode;
 
 @interface GameMonsterLayer : CCLayer {
     
 }
 
-@property (nonatomic, strong) CCSprite *monster;
+@property (nonatomic, strong) GameMonsterNode *monster;
 
 @end

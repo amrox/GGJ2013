@@ -1,4 +1,4 @@
-    //
+//
 //  GameEngine.h
 //  rant
 //
@@ -7,19 +7,54 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <GameKit/GameKit.h>
-
-@interface GameEngine : NSObject <GKMatchDelegate>
 
 
-+ (GameEngine *)sharedGameEngine;
+typedef struct {
+	int			bossHealth;
+    int         playerCount;
+    int			playerHeath[4];
+} GameState;
 
-@property (strong) GKMatch *match;
+typedef struct {
+	int			type;
+    int         target; // 0=boss, 1-4=player
+    int			value;
+} GameEvent;
+
+typedef enum {
+    GameEventTypeAttack,
+    GameEventTypeSendHeal,
+    GameEventTypeReceiveHeal,
+} GameEventTypes;
 
 
-- (IBAction)findProgrammaticMatch: (id) sender;
+@protocol GameEngineDelegate <NSObject>
 
-- (void)authenticate;
+- (void)clientReceivedEvent:(GameEvent *)event withState:(GameState *)state;
 
+@end
+
+
+
+@class NetworkEngine;
+
+@interface GameEngine : NSObject
+
+
+@property (assign) int playerMaxHealth;
+@property (assign) int playerCount;
+@property (assign) int bossMaxHealth;
+
+@property (nonatomic, strong) NetworkEngine *networkEngine;
+
+@property (nonatomic, weak) NSObject<GameEngineDelegate> *delegate;
+
+@property (assign) GameState currentState;
+
+- (void)reset;
+
+- (void)processEvent:(GameEvent *)event;
+
+- (BOOL)isServer;
 
 @end

@@ -1,8 +1,7 @@
 #import "MainMenuScene.h"
 #import "LobbyScene.h"
+#import "GameScene.h"
 
-
-#define RANT_FONT @"Bernard MT Condensed"
 
 
 
@@ -37,7 +36,7 @@
                              [enterGameButton boundingBox].size.height * 0.5f);
 
     [enterGameButton setPosition:ccp(0,-100)];
-    enterGameLabel = [CCLabelTTF labelWithString:@"Text" fontName:RANT_FONT fontSize:26];
+    enterGameLabel = [CCLabelTTF labelWithString:@"Find Game" fontName:RANT_FONT fontSize:26];
     [enterGameLabel setColor:ccWHITE];
     [enterGameButton addChild:enterGameLabel];
     [enterGameLabel setPosition:savedPoint];
