@@ -75,7 +75,7 @@
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	[director_ pushScene:[MainMenuScene scene]];
+	[director_ pushScene:[GameScene scene]];
 
 	
 	// Create a Navigation Controller with the Director

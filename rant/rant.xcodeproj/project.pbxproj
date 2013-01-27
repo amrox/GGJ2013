@@ -63,7 +63,6 @@
 		9CAB501C16B4A3CD0061047A /* gameMonster1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB501A16B4A3CD0061047A /* gameMonster1.png */; };
 		9CAB502016B4AAAF0061047A /* GameHeroNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB501F16B4AAAF0061047A /* GameHeroNode.m */; };
 		9CAB502316B4AAD10061047A /* GameMonsterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB502216B4AAD10061047A /* GameMonsterNode.m */; };
-		B3432C2816B4C3FE00B2365E /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameEngine.m */; };
 		9CAB50A916B4BE920061047A /* gameHero1-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB509916B4BE920061047A /* gameHero1-hd.plist */; };
 		9CAB50AA16B4BE920061047A /* gameHero1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB509A16B4BE920061047A /* gameHero1-hd.png */; };
 		9CAB50AB16B4BE920061047A /* gameHero1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB509B16B4BE920061047A /* gameHero1.plist */; };
@@ -80,6 +79,7 @@
 		9CAB50B616B4BE920061047A /* gameHero4-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A616B4BE920061047A /* gameHero4-hd.png */; };
 		9CAB50B716B4BE920061047A /* gameHero4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A716B4BE920061047A /* gameHero4.plist */; };
 		9CAB50B816B4BE920061047A /* gameHero4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A816B4BE920061047A /* gameHero4.png */; };
+		B3432C2816B4C3FE00B2365E /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameEngine.m */; };
 		B354826816B3A75A004ECF7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D716B39AC50061047A /* UIKit.framework */; };
 		B354826916B3A75A004ECF7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D916B39AC50061047A /* Foundation.framework */; };
 		B354826A16B3A75A004ECF7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47DB16B39AC50061047A /* CoreGraphics.framework */; };
