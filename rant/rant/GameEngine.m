@@ -166,10 +166,37 @@
 {
     if (!self.isServer) return; // hack
     
-#define MIN_ATTACK_TIME 6
-#define MAX_ATTACK_TIME 10
+#define MIN_ATTACK_TIME 2
+#define MAX_ATTACK_TIME 6
 
-	if (timeToNextAttack == -1)// && self.currentState.monsterPreparingToAttackPlayerId == -1)
+	if (self.currentState.monsterPreparingToAttackPlayerId != -1)
+	{
+		GameState state = self.currentState;
+		int deltaMilliseconds = ceilf(deltaTime * 1000.0f);
+		state.millisecondsBeforeMonsterAttacks = MAX(0, state.millisecondsBeforeMonsterAttacks - deltaMilliseconds);
+
+		if (state.millisecondsBeforeMonsterAttacks <= 0)
+		{
+			int damage = (arc4random() % 10) + 3;
+
+			timeToNextAttack = -1;
+
+			int playerToAttack = self.currentState.monsterPreparingToAttackPlayerId;
+
+			state.playerHeath[playerToAttack] = MAX(0, state.playerHeath[playerToAttack] - damage);
+			state.monsterPreparingToAttackPlayerId = -1;
+
+			GameEvent broadcastEvent;
+			broadcastEvent.type = EGameEventType_PLAYER_HIT;
+			broadcastEvent.targetPlayerId = playerToAttack;
+			broadcastEvent.value = damage;
+
+			[self broadcastEventAsServer:&broadcastEvent];
+		}
+
+		self.currentState = state;
+	}
+	else if (timeToNextAttack == -1 && self.currentState.monsterPreparingToAttackPlayerId == -1)
 	{
 		timeToNextAttack = (float)(arc4random() % 1000) / 1000.0f * (MAX_ATTACK_TIME - MIN_ATTACK_TIME) + MIN_ATTACK_TIME;
 	}
@@ -178,20 +205,14 @@
 		timeToNextAttack -= deltaTime;
 		if (timeToNextAttack <= 0)
 		{
-			int realPlayerCount = MAX(1, self.playerCount);
-			int playerToAttack = arc4random() % realPlayerCount;
-			int damage = (arc4random() % 10) + 3;
-
-			timeToNextAttack = -1;
-
 			GameState state = self.currentState;
-			state.playerHeath[playerToAttack] = MAX(0, state.playerHeath[playerToAttack] - damage);
+			state.millisecondsBeforeMonsterAttacks = 5000;
+			state.monsterPreparingToAttackPlayerId = arc4random() % self.playerCount;
 			self.currentState = state;
 
 			GameEvent broadcastEvent;
-			broadcastEvent.type = EGameEventType_PLAYER_HIT;
-			broadcastEvent.targetPlayerId = playerToAttack;
-			broadcastEvent.value = damage;
+			broadcastEvent.type = EGameEventType_MONSTER_PREPARING_TO_ATTACK;
+			broadcastEvent.targetPlayerId = state.monsterPreparingToAttackPlayerId;
 
 			[self broadcastEventAsServer:&broadcastEvent];
 		}

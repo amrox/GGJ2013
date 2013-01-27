@@ -23,6 +23,7 @@ typedef enum
 	EGameEventType_MONSTER_DEAD,
 	EGameEventType_PLAYER_HIT,
 	EGameEventType_PLAYER_RECEIVED_HEAL,
+	EGameEventType_MONSTER_PREPARING_TO_ATTACK,
 } EGameEventType;
 
 typedef struct {
@@ -32,6 +33,7 @@ typedef struct {
 	int			healReady;			// 1 if ready, 0 otherwise
 	int			healerPlayerId;
 	int			monsterPreparingToAttackPlayerId;	//-1 of none
+	int			millisecondsBeforeMonsterAttacks;
 } GameState;
 
 typedef struct {
