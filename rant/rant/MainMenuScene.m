@@ -2,6 +2,7 @@
 #import "LobbyScene.h"
 #import "GameScene.h"
 #import "SimpleAudioEngine.h"
+#import "StoryScene.h"
 
 
 @interface MainMenuLayer : CCLayer
@@ -47,20 +48,45 @@
     
     [mmPlayButton setPosition:ccp(0, -190)];
     
-    singlePlayerGameButton = [CCMenuItemImage itemWithNormalImage:@"start-menu-button.png"
-                                                    selectedImage:@"start-menu-button-pressed.png"
+    
+    singlePlayerGameButton = [CCMenuItemImage itemWithNormalImage:@"buttonBlue.png"
+                                                    selectedImage:@"buttonBluePressed.png"
                                                            target:self
                                                          selector:@selector(singlePlayerPressed:)];
     
-    CGPoint singlePlayerGameButtonPoint = ccp([singlePlayerGameButton boundingBox].size.width * 0.5f,
-                                              [singlePlayerGameButton boundingBox].size.height * 0.5f);
-    [singlePlayerGameButton setPosition:ccp(0,-100)];
-    singlePlayerGameLabel = [CCLabelTTF labelWithString:@"Single Player" fontName:RANT_FONT fontSize:26];
+    [singlePlayerGameButton setPosition:ccp(-80,180)];
+    
+    CGPoint savedPoint = ccp([singlePlayerGameButton boundingBox].size.width * 0.5f,
+                             [singlePlayerGameButton boundingBox].size.height * 0.5f);
+    
+    singlePlayerGameLabel = [CCLabelTTF labelWithString:@"1 Player" fontName:RANT_FONT fontSize:32];
     [singlePlayerGameLabel setColor:ccWHITE];
     [singlePlayerGameButton addChild:singlePlayerGameLabel];
-    [singlePlayerGameButton setPosition:singlePlayerGameButtonPoint];
+    [singlePlayerGameLabel setPosition:savedPoint];
     
-    CCMenu *menu = [CCMenu menuWithItems:mmPlayButton, singlePlayerGameButton, nil];
+    [singlePlayerGameButton setScale:0.5];
+    
+    
+    
+    CCMenuItemImage *storyButton = [CCMenuItemImage itemWithNormalImage:@"buttonBlue.png"
+                                                          selectedImage:@"buttonBluePressed.png"
+                                                                 target:self
+                                                               selector:@selector(storyPressed:)];
+    
+    [storyButton setPosition:ccp(80,180)];
+    
+    savedPoint = ccp([storyButton boundingBox].size.width * 0.5f,
+                             [storyButton boundingBox].size.height * 0.5f);
+    
+    CCLabelTTF *storyGameLabel = [CCLabelTTF labelWithString:@"Story" fontName:RANT_FONT fontSize:32];
+    [storyGameLabel setColor:ccWHITE];
+    [storyButton addChild:storyGameLabel];
+    [storyGameLabel setPosition:savedPoint];
+    
+    [storyButton setScale:0.5];
+    
+    
+    CCMenu *menu = [CCMenu menuWithItems:mmPlayButton, singlePlayerGameButton, storyButton, nil];
     [self addChild:menu];
 }
 
@@ -80,6 +106,14 @@
 
     
 //	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[LobbyScene scene] withColor:ccWHITE]];
+}
+
+- (void)storyPressed:(id)sender
+{
+    StoryScene *scene = [[StoryScene alloc] initWithIndex:1];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene withColor:ccWHITE]];
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"click1.caf"];
 }
 
 @end

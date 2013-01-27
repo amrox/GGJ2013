@@ -62,6 +62,19 @@
 		9C5C5E4116B5D6C100B87103 /* gameIconWind.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E3516B5D6C100B87103 /* gameIconWind.png */; };
 		9C5C5E4416B5D76100B87103 /* gameRedBar-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E4216B5D76000B87103 /* gameRedBar-hd.png */; };
 		9C5C5E4516B5D76100B87103 /* gameRedBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5E4316B5D76000B87103 /* gameRedBar.png */; };
+		9C5C5FF616B5E31300B87103 /* StoryScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C5FF516B5E31300B87103 /* StoryScene.m */; };
+		9C5C600316B5E72D00B87103 /* Story01-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5FF716B5E72600B87103 /* Story01-hd.png */; };
+		9C5C600416B5E72D00B87103 /* Story01.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5FF816B5E72600B87103 /* Story01.png */; };
+		9C5C600516B5E72D00B87103 /* Story02-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5FF916B5E72700B87103 /* Story02-hd.png */; };
+		9C5C600616B5E72D00B87103 /* Story02.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5FFA16B5E72700B87103 /* Story02.png */; };
+		9C5C600716B5E72D00B87103 /* Story03-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5FFB16B5E72900B87103 /* Story03-hd.png */; };
+		9C5C600816B5E72D00B87103 /* Story03.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5FFC16B5E72900B87103 /* Story03.png */; };
+		9C5C600916B5E72D00B87103 /* Story04-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5FFD16B5E72A00B87103 /* Story04-hd.png */; };
+		9C5C600A16B5E72D00B87103 /* Story04.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5FFE16B5E72B00B87103 /* Story04.png */; };
+		9C5C600B16B5E72D00B87103 /* Story05-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C5FFF16B5E72C00B87103 /* Story05-hd.png */; };
+		9C5C600C16B5E72D00B87103 /* Story05.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C600016B5E72C00B87103 /* Story05.png */; };
+		9C5C600D16B5E72D00B87103 /* Story06-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C600116B5E72D00B87103 /* Story06-hd.png */; };
+		9C5C600E16B5E72D00B87103 /* Story06.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C600216B5E72D00B87103 /* Story06.png */; };
 		9CAB47CE16B39AC50061047A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47CD16B39AC50061047A /* QuartzCore.framework */; };
 		9CAB47D016B39AC50061047A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47CF16B39AC50061047A /* OpenGLES.framework */; };
 		9CAB47D216B39AC50061047A /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D116B39AC50061047A /* OpenAL.framework */; };
@@ -646,6 +659,20 @@
 		9C5C5E3516B5D6C100B87103 /* gameIconWind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameIconWind.png; path = Resources/GameAssets/gameIconWind.png; sourceTree = "<group>"; };
 		9C5C5E4216B5D76000B87103 /* gameRedBar-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameRedBar-hd.png"; path = "Resources/GameAssets/gameRedBar-hd.png"; sourceTree = "<group>"; };
 		9C5C5E4316B5D76000B87103 /* gameRedBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameRedBar.png; path = Resources/GameAssets/gameRedBar.png; sourceTree = "<group>"; };
+		9C5C5FF416B5E31300B87103 /* StoryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryScene.h; sourceTree = "<group>"; };
+		9C5C5FF516B5E31300B87103 /* StoryScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryScene.m; sourceTree = "<group>"; };
+		9C5C5FF716B5E72600B87103 /* Story01-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Story01-hd.png"; path = "Resources/GameAssets/Story01-hd.png"; sourceTree = "<group>"; };
+		9C5C5FF816B5E72600B87103 /* Story01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Story01.png; path = Resources/GameAssets/Story01.png; sourceTree = "<group>"; };
+		9C5C5FF916B5E72700B87103 /* Story02-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Story02-hd.png"; path = "Resources/GameAssets/Story02-hd.png"; sourceTree = "<group>"; };
+		9C5C5FFA16B5E72700B87103 /* Story02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Story02.png; path = Resources/GameAssets/Story02.png; sourceTree = "<group>"; };
+		9C5C5FFB16B5E72900B87103 /* Story03-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Story03-hd.png"; path = "Resources/GameAssets/Story03-hd.png"; sourceTree = "<group>"; };
+		9C5C5FFC16B5E72900B87103 /* Story03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Story03.png; path = Resources/GameAssets/Story03.png; sourceTree = "<group>"; };
+		9C5C5FFD16B5E72A00B87103 /* Story04-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Story04-hd.png"; path = "Resources/GameAssets/Story04-hd.png"; sourceTree = "<group>"; };
+		9C5C5FFE16B5E72B00B87103 /* Story04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Story04.png; path = Resources/GameAssets/Story04.png; sourceTree = "<group>"; };
+		9C5C5FFF16B5E72C00B87103 /* Story05-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Story05-hd.png"; path = "Resources/GameAssets/Story05-hd.png"; sourceTree = "<group>"; };
+		9C5C600016B5E72C00B87103 /* Story05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Story05.png; path = Resources/GameAssets/Story05.png; sourceTree = "<group>"; };
+		9C5C600116B5E72D00B87103 /* Story06-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Story06-hd.png"; path = "Resources/GameAssets/Story06-hd.png"; sourceTree = "<group>"; };
+		9C5C600216B5E72D00B87103 /* Story06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Story06.png; path = Resources/GameAssets/Story06.png; sourceTree = "<group>"; };
 		9CAB47C916B39AC50061047A /* rant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CAB47CD16B39AC50061047A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9CAB47CF16B39AC50061047A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -877,6 +904,8 @@
 				0AC19F4916B46E4200FC5541 /* MainMenuScene.m */,
 				0AC19F4A16B46E4200FC5541 /* ResultsScene.h */,
 				0AC19F4B16B46E4200FC5541 /* ResultsScene.m */,
+				9C5C5FF416B5E31300B87103 /* StoryScene.h */,
+				9C5C5FF516B5E31300B87103 /* StoryScene.m */,
 				9CAB47E016B39AC50061047A /* Resources */,
 				9CAB495316B39AC70061047A /* Supporting Files */,
 			);
@@ -1011,6 +1040,18 @@
 		9CAB4F8716B489800061047A /* GameAssets */ = {
 			isa = PBXGroup;
 			children = (
+				9C5C5FF716B5E72600B87103 /* Story01-hd.png */,
+				9C5C5FF816B5E72600B87103 /* Story01.png */,
+				9C5C5FF916B5E72700B87103 /* Story02-hd.png */,
+				9C5C5FFA16B5E72700B87103 /* Story02.png */,
+				9C5C5FFB16B5E72900B87103 /* Story03-hd.png */,
+				9C5C5FFC16B5E72900B87103 /* Story03.png */,
+				9C5C5FFD16B5E72A00B87103 /* Story04-hd.png */,
+				9C5C5FFE16B5E72B00B87103 /* Story04.png */,
+				9C5C5FFF16B5E72C00B87103 /* Story05-hd.png */,
+				9C5C600016B5E72C00B87103 /* Story05.png */,
+				9C5C600116B5E72D00B87103 /* Story06-hd.png */,
+				9C5C600216B5E72D00B87103 /* Story06.png */,
 				FF716C2C16B5CE62002AF24B /* titleText2.png */,
 				FF716C2A16B5CD96002AF24B /* titleText2-hd.png */,
 				FF716C2716B5CABA002AF24B /* mainMenuPlayButtonPressed.png */,
@@ -1803,6 +1844,18 @@
 				9C5C5E4116B5D6C100B87103 /* gameIconWind.png in Resources */,
 				9C5C5E4416B5D76100B87103 /* gameRedBar-hd.png in Resources */,
 				9C5C5E4516B5D76100B87103 /* gameRedBar.png in Resources */,
+				9C5C600316B5E72D00B87103 /* Story01-hd.png in Resources */,
+				9C5C600416B5E72D00B87103 /* Story01.png in Resources */,
+				9C5C600516B5E72D00B87103 /* Story02-hd.png in Resources */,
+				9C5C600616B5E72D00B87103 /* Story02.png in Resources */,
+				9C5C600716B5E72D00B87103 /* Story03-hd.png in Resources */,
+				9C5C600816B5E72D00B87103 /* Story03.png in Resources */,
+				9C5C600916B5E72D00B87103 /* Story04-hd.png in Resources */,
+				9C5C600A16B5E72D00B87103 /* Story04.png in Resources */,
+				9C5C600B16B5E72D00B87103 /* Story05-hd.png in Resources */,
+				9C5C600C16B5E72D00B87103 /* Story05.png in Resources */,
+				9C5C600D16B5E72D00B87103 /* Story06-hd.png in Resources */,
+				9C5C600E16B5E72D00B87103 /* Story06.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1875,6 +1928,7 @@
 				B3432C9F16B4DC2400B2365E /* GameEngine.m in Sources */,
 				B390DC7E16B4F40E00B11CA5 /* SimpleEventEngine.m in Sources */,
 				9C5C5D2F16B5CB9400B87103 /* GameMonsterHealthBar.m in Sources */,
+				9C5C5FF616B5E31300B87103 /* StoryScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

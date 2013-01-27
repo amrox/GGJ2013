@@ -61,6 +61,8 @@
     
     CCSprite *attackBar;
     CCSprite *spellIcon;
+    
+    
 }
 
 @synthesize monsterHealthBar;
@@ -137,6 +139,11 @@
 
 - (void)spellBookPressed:(id)sender
 {
+}
+
+- (void)displayEffect:(EGameEventType)type
+{
+    
 }
 
 @end
