@@ -205,6 +205,8 @@ typedef enum {
 		case kStateMain:
             if (self.serverPlayerID == nil) {
                 [self electServer];
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:GameEngineGameBeginNotification object:self];
             }
             
             counter++;
@@ -370,7 +372,6 @@ typedef enum {
     NSAssert(self.match, @"match is nil");
     NSAssert(self.match.expectedPlayerCount == 0, @"not enough players");
     self.gameState = kStateServerElect;
-    [[NSNotificationCenter defaultCenter] postNotificationName:GameEngineGameBeginNotification object:self];
 }
 
 - (void)end
@@ -398,7 +399,7 @@ typedef enum {
     }
 }
 
-- (BOOL) isGameStarted
+- (BOOL) isRunning
 {
     return _gameState == kStateMain;
 }

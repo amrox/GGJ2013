@@ -44,6 +44,6 @@ typedef struct {
 
 - (void)sendEvent:(GameEvent *)event;
 
-- (BOOL) isGameStarted;
+- (BOOL) isRunning;
 
 @end

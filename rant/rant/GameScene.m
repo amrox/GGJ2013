@@ -69,7 +69,11 @@
 	[gameEngine reset];
 	gameEngine.delegate = self;
     
-//    gameEngine.networkEngine = [GameKitEventEngine sharedNetworkEngine];
+    // this is SUPER hacky
+    if ([[GameKitEventEngine sharedNetworkEngine] isRunning]) {
+        gameEngine.networkEngine = [GameKitEventEngine sharedNetworkEngine];
+    }
+    
 
 	[self scheduleUpdate];
 }

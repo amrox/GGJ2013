@@ -20,6 +20,15 @@
 	CCLabelTTF * playersInGameLabel;
 }
 
+- (void)pollMatch
+{
+    if ([[GameKitEventEngine sharedNetworkEngine] isMatchReady]) {
+        
+        NSLog(@"match is ready, %d players!",
+              [[GameKitEventEngine sharedNetworkEngine].match.playerIDs count]+1);
+    }
+}
+
 -(void)onEnter
 {
     // Create the layer hierarchy
@@ -27,10 +36,11 @@
     
     [[GameKitEventEngine sharedNetworkEngine] authenticate];
 
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(pollMatch) userInfo:nil repeats:YES];
     
-//    [[GameKitEventEngine sharedNetworkEngine] findMatch];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameBegin:) name:GameEngineGameBeginNotification object:[GameKitEventEngine sharedNetworkEngine]];
     
-    
+        
     CCSprite *background = [CCSprite spriteWithFile:@"lobbyBackground.png"];
     [background setPosition:ccp(160, 240)];
     [self addChild:background];
@@ -47,13 +57,13 @@
     enterGameButton = [CCMenuItemImage itemWithNormalImage:@"start-menu-button.png"
 										  selectedImage:@"start-menu-button-pressed.png"
 												 target:self
-											   selector:@selector(enterGamePressed:)];
+											   selector:@selector(findMatchPressed:)];
 
     CGPoint savedPoint = ccp([enterGameButton boundingBox].size.width * 0.5f,
                              [enterGameButton boundingBox].size.height * 0.5f);
 
     [enterGameButton setPosition:ccp(0,-100)];
-    enterGameLabel = [CCLabelTTF labelWithString:@"Start Game" fontName:RANT_FONT fontSize:26];
+    enterGameLabel = [CCLabelTTF labelWithString:@"Find Match" fontName:RANT_FONT fontSize:26];
     [enterGameButton addChild:enterGameLabel];
     [enterGameLabel setPosition:savedPoint];
 
@@ -61,9 +71,21 @@
     [self addChild:menu];
 }
 
-- (void)enterGamePressed:(id)sender
+- (void)findMatchPressed:(id)sender
 {
-	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[GameScene scene] withColor:ccWHITE]];
+    if ([[GameKitEventEngine sharedNetworkEngine] isMatchReady]) {
+        [[GameKitEventEngine sharedNetworkEngine] begin];
+        
+        
+    } else {
+        [[GameKitEventEngine sharedNetworkEngine] findMatch];
+    }
+}
+
+- (void)gameBegin:(NSNotification *)note
+{
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[GameScene scene] withColor:ccWHITE]];
+
 }
 
 @end
