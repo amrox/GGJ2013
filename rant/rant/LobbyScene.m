@@ -3,6 +3,7 @@
 #import "GameKitEventEngine.h"
 
 
+#define ANIMATION_DELAY 0.3
 
 
 @interface LobbyLayer : CCLayer
@@ -18,6 +19,9 @@
 	CCMenuItemImage * enterGameButton;
 	CCLabelTTF * enterGameLabel;
 	CCLabelTTF * playersInGameLabel;
+    
+    CCSpriteBatchNode *spriteSheet;
+    NSMutableArray *heroAnims;
 }
 
 - (void)pollMatch
@@ -69,6 +73,30 @@
 
 	CCMenu *menu = [CCMenu menuWithItems:enterGameButton, nil];
     [self addChild:menu];
+    
+    // Animations -
+    // Load spritesheet
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"lobbyHeroes.plist"];
+    spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"lobbyHeroes.png"];
+    [self addChild:spriteSheet];
+    
+    // Anims
+    NSMutableArray *animFrames = [NSMutableArray array];
+    for(int i = 1; i <= 4; ++i)
+    {
+        [animFrames removeAllObjects];
+        
+        [animFrames addObject:
+         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+          [NSString stringWithFormat:@"User Icon %dA.png", i]]];
+        [animFrames addObject:
+         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+          [NSString stringWithFormat:@"User Icon %dB.png", i]]];
+        
+        CCAnimation *playerAnim = [CCAnimation animationWithSpriteFrames:animFrames];
+        [playerAnim setDelayPerUnit:ANIMATION_DELAY];
+        [heroAnims addObject:playerAnim];
+    }
 }
 
 - (void)findMatchPressed:(id)sender

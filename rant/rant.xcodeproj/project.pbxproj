@@ -83,6 +83,14 @@
 		9CAB50B816B4BE920061047A /* gameHero4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A816B4BE920061047A /* gameHero4.png */; };
 		9CBE856F16B524AE00F52D9A /* lobbyBackground-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE856D16B524AE00F52D9A /* lobbyBackground-hd.png */; };
 		9CBE857016B524AE00F52D9A /* lobbyBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE856E16B524AE00F52D9A /* lobbyBackground.png */; };
+		9CBE85E916B5839100F52D9A /* lobbyHeroes-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE85E516B5839100F52D9A /* lobbyHeroes-hd.plist */; };
+		9CBE85EA16B5839100F52D9A /* lobbyHeroes-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE85E616B5839100F52D9A /* lobbyHeroes-hd.png */; };
+		9CBE85EB16B5839100F52D9A /* lobbyHeroes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE85E716B5839100F52D9A /* lobbyHeroes.plist */; };
+		9CBE85EC16B5839100F52D9A /* lobbyHeroes.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE85E816B5839100F52D9A /* lobbyHeroes.png */; };
+		9CBE85F216B58A9100F52D9A /* Action Man.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE85F116B58A9100F52D9A /* Action Man.ttf */; };
+		9CBE85F316B58A9100F52D9A /* Action Man.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE85F116B58A9100F52D9A /* Action Man.ttf */; };
+		9CBE85F516B58A9E00F52D9A /* ARNORG__.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE85F416B58A9E00F52D9A /* ARNORG__.TTF */; };
+		9CBE85F616B58A9E00F52D9A /* ARNORG__.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 9CBE85F416B58A9E00F52D9A /* ARNORG__.TTF */; };
 		B3432C2816B4C3FE00B2365E /* GameKitEventEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3985A9416B46BDD008081FB /* GameKitEventEngine.m */; };
 		B3432C9F16B4DC2400B2365E /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3432C9E16B4DC2400B2365E /* GameEngine.m */; };
 		B3432CA016B4DC2400B2365E /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B3432C9E16B4DC2400B2365E /* GameEngine.m */; };
@@ -601,6 +609,12 @@
 		9CAB50A816B4BE920061047A /* gameHero4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameHero4.png; path = Resources/GameAssets/Animations/gameHero4.png; sourceTree = "<group>"; };
 		9CBE856D16B524AE00F52D9A /* lobbyBackground-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lobbyBackground-hd.png"; path = "Resources/GameAssets/lobbyBackground-hd.png"; sourceTree = "<group>"; };
 		9CBE856E16B524AE00F52D9A /* lobbyBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lobbyBackground.png; path = Resources/GameAssets/lobbyBackground.png; sourceTree = "<group>"; };
+		9CBE85E516B5839100F52D9A /* lobbyHeroes-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "lobbyHeroes-hd.plist"; path = "Resources/GameAssets/Animations/lobbyHeroes-hd.plist"; sourceTree = "<group>"; };
+		9CBE85E616B5839100F52D9A /* lobbyHeroes-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lobbyHeroes-hd.png"; path = "Resources/GameAssets/Animations/lobbyHeroes-hd.png"; sourceTree = "<group>"; };
+		9CBE85E716B5839100F52D9A /* lobbyHeroes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = lobbyHeroes.plist; path = Resources/GameAssets/Animations/lobbyHeroes.plist; sourceTree = "<group>"; };
+		9CBE85E816B5839100F52D9A /* lobbyHeroes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lobbyHeroes.png; path = Resources/GameAssets/Animations/lobbyHeroes.png; sourceTree = "<group>"; };
+		9CBE85F116B58A9100F52D9A /* Action Man.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Action Man.ttf"; path = "Resources/Action Man.ttf"; sourceTree = "<group>"; };
+		9CBE85F416B58A9E00F52D9A /* ARNORG__.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ARNORG__.TTF; path = Resources/ARNORG__.TTF; sourceTree = "<group>"; };
 		B3432C9D16B4DC2400B2365E /* GameEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameEngine.h; sourceTree = "<group>"; };
 		B3432C9E16B4DC2400B2365E /* GameEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameEngine.m; sourceTree = "<group>"; };
 		B354826616B3A75A004ECF7C /* NetworkTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -747,6 +761,8 @@
 			isa = PBXGroup;
 			children = (
 				9CAB4F8716B489800061047A /* GameAssets */,
+				9CBE85F116B58A9100F52D9A /* Action Man.ttf */,
+				9CBE85F416B58A9E00F52D9A /* ARNORG__.TTF */,
 				0AC19F3E16B46D0F00FC5541 /* start-menu-button-hd.png */,
 				0AC19F3F16B46D0F00FC5541 /* start-menu-button-pressed-hd.png */,
 				0AC19F4016B46D0F00FC5541 /* start-menu-button-pressed.png */,
@@ -913,6 +929,10 @@
 				9C213AEE16B4E5420013B147 /* gameMonster1-hd.png */,
 				9C213AEF16B4E5420013B147 /* gameMonster1.plist */,
 				9C213AF016B4E5420013B147 /* gameMonster1.png */,
+				9CBE85E516B5839100F52D9A /* lobbyHeroes-hd.plist */,
+				9CBE85E616B5839100F52D9A /* lobbyHeroes-hd.png */,
+				9CBE85E716B5839100F52D9A /* lobbyHeroes.plist */,
+				9CBE85E816B5839100F52D9A /* lobbyHeroes.png */,
 			);
 			name = Animations;
 			sourceTree = "<group>";
@@ -1530,6 +1550,12 @@
 				9C213AF416B4E5420013B147 /* gameMonster1.png in Resources */,
 				9CBE856F16B524AE00F52D9A /* lobbyBackground-hd.png in Resources */,
 				9CBE857016B524AE00F52D9A /* lobbyBackground.png in Resources */,
+				9CBE85E916B5839100F52D9A /* lobbyHeroes-hd.plist in Resources */,
+				9CBE85EA16B5839100F52D9A /* lobbyHeroes-hd.png in Resources */,
+				9CBE85EB16B5839100F52D9A /* lobbyHeroes.plist in Resources */,
+				9CBE85EC16B5839100F52D9A /* lobbyHeroes.png in Resources */,
+				9CBE85F216B58A9100F52D9A /* Action Man.ttf in Resources */,
+				9CBE85F516B58A9E00F52D9A /* ARNORG__.TTF in Resources */,
 				B36BE37816B57F1C006F0A72 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1552,6 +1578,8 @@
 			files = (
 				B354829016B3A77C004ECF7C /* InfoPlist.strings in Resources */,
 				FF91403E16B4B2BB00A6E22E /* sine440.caf in Resources */,
+				9CBE85F316B58A9100F52D9A /* Action Man.ttf in Resources */,
+				9CBE85F616B58A9E00F52D9A /* ARNORG__.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
