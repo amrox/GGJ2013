@@ -74,7 +74,7 @@
 	event.target = 0;
 	event.type = 1;
 	event.value = 0;
-    [gameEngine processEvent:&event];
+    [gameEngine sendEventAsClient:&event];
 }
 
 @end

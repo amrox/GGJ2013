@@ -616,6 +616,7 @@
 		B354829416B3A77C004ECF7C /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
 		B390DC7C16B4F40E00B11CA5 /* DummyEventEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyEventEngine.h; sourceTree = "<group>"; };
 		B390DC7D16B4F40E00B11CA5 /* DummyEventEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyEventEngine.m; sourceTree = "<group>"; };
+		B390DC7F16B4F46700B11CA5 /* EventEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventEngine.h; sourceTree = "<group>"; };
 		B3985A9316B46BDD008081FB /* NetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkEngine.h; sourceTree = "<group>"; };
 		B3985A9416B46BDD008081FB /* NetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkEngine.m; sourceTree = "<group>"; };
 		B3985A9716B46E07008081FB /* NetworkTesterRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTesterRootViewController.h; sourceTree = "<group>"; };
@@ -956,6 +957,7 @@
 		B3985A9216B46BB7008081FB /* GameEngine */ = {
 			isa = PBXGroup;
 			children = (
+				B390DC7F16B4F46700B11CA5 /* EventEngine.h */,
 				B3432C9D16B4DC2400B2365E /* GameEngine.h */,
 				B3432C9E16B4DC2400B2365E /* GameEngine.m */,
 				B390DC7C16B4F40E00B11CA5 /* DummyEventEngine.h */,

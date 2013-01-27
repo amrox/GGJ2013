@@ -53,7 +53,7 @@ typedef enum {
 
 - (void)reset;
 
-- (void)processEvent:(GameEvent *)event;
+- (void)sendEventAsClient:(GameEvent *)event;
 
 - (BOOL)isServer;
 

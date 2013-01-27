@@ -27,21 +27,33 @@
     _networkEngine.engine = self;
 }
 
+- (void)broadcastEventAsServer:(GameEvent *)event
+{
+    if (!self.networkEngine) {
+        GameState state = self.currentState;
+        [self.delegate clientReceivedEvent:event withState:&state];
+    }
+}
+
 - (void)processEvent:(GameEvent *)event
+{
+    // do stuff
+    
+    
+    [self broadcastEventAsServer:event];
+}
+
+- (void)sendEventAsClient:(GameEvent *)event
 {
 	if (!self.networkEngine)
 	{
-		// todo: also need to actually process the event.  And only send applicable events back to the client.
-		// just putting this here so I can test stuff
-
-		GameState state = self.currentState;
-		[self.delegate clientReceivedEvent:event withState:&state];
-	}
-
-    // alter game state here
-    
-    if (![self isServer]) {
-        [self.networkEngine sendEvent:event];
+        [self processEvent:event];
+        
+//		GameState state = self.currentState;
+//		[self.delegate clientReceivedEvent:event withState:&state];
+	} else {
+        
+        // andy does stuff
     }
 }
 
