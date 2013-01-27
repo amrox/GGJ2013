@@ -19,5 +19,8 @@
 - (id)initWithIndex:(int)index;
 
 - (void)playHitAnim;
+- (void)playAttack1Anim;
+- (void)playAttack2Anim;
+- (void)playAttack3Anim;
 
 @end

@@ -113,6 +113,26 @@
                        ]];
 }
 
+- (void)playAttack2Anim
+{
+    [sprite stopAllActions];
+    [sprite runAction:[CCSequence actions:
+                       [CCAnimate actionWithAnimation:attack2Anim],
+                       [CCCallFunc actionWithTarget:self selector:@selector(loopIdle)],
+                       nil
+                       ]];
+}
+
+- (void)playAttack3Anim
+{
+    [sprite stopAllActions];
+    [sprite runAction:[CCSequence actions:
+                       [CCAnimate actionWithAnimation:attack3Anim],
+                       [CCCallFunc actionWithTarget:self selector:@selector(loopIdle)],
+                       nil
+                       ]];
+}
+
 - (void)resetPosition
 {
     [sprite setPosition:ccp(sprite.position.x - 10, sprite.position.y)];
