@@ -214,6 +214,8 @@
 			state.playerHeath[playerToAttack] = MAX(0, state.playerHeath[playerToAttack] - damage);
 			state.monsterPreparingToAttackPlayerId = -1;
 
+			self.currentState = state;
+
 			if (state.playerHeath[playerToAttack] <= 0)
 			{
 				GameEvent broadcastEvent;
@@ -233,8 +235,10 @@
 				[self broadcastEventAsServer:&broadcastEvent];
 			}
 		}
-
-		self.currentState = state;
+		else
+		{
+			self.currentState = state;
+		}
 	}
 	else if (timeToNextAttack == -1 && self.currentState.monsterPreparingToAttackPlayerId == -1)
 	{

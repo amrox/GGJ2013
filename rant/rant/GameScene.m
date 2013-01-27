@@ -12,6 +12,7 @@
 #import "SimpleAudioEngine.h"
 #import "GameMonsterNode.h"
 #import "MainMenuScene.h"
+#import "GameMonsterHealthBar.h"
 
 #define SHAKE_TIME 0.7f
 #define SHAKE_1_PERIOD 0.2f
@@ -163,7 +164,12 @@
 		[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MainMenuScene scene] withColor:ccWHITE]];
 	}
 
-	// set monster health and player health
+	int playerId = [gameEngine myPlayerNum];
+	int playerHealth = state->playerHeath[playerId];
+	int bossHealth = state->bossHealth;
+
+	[hudLayer.heroHealthBar setHealthBarPercentage:(float)playerHealth / MAX_PLAYER_HEALTH animated:YES];
+	[hudLayer.monsterHealthBar setHealthBarPercentage:(float)bossHealth / BOSS_MAX_HEALTH animated:YES];
 }
 
 - (void)playAnimationWithEventType:(EGameEventType)eventType
