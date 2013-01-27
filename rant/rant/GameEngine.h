@@ -1,4 +1,4 @@
-    //
+//
 //  GameEngine.h
 //  rant
 //
@@ -9,9 +9,19 @@
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
 
+extern NSString *const GameEngineGameBeginNotification;
+extern NSString *const GameEngineGameEndNotification;
+
 typedef struct {
-	int			foo;
-} PacketData;
+	int			bossHealth;
+    int			playerHeath[4];
+} GameState;
+
+typedef struct {
+	int			type;
+    int			value;
+} GameEvent;
+
 
 @interface GameEngine : NSObject <GKMatchDelegate>
 {
@@ -21,17 +31,23 @@ typedef struct {
 
 + (GameEngine *)sharedGameEngine;
 
-@property (strong) GKMatch *match;
-
-- (BOOL) isReady;
 
 - (void)authenticate;
+- (void)authenticateWithCompletionHandler:(void(^)(NSError *error))completionHandler;
+- (BOOL)isAuthenticated;
 
+@property (strong, readonly) GKMatch *match;
 - (void)findMatch;
+- (BOOL)isMatchReady;
+
 
 - (void)begin;
 
 - (void)end;
 
+@property (assign, readonly) GameState currentState;
+
+
+- (void)sendEvent:(GameEvent *)event;
 
 @end

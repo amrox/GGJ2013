@@ -52,7 +52,7 @@
 {
     GameEngine *engine = [GameEngine sharedGameEngine];
     
-    int const totalPlayers = [engine isReady] ? [engine.match.playerIDs count] + 1 : 0;
+    int const totalPlayers = [engine isMatchReady] ? [engine.match.playerIDs count] + 1 : 0;
     
     self.button4.hidden = totalPlayers < 4;
     self.button3.hidden = totalPlayers < 3;
