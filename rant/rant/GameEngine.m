@@ -13,7 +13,7 @@
 static NSString *const GameUniqueIDKey = @"GameUniqueID";
 
 #define kMaxPacketSize 1024
-const float kHeartbeatTimeMaxDelay = 4.0f;
+const float kHeartbeatTimeMaxDelay = 2.0f;
 #define kHeartbeatMod (10)
 #define kGameloopInterval (0.033)
 
@@ -138,6 +138,7 @@ typedef enum {
                  
                     if (info.lastHeartbeat == nil) {
                         info.lastHeartbeat = [NSDate date];
+                        
                     } else if(fabs([info.lastHeartbeat timeIntervalSinceNow]) >= kHeartbeatTimeMaxDelay) { // see if the last heartbeat is too old
                         // seems we've lost connection, notify user that we are trying to reconnect (until GKSession actually disconnects)
                         NSString *message = [NSString stringWithFormat:@"Trying to reconnect..."];
