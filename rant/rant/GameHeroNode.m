@@ -28,7 +28,7 @@
     {
         index++;
         
-        NSAssert((index >= 1 || index <= 4), @"Hero index out of bounds");
+        NSAssert((index >= 1 && index <= 4), @"Hero index out of bounds");
         
         // Load spritesheet
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:

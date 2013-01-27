@@ -38,7 +38,7 @@
     // Create the layer hierarchy
     [super onEnter];
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bgmusic1.caf"];
-
+	
     [[GameKitEventEngine sharedNetworkEngine] authenticate];
 
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(pollMatch) userInfo:nil repeats:YES];
@@ -146,6 +146,8 @@
 
 - (void)addPlayerIconWithIndex:(int)index isPlayer:(BOOL)isPlayer // index 0-3
 {
+    NSAssert((index >= 0 && index <= 3), @"Invalid index");
+    
     
 }
 
