@@ -68,18 +68,18 @@
 {
     [super onEnter];
 
-    spellBookButton = [CCMenuItemImage itemWithNormalImage:@"start-menu-button.png"
-											 selectedImage:@"start-menu-button-pressed.png"
-													target:self
-												  selector:@selector(spellBookPressed:)];
-
-    [spellBookButton setPosition:ccp(-80,220)];
-
-	CCMenu *menu = [CCMenu menuWithItems:spellBookButton, nil];
-    [self addChild:menu];
-
-	spellBookLayer = [SpellBookLayer node];
-    [self addChild:spellBookLayer];
+//    spellBookButton = [CCMenuItemImage itemWithNormalImage:@"start-menu-button.png"
+//											 selectedImage:@"start-menu-button-pressed.png"
+//													target:self
+//												  selector:@selector(spellBookPressed:)];
+//
+//    [spellBookButton setPosition:ccp(-80,220)];
+//
+//	CCMenu *menu = [CCMenu menuWithItems:spellBookButton, nil];
+//    [self addChild:menu];
+//
+//	spellBookLayer = [SpellBookLayer node];
+//    [self addChild:spellBookLayer];
 }
 
 - (void)gestureRegistered:(Gesture *)gesture

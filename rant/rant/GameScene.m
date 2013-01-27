@@ -162,6 +162,8 @@
 	{
 		[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MainMenuScene scene] withColor:ccWHITE]];
 	}
+
+	// set monster health and player health
 }
 
 - (void)playAnimationWithEventType:(EGameEventType)eventType
