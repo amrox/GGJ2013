@@ -15,39 +15,63 @@
 
 @implementation MainMenuLayer
 {
-	CCMenuItemImage * enterGameButton;
-	CCLabelTTF * enterGameLabel;
+	CCMenuItemImage * singlePlayerGameButton;
+    CCLabelTTF * singlePlayerGameLabel;
+
+    CCMenuItemImage * multiPlayerGameButton;
+    CCLabelTTF * multiPlayerGameLabel;
 }
 
 -(void)onEnter
 {
     // Create the layer hierarchy
     [super onEnter];
+        
+    singlePlayerGameButton = [CCMenuItemImage itemWithNormalImage:@"start-menu-button.png"
+                                                    selectedImage:@"start-menu-button-pressed.png"
+                                                           target:self
+                                                         selector:@selector(singlePlayerPressed:)];
+    
+    
+    CGPoint singlePlayerGameButtonPoint = ccp([singlePlayerGameButton boundingBox].size.width * 0.5f,
+                                              [singlePlayerGameButton boundingBox].size.height * 0.5f);
+    [singlePlayerGameButton setPosition:ccp(0,-100)];
+    singlePlayerGameLabel = [CCLabelTTF labelWithString:@"Single Player" fontName:RANT_FONT fontSize:26];
+    [singlePlayerGameLabel setColor:ccWHITE];
+    [singlePlayerGameButton addChild:singlePlayerGameLabel];
+    [singlePlayerGameButton setPosition:singlePlayerGameButtonPoint];
 
-	// ask director for the window size
-//	CGSize size = [[CCDirector sharedDirector] winSize];
+    
+    multiPlayerGameButton = [CCMenuItemImage itemWithNormalImage:@"start-menu-button.png"
+                                                   selectedImage:@"start-menu-button-pressed.png"
+                                                          target:self
+                                                        selector:@selector(multiPlayerPressed:)];
+    
+    CGPoint multiPlayerGameButtonPoint = ccp([multiPlayerGameButton boundingBox].size.width * 0.5f,
+                                              [multiPlayerGameButton boundingBox].size.height * 0.5f);
 
-    enterGameButton = [CCMenuItemImage itemWithNormalImage:@"start-menu-button.png"
-										  selectedImage:@"start-menu-button-pressed.png"
-												 target:self
-											   selector:@selector(enterGamePressed:)];
+    
+    [multiPlayerGameButton setPosition:ccp(0,-100)];
+    multiPlayerGameLabel = [CCLabelTTF labelWithString:@"Multi Player" fontName:RANT_FONT fontSize:26];
+    [multiPlayerGameLabel setColor:ccWHITE];
+    [multiPlayerGameButton addChild:multiPlayerGameLabel];
+    [singlePlayerGameButton setPosition:multiPlayerGameButtonPoint];
 
-    CGPoint savedPoint = ccp([enterGameButton boundingBox].size.width * 0.5f,
-                             [enterGameButton boundingBox].size.height * 0.5f);
 
-    [enterGameButton setPosition:ccp(0,-100)];
-    enterGameLabel = [CCLabelTTF labelWithString:@"Find Game" fontName:RANT_FONT fontSize:26];
-    [enterGameLabel setColor:ccWHITE];
-    [enterGameButton addChild:enterGameLabel];
-    [enterGameLabel setPosition:savedPoint];
-
-	CCMenu *menu = [CCMenu menuWithItems:enterGameButton, nil];
+    CCMenu *menu = [CCMenu menuWithItems:singlePlayerGameButton, multiPlayerGameButton, nil];
     [self addChild:menu];
 }
 
-- (void)enterGamePressed:(id)sender
+- (void)multiPlayerPressed:(id)sender
 {
 	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[LobbyScene scene] withColor:ccWHITE]];
+}
+
+- (void)singlePlayerPressed:(id)sender
+{
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[GameScene scene] withColor:ccWHITE]];
+    
+//	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[LobbyScene scene] withColor:ccWHITE]];
 }
 
 @end
@@ -59,11 +83,11 @@
 +(CCScene *) scene
 {
 	CCScene *scene = [MainMenuScene node];
-
+    
 	MainMenuLayer *layer = [MainMenuLayer node];
-
+    
 	[scene addChild: layer];
-
+    
 	return scene;
 }
 

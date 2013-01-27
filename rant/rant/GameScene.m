@@ -44,22 +44,10 @@
 	return scene;
 }
 
-- (void) refresh
-{
-    GKMatch *match = [GameKitEventEngine sharedNetworkEngine].match;
-
-    NSLog(@"match: %@", match.playerIDs);
-    
-}
-
 -(void)onEnter
 {
     [super onEnter];
     
-    [[GameKitEventEngine sharedNetworkEngine] begin];
-    
-    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
-
 	CGSize windowSize = [[CCDirector sharedDirector] winSize];
     
     backgroundLayer = [GameBackgroundLayer node];
@@ -81,7 +69,7 @@
 	[gameEngine reset];
 	gameEngine.delegate = self;
     
-    gameEngine.networkEngine = [GameKitEventEngine sharedNetworkEngine];
+//    gameEngine.networkEngine = [GameKitEventEngine sharedNetworkEngine];
 
 	[self scheduleUpdate];
 }

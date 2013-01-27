@@ -25,7 +25,10 @@
     // Create the layer hierarchy
     [super onEnter];
     
-    [[GameKitEventEngine sharedNetworkEngine] findMatch];
+    [[GameKitEventEngine sharedNetworkEngine] authenticate];
+
+    
+//    [[GameKitEventEngine sharedNetworkEngine] findMatch];
     
     
     CCSprite *background = [CCSprite spriteWithFile:@"lobbyBackground.png"];

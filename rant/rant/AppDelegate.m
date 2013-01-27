@@ -94,7 +94,6 @@
     
     //NSString* dummy = [[[NSString alloc] init] autorelease];
 
-    [[GameKitEventEngine sharedNetworkEngine] authenticate];
 
 	return YES;
 }
