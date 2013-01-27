@@ -14,6 +14,9 @@
 
 
 @implementation GameScene
+{
+	GameEngine * gameEngine;
+}
 
 @synthesize backgroundLayer;
 @synthesize monsterLayer;
@@ -48,6 +51,9 @@
     [self addChild:heroLayer];
     [self addChild:hudLayer];
     [self addChild:gestureLayer];
+
+	gameEngine = [[GameEngine alloc] init];
+	gameEngine.delegate = self;
 }
 
 - (void)clientReceivedEvent:(GameEvent *)event withState:(GameState *)state;
@@ -64,7 +70,11 @@
 
 - (void)gestureChainCompleted:(NSArray *)gestureChain
 {
-    
+	GameEvent event;
+	event.target = 0;
+	event.type = 1;
+	event.value = 0;
+    [gameEngine processEvent:&event];
 }
 
 @end
