@@ -377,6 +377,8 @@ typedef enum {
     self.allPlayerIDs = nil;
     self.myPlayerIndex = NSNotFound;
     self.gameState = kStateLobby;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:GameEngineGameEndNotification object:self];
 }
 
 - (BOOL) isMatchReady
