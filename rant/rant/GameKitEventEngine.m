@@ -195,7 +195,7 @@ typedef enum {
 {
     NSAssert([GKLocalPlayer localPlayer].isAuthenticated, @"not authenticated");
     
-    [[GKMatchmaker sharedMatchmaker] cancel];
+//    [[GKMatchmaker sharedMatchmaker] cancel];
     
     [self end];
     
@@ -205,18 +205,30 @@ typedef enum {
     
     self.gameState = kStateLobby;
     
-    [[GKMatchmaker sharedMatchmaker] findMatchForRequest:request withCompletionHandler:^(GKMatch *match, NSError *error) {
-        if (error)
-        {
-            PresentError(error);
-        }
-        else if (match != nil)
-        {
-            NSLog(@"Match found! %@", match);
-            self.match = match;
-            match.delegate = self;
-        }
-    }];
+    if (self.match == nil) {
+        
+        [[GKMatchmaker sharedMatchmaker] findMatchForRequest:request withCompletionHandler:^(GKMatch *match, NSError *error) {
+            if (error)
+            {
+                PresentError(error);
+            }
+            else if (match != nil)
+            {
+                NSLog(@"Match found! %@", match);
+                self.match = match;
+                match.delegate = self;
+            }
+        }];
+    } else {
+        
+        [[GKMatchmaker sharedMatchmaker] addPlayersToMatch:self.match matchRequest:request completionHandler:^(NSError *error) {
+            if (error)
+            {
+                PresentError(error);
+            }
+        }];
+        
+    }
 }
 
 - (PlayerInfo *)getInfoForPlayerID:(NSString *)playerID
@@ -333,7 +345,7 @@ typedef enum {
 
 - (void)end
 {
-    self.match = nil;
+//    self.match = nil;
     self.allPlayerIDs = nil;
     self.myPlayerIndex = NSNotFound;
     self.gameState = kStateLobby;

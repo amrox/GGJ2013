@@ -41,6 +41,8 @@
         
     }
     lastPlayerCount = curPlayerCount;
+    
+    [self enableEnterGameButton:(curPlayerCount > 1)];
 }
 
 -(void)onEnter
