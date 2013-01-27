@@ -134,7 +134,7 @@
 				}
 				else
 				{
-					GameEvent broadcastEvent;
+					GameEvent broadcastEvent; 
 					broadcastEvent.type = EGameEventType_MONSTER_ATTACK_DIMINISHED;
 					[self broadcastEventAsServer:&broadcastEvent];
 				}
@@ -250,7 +250,8 @@
 			state.millisecondsBeforeMonsterAttacks = 1000 * ATTACK_PREPARATION_TIME;
 			state.monsterPreparingToAttackPlayerId = arc4random() % self.playerCount;
 			state.monsterAttackPreparationType = (arc4random() % 3) + EGameEventType_ATTACK_FIRE;
-			state.monsterHitsLeftForCancel = TOTAL_HITS_TO_CANCEL_ATTACK;
+			state.monsterHitsLeftForCancel = self.playerCount;
+			timeToNextAttack = -1;
 			self.currentState = state;
 
 			GameEvent broadcastEvent;
