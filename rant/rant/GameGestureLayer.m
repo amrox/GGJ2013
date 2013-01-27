@@ -295,8 +295,7 @@ float getDifferenceBetweenAngles(float a1, float a2)
 -(void)onEnter
 {
 	[super onEnter];
-    //[SimpleAudioEngine sharedEngine];
-
+    [[SimpleAudioEngine sharedEngine] setEffectsVolume:0.2f];
 	CGSize windowSize = [[CCDirector sharedDirector] winSize];
 
 	self.isTouchEnabled = YES;
@@ -320,6 +319,7 @@ float getDifferenceBetweenAngles(float a1, float a2)
 //	NSLog(@"First touch is at %f %f" ,touchLocation.x, touchLocation.y);
     if (currentGestureRecognizer == nil)
     {
+        [[SimpleAudioEngine sharedEngine] playEffect:@"sine440.caf"];
         currentGestureRecognizer = [[GestureRecognizer alloc] initAtStartingPos:touchLocation];
     }
 	return YES;
