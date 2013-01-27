@@ -42,7 +42,6 @@ typedef enum {
 @property (strong) UIAlertView *connectionAlert;
 @property (strong) NSMutableDictionary *playerInfo;
 @property (assign, readwrite) GameState currentState;
-@property (assign, readwrite) BOOL isServer;
 @property (strong) NSMutableArray *incomingEvents;
 @property (readwrite, strong) NSArray *allPlayerIDs;
 @property (readwrite, assign) int myPlayerIndex;
@@ -355,6 +354,10 @@ typedef enum {
     return [GKLocalPlayer localPlayer].playerID;
 }
 
+- (BOOL) isServer
+{
+    return [self myPlayerIndex] == 0;
+}
 
 - (void)sendEventAsClient:(GameEvent *)event
 {
