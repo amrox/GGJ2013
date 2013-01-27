@@ -373,12 +373,16 @@ typedef enum {
 
 - (void)end
 {
+    int prevState = self.gameState;
+    
 //    self.match = nil;
     self.allPlayerIDs = nil;
     self.myPlayerIndex = NSNotFound;
     self.gameState = kStateLobby;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:GameEngineGameEndNotification object:self];
+    if (prevState == kStateMain) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:GameEngineGameEndNotification object:self];
+    }
 }
 
 - (BOOL) isMatchReady

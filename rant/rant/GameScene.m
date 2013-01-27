@@ -86,6 +86,8 @@
 
 - (void)gameEnd
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GameEngineGameEndNotification object:[GameKitEventEngine sharedNetworkEngine]];
+    
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MainMenuScene scene] withColor:ccWHITE]];
 }
 

@@ -11,6 +11,8 @@
 {
 }
 
+@property (strong) NSTimer *timer;
+
 @end
 
 
@@ -25,6 +27,11 @@
     NSMutableArray *heroes;
     
     int lastPlayerCount;
+}
+
+- (void)dealloc
+{
+    [self.timer invalidate];
 }
 
 - (void)pollMatch
@@ -56,7 +63,7 @@
 	
     [[GameKitEventEngine sharedNetworkEngine] authenticate];
 
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(pollMatch) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(pollMatch) userInfo:nil repeats:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameBegin:) name:GameEngineGameBeginNotification object:[GameKitEventEngine sharedNetworkEngine]];
     
@@ -95,6 +102,7 @@
                      [enterGameButton boundingBox].size.height * 0.5f);
     
     [enterGameButton setPosition:ccp(0, 60)];
+    [self enableEnterGameButton:NO];
     CCLabelTTF *enterGameLabel = [CCLabelTTF labelWithString:@"Enter Game" fontName:RANT_FONT fontSize:32];
     [enterGameButton addChild:enterGameLabel];
     [enterGameLabel setPosition:savedPoint];
@@ -132,6 +140,11 @@
 
 - (void)gameBegin:(NSNotification *)note
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GameEngineGameBeginNotification object:[GameKitEventEngine sharedNetworkEngine]];
+    
+    [self.timer invalidate];
+    self.timer = nil;
+    
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[GameScene scene] withColor:ccWHITE]];
 
 }
