@@ -13,17 +13,22 @@
 typedef enum
 {
 	EGesture_NONE,
-	EGesture_WATER,
-	EGesture_FIRE,
+	EGesture_WATER,		//figure 8
+	EGesture_FIRE,		//z with return
+	EGesture_AIR,		//square
+	EGesture_ATTACK,	//stab
+	EGesture_HEAL,		//backwards c
 } EGesture;
 
 
-#define DIST_FOR_ACCURATE_ANGLE 60
-#define ANGLE_DIFFERENCE_FOR_NEW_LEG (PI/3.0f)
+#define DIST_FOR_ACCURATE_ANGLE1 20
+#define DIST_FOR_ACCURATE_ANGLE2 80
+#define ANGLE_DIFFERENCE_FOR_NEW_LEG 0.5f
 #define MAX_POINTS 10000
 #define MAX_LEGS 8
+#define NEAR_AND_FAR_ANGLE_MATCHING_THRESHOLD 0.1f
 
-//#define RECORD_GESTURE_ANGLES
+#define RECORD_GESTURE_ANGLES
 
 float angleBetweenPoints(CGPoint p1, CGPoint p2)
 {
@@ -89,15 +94,53 @@ float getDifferenceBetweenAngles(float a1, float a2)
 	{
 		sharedLibrary = [NSMutableArray array];
 
-		Gesture * fire = [[Gesture alloc] init];
-		fire.gesture = EGesture_FIRE;
-		fire.legAngles = [NSArray arrayWithObjects:[NSNumber numberWithFloat:PI*0.5f], [NSNumber numberWithFloat:-PI*0.5f], nil];
-		[sharedLibrary addObject:fire];
+		Gesture * g = nil;
 
-		Gesture * water = [[Gesture alloc] init];
-		water.gesture = EGesture_WATER;
-		water.legAngles = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0], [NSNumber numberWithFloat:PI], nil];
-		[sharedLibrary addObject:water];
+		g = [[Gesture alloc] init];
+		g.gesture = EGesture_WATER;
+		g.legAngles = [NSArray arrayWithObjects:
+					   [NSNumber numberWithFloat:1.362165],
+					   [NSNumber numberWithFloat:-1.065506],
+					   [NSNumber numberWithFloat:1.565391],
+					   [NSNumber numberWithFloat:-2.306805], nil];
+		[sharedLibrary addObject:g];
+
+		g = [[Gesture alloc] init];
+		g.gesture = EGesture_FIRE;
+		g.legAngles = [NSArray arrayWithObjects:
+					   [NSNumber numberWithFloat:0],
+					   [NSNumber numberWithFloat:2.519180],
+					   [NSNumber numberWithFloat:0],
+					   [NSNumber numberWithFloat:-2.442189], nil];
+		[sharedLibrary addObject:g];
+
+		g = [[Gesture alloc] init];
+		g.gesture = EGesture_AIR;
+		g.legAngles = [NSArray arrayWithObjects:
+					   [NSNumber numberWithFloat:1.527345],
+					   [NSNumber numberWithFloat:0],
+					   [NSNumber numberWithFloat:-1.6],
+					   [NSNumber numberWithFloat:3.14], nil];
+		[sharedLibrary addObject:g];
+
+		g = [[Gesture alloc] init];
+		g.gesture = EGesture_ATTACK;
+		g.legAngles = [NSArray arrayWithObjects:
+					   [NSNumber numberWithFloat:1.527345],
+					   [NSNumber numberWithFloat:-0.85],
+					   [NSNumber numberWithFloat:2.24],
+					   [NSNumber numberWithFloat:-0.85],
+					   [NSNumber numberWithFloat:2.24],
+					   [NSNumber numberWithFloat:-0.85], nil];
+		[sharedLibrary addObject:g];
+		
+		g = [[Gesture alloc] init];
+		g.gesture = EGesture_HEAL;
+		g.legAngles = [NSArray arrayWithObjects:
+					   [NSNumber numberWithFloat:0],
+					   [NSNumber numberWithFloat:1.57],
+					   [NSNumber numberWithFloat:3.14], nil];
+		[sharedLibrary addObject:g];
 	}
 	return sharedLibrary;
 }
@@ -152,16 +195,39 @@ float getDifferenceBetweenAngles(float a1, float a2)
 		return NO;
 	}
 
+	BOOL foundFirst = NO;
+	float firstAngle;
+	
 	CGPoint lastPoint = points[numPoints-1];
 	for (int i = numPoints - 2; i >= 0; i--)
 	{
 		CGPoint currentPoint = points[i];
 		float dist = distanceBetweenPoints(currentPoint, lastPoint);
-		if (dist > DIST_FOR_ACCURATE_ANGLE)
+		if (!foundFirst)
 		{
-			float angle = angleBetweenPoints(currentPoint, lastPoint);
-			*angleOut = angle;
-			return YES;
+			if (dist > DIST_FOR_ACCURATE_ANGLE1)
+			{
+				foundFirst = YES;
+				firstAngle = angleBetweenPoints(currentPoint, lastPoint);
+			}
+		}
+		else
+		{
+			if (dist > DIST_FOR_ACCURATE_ANGLE2)
+			{
+				float angle = angleBetweenPoints(currentPoint, lastPoint);
+				float angleDiff = getDifferenceBetweenAngles(angle, firstAngle);
+
+				if (fabsf(angleDiff) < NEAR_AND_FAR_ANGLE_MATCHING_THRESHOLD)
+				{
+					*angleOut = angle;
+					return YES;
+				}
+				else
+				{
+					return NO;
+				}
+			}
 		}
 	}
 	return NO;

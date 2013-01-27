@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		
+		<key>user04_attack1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{32, 18}, {180, 143}}</string>
+			<key>spriteOffset</key>
+			<string>{-1, -9}</string>
+			<key>spriteSize</key>
+			<string>{180, 143}</string>
+			<key>spriteSourceSize</key>
+			<string>{246, 161}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{330, 318}, {180, 143}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>user04_attack2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{33, 4}, {148, 157}}</string>
+			<key>spriteOffset</key>
+			<string>{-16, -2}</string>
+			<key>spriteSize</key>
+			<string>{148, 157}</string>
+			<key>spriteSourceSize</key>
+			<string>{246, 161}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{296, 159}, {148, 157}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>user04_attack3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{32, 18}, {214, 143}}</string>
+			<key>spriteOffset</key>
+			<string>{16, -9}</string>
+			<key>spriteSize</key>
+			<string>{214, 143}</string>
+			<key>spriteSourceSize</key>
+			<string>{246, 161}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{298, 0}, {214, 143}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>user04_attack4.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{33, 4}, {192, 157}}</string>
+			<key>spriteOffset</key>
+			<string>{6, -2}</string>
+			<key>spriteSize</key>
+			<string>{192, 157}</string>
+			<key>spriteSourceSize</key>
+			<string>{246, 161}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{136, 326}, {192, 157}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>user04_hit1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {134, 161}}</string>
+			<key>spriteOffset</key>
+			<string>{-56, -0}</string>
+			<key>spriteSize</key>
+			<string>{134, 161}</string>
+			<key>spriteSourceSize</key>
+			<string>{246, 161}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 326}, {134, 161}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>user04_hit2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{8, 0}, {136, 161}}</string>
+			<key>spriteOffset</key>
+			<string>{-47, -0}</string>
+			<key>spriteSize</key>
+			<string>{136, 161}</string>
+			<key>spriteSourceSize</key>
+			<string>{246, 161}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 163}, {136, 161}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>user04_hit3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{12, 0}, {138, 161}}</string>
+			<key>spriteOffset</key>
+			<string>{-42, -0}</string>
+			<key>spriteSize</key>
+			<string>{138, 161}</string>
+			<key>spriteSourceSize</key>
+			<string>{246, 161}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 0}, {138, 161}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>user04_idle1A.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{32, 18}, {146, 143}}</string>
+			<key>spriteOffset</key>
+			<string>{-18, -9}</string>
+			<key>spriteSize</key>
+			<string>{146, 143}</string>
+			<key>spriteSourceSize</key>
+			<string>{246, 161}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{446, 145}, {146, 143}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>user04_idle1B.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{32, 18}, {146, 143}}</string>
+			<key>spriteOffset</key>
+			<string>{-18, -9}</string>
+			<key>spriteSize</key>
+			<string>{146, 143}</string>
+			<key>spriteSourceSize</key>
+			<string>{246, 161}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{514, 0}, {146, 143}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>user04_idle2A.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{33, 4}, {156, 157}}</string>
+			<key>spriteOffset</key>
+			<string>{-12, -2}</string>
+			<key>spriteSize</key>
+			<string>{156, 157}</string>
+			<key>spriteSourceSize</key>
+			<string>{246, 161}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{140, 0}, {156, 157}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>user04_idle2B.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{33, 4}, {156, 157}}</string>
+			<key>spriteOffset</key>
+			<string>{-12, -2}</string>
+			<key>spriteSize</key>
+			<string>{156, 157}</string>
+			<key>spriteSourceSize</key>
+			<string>{246, 161}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{138, 163}, {156, 157}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>version</key>
+		<string>1.5.8</string>
+		<key>format</key>
+		<integer>3</integer>
+		<key>size</key>
+		<string>{1024, 512}</string>
+		<key>name</key>
+		<string>Untitled</string>
+		<key>premultipliedAlpha</key>
+		<false/>
+		<key>target</key>
+		<dict>
+			<key>name</key>
+			<string>default</string>
+			<key>textureFileName</key>
+			<string>gameHero4</string>
+			<key>textureFileExtension</key>
+			<string>.png</string>
+			<key>coordinatesFileName</key>
+			<string>gameHero4</string>
+			<key>coordinatesFileExtension</key>
+			<string>.plist</string>
+			<key>premultipliedAlpha</key>
+			<false/>
+		</dict>
+	</dict>
+</dict>
+</plist>
