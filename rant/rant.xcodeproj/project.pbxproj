@@ -63,6 +63,22 @@
 		9CAB501C16B4A3CD0061047A /* gameMonster1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB501A16B4A3CD0061047A /* gameMonster1.png */; };
 		9CAB502016B4AAAF0061047A /* GameHeroNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB501F16B4AAAF0061047A /* GameHeroNode.m */; };
 		9CAB502316B4AAD10061047A /* GameMonsterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB502216B4AAD10061047A /* GameMonsterNode.m */; };
+		9CAB50A916B4BE920061047A /* gameHero1-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB509916B4BE920061047A /* gameHero1-hd.plist */; };
+		9CAB50AA16B4BE920061047A /* gameHero1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB509A16B4BE920061047A /* gameHero1-hd.png */; };
+		9CAB50AB16B4BE920061047A /* gameHero1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB509B16B4BE920061047A /* gameHero1.plist */; };
+		9CAB50AC16B4BE920061047A /* gameHero1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB509C16B4BE920061047A /* gameHero1.png */; };
+		9CAB50AD16B4BE920061047A /* gameHero2-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB509D16B4BE920061047A /* gameHero2-hd.plist */; };
+		9CAB50AE16B4BE920061047A /* gameHero2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB509E16B4BE920061047A /* gameHero2-hd.png */; };
+		9CAB50AF16B4BE920061047A /* gameHero2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB509F16B4BE920061047A /* gameHero2.plist */; };
+		9CAB50B016B4BE920061047A /* gameHero2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A016B4BE920061047A /* gameHero2.png */; };
+		9CAB50B116B4BE920061047A /* gameHero3-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A116B4BE920061047A /* gameHero3-hd.plist */; };
+		9CAB50B216B4BE920061047A /* gameHero3-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A216B4BE920061047A /* gameHero3-hd.png */; };
+		9CAB50B316B4BE920061047A /* gameHero3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A316B4BE920061047A /* gameHero3.plist */; };
+		9CAB50B416B4BE920061047A /* gameHero3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A416B4BE920061047A /* gameHero3.png */; };
+		9CAB50B516B4BE920061047A /* gameHero4-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A516B4BE920061047A /* gameHero4-hd.plist */; };
+		9CAB50B616B4BE920061047A /* gameHero4-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A616B4BE920061047A /* gameHero4-hd.png */; };
+		9CAB50B716B4BE920061047A /* gameHero4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A716B4BE920061047A /* gameHero4.plist */; };
+		9CAB50B816B4BE920061047A /* gameHero4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB50A816B4BE920061047A /* gameHero4.png */; };
 		B354826816B3A75A004ECF7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D716B39AC50061047A /* UIKit.framework */; };
 		B354826916B3A75A004ECF7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D916B39AC50061047A /* Foundation.framework */; };
 		B354826A16B3A75A004ECF7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47DB16B39AC50061047A /* CoreGraphics.framework */; };
@@ -555,6 +571,22 @@
 		9CAB501F16B4AAAF0061047A /* GameHeroNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameHeroNode.m; sourceTree = "<group>"; };
 		9CAB502116B4AAD10061047A /* GameMonsterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMonsterNode.h; sourceTree = "<group>"; };
 		9CAB502216B4AAD10061047A /* GameMonsterNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMonsterNode.m; sourceTree = "<group>"; };
+		9CAB509916B4BE920061047A /* gameHero1-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "gameHero1-hd.plist"; path = "Resources/GameAssets/Animations/gameHero1-hd.plist"; sourceTree = "<group>"; };
+		9CAB509A16B4BE920061047A /* gameHero1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameHero1-hd.png"; path = "Resources/GameAssets/Animations/gameHero1-hd.png"; sourceTree = "<group>"; };
+		9CAB509B16B4BE920061047A /* gameHero1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = gameHero1.plist; path = Resources/GameAssets/Animations/gameHero1.plist; sourceTree = "<group>"; };
+		9CAB509C16B4BE920061047A /* gameHero1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameHero1.png; path = Resources/GameAssets/Animations/gameHero1.png; sourceTree = "<group>"; };
+		9CAB509D16B4BE920061047A /* gameHero2-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "gameHero2-hd.plist"; path = "Resources/GameAssets/Animations/gameHero2-hd.plist"; sourceTree = "<group>"; };
+		9CAB509E16B4BE920061047A /* gameHero2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameHero2-hd.png"; path = "Resources/GameAssets/Animations/gameHero2-hd.png"; sourceTree = "<group>"; };
+		9CAB509F16B4BE920061047A /* gameHero2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = gameHero2.plist; path = Resources/GameAssets/Animations/gameHero2.plist; sourceTree = "<group>"; };
+		9CAB50A016B4BE920061047A /* gameHero2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameHero2.png; path = Resources/GameAssets/Animations/gameHero2.png; sourceTree = "<group>"; };
+		9CAB50A116B4BE920061047A /* gameHero3-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "gameHero3-hd.plist"; path = "Resources/GameAssets/Animations/gameHero3-hd.plist"; sourceTree = "<group>"; };
+		9CAB50A216B4BE920061047A /* gameHero3-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameHero3-hd.png"; path = "Resources/GameAssets/Animations/gameHero3-hd.png"; sourceTree = "<group>"; };
+		9CAB50A316B4BE920061047A /* gameHero3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = gameHero3.plist; path = Resources/GameAssets/Animations/gameHero3.plist; sourceTree = "<group>"; };
+		9CAB50A416B4BE920061047A /* gameHero3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameHero3.png; path = Resources/GameAssets/Animations/gameHero3.png; sourceTree = "<group>"; };
+		9CAB50A516B4BE920061047A /* gameHero4-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "gameHero4-hd.plist"; path = "Resources/GameAssets/Animations/gameHero4-hd.plist"; sourceTree = "<group>"; };
+		9CAB50A616B4BE920061047A /* gameHero4-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameHero4-hd.png"; path = "Resources/GameAssets/Animations/gameHero4-hd.png"; sourceTree = "<group>"; };
+		9CAB50A716B4BE920061047A /* gameHero4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = gameHero4.plist; path = Resources/GameAssets/Animations/gameHero4.plist; sourceTree = "<group>"; };
+		9CAB50A816B4BE920061047A /* gameHero4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameHero4.png; path = Resources/GameAssets/Animations/gameHero4.png; sourceTree = "<group>"; };
 		B354826616B3A75A004ECF7C /* NetworkTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B354826D16B3A75A004ECF7C /* NetworkTester-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NetworkTester-Info.plist"; sourceTree = "<group>"; };
 		B354826F16B3A75A004ECF7C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -810,6 +842,7 @@
 			isa = PBXGroup;
 			children = (
 				FF9140B716B4C18B00A6E22E /* red_health_bar.png */,
+				9CAB509816B4BE5D0061047A /* Animations */,
 				FF91403C16B4B2BB00A6E22E /* sine440.caf */,
 				9CAB4F9916B49C580061047A /* gameBackground1-hd.png */,
 				9CAB4F9A16B49C580061047A /* gameBackground1.png */,
@@ -834,6 +867,29 @@
 				9CAB502216B4AAD10061047A /* GameMonsterNode.m */,
 			);
 			name = GameObjects;
+			sourceTree = "<group>";
+		};
+		9CAB509816B4BE5D0061047A /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				9CAB509916B4BE920061047A /* gameHero1-hd.plist */,
+				9CAB509A16B4BE920061047A /* gameHero1-hd.png */,
+				9CAB509B16B4BE920061047A /* gameHero1.plist */,
+				9CAB509C16B4BE920061047A /* gameHero1.png */,
+				9CAB509D16B4BE920061047A /* gameHero2-hd.plist */,
+				9CAB509E16B4BE920061047A /* gameHero2-hd.png */,
+				9CAB509F16B4BE920061047A /* gameHero2.plist */,
+				9CAB50A016B4BE920061047A /* gameHero2.png */,
+				9CAB50A116B4BE920061047A /* gameHero3-hd.plist */,
+				9CAB50A216B4BE920061047A /* gameHero3-hd.png */,
+				9CAB50A316B4BE920061047A /* gameHero3.plist */,
+				9CAB50A416B4BE920061047A /* gameHero3.png */,
+				9CAB50A516B4BE920061047A /* gameHero4-hd.plist */,
+				9CAB50A616B4BE920061047A /* gameHero4-hd.png */,
+				9CAB50A716B4BE920061047A /* gameHero4.plist */,
+				9CAB50A816B4BE920061047A /* gameHero4.png */,
+			);
+			name = Animations;
 			sourceTree = "<group>";
 		};
 		B354826B16B3A75A004ECF7C /* NetworkTester */ = {
@@ -1415,6 +1471,22 @@
 				9CAB501B16B4A3CD0061047A /* gameMonster1-hd.png in Resources */,
 				9CAB501C16B4A3CD0061047A /* gameMonster1.png in Resources */,
 				FF9140B816B4C18B00A6E22E /* red_health_bar.png in Resources */,
+				9CAB50A916B4BE920061047A /* gameHero1-hd.plist in Resources */,
+				9CAB50AA16B4BE920061047A /* gameHero1-hd.png in Resources */,
+				9CAB50AB16B4BE920061047A /* gameHero1.plist in Resources */,
+				9CAB50AC16B4BE920061047A /* gameHero1.png in Resources */,
+				9CAB50AD16B4BE920061047A /* gameHero2-hd.plist in Resources */,
+				9CAB50AE16B4BE920061047A /* gameHero2-hd.png in Resources */,
+				9CAB50AF16B4BE920061047A /* gameHero2.plist in Resources */,
+				9CAB50B016B4BE920061047A /* gameHero2.png in Resources */,
+				9CAB50B116B4BE920061047A /* gameHero3-hd.plist in Resources */,
+				9CAB50B216B4BE920061047A /* gameHero3-hd.png in Resources */,
+				9CAB50B316B4BE920061047A /* gameHero3.plist in Resources */,
+				9CAB50B416B4BE920061047A /* gameHero3.png in Resources */,
+				9CAB50B516B4BE920061047A /* gameHero4-hd.plist in Resources */,
+				9CAB50B616B4BE920061047A /* gameHero4-hd.png in Resources */,
+				9CAB50B716B4BE920061047A /* gameHero4.plist in Resources */,
+				9CAB50B816B4BE920061047A /* gameHero4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

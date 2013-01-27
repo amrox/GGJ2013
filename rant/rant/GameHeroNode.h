@@ -15,4 +15,6 @@
 @property (nonatomic) float maxHP;
 @property (nonatomic) float maxMP;
 
+- (id)initWithIndex:(int)index;
+
 @end

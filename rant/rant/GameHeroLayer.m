@@ -15,8 +15,8 @@
 {
     [super onEnter];
     
-    hero = [CCSprite spriteWithFile:@"gameHero_placeholder.png"];
-    [hero setPosition:ccp(100, 94)];
+    hero = [[GameHeroNode alloc] initWithIndex:arc4random() % 4];
+    [hero setPosition:ccp(100, 81)];
     
     [self addChild:hero];
 }
