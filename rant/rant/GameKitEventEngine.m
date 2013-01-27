@@ -16,7 +16,8 @@ NSString *const GameEngineGameBeginNotification = @"GameBegin";
 NSString *const GameEngineGameEndNotification = @"GameEnd";
 
 static long long PlayerIDNum(NSString *playerID) {
-    return [[playerID substringFromIndex:2] longLongValue];
+    long long n = [[playerID substringFromIndex:2] longLongValue];
+    return n;
 }
 
 static long long MyPlayerNum() {
@@ -230,8 +231,6 @@ typedef enum {
 {
     NSAssert([GKLocalPlayer localPlayer].isAuthenticated, @"not authenticated");
     
-//    [self getGameUniqueID];
-    
     [[GKMatchmaker sharedMatchmaker] cancel];
     
     [self end];
@@ -311,7 +310,7 @@ typedef enum {
 
 - (void)receiveEventAsServer:(GameEvent *)event
 {
-    NSLog(@"*** [NET] [RECV] client event src=%d type=%d", event->source, event->type);
+    NSLog(@"*** [NET] [RECV] client event src=%lld type=%d", event->source, event->type);
 
     @synchronized(self.incomingEvents) {
         NSValue *eventVal = [NSValue valueWithBytes:event objCType:@encode(GameEvent)];
@@ -321,7 +320,7 @@ typedef enum {
 
 - (void)receivePacketAsClient:(GamePacket *)packet
 {
-    NSLog(@"*** [NET] [RECV] broad event src=%d type=%d", packet->event.source, packet->event.type);
+    NSLog(@"*** [NET] [RECV] broad event src=%lld type=%d", packet->event.source, packet->event.type);
     
     [self.engine receiveStateFromServer:&packet->state event:&packet->event];
 }
@@ -379,7 +378,7 @@ typedef enum {
 
 - (void)sendEventAsClient:(GameEvent *)event
 {
-    NSLog(@"*** [NET] [SEND] client event src=%d type=%d", event->source, event->type);
+    NSLog(@"*** [NET] [SEND] client event src=%lld type=%d", event->source, event->type);
     
     NSAssert(!self.isServer, @"should not be server");
     NSAssert(self.serverPlayerID, @"server ID is nil");
@@ -395,7 +394,7 @@ typedef enum {
     packet.event = *event;
     packet.state = *state;
     
-    NSLog(@"*** [NET] [SEND] broadcast event src=%d type=%d", event->source, event->type);
+    NSLog(@"*** [NET] [SEND] broadcast event src=%lld type=%d", event->source, event->type);
     
     [self broadcastNetworkPacket:self.match packetID:NETWORK_GAME_STATE withData:&packet ofLength:sizeof(GamePacket) reliable:YES];
 }

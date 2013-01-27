@@ -33,9 +33,9 @@ typedef struct {
 } GameState;
 
 typedef struct {
-	int			source;
+	long long	source;
 	int			type;	//EGameEventType
-    int         target; // 0=boss, 1-4=player
+    long long   target; // 0=boss, 1-4=player
     int			value;
 } GameEvent;
 
