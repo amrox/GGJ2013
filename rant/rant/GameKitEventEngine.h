@@ -44,7 +44,7 @@ typedef struct {
 @property (assign, readonly) BOOL isServer;
 - (BOOL) isRunning;
 
-- (int) myPlayerNum;
+- (long long) myPlayerNum;
 
 - (void)begin;
 

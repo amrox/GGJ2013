@@ -37,6 +37,8 @@
 
 - (void)broadcastEventAsServer:(GameEvent *)event
 {
+    NSLog(@"*** [GAME] [SEND] broadcast event src=%d type=%d", event->source, event->type);
+    
     GameState state = self.currentState;
     [self.delegate clientReceivedEvent:event withState:&state];
     
@@ -116,6 +118,10 @@
 
 - (void)sendEventAsClient:(GameEvent *)event
 {
+    event->source = [self myPlayerNum];
+    
+    NSLog(@"*** [GAME] [SEND] client event src=%d type=%d", event->source, event->type);
+    
 	if ([self isServer])
 	{
         [self processEvent:event];
@@ -134,9 +140,19 @@
     return YES;
 }
 
+- (int) myPlayerNum
+{
+    if (self.networkEngine) {
+        return [self.networkEngine myPlayerNum];
+    }
+    return 1;
+}
+
 
 - (void)update:(float)deltaTime
 {
+    if (!self.isServer) return; // hack
+    
 #define MIN_ATTACK_TIME 2
 #define MAX_ATTACK_TIME 6
 
