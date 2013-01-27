@@ -39,7 +39,7 @@
 {
     event->source = 0; // server is always 0
     
-    NSLog(@"*** [GAME] [SEND] broadcast event src=%lld type=%d", event->source, event->type);
+    NSLog(@"*** [GAME] [SEND] broadcast event src=%d type=%d", event->source, event->type);
     
     GameState state = self.currentState;
     [self.delegate clientReceivedEvent:event withState:&state];
@@ -63,7 +63,7 @@
 {
     event->source = [self myPlayerNum];
     
-    NSLog(@"*** [GAME] [SEND] client event src=%lld type=%d", event->source, event->type);
+    NSLog(@"*** [GAME] [SEND] client event src=%d type=%d", event->source, event->type);
     
 	if ([self isServer])
 	{

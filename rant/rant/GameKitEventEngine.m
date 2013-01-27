@@ -15,15 +15,6 @@ static NSString *const GameUniqueIDKey = @"GameUniqueID";
 NSString *const GameEngineGameBeginNotification = @"GameBegin";
 NSString *const GameEngineGameEndNotification = @"GameEnd";
 
-static long long PlayerIDNum(NSString *playerID) {
-    long long n = [[playerID substringFromIndex:2] longLongValue];
-    return n;
-}
-
-static long long MyPlayerNum() {
-    return PlayerIDNum([GKLocalPlayer localPlayer].playerID);
-}
-
 
 #define kMaxPacketSize 1024
 const float kHeartbeatTimeMaxDelay = 2.0f;
@@ -127,31 +118,6 @@ typedef enum {
 		}
 	}
 }
-
-//- (void)electServer
-//{
-//    NSString *localPlayerID = [GKLocalPlayer localPlayer].playerID;
-//    
-//    NSString *serverPlayerID = localPlayerID;
-//    int serverPlayerIDNum = MyPlayerNum();
-//    
-//    NSLog(@"Local Player: %@", localPlayerID);
-//    
-//    for (NSString *playerID in self.match.playerIDs) {
-//        
-//        int playerNum = PlayerIDNum(playerID);
-//        if (playerNum > serverPlayerIDNum) {
-//            serverPlayerID = playerID;
-//        }
-//    }
-//        
-//    self.serverPlayerID = serverPlayerID;
-//    self.isServer = [self.serverPlayerID isEqualToString:localPlayerID];
-//    
-//    NSLog(@"%@ is the server!", self.serverPlayerID);
-//
-//
-//}
 
 - (void)processEvents
 {
@@ -307,7 +273,7 @@ typedef enum {
 
 - (void)receiveEventAsServer:(GameEvent *)event
 {
-    NSLog(@"*** [NET] [RECV] client event src=%lld type=%d", event->source, event->type);
+    NSLog(@"*** [NET] [RECV] client event src=%d type=%d", event->source, event->type);
 
     @synchronized(self.incomingEvents) {
         NSValue *eventVal = [NSValue valueWithBytes:event objCType:@encode(GameEvent)];
@@ -317,7 +283,7 @@ typedef enum {
 
 - (void)receivePacketAsClient:(GamePacket *)packet
 {
-    NSLog(@"*** [NET] [RECV] broad event src=%lld type=%d", packet->event.source, packet->event.type);
+    NSLog(@"*** [NET] [RECV] broad event src=%d type=%d", packet->event.source, packet->event.type);
     
     [self.engine receiveStateFromServer:&packet->state event:&packet->event];
 }
@@ -392,7 +358,7 @@ typedef enum {
 
 - (void)sendEventAsClient:(GameEvent *)event
 {
-    NSLog(@"*** [NET] [SEND] client event src=%lld type=%d", event->source, event->type);
+    NSLog(@"*** [NET] [SEND] client event src=%d type=%d", event->source, event->type);
     
     NSAssert(!self.isServer, @"should not be server");
     NSAssert(self.serverPlayerID, @"server ID is nil");
@@ -408,7 +374,7 @@ typedef enum {
     packet.event = *event;
     packet.state = *state;
     
-    NSLog(@"*** [NET] [SEND] broadcast event src=%lld type=%d", event->source, event->type);
+    NSLog(@"*** [NET] [SEND] broadcast event src=%d type=%d", event->source, event->type);
     
     [self broadcastNetworkPacket:self.match packetID:NETWORK_GAME_STATE withData:&packet ofLength:sizeof(GamePacket) reliable:YES];
 }
