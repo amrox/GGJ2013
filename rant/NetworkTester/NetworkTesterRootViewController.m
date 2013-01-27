@@ -11,6 +11,7 @@
 
 @interface NetworkTesterRootViewController ()
 
+@property (strong) NSTimer *timer;
 @end
 
 @implementation NetworkTesterRootViewController
@@ -20,6 +21,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                                      target:self
+                                                    selector:@selector(refresh) userInfo:nil repeats:YES];
+        [self refresh];
+        
     }
     return self;
 }
@@ -36,15 +43,42 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc
+{
+    [self.timer invalidate];
+}
 
-- (IBAction)go:(id)sender
+- (void) refresh
 {
     GameEngine *engine = [GameEngine sharedGameEngine];
     
+    int const totalPlayers = [engine isMatchReady] ? [engine.match.playerIDs count] + 1 : 0;
     
-    [engine findProgrammaticMatch:sender];
+    self.button4.hidden = totalPlayers < 4;
+    self.button3.hidden = totalPlayers < 3;
+
+    self.button2.hidden = totalPlayers < 2;
+    self.button1.hidden = totalPlayers < 2;
     
-    
+    self.beginButton.hidden = totalPlayers < 2;
 }
+
+- (IBAction)match:(id)sender
+{
+    GameEngine *engine = [GameEngine sharedGameEngine];
+    [engine findMatch];
+    
+    [self.activityThing startAnimating];
+}
+
+- (IBAction)begin:(id)sender
+{
+    GameEngine *engine = [GameEngine sharedGameEngine];
+    [engine begin];
+    
+    [self.activityThing stopAnimating];
+
+}
+
 
 @end

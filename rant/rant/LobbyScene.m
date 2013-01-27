@@ -2,8 +2,6 @@
 #import "GameScene.h"
 
 
-#define RANT_FONT @"Bernard MT Condensed"
-
 
 
 @interface LobbyLayer : CCLayer
@@ -18,12 +16,19 @@
 {
 	CCMenuItemImage * enterGameButton;
 	CCLabelTTF * enterGameLabel;
+	CCLabelTTF * playersInGameLabel;
 }
 
 -(void)onEnter
 {
     // Create the layer hierarchy
     [super onEnter];
+
+
+    playersInGameLabel = [CCLabelTTF labelWithString:@"Players: ???" fontName:RANT_FONT fontSize:26];
+    [enterGameLabel setPosition:ccp(150, 300)];
+	[self addChild:playersInGameLabel];
+
 
 	// ask director for the window size
 //	CGSize size = [[CCDirector sharedDirector] winSize];
@@ -37,7 +42,7 @@
                              [enterGameButton boundingBox].size.height * 0.5f);
 
     [enterGameButton setPosition:ccp(0,-100)];
-    enterGameLabel = [CCLabelTTF labelWithString:@"Menu text" fontName:RANT_FONT fontSize:26];
+    enterGameLabel = [CCLabelTTF labelWithString:@"Start Game" fontName:RANT_FONT fontSize:26];
     [enterGameButton addChild:enterGameLabel];
     [enterGameLabel setPosition:savedPoint];
 
