@@ -61,6 +61,8 @@
 		9CAB4FA416B49C580061047A /* gameBackgroundCloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB4F9E16B49C580061047A /* gameBackgroundCloud.png */; };
 		9CAB501B16B4A3CD0061047A /* gameMonster1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB501916B4A3CD0061047A /* gameMonster1-hd.png */; };
 		9CAB501C16B4A3CD0061047A /* gameMonster1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CAB501A16B4A3CD0061047A /* gameMonster1.png */; };
+		9CAB502016B4AAAF0061047A /* GameHeroNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB501F16B4AAAF0061047A /* GameHeroNode.m */; };
+		9CAB502316B4AAD10061047A /* GameMonsterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB502216B4AAD10061047A /* GameMonsterNode.m */; };
 		B354826816B3A75A004ECF7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D716B39AC50061047A /* UIKit.framework */; };
 		B354826916B3A75A004ECF7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47D916B39AC50061047A /* Foundation.framework */; };
 		B354826A16B3A75A004ECF7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAB47DB16B39AC50061047A /* CoreGraphics.framework */; };
@@ -547,6 +549,10 @@
 		9CAB4F9E16B49C580061047A /* gameBackgroundCloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameBackgroundCloud.png; path = Resources/GameAssets/gameBackgroundCloud.png; sourceTree = "<group>"; };
 		9CAB501916B4A3CD0061047A /* gameMonster1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gameMonster1-hd.png"; path = "Resources/GameAssets/gameMonster1-hd.png"; sourceTree = "<group>"; };
 		9CAB501A16B4A3CD0061047A /* gameMonster1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameMonster1.png; path = Resources/GameAssets/gameMonster1.png; sourceTree = "<group>"; };
+		9CAB501E16B4AAAF0061047A /* GameHeroNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameHeroNode.h; sourceTree = "<group>"; };
+		9CAB501F16B4AAAF0061047A /* GameHeroNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameHeroNode.m; sourceTree = "<group>"; };
+		9CAB502116B4AAD10061047A /* GameMonsterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMonsterNode.h; sourceTree = "<group>"; };
+		9CAB502216B4AAD10061047A /* GameMonsterNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMonsterNode.m; sourceTree = "<group>"; };
 		B354826616B3A75A004ECF7C /* NetworkTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B354826D16B3A75A004ECF7C /* NetworkTester-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NetworkTester-Info.plist"; sourceTree = "<group>"; };
 		B354826F16B3A75A004ECF7C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -666,6 +672,7 @@
 				B3E1FF9916B497A200D940F0 /* Util.m */,
 				B3985A9216B46BB7008081FB /* GameEngine */,
 				9CAB4E8E16B470640061047A /* GameLayers */,
+				9CAB501D16B4AA0F0061047A /* GameObjects */,
 				0AC19EB316B4652300FC5541 /* LobbyScene.h */,
 				0AC19EB416B4652300FC5541 /* LobbyScene.m */,
 				0AC19F4616B46E4200FC5541 /* GameScene.h */,
@@ -810,6 +817,17 @@
 				9CAB4F9616B49AED0061047A /* gameHero_placeholder.png */,
 			);
 			name = GameAssets;
+			sourceTree = "<group>";
+		};
+		9CAB501D16B4AA0F0061047A /* GameObjects */ = {
+			isa = PBXGroup;
+			children = (
+				9CAB501E16B4AAAF0061047A /* GameHeroNode.h */,
+				9CAB501F16B4AAAF0061047A /* GameHeroNode.m */,
+				9CAB502116B4AAD10061047A /* GameMonsterNode.h */,
+				9CAB502216B4AAD10061047A /* GameMonsterNode.m */,
+			);
+			name = GameObjects;
 			sourceTree = "<group>";
 		};
 		B354826B16B3A75A004ECF7C /* NetworkTester */ = {
@@ -1448,6 +1466,8 @@
 				9CAB4E9E16B471520061047A /* GameHUDLayer.m in Sources */,
 				9CAB4F9416B492770061047A /* GameHeroLayer.m in Sources */,
 				B3E1FF9A16B497A200D940F0 /* Util.m in Sources */,
+				9CAB502016B4AAAF0061047A /* GameHeroNode.m in Sources */,
+				9CAB502316B4AAD10061047A /* GameMonsterNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
