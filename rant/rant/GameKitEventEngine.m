@@ -31,9 +31,8 @@ const float kHeartbeatTimeMaxDelay = 2.0f;
 #define kGameloopInterval (0.033)
 
 typedef enum {
-	kStateStartGame,
     kStateLobby,
-	kStateServerElect,
+	kStateStartGame,
     kStateMain,
 } gameStates;
 
@@ -55,7 +54,10 @@ typedef enum {
 @property (strong) NSString *serverPlayerID;
 @property (assign, readwrite) BOOL isServer;
 @property (strong) NSMutableArray *incomingEvents;
+@property (readwrite, strong) NSArray *allPlayerIDs;
+@property (readwrite, strong) NSArray *allPlayerNums;
 
+- (void)reset;
 @end
 
 
@@ -86,8 +88,8 @@ typedef enum {
     if (self) {
         [NSTimer scheduledTimerWithTimeInterval:kGameloopInterval target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
         self.playerInfo = [NSMutableDictionary dictionaryWithCapacity:4];
-        //        _eventQueue = dispatch_queue_create("eventqueue", NULL);
         self.incomingEvents = [NSMutableArray arrayWithCapacity:20];
+        self.gameState = kStateLobby;
     }
     return self;
 }
@@ -176,10 +178,9 @@ typedef enum {
 	switch (self.gameState) {
             
         case kStateLobby:
-		case kStateStartGame:
-			break;
+            break;
             
-		case kStateServerElect:
+		case kStateStartGame:
 			[self broadcastNetworkPacket:self.match packetID:NETWORK_GAME_START withData:NULL ofLength:sizeof(int) reliable:YES];
 			self.gameState = kStateMain;
 			break;
@@ -192,10 +193,6 @@ typedef enum {
             }
             
             counter++;
-
-//            if (counter & kHeartbeatMod) {
-//                NSLog(@"players: %@", [self.match playerIDs]);
-//            }
             
             if (self.isServer) {
                 [self processEvents];
@@ -284,9 +281,7 @@ typedef enum {
 	switch( packetID ) {
 		case NETWORK_GAME_START:
         {
-            if (_gameState == kStateLobby) {
-                _gameState = kStateMain;
-            }
+            [self begin];
         }
 			break;
             
@@ -350,19 +345,33 @@ typedef enum {
 	}
 }
 
-
 - (void)begin
 {
-    NSAssert(self.match, @"match is nil");
-    NSAssert(self.match.expectedPlayerCount == 0, @"not enough players");
-    self.gameState = kStateServerElect;
+    if (self.gameState == kStateLobby) {
+        NSAssert(self.match, @"match is nil");
+        NSAssert(self.match.expectedPlayerCount == 0, @"not enough players");
+        self.allPlayerIDs = [[self.match playerIDs] arrayByAddingObject:
+                             [GKLocalPlayer localPlayer].playerID];
+        
+        NSMutableArray *playerNums = [NSMutableArray arrayWithCapacity:[self.allPlayerIDs count]];
+        for (NSString *playerID in self.allPlayerIDs) {
+            [playerNums addObject:[NSNumber numberWithLongLong:PlayerIDNum(playerID)]];
+        }
+        self.allPlayerNums = playerNums;
+        
+        self.gameState = kStateStartGame;
+        
+        NSLog(@"game began with players: %@", self.allPlayerIDs);
+    }
 }
 
 - (void)end
 {
     self.serverPlayerID = nil;
     self.match = nil;
-    self.gameState = kStateStartGame;
+    self.allPlayerIDs = nil;
+    self.allPlayerNums = nil;
+    self.gameState = kStateLobby;
 }
 
 - (BOOL) isMatchReady
@@ -410,6 +419,12 @@ typedef enum {
     return MyPlayerNum();
 }
 
+- (NSString *)myPlayerID
+{
+    return [GKLocalPlayer localPlayer].playerID;
+}
+
+
 #pragma mark -
 #pragma mark UIAlertViewDelegate Methods
 
@@ -419,6 +434,12 @@ typedef enum {
 	if(buttonIndex == 0) {
         [self end];
 	}
+}
+
+- (void)reset
+{
+    self.allPlayerIDs = nil;
+    self.allPlayerNums = nil;
 }
 
 

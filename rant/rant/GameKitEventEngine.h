@@ -44,6 +44,24 @@ typedef struct {
 @property (assign, readonly) BOOL isServer;
 - (BOOL) isRunning;
 
+/*
+ @discussion PlayerID is a STRING, which comes from GameCenter. Format is like 'G:123123123'
+ */
+@property (readonly, strong) NSArray *allPlayerIDs;
+
+/*
+ @discussion PlayerNum is a LONG LONG, which is the numeric portion of the PlayerID
+ */
+@property (readonly, strong) NSArray *allPlayerNums;
+
+/**
+ @discussion my PlayerID from GameCenter, like 'G:123123123123';
+ */
+@property (readonly) NSString *myPlayerID;
+
+/*
+ @discussion My playerNumber
+ */
 - (long long) myPlayerNum;
 
 - (void)begin;
