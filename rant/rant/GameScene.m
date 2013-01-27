@@ -5,35 +5,10 @@
 #import "GameMonsterLayer.h"
 #import "GameHUDLayer.h"
 #import "GameHeroLayer.h"
-
-@protocol GameClientDelegate <NSObject>
-
-- (void)monsterHPChangedTo:(int)hp;
-
-@end
+#import "GameEngine.h"
 
 
-@interface GameClient
-
-- (void)attack;
-
-@property (nonatomic, weak) NSObject<GameClientDelegate> * delegate;
-
-@end
-
-
-
-@implementation GameClient
-
-- (void)attack
-{
-	[self.delegate monsterHPChangedTo:10];
-}
-
-@end
-
-
-@interface GameScene() <GameClientDelegate>
+@interface GameScene() <GameEngineDelegate>
 @end
 
 
@@ -74,9 +49,9 @@
     [self addChild:gestureLayer];
 }
 
-- (void)monsterHPChangedTo:(int)hp
+- (void)clientReceivedEvent:(GameEvent *)event withState:(GameState *)state;
 {
-	NSLog(@"monster HP changed to %d", hp);
+	NSLog(@"got event");
 }
 
 #pragma mark - Gesture Receiver methods
