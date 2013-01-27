@@ -13,6 +13,10 @@
 extern NSString *const GameEngineGameBeginNotification;
 extern NSString *const GameEngineGameEndNotification;
 
+typedef struct {
+    GameEvent event;
+    GameState state;
+} GamePacket;
 
 @interface NetworkEngine : NSObject <GKMatchDelegate>
 {
