@@ -9,6 +9,7 @@
 #import "GameGestureLayer.h"
 #import "GameHeroNode.h"
 #import "GameKitEventEngine.h"
+#import "SimpleAudioEngine.h"
 
 #define SHAKE_TIME 0.7f
 #define SHAKE_1_PERIOD 0.2f
@@ -47,7 +48,8 @@
 -(void)onEnter
 {
     [super onEnter];
-    
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"fastbeat1.caf"];
+
 	CGSize windowSize = [[CCDirector sharedDirector] winSize];
     
     backgroundLayer = [GameBackgroundLayer node];
