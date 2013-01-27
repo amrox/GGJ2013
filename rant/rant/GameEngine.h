@@ -8,16 +8,32 @@
 
 #import <Foundation/Foundation.h>
 
+#define MAX_PLAYER_HEALTH 10
+
+typedef enum
+{
+	EGameEventType_ATTACK_FIRE,
+	EGameEventType_ATTACK_ICE,
+	EGameEventType_ATTACK_WIND,
+	EGameEventType_HEAL,
+	EGameEventType_RECEIVE_HEAL,
+	EGameEventType_MONSTER_DAMAGED_FIRE,
+	EGameEventType_MONSTER_DAMAGED_ICE,
+	EGameEventType_MONSTER_DAMAGED_WIND,
+	EGameEventType_MONSTER_DEAD,
+	EGameEventType_PLAYER_RECEIVED_HEAL,
+} EGameEventType;
 
 typedef struct {
 	int			bossHealth;
     int         playerCount;
     int			playerHeath[4];
+	int			healReady;			// 1 if ready, 0 otherwise
 } GameState;
 
 typedef struct {
-	int			type;
-    int         source;
+	int			source;
+	int			type;	//EGameEventType
     int         target; // 0=boss, 1-4=player
     int			value;
 } GameEvent;
@@ -44,7 +60,6 @@ typedef enum {
 
 @property (assign) int playerMaxHealth;
 @property (assign) int playerCount;
-@property (assign) int bossMaxHealth;
 
 @property (nonatomic, strong) NetworkEngine *networkEngine;
 

@@ -108,6 +108,7 @@
 		FF91403D16B4B2BB00A6E22E /* sine440.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF91403C16B4B2BB00A6E22E /* sine440.caf */; };
 		FF91403E16B4B2BB00A6E22E /* sine440.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF91403C16B4B2BB00A6E22E /* sine440.caf */; };
 		FF9140B816B4C18B00A6E22E /* red_health_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF9140B716B4C18B00A6E22E /* red_health_bar.png */; };
+		FF91413416B4E70B00A6E22E /* redhealthbar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF91413316B4E70B00A6E22E /* redhealthbar.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -626,6 +627,7 @@
 		B3E1FF9916B497A200D940F0 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		FF91403C16B4B2BB00A6E22E /* sine440.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sine440.caf; sourceTree = "<group>"; };
 		FF9140B716B4C18B00A6E22E /* red_health_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_health_bar.png; sourceTree = "<group>"; };
+		FF91413316B4E70B00A6E22E /* redhealthbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redhealthbar.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -854,6 +856,7 @@
 		9CAB4F8716B489800061047A /* GameAssets */ = {
 			isa = PBXGroup;
 			children = (
+				FF91413316B4E70B00A6E22E /* redhealthbar.png */,
 				FF9140B716B4C18B00A6E22E /* red_health_bar.png */,
 				9CAB509816B4BE5D0061047A /* Animations */,
 				FF91403C16B4B2BB00A6E22E /* sine440.caf */,
@@ -1505,6 +1508,7 @@
 				9CAB50B616B4BE920061047A /* gameHero4-hd.png in Resources */,
 				9CAB50B716B4BE920061047A /* gameHero4.plist in Resources */,
 				9CAB50B816B4BE920061047A /* gameHero4.png in Resources */,
+				FF91413416B4E70B00A6E22E /* redhealthbar.png in Resources */,
 				9C213AF116B4E5420013B147 /* gameMonster1-hd.plist in Resources */,
 				9C213AF216B4E5420013B147 /* gameMonster1-hd.png in Resources */,
 				9C213AF316B4E5420013B147 /* gameMonster1.plist in Resources */,

@@ -295,11 +295,11 @@ typedef enum {
 
 - (PlayerInfo *)getInfoForPlayerID:(NSString *)playerID
 {
-    PlayerInfo *info = self.playerInfo[playerID];
+    PlayerInfo *info = [self.playerInfo objectForKey:playerID];
     if (info == nil) {
         info = [[PlayerInfo alloc] init];
         info.playerID = playerID;
-        self.playerInfo[playerID] = info;
+        [self.playerInfo setObject:info forKey:playerID];
     }
     return info;
 }
