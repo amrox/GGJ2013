@@ -60,6 +60,7 @@
 	SpellBookLayer * spellBookLayer;
     
     CCSprite *attackBar;
+    CCSprite *spellIcon;
 }
 
 @synthesize monsterHealthBar;
@@ -98,7 +99,36 @@
     [heroHealthBar setScale:0.5];
     [self addChild:heroHealthBar];
     
+    spellIcon = nil;
+}
+
+- (void)displayIconWithType:(EGameEventType)type
+{
+    if (type == EGameEventType_ATTACK_FIRE)
+    {
+        spellIcon = [CCSprite spriteWithFile:@"gameIconFire.png"];
+        [spellIcon setPosition:ccp(50, 380)];
+    }
+    else if (type == EGameEventType_ATTACK_ICE)
+    {
+        spellIcon = [CCSprite spriteWithFile:@"gameIconIce"];
+        [spellIcon setPosition:ccp(50, 380)];
+    }
+    else if (type == EGameEventType_ATTACK_WIND)
+    {
+        spellIcon = [CCSprite spriteWithFile:@"gameIconWind.png"];
+        [spellIcon setPosition:ccp(50, 380)];
+    }
     
+    [spellIcon setScale:0.25];
+    
+    [self addChild:spellIcon];
+}
+
+- (void)clearIcon
+{
+    [spellIcon removeFromParentAndCleanup:YES];
+    spellIcon = nil;
 }
 
 - (void)gestureRegistered:(Gesture *)gesture
