@@ -21,8 +21,8 @@
 {
     [super onEnter];
     
-    monster = [CCSprite spriteWithFile:@"gameMonster_placeholder.png"];
-    [monster setPosition:ccp(220, 240)];
+    monster = [CCSprite spriteWithFile:@"gameMonster1.png"];
+    [monster setPosition:ccp(190, 260)];
     
     [self addChild:monster];
 }
