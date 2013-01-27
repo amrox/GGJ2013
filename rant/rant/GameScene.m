@@ -65,6 +65,7 @@
     [self addChild:gestureLayer];
 
 	gameEngine = [[GameEngine alloc] init];
+	[gameEngine reset];
 	gameEngine.delegate = self;
 
 	[self scheduleUpdate];

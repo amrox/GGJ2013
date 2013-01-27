@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define MAX_PLAYER_HEALTH 100
+#define MAX_PLAYER_HEALTH 10
 
 typedef enum
 {
@@ -20,6 +20,7 @@ typedef enum
 	EGameEventType_MONSTER_DAMAGED_FIRE,
 	EGameEventType_MONSTER_DAMAGED_ICE,
 	EGameEventType_MONSTER_DAMAGED_WIND,
+	EGameEventType_MONSTER_DEAD,
 	EGameEventType_PLAYER_RECEIVED_HEAL,
 } EGameEventType;
 
@@ -58,7 +59,6 @@ typedef enum {
 
 @property (assign) int playerMaxHealth;
 @property (assign) int playerCount;
-@property (assign) int bossMaxHealth;
 
 @property (nonatomic, strong) NetworkEngine *networkEngine;
 
