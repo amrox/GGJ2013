@@ -104,6 +104,11 @@
 
 - (void)displayIconWithType:(EGameEventType)type
 {
+	if (spellIcon)
+	{
+		return;
+	}
+
     if (type == EGameEventType_ATTACK_FIRE)
     {
         spellIcon = [CCSprite spriteWithFile:@"gameIconFire.png"];
@@ -111,7 +116,7 @@
     }
     else if (type == EGameEventType_ATTACK_ICE)
     {
-        spellIcon = [CCSprite spriteWithFile:@"gameIconIce"];
+        spellIcon = [CCSprite spriteWithFile:@"gameIconIce.png"];
         [spellIcon setPosition:ccp(50, 380)];
     }
     else if (type == EGameEventType_ATTACK_WIND)
