@@ -111,7 +111,7 @@
 
 		GameEvent broadcastEvent;
 		broadcastEvent.type = EGameEventType_MONSTER_DAMAGED_FIRE + (event->type - EGameEventType_ATTACK_FIRE);
-		broadcastEvent.target = sendingPlayerId + 1;
+		broadcastEvent.targetPlayerId = sendingPlayerId;
 		broadcastEvent.value = event->value;
 
 		[self broadcastEventAsServer:&broadcastEvent];
@@ -119,8 +119,6 @@
 		if (state.bossHealth == 0)
 		{
 			broadcastEvent.type = EGameEventType_MONSTER_DEAD;
-			broadcastEvent.target = 0;
-			broadcastEvent.value = 0;
 
 			[self broadcastEventAsServer:&broadcastEvent];
 		}
@@ -147,7 +145,7 @@
 
 			GameEvent broadcastEvent;
 			broadcastEvent.type = EGameEventType_PLAYER_RECEIVED_HEAL;
-			broadcastEvent.target = sendingPlayerId + 1;
+			broadcastEvent.targetPlayerId = sendingPlayerId;
 			broadcastEvent.value = event->value;
 
 			[self broadcastEventAsServer:&broadcastEvent];
@@ -183,7 +181,7 @@
 
 			GameEvent broadcastEvent;
 			broadcastEvent.type = EGameEventType_PLAYER_HIT;
-			broadcastEvent.target = playerToAttack + 1;
+			broadcastEvent.targetPlayerId = playerToAttack;
 			broadcastEvent.value = damage;
 
 			[self broadcastEventAsServer:&broadcastEvent];
