@@ -21,6 +21,7 @@
     CCLabelTTF * multiPlayerGameLabel;
 }
 
+
 -(void)onEnter
 {
     // Create the layer hierarchy
